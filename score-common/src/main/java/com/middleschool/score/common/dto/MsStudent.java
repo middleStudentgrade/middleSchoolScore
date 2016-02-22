@@ -5,7 +5,7 @@ import java.util.Date;
 public class MsStudent {
     private Long id;
 
-    private String passowrd;
+    private String password;
 
     private String name;
 
@@ -33,12 +33,12 @@ public class MsStudent {
         this.id = id;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd == null ? null : passowrd.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     public String getName() {

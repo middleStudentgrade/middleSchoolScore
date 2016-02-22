@@ -2,8 +2,9 @@ package com.middleschool.score.common.mapper;
 
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsScoreExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface MsScoreMapper {
     int countByExample(MsScoreExample example);

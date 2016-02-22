@@ -10,7 +10,7 @@
 <script src="javaScript/less.min.js" type="text/javascript"></script>
 </head>
 <body>
-    <a href="/test">testweb</a>
+    <a href="/login">testweb</a>
     <div class="testdiv">
 <p class="test">sdfsdffds</p>
     </div>

@@ -30,14 +30,6 @@ public class IndexController {
 		return module+"/"+page;
 	}
 
-	@RequestMapping("/test")
-	public String test(){
-		MsStudent student=new MsStudent();
-		student.setName("hhh");
-		student.setId(201223259L);
-		testService.saveTest(student);
-		return "success";
-	}
-	
+
 	
 }

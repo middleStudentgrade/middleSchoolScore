@@ -23,14 +23,7 @@ public class IndexController {
 		return module+"/"+page;
 	}
 
-	@RequestMapping("/test")
-	public String test(){
-		MsStudent student=new MsStudent();
-		student.setName("hhh");
-		student.setId(2012231328L);
-		testService.saveTest(student);
-		return "success";
-	}
+
 	
 	
 }
