@@ -3,13 +3,15 @@ package com.middleschool.score.common.dto;
 public class MsScore {
     private Long id;
 
-    private Long courseId;
+    private Long courseCode;
 
     private Long studentId;
 
     private String grade;
 
     private String jibu;
+
+    private Double score;
 
     public Long getId() {
         return id;
@@ -19,12 +21,12 @@ public class MsScore {
         this.id = id;
     }
 
-    public Long getCourseId() {
-        return courseId;
+    public Long getCourseCode() {
+        return courseCode;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setCourseCode(Long courseCode) {
+        this.courseCode = courseCode;
     }
 
     public Long getStudentId() {
@@ -49,5 +51,13 @@ public class MsScore {
 
     public void setJibu(String jibu) {
         this.jibu = jibu == null ? null : jibu.trim();
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 }

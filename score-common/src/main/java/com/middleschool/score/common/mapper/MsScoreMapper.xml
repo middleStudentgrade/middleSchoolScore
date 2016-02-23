@@ -3,10 +3,11 @@
 <mapper namespace="com.middleschool.score.common.mapper.MsScoreMapper" >
   <resultMap id="BaseResultMap" type="com.middleschool.score.common.dto.MsScore" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="course_id" property="courseId" jdbcType="BIGINT" />
+    <result column="course_code" property="courseCode" jdbcType="BIGINT" />
     <result column="student_id" property="studentId" jdbcType="BIGINT" />
     <result column="grade" property="grade" jdbcType="VARCHAR" />
     <result column="jibu" property="jibu" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, course_id, student_id, grade, jibu
+    id, course_code, student_id, grade, jibu, score
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample" >
     select
@@ -100,10 +101,26 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.middleschool.score.common.dto.MsScore" >
-    insert into ms_score (id, course_id, student_id, 
-      grade, jibu)
-    values (#{id,jdbcType=BIGINT}, #{courseId,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, 
-      #{grade,jdbcType=VARCHAR}, #{jibu,jdbcType=VARCHAR})
+    insert into ms_score (id, course_code, student_id, 
+      grade, jibu, score)
+    values (#{id,jdbcType=BIGINT}, #{courseCode,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, 
+      #{grade,jdbcType=VARCHAR}, #{jibu,jdbcType=VARCHAR}, #{score,jdbcType=DOUBLE})
+  </insert>
+
+
+  <!--批量插入成绩-->
+  <insert id="insertScores" useGeneratedKeys="true" parameterType="java.util.List">
+  <selectKey resultType="long" keyProperty="id" order="AFTER">
+    SELECT
+    LAST_INSERT_ID()
+  </selectKey>
+  insert into ms_score (id, course_code, student_id,
+  grade, jibu, score)
+  values
+  <foreach collection="list" item="item" index="index" separator="," >
+    (#{item.id,jdbcType=BIGINT}, #{item.courseCode,jdbcType=BIGINT}, #{item.studentId,jdbcType=BIGINT},
+    #{item.grade,jdbcType=VARCHAR}, #{item.jibu,jdbcType=VARCHAR}, #{item.score,jdbcType=DOUBLE})
+  </foreach>
   </insert>
   <insert id="insertSelective" parameterType="com.middleschool.score.common.dto.MsScore" >
     insert into ms_score
@@ -111,8 +128,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="courseId != null" >
-        course_id,
+      <if test="courseCode != null" >
+        course_code,
       </if>
       <if test="studentId != null" >
         student_id,
@@ -123,13 +140,16 @@
       <if test="jibu != null" >
         jibu,
       </if>
+      <if test="score != null" >
+        score,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="courseId != null" >
-        #{courseId,jdbcType=BIGINT},
+      <if test="courseCode != null" >
+        #{courseCode,jdbcType=BIGINT},
       </if>
       <if test="studentId != null" >
         #{studentId,jdbcType=BIGINT},
@@ -139,6 +159,9 @@
       </if>
       <if test="jibu != null" >
         #{jibu,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -154,8 +177,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.courseId != null" >
-        course_id = #{record.courseId,jdbcType=BIGINT},
+      <if test="record.courseCode != null" >
+        course_code = #{record.courseCode,jdbcType=BIGINT},
       </if>
       <if test="record.studentId != null" >
         student_id = #{record.studentId,jdbcType=BIGINT},
@@ -166,6 +189,9 @@
       <if test="record.jibu != null" >
         jibu = #{record.jibu,jdbcType=VARCHAR},
       </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=DOUBLE},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -174,10 +200,11 @@
   <update id="updateByExample" parameterType="map" >
     update ms_score
     set id = #{record.id,jdbcType=BIGINT},
-      course_id = #{record.courseId,jdbcType=BIGINT},
+      course_code = #{record.courseCode,jdbcType=BIGINT},
       student_id = #{record.studentId,jdbcType=BIGINT},
       grade = #{record.grade,jdbcType=VARCHAR},
-      jibu = #{record.jibu,jdbcType=VARCHAR}
+      jibu = #{record.jibu,jdbcType=VARCHAR},
+      score = #{record.score,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -185,8 +212,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.middleschool.score.common.dto.MsScore" >
     update ms_score
     <set >
-      <if test="courseId != null" >
-        course_id = #{courseId,jdbcType=BIGINT},
+      <if test="courseCode != null" >
+        course_code = #{courseCode,jdbcType=BIGINT},
       </if>
       <if test="studentId != null" >
         student_id = #{studentId,jdbcType=BIGINT},
@@ -197,15 +224,19 @@
       <if test="jibu != null" >
         jibu = #{jibu,jdbcType=VARCHAR},
       </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.middleschool.score.common.dto.MsScore" >
     update ms_score
-    set course_id = #{courseId,jdbcType=BIGINT},
+    set course_code = #{courseCode,jdbcType=BIGINT},
       student_id = #{studentId,jdbcType=BIGINT},
       grade = #{grade,jdbcType=VARCHAR},
-      jibu = #{jibu,jdbcType=VARCHAR}
+      jibu = #{jibu,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DOUBLE}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

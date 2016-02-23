@@ -38,18 +38,39 @@
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.9</version>
+        </dependency>
     </dependencies>
 
 
     <!-- 添加tomcat插件 -->
     <build>
         <plugins>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <port>8081</port>
                     <path>/</path>
+                </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 注意此处的url -->
+                    <url>http://localhost:8081</url>
+                    <server>tomcat7</server> <!-- 此处的名字必须和setting.xml中配置的ID一致-->
+                    <path>/admin</path>
                 </configuration>
             </plugin>
         </plugins>

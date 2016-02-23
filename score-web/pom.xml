@@ -52,12 +52,22 @@
     <!-- 添加tomcat插件 -->
     <build>
         <plugins>
-            <plugin>
+        <!--<plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <port>8080</port>
                     <path>/</path>
+                </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 注意此处的url -->
+                    <url>http://localhost:8080</url>
+                    <server>Catalina</server> <!-- 此处的名字必须和setting.xml中配置的ID一致-->
+                    <path>/score-web</path>
                 </configuration>
             </plugin>
         </plugins>

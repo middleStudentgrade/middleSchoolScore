@@ -8,6 +8,6 @@
 <script src="js/jquery.datetimepicker.js"></script>
 </head>
 <body>
-    <a href="/login">testadmin</a>
+    <a href="/import">testadmin</a>
 </body>
 </html>

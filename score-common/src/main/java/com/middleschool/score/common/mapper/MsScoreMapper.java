@@ -15,6 +15,8 @@ public interface MsScoreMapper {
 
     int insert(MsScore record);
 
+    int insertScores(List<MsScore> lists);
+
     int insertSelective(MsScore record);
 
     List<MsScore> selectByExample(MsScoreExample example);
