@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+.login_bg{ min-height:600px;background:url(../images/log_bg.jpg) no-repeat;background-size:100% 100%;}
+.login_bg .ln_yh{padding-top:200px;}
+.login_bg .ln_yh input{width:230px;}
+.login_bg .login_con{width:300px;margin:0 auto;}
