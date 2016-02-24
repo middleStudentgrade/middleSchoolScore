@@ -18,7 +18,7 @@
   <div class="login_con" >
     <form >
       <div class="ln_yh">
-        <label >用户名：</label>
+        <label >用户名1：</label>
         <input type="email" class="form-control" id="" placeholder="请输入您的用户名"> <br/>
 
         <label>密   码：</label>
