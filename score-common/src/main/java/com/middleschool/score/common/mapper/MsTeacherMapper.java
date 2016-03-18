@@ -2,9 +2,8 @@ package com.middleschool.score.common.mapper;
 
 import com.middleschool.score.common.dto.MsTeacher;
 import com.middleschool.score.common.dto.MsTeacherExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface MsTeacherMapper {
     int countByExample(MsTeacherExample example);

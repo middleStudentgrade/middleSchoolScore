@@ -1,7 +1,5 @@
 package com.middleschool.score.common.dto;
 
-import java.util.Date;
-
 public class MsTeacher {
     private Long id;
 
@@ -14,8 +12,6 @@ public class MsTeacher {
     private String department;
 
     private String education;
-
-    private Date birthday;
 
     private String politicalLandscape;
 
@@ -73,14 +69,6 @@ public class MsTeacher {
 
     public void setEducation(String education) {
         this.education = education == null ? null : education.trim();
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
     }
 
     public String getPoliticalLandscape() {

@@ -2,9 +2,8 @@ package com.middleschool.score.common.mapper;
 
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsScoreExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface MsScoreMapper {
     int countByExample(MsScoreExample example);
@@ -14,8 +13,6 @@ public interface MsScoreMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(MsScore record);
-
-    int insertScores(List<MsScore> lists);
 
     int insertSelective(MsScore record);
 

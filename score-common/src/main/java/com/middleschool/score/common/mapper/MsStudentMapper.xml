@@ -7,12 +7,10 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="class_id" property="classId" jdbcType="VARCHAR" />
-    <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="id_card" property="idCard" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="birth_place" property="birthPlace" jdbcType="VARCHAR" />
     <result column="political_landscape" property="politicalLandscape" jdbcType="VARCHAR" />
+    <result column="dates_attendance" property="datesAttendance" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, password, name, age, sex, class_id, birthday, id_card, email, birth_place, political_landscape
+    id, password, name, age, sex, id_card, birth_place, political_landscape, dates_attendance
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsStudentExample" >
     select
@@ -107,13 +105,11 @@
   </delete>
   <insert id="insert" parameterType="com.middleschool.score.common.dto.MsStudent" >
     insert into ms_student (id, password, name, 
-      age, sex, class_id, 
-      birthday, id_card, email, 
-      birth_place, political_landscape)
+      age, sex, id_card, birth_place, 
+      political_landscape, dates_attendance)
     values (#{id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{classId,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=DATE}, #{idCard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{birthPlace,jdbcType=VARCHAR}, #{politicalLandscape,jdbcType=VARCHAR})
+      #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{birthPlace,jdbcType=VARCHAR}, 
+      #{politicalLandscape,jdbcType=VARCHAR}, #{datesAttendance,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.middleschool.score.common.dto.MsStudent" >
     insert into ms_student
@@ -133,23 +129,17 @@
       <if test="sex != null" >
         sex,
       </if>
-      <if test="classId != null" >
-        class_id,
-      </if>
-      <if test="birthday != null" >
-        birthday,
-      </if>
       <if test="idCard != null" >
         id_card,
-      </if>
-      <if test="email != null" >
-        email,
       </if>
       <if test="birthPlace != null" >
         birth_place,
       </if>
       <if test="politicalLandscape != null" >
         political_landscape,
+      </if>
+      <if test="datesAttendance != null" >
+        dates_attendance,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -168,23 +158,17 @@
       <if test="sex != null" >
         #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="classId != null" >
-        #{classId,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null" >
-        #{birthday,jdbcType=DATE},
-      </if>
       <if test="idCard != null" >
         #{idCard,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
       </if>
       <if test="birthPlace != null" >
         #{birthPlace,jdbcType=VARCHAR},
       </if>
       <if test="politicalLandscape != null" >
         #{politicalLandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="datesAttendance != null" >
+        #{datesAttendance,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -212,23 +196,17 @@
       <if test="record.sex != null" >
         sex = #{record.sex,jdbcType=VARCHAR},
       </if>
-      <if test="record.classId != null" >
-        class_id = #{record.classId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=DATE},
-      </if>
       <if test="record.idCard != null" >
         id_card = #{record.idCard,jdbcType=VARCHAR},
-      </if>
-      <if test="record.email != null" >
-        email = #{record.email,jdbcType=VARCHAR},
       </if>
       <if test="record.birthPlace != null" >
         birth_place = #{record.birthPlace,jdbcType=VARCHAR},
       </if>
       <if test="record.politicalLandscape != null" >
         political_landscape = #{record.politicalLandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datesAttendance != null" >
+        dates_attendance = #{record.datesAttendance,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -242,12 +220,10 @@
       name = #{record.name,jdbcType=VARCHAR},
       age = #{record.age,jdbcType=INTEGER},
       sex = #{record.sex,jdbcType=VARCHAR},
-      class_id = #{record.classId,jdbcType=VARCHAR},
-      birthday = #{record.birthday,jdbcType=DATE},
       id_card = #{record.idCard,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR},
       birth_place = #{record.birthPlace,jdbcType=VARCHAR},
-      political_landscape = #{record.politicalLandscape,jdbcType=VARCHAR}
+      political_landscape = #{record.politicalLandscape,jdbcType=VARCHAR},
+      dates_attendance = #{record.datesAttendance,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -267,23 +243,17 @@
       <if test="sex != null" >
         sex = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="classId != null" >
-        class_id = #{classId,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=DATE},
-      </if>
       <if test="idCard != null" >
         id_card = #{idCard,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="birthPlace != null" >
         birth_place = #{birthPlace,jdbcType=VARCHAR},
       </if>
       <if test="politicalLandscape != null" >
         political_landscape = #{politicalLandscape,jdbcType=VARCHAR},
+      </if>
+      <if test="datesAttendance != null" >
+        dates_attendance = #{datesAttendance,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -294,12 +264,10 @@
       name = #{name,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       sex = #{sex,jdbcType=VARCHAR},
-      class_id = #{classId,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE},
       id_card = #{idCard,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
       birth_place = #{birthPlace,jdbcType=VARCHAR},
-      political_landscape = #{politicalLandscape,jdbcType=VARCHAR}
+      political_landscape = #{politicalLandscape,jdbcType=VARCHAR},
+      dates_attendance = #{datesAttendance,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

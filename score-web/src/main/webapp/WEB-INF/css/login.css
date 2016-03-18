@@ -1,6 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
-.login_bg{ min-height:600px;background:url(../images/log_bg.jpg) no-repeat;background-size:100% 100%;}
-.login_bg .ln_yh{padding-top:200px;}
-.login_bg .ln_yh input{width:230px;}
-.login_bg .login_con{width:300px;margin:0 auto;}
+.container{width:100%;min-height:600px;background:url(../images/login.jpg) no-repeat;background-size:100% 100%}
+
+
+.denglu_top{font-size:20px;text-align:center;color:#fff;padding-bottom:0;text-shadow: 3px 2px 6px #000;height:30px;}
+.form-signin{max-width:360px;padding:40px;margin:0 auto;margin-top:140px;background:url(../images/ng_tm.png);background-size:100% 100%}
+.denglu_sel{width:98px;display:inline-block;}
+.denglu_a1{color:#033;padding:0 8px}
+
+
