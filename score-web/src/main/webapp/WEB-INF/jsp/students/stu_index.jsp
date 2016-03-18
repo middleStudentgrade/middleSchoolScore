@@ -16,8 +16,8 @@
 
 </head>
 <frameset rows="230,*" frameborder="0">
-  <frame src="stu_top.jsp" name="top" scrolling="no"/>
-  <frame src="stu_info.jsp" name="main" scrolling="no"/>
+  <frame src="stuTop" name="top" scrolling="no"/>
+  <frame src="stuInfo" name="main" scrolling="no"/>
 
 </frameset>
 <body>

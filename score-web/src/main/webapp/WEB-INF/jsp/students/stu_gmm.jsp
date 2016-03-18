@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../javaScript/jquery.js"></script>
   <script src="../javaScript/bootstrap.min.js"></script>
+  <script src="../javaScript/student.js"></script>
 </head>
 <body>
 <div id="con" >
@@ -26,12 +27,11 @@
             <h3 class="panel-title">修改密码</h3>
           </div>
           <div class="panel-body">
-            <form class="form-signin" style="width:230px;margin:0 auto">
-
-
+              <input id="studentId" type="text" value="${msStudent.id}" >
               <div class="form-group">
                 <label >原密码</label>
-                <input type="text" name="username" class="form-control"  placeholder="请输入原密码" >
+                <input  id="password" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
+                <span id="error"></span>
               </div>
               <div class="form-group">
                 <label >新密码</label>
@@ -39,20 +39,16 @@
               </div>
               <div class="form-group">
                 <label >确认密码</label>
-                <input type="password" name="password" class="form-control" placeholder="确认输入密码" >
+                <input id="newPassword" type="password" name="password" class="form-control" placeholder="确认输入密码" >
               </div>
-
-              <button class="btn btn-info" type="submit">确认</button>
+              <button id ="commit" class="btn btn-info" type="button" onclick="changepassword()">确认</button>
               <button class="btn" type="reset" style="float:right">取消</button>
-            </form>
-
 
           </div>
         </div>
       </div>
 
     </div>
-    <!--个人信息-->
 
   </div>
 </div>

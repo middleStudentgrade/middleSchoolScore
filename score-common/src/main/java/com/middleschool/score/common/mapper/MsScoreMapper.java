@@ -20,6 +20,10 @@ public interface MsScoreMapper {
 
     MsScore selectByPrimaryKey(Long id);
 
+    List<MsScore> selectNowScoreByStudentId(Long id);
+
+    List<MsScore> selectAllScoreByStudentId(Long id);
+
     int updateByExampleSelective(@Param("record") MsScore record, @Param("example") MsScoreExample example);
 
     int updateByExample(@Param("record") MsScore record, @Param("example") MsScoreExample example);
@@ -27,4 +31,6 @@ public interface MsScoreMapper {
     int updateByPrimaryKeySelective(MsScore record);
 
     int updateByPrimaryKey(MsScore record);
+
+    int selectRanking(Long studentID);
 }

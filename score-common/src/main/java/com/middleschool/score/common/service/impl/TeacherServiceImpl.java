@@ -12,7 +12,7 @@ public class TeacherServiceImpl implements TeacherService {
     private MsTeacherMapper msTeacherMapper;
 
     @Override
-    public MsTeacher selectById(long id) {
+    public MsTeacher selectById(Long id) {
         try {
             MsTeacher msTeacher=msTeacherMapper.selectByPrimaryKey(id);
             return msTeacher;

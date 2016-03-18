@@ -15,10 +15,28 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String showIndex(){
-		return "login";
+		return "login/login";
+	}
+
+	@RequestMapping("/stuTop")
+	public String showstuTop(){
+		return "students/stu_top";
+	}
+
+	@RequestMapping("/stuNcj")
+	public String showstu_ncj(){
+		return "students/stu_ncj";
+	}
+	@RequestMapping("/stuGmm")
+	public String showstustu_gmm(){
+		return "students/stu_gmm";
+	}
+	@RequestMapping("/stuInfo")
+	public String showstuInfo(){
+		return "students/stu_info";
 	}
 	
-	@RequestMapping("/menu/{module}/{page}")
+	@RequestMapping("menu/{module}/{page}")
 	public String showPage(@PathVariable String module, @PathVariable String page){
 		return module+"/"+page;
 	}

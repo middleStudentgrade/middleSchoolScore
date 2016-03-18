@@ -19,12 +19,12 @@ public class StudentServiceImpl implements StudentService {
     private MsScoreMapper msScoreMapper;
 
     @Override
-    public MsStudent getById(Long id) {
+    public MsStudent getById(Long  id) {
          return  msStudentMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public void saveStudent(MsStudent msStudent) {
-        msStudentMapper.insert(msStudent);
+        msStudentMapper.updateByPrimaryKeySelective(msStudent);
     }
 }

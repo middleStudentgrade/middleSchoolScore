@@ -94,6 +94,23 @@
       order by ${orderByClause}
     </if>
   </select>
+<!-- 查询学生当前成绩-->
+  <select id="selectNowScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    <include refid="Base_Column_List" />
+    from ms_score where student_id = #{studentId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date
+  </select>
+
+  <!-- 查询学生所有成绩-->
+  <select id="selectAllScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ms_score where student_id = #{studentId,jdbcType=BIGINT} order by start_date
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
@@ -221,6 +238,19 @@
       </if>
     </trim>
   </insert>
+
+  <!-- 查询学生当前排名-->
+  <select id="selectRanking"  parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM (
+    SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
+    FROM ms_score s
+    WHERE NOW() BETWEEN s.start_date AND s.end_date) as a
+    WHERE a.student_zong>(
+    SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
+    FROM ms_score s
+    WHERE s.student_id = #{studentId,jdbcType=BIGINT})
+  </select>
   <select id="countByExample" parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer" >
     select count(*) from ms_score
     <if test="_parameter != null" >

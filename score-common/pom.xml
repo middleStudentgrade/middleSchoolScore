@@ -8,11 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <groupId>com.middleschool.score</groupId>
     <artifactId>score-common</artifactId>
+    <packaging>jar</packaging>
     <dependencies>
-
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -75,7 +74,6 @@
         <dependency>
             <groupId>fastdfs_client</groupId>
             <artifactId>fastdfs_client</artifactId>
-            <version>1.25</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

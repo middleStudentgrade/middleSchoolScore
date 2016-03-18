@@ -30,27 +30,25 @@
               <table class="table ">
                 <tr >
                   <td style="border-top:0;">学号：</td>
-                  <td style="border-top:0;">20122213246</td>
-                  <td style="border-top:0;">班级：</td>
-                  <td style="border-top:0;">@mdo</td>
+                  <td style="border-top:0;">${msStudent.id }</td>
                 </tr>
                 <tr>
                   <td>姓名：</td>
-                  <td>Jacob</td>
+                  <td>${msStudent.name}</td>
                   <td>政治面貌：</td>
-                  <td>团员</td>
+                  <td>${msStudent.politicalLandscape}</td>
                 </tr>
                 <tr>
                   <td>性别：</td>
-                  <td>女</td>
+                  <td>>${msStudent.sex}</td>
                   <td>入学时间：</td>
-                  <td>2008.09.01</td>
+                  <td>${msStudent.datesAttendance}</td>
                 </tr>
                 <tr>
                   <td>身份证号：</td>
-                  <td>37291234443456</td>
+                  <td>${msStudent.idCard}</td>
                   <td>籍贯：</td>
-                  <td>山东省烟台市烟台烟台烟台</td>
+                  <td>${msStudent.birthPlace}</td>
                 </tr>
               </table>
             </div>

@@ -40,10 +40,4 @@ public class LoginController {
             }
     }
 
-
-    @RequestMapping("/test")
-    public String test(){
-       MsStudent msStudent= testService.selectstudent(201223259);
-        return "success";
-    }
 }

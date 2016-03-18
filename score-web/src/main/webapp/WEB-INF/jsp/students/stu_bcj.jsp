@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title></title>
@@ -39,25 +40,24 @@
               <th>政治</th>
               <th>地理</th>
               <th>历史</th>
-              <th>基本能力</th>
-              <th style="color:#C66">班级排名</th>
+
             </tr>
             </thead>
             <tbody>
+<c:forEach items="${requestScope.scores}" var="s">
             <tr>
               <td>高一下学期</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>排名</td>
+  <td>${s.math}</td>
+  <td>${s.chinese}</td>
+  <td>${s.english}</td>
+  <td>${s.physico}</td>
+  <td>${s.chemical}</td>
+  <td>${s.biology}</td>
+  <td>${s.physico}</td>
+  <td>${s.geography}</td>
+  <td>${s.history}</td>
             </tr>
+  </c:forEach>
             </tbody>
           </table>
 

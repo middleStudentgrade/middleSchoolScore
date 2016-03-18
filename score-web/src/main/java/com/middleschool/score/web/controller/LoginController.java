@@ -4,6 +4,7 @@ import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.dto.MsTeacher;
 import com.middleschool.score.common.service.StudentService;
 import com.middleschool.score.common.service.TeacherService;
+import com.middleschool.score.common.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,37 +23,36 @@ public class LoginController {
     private StudentService studentService;
 
     @RequestMapping("/login")
-    public String login(@RequestParam long userName, @RequestParam String password, @RequestParam String type, BindingResult errors, HttpSession session) {
-        // long userName=201223259L;String password="aaa"; String type="1";BindingResult errors=null;
+    public String login(@RequestParam String  userName, @RequestParam String password, @RequestParam String type,/* BindingResult errors,*/ HttpSession session) {
         if ("1".equals(type)) {
-            MsStudent msStudent = studentService.getById(userName);
+            MsStudent msStudent = studentService.getById(Long.valueOf(userName));
             if (msStudent != null) {
-                if (msStudent.getPassword().equals(password)) {
+                if (msStudent.getPassword().equals(MD5Utils.md5(password))) {
                     session.setAttribute("msStudent", msStudent);
-                    return "success";
+                    return "students/stu_index";
                 } else {
-                    errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
-                    return "login";
+                //    errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                    return "login/login";
                 }
             } else {
-                errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
-                return "login";
+              //  errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                return "login/login";
             }
         } else if ("2".equals(type)) {
-            MsTeacher msTeacher = teacherService.selectById(userName);
+            MsTeacher msTeacher = teacherService.selectById(Long.valueOf(userName));
             if (msTeacher != null) {
-                if (msTeacher.getPassword().equals(password)) {
+                if (msTeacher.getPassword().equals(MD5Utils.md5(password))) {
                     session.setAttribute("msTeacher", msTeacher);
-                    return "success";
+                    return "students/stu_index";
                 } else {
-                    errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
-                    return "login";
+               //     errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                    return "login/login";
                 }
             } else {
-                errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
-                return "login";
+              //  errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                return "login/login";
             }
         }
-        return "login";
+        return "login/login";
     }
 }
