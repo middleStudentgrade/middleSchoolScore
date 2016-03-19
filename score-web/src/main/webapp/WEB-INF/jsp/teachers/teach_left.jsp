@@ -11,13 +11,13 @@
     <title></title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/teach_index.css" />
-  <script src="../js/jquery.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+  <script src="../javaScript/jquery.js"></script>
+  <script src="../javaScript/bootstrap.min.js"></script>
 </head>
 
 <body>
 <div class="tea_con" style="padding-top:0;padding-left:0;">
-  <p id="mbx">现在的位置：<a href="teach_info.html" target="main">首页</a>><span id="m_menu"></span></p>
+  <p id="mbx">现在的位置：<a href="teach_info.jsp" target="main">首页</a>><span id="m_menu"></span></p>
 
   <ul class="list-group" id="tea_menu">
     <li class="list-group-item t_lc">教师信息</li>

@@ -5,7 +5,7 @@
 	id="score" version="2.5">
 	<display-name>score-web</display-name>
 	<welcome-file-list>
-		<welcome-file>login/login.jsp</welcome-file>
+		<welcome-file>students/stu_index.jsp</welcome-file>
 	</welcome-file-list>
 	<!-- 初始化spring容器 -->
 	<context-param>

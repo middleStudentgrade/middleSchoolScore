@@ -30,16 +30,19 @@
               <input id="studentId" type="text" value="${msStudent.id}" >
               <div class="form-group">
                 <label >原密码</label>
-                <input  id="password" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
-                <span id="error"></span>
+                <input  id="password" onblur="valYhm()" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
+                  <span id="span1"></span>
+                  <span id="error"></span>
               </div>
               <div class="form-group">
                 <label >新密码</label>
-                <input type="password" name="password" class="form-control" placeholder="请输入新密码" >
+                <input id="rpwd" onblur="valPwd()" type="password" name="password" class="form-control" placeholder="请输入新密码" >
+                  <span id="span2"></span>
               </div>
               <div class="form-group">
                 <label >确认密码</label>
-                <input id="newPassword" type="password" name="password" class="form-control" placeholder="确认输入密码" >
+                <input id="newPassword" onblur="valRPwd()" type="password" name="password" class="form-control" placeholder="确认输入密码" >
+                  <span id="span3"></span>
               </div>
               <button id ="commit" class="btn btn-info" type="button" onclick="changepassword()">确认</button>
               <button class="btn" type="reset" style="float:right">取消</button>
@@ -47,10 +50,33 @@
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
+<script>
+    // 登录验证
+    function valYhm(){
+        var pwd=$("#password").val();
+        if (pwd==""||pwd==null) {
+            $("#span1").text("原密码不能为空");
+        }
+    }
+    function valPwd(){
+        var rpwd=$("#rpwd").val();
+        if (rpwd == "" || rpwd == null) {
+            $("#span2").text("新密码不能为空");
+        }
+        if(rpwd.length<6 || rpwd.length >15){
+            $("#span2").text("密码长度须在6--15位之间");
+        }
+    }
+    function valRPwd(){
+        var repwd=$("#newPassword").val();
+        var rpwd=$("#rpwd").val();
+        if (repwd!=rpwd) {
+            $("#span3").text("新密码和旧密码不一致");
+        }
+    }
+</script>
 </body>
 </html>
