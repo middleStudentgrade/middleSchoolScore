@@ -8,10 +8,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>score-web</artifactId>
-
-    <packaging>war</packaging>
+    <groupId>com.middleschool.score</groupId>
+    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>com.middleschool.score</groupId>
@@ -27,6 +26,12 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -52,24 +57,24 @@
     <!-- 添加tomcat插件 -->
     <build>
         <plugins>
-        <!--<plugin>
+            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <port>8080</port>
                     <path>/</path>
                 </configuration>
-            </plugin>-->
-            <plugin>
+            </plugin>
+           <!-- <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
-                    <!-- 注意此处的url -->
-                    <url>http://localhost:8080</url>
-                    <server>Catalina</server> <!-- 此处的名字必须和setting.xml中配置的ID一致-->
+                    &lt;!&ndash; 注意此处的url &ndash;&gt;
+                    <url>http://localhost:8080/score</url>
+                    <server>score</server> &lt;!&ndash; 此处的名字必须和setting.xml中配置的ID一致&ndash;&gt;
                     <path>/score-web</path>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 

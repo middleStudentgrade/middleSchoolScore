@@ -1,6 +1,7 @@
 package com.middleschool.score.common.dto;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MsSchoolmasterExample {
@@ -294,123 +295,183 @@ public class MsSchoolmasterExample {
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdIsNull() {
-            addCriterion("course_id is null");
+        public Criteria andCourseCodeIsNull() {
+            addCriterion("course_code is null");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdIsNotNull() {
-            addCriterion("course_id is not null");
+        public Criteria andCourseCodeIsNotNull() {
+            addCriterion("course_code is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdEqualTo(Long value) {
-            addCriterion("course_id =", value, "courseId");
+        public Criteria andCourseCodeEqualTo(Long value) {
+            addCriterion("course_code =", value, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdNotEqualTo(Long value) {
-            addCriterion("course_id <>", value, "courseId");
+        public Criteria andCourseCodeNotEqualTo(Long value) {
+            addCriterion("course_code <>", value, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdGreaterThan(Long value) {
-            addCriterion("course_id >", value, "courseId");
+        public Criteria andCourseCodeGreaterThan(Long value) {
+            addCriterion("course_code >", value, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("course_id >=", value, "courseId");
+        public Criteria andCourseCodeGreaterThanOrEqualTo(Long value) {
+            addCriterion("course_code >=", value, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdLessThan(Long value) {
-            addCriterion("course_id <", value, "courseId");
+        public Criteria andCourseCodeLessThan(Long value) {
+            addCriterion("course_code <", value, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdLessThanOrEqualTo(Long value) {
-            addCriterion("course_id <=", value, "courseId");
+        public Criteria andCourseCodeLessThanOrEqualTo(Long value) {
+            addCriterion("course_code <=", value, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdIn(List<Long> values) {
-            addCriterion("course_id in", values, "courseId");
+        public Criteria andCourseCodeIn(List<Long> values) {
+            addCriterion("course_code in", values, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdNotIn(List<Long> values) {
-            addCriterion("course_id not in", values, "courseId");
+        public Criteria andCourseCodeNotIn(List<Long> values) {
+            addCriterion("course_code not in", values, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdBetween(Long value1, Long value2) {
-            addCriterion("course_id between", value1, value2, "courseId");
+        public Criteria andCourseCodeBetween(Long value1, Long value2) {
+            addCriterion("course_code between", value1, value2, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andCourseIdNotBetween(Long value1, Long value2) {
-            addCriterion("course_id not between", value1, value2, "courseId");
+        public Criteria andCourseCodeNotBetween(Long value1, Long value2) {
+            addCriterion("course_code not between", value1, value2, "courseCode");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdIsNull() {
-            addCriterion("teacher_id is null");
+        public Criteria andStartDateIsNull() {
+            addCriterion("start_date is null");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdIsNotNull() {
-            addCriterion("teacher_id is not null");
+        public Criteria andStartDateIsNotNull() {
+            addCriterion("start_date is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdEqualTo(Long value) {
-            addCriterion("teacher_id =", value, "teacherId");
+        public Criteria andStartDateEqualTo(Date value) {
+            addCriterion("start_date =", value, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdNotEqualTo(Long value) {
-            addCriterion("teacher_id <>", value, "teacherId");
+        public Criteria andStartDateNotEqualTo(Date value) {
+            addCriterion("start_date <>", value, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdGreaterThan(Long value) {
-            addCriterion("teacher_id >", value, "teacherId");
+        public Criteria andStartDateGreaterThan(Date value) {
+            addCriterion("start_date >", value, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("teacher_id >=", value, "teacherId");
+        public Criteria andStartDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("start_date >=", value, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdLessThan(Long value) {
-            addCriterion("teacher_id <", value, "teacherId");
+        public Criteria andStartDateLessThan(Date value) {
+            addCriterion("start_date <", value, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdLessThanOrEqualTo(Long value) {
-            addCriterion("teacher_id <=", value, "teacherId");
+        public Criteria andStartDateLessThanOrEqualTo(Date value) {
+            addCriterion("start_date <=", value, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdIn(List<Long> values) {
-            addCriterion("teacher_id in", values, "teacherId");
+        public Criteria andStartDateIn(List<Date> values) {
+            addCriterion("start_date in", values, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdNotIn(List<Long> values) {
-            addCriterion("teacher_id not in", values, "teacherId");
+        public Criteria andStartDateNotIn(List<Date> values) {
+            addCriterion("start_date not in", values, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdBetween(Long value1, Long value2) {
-            addCriterion("teacher_id between", value1, value2, "teacherId");
+        public Criteria andStartDateBetween(Date value1, Date value2) {
+            addCriterion("start_date between", value1, value2, "startDate");
             return (Criteria) this;
         }
 
-        public Criteria andTeacherIdNotBetween(Long value1, Long value2) {
-            addCriterion("teacher_id not between", value1, value2, "teacherId");
+        public Criteria andStartDateNotBetween(Date value1, Date value2) {
+            addCriterion("start_date not between", value1, value2, "startDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateIsNull() {
+            addCriterion("end_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateIsNotNull() {
+            addCriterion("end_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateEqualTo(Date value) {
+            addCriterion("end_date =", value, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateNotEqualTo(Date value) {
+            addCriterion("end_date <>", value, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateGreaterThan(Date value) {
+            addCriterion("end_date >", value, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("end_date >=", value, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateLessThan(Date value) {
+            addCriterion("end_date <", value, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateLessThanOrEqualTo(Date value) {
+            addCriterion("end_date <=", value, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateIn(List<Date> values) {
+            addCriterion("end_date in", values, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateNotIn(List<Date> values) {
+            addCriterion("end_date not in", values, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateBetween(Date value1, Date value2) {
+            addCriterion("end_date between", value1, value2, "endDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndDateNotBetween(Date value1, Date value2) {
+            addCriterion("end_date not between", value1, value2, "endDate");
             return (Criteria) this;
         }
     }

@@ -8,7 +8,6 @@
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="Department" property="department" jdbcType="VARCHAR" />
     <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="political_landscape" property="politicalLandscape" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="birth_place" property="birthPlace" jdbcType="VARCHAR" />
@@ -74,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, password, name, sex, Department, education, birthday, political_landscape, email, 
-    birth_place, id_card, title
+    id, password, name, sex, Department, education, political_landscape, email, birth_place, 
+    id_card, title
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsTeacherExample" >
     select
@@ -110,14 +109,12 @@
   <insert id="insert" parameterType="com.middleschool.score.common.dto.MsTeacher" >
     insert into ms_teacher (id, password, name, 
       sex, Department, education, 
-      birthday, political_landscape, email, 
-      birth_place, id_card, title
-      )
+      political_landscape, email, birth_place, 
+      id_card, title)
     values (#{id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=DATE}, #{politicalLandscape,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{birthPlace,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}
-      )
+      #{politicalLandscape,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{birthPlace,jdbcType=VARCHAR}, 
+      #{idCard,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.middleschool.score.common.dto.MsTeacher" >
     insert into ms_teacher
@@ -139,9 +136,6 @@
       </if>
       <if test="education != null" >
         education,
-      </if>
-      <if test="birthday != null" >
-        birthday,
       </if>
       <if test="politicalLandscape != null" >
         political_landscape,
@@ -177,9 +171,6 @@
       </if>
       <if test="education != null" >
         #{education,jdbcType=VARCHAR},
-      </if>
-      <if test="birthday != null" >
-        #{birthday,jdbcType=DATE},
       </if>
       <if test="politicalLandscape != null" >
         #{politicalLandscape,jdbcType=VARCHAR},
@@ -225,9 +216,6 @@
       <if test="record.education != null" >
         education = #{record.education,jdbcType=VARCHAR},
       </if>
-      <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=DATE},
-      </if>
       <if test="record.politicalLandscape != null" >
         political_landscape = #{record.politicalLandscape,jdbcType=VARCHAR},
       </if>
@@ -256,7 +244,6 @@
       sex = #{record.sex,jdbcType=VARCHAR},
       Department = #{record.department,jdbcType=VARCHAR},
       education = #{record.education,jdbcType=VARCHAR},
-      birthday = #{record.birthday,jdbcType=DATE},
       political_landscape = #{record.politicalLandscape,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       birth_place = #{record.birthPlace,jdbcType=VARCHAR},
@@ -284,9 +271,6 @@
       <if test="education != null" >
         education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=DATE},
-      </if>
       <if test="politicalLandscape != null" >
         political_landscape = #{politicalLandscape,jdbcType=VARCHAR},
       </if>
@@ -312,7 +296,6 @@
       sex = #{sex,jdbcType=VARCHAR},
       Department = #{department,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=DATE},
       political_landscape = #{politicalLandscape,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       birth_place = #{birthPlace,jdbcType=VARCHAR},

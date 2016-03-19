@@ -2,9 +2,8 @@ package com.middleschool.score.common.mapper;
 
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsScoreExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface MsScoreMapper {
     int countByExample(MsScoreExample example);
@@ -15,13 +14,15 @@ public interface MsScoreMapper {
 
     int insert(MsScore record);
 
-    int insertScores(List<MsScore> lists);
-
     int insertSelective(MsScore record);
 
     List<MsScore> selectByExample(MsScoreExample example);
 
     MsScore selectByPrimaryKey(Long id);
+
+    List<MsScore> selectNowScoreByStudentId(Long id);
+
+    List<MsScore> selectAllScoreByStudentId(Long id);
 
     int updateByExampleSelective(@Param("record") MsScore record, @Param("example") MsScoreExample example);
 
@@ -30,4 +31,6 @@ public interface MsScoreMapper {
     int updateByPrimaryKeySelective(MsScore record);
 
     int updateByPrimaryKey(MsScore record);
+
+    int selectRanking(Long studentID);
 }

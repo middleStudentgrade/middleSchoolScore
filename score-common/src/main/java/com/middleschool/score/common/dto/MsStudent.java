@@ -13,17 +13,13 @@ public class MsStudent {
 
     private String sex;
 
-    private String classId;
-
-    private Date birthday;
-
     private String idCard;
-
-    private String email;
 
     private String birthPlace;
 
     private String politicalLandscape;
+
+    private Date datesAttendance;
 
     public Long getId() {
         return id;
@@ -65,36 +61,12 @@ public class MsStudent {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getClassId() {
-        return classId;
-    }
-
-    public void setClassId(String classId) {
-        this.classId = classId == null ? null : classId.trim();
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
     public String getIdCard() {
         return idCard;
     }
 
     public void setIdCard(String idCard) {
         this.idCard = idCard == null ? null : idCard.trim();
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
     }
 
     public String getBirthPlace() {
@@ -111,5 +83,13 @@ public class MsStudent {
 
     public void setPoliticalLandscape(String politicalLandscape) {
         this.politicalLandscape = politicalLandscape == null ? null : politicalLandscape.trim();
+    }
+
+    public Date getDatesAttendance() {
+        return datesAttendance;
+    }
+
+    public void setDatesAttendance(Date datesAttendance) {
+        this.datesAttendance = datesAttendance;
     }
 }

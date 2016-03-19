@@ -2,7 +2,6 @@ package com.middleschool.score.admin.controller;
 
 import com.middleschool.score.admin.utils.*;
 import com.middleschool.score.common.dto.MsScore;
-import com.middleschool.score.common.pojo.MsScorePojo;
 import com.middleschool.score.common.service.ScoreService;
 import org.apache.poi.POIXMLDocument;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
@@ -29,7 +28,7 @@ public class ScoreController {
      */
     @RequestMapping(value = "/import")
     public void importArchives(/*@RequestParam(value = "file") MultipartFile file*/) {
-        Long courseId=1L;
+       /* Long courseId=1L;
         String grade="2";
         String jibu="ajib";
         List<MsScorePojo> msScoreList = new ArrayList<MsScorePojo>();
@@ -61,7 +60,7 @@ public class ScoreController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        scoreService.saveScores(scoreList);
+        scoreService.saveScores(scoreList);*/
     }
 
 }

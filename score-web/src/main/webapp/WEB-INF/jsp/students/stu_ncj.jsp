@@ -22,7 +22,7 @@
     <div id="stu_ncj" class="container">
       <div class="col-sm-8" style="margin-bottom:20px">
         <button class="btn btn-info" style="border-radius:20px">本学期成绩</button>
-        <a href="stu_bcj.html" target="main"><button class="btn btn-warning">所有成绩</button></a>
+        <a href="getAllScore?id=${msStudent.id}" target="main"><button class="btn btn-warning">所有成绩</button></a>
       </div>
       <div class="col-sm-8">
         <div class="panel panel-success" style="border-color: #d6e9c6;">
@@ -40,23 +40,21 @@
               <th>政治</th>
               <th>地理</th>
               <th>历史</th>
-              <th>基本能力</th>
               <th style="color:#C66">班级排名</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>100</td>
-              <td>排名</td>
+              <td>${nowScore.math}</td>
+              <td>${nowScore.chinese}</td>
+              <td>${nowScore.english}</td>
+              <td>${nowScore.physico}</td>
+              <td>${nowScore.chemical}</td>
+              <td>${nowScore.biology}</td>
+              <td>${nowScore.physico}</td>
+              <td>${nowScore.geography}</td>
+              <td>${nowScore.history}</td>
+              <td>${ranking}</td>
             </tr>
             </tbody>
           </table>

@@ -1,5 +1,7 @@
 package com.middleschool.score.common.dto;
 
+import java.util.Date;
+
 public class MsSchoolmaster {
     private Long id;
 
@@ -7,9 +9,11 @@ public class MsSchoolmaster {
 
     private Long classId;
 
-    private Long courseId;
+    private Long courseCode;
 
-    private Long teacherId;
+    private Date startDate;
+
+    private Date endDate;
 
     public Long getId() {
         return id;
@@ -35,19 +39,27 @@ public class MsSchoolmaster {
         this.classId = classId;
     }
 
-    public Long getCourseId() {
-        return courseId;
+    public Long getCourseCode() {
+        return courseCode;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setCourseCode(Long courseCode) {
+        this.courseCode = courseCode;
     }
 
-    public Long getTeacherId() {
-        return teacherId;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setTeacherId(Long teacherId) {
-        this.teacherId = teacherId;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

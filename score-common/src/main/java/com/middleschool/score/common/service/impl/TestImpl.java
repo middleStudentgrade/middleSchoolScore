@@ -21,7 +21,7 @@ public class TestImpl implements TestService {
     }
 
     @Override
-    public MsStudent selectstudent(long id) {
+    public MsStudent selectstudent(Long  id) {
     MsStudent msStudent=mgStudentMapper.selectByPrimaryKey(id);
         return msStudent;
     }

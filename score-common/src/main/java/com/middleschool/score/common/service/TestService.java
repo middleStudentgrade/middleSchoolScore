@@ -5,5 +5,5 @@ import com.middleschool.score.common.dto.MsUser;
 
 public interface TestService {
     void saveTest(MsUser mgStudent);
-    MsStudent selectstudent(long id);
+    MsStudent selectstudent(Long  id);
 }

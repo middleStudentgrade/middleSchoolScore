@@ -18,9 +18,9 @@
 <div id="cont" >
   <div id="s_head">
     <button class="btn btn-default" style="margin-left:300px"><a href="" >网站首页</a></button>
-    <button class="btn btn-default"><a href="stu_info.jsp" target="main">个人信息</a></button>
-    <button class="btn btn-default"> <a href="stu_ncj.jsp" target="main">考试成绩</a></button>
-    <button class="btn btn-default"><a href="stu_gmm.jsp" target="main">修改密码</a></button>
+    <button class="btn btn-default"><a href="stuInfo" target="main">个人信息</a></button>
+    <button class="btn btn-default"> <a href="student/getNowScore?id=${msStudent.id}" target="main">考试成绩</a></button>
+    <button class="btn btn-default"><a href="stuGmm" target="main">修改密码</a></button>
 
     <!--<form action="" class="navbar-form navbar-right" id="s_lf" style="" rol="search">
           <div class="form-group">

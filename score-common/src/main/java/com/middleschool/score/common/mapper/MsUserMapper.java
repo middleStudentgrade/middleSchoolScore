@@ -2,9 +2,8 @@ package com.middleschool.score.common.mapper;
 
 import com.middleschool.score.common.dto.MsUser;
 import com.middleschool.score.common.dto.MsUserExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface MsUserMapper {
     int countByExample(MsUserExample example);
