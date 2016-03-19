@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tea_bg{background-color:#ecf0fc;}
+.tea_con{height:600px;padding-top:28px;padding-left:60px;background-color:#ecf0fc;}
+
+/*teach_top*/
+.tea_top{width:88%;height:280px;margin:0 auto;background:url(../img/teach_bg.jpg) no-repeat;background-size:100% 100%;}
+.tea_top label{color:#277520;font-size:28px;margin:80px 260px;}
+
+/*teach_left*/
+#mbx{padding-left:286px;font-size:16px;color:#277520;font-weight:bold;}
+#mbx a,#m_menu{color:#808080;text-decoration:none;}
+#tea_menu{float:right;margin-right:30px;height:500px;width:240px;background-color:#fff;border:1px solid #64ba2f;border-radius:6px;}
+li{padding:12px;list-style:none}
+.t_lc{background: linear-gradient(#93dd64,#6fcc37);}
+a:hover{text-decoration:none;background-color:#ecf0fc;}
+#tea_menu .ejcd{padding-left:70px;}
+.djxg{border:1px solid #6fcc37}
+
+/*t_dkcj 学生成绩*/
+.tcdPageCode{padding:15px 20px;text-align:left;color:#ccc;}
+.tcdPageCode a:hover{text-decoration:none;border:1px solid #428bca;}
+.tcdPageCode a,.tcdPageCode span.current,.tcdPageCode span.disabled{display:inline-block;height:30px;line-height:30px;padding: 0 10px;margin: 0 2px;border-radius: 4px;vertical-align: middle;}
+.tcdPageCode a{color:#428bca;border:1px solid #ddd;}
+.tcdPageCode span.current{color:#fff;background-color:#428bca;border:1px solid #428bca;}
+.tcdPageCode span.disabled{color:#bfbfbf;background:#f2f2f2;border:1px solid #bfbfbf;}
+
+/*t_jige 及格率*/
+.tea_sm{padding-bottom:100px}
+.btn{margin-right:30px;width:100px;}
+/*.tea_sm span{margin-right:30px;margin-left:8px;}*/
+.btn1{background-color:#aec978}
+.btn2{background-color:#E0E4CC}
+.btn3{background-color:#e9c75c}
+.btn4{background-color:#A8B3C5}
+
+/*t_lucj 录入成绩*/
+.lu_xz{width:102px;display:inline-block;}
