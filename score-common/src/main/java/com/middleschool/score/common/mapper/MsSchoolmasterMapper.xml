@@ -3,9 +3,9 @@
 <mapper namespace="com.middleschool.score.common.mapper.MsSchoolmasterMapper" >
   <resultMap id="BaseResultMap" type="com.middleschool.score.common.dto.MsSchoolmaster" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="teacher_id" property="teacherId" jdbcType="BIGINT" />
     <result column="class_id" property="classId" jdbcType="BIGINT" />
-    <result column="course_code" property="courseCode" jdbcType="BIGINT" />
+    <result column="course_name" property="courseName" jdbcType="VARCHAR" />
     <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
     <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, grade, class_id, course_code, start_date, end_date
+    id, teacher_id, class_id, course_name, start_date, end_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsSchoolmasterExample" >
     select
@@ -101,11 +101,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.middleschool.score.common.dto.MsSchoolmaster" >
-    insert into ms_schoolmaster (id, grade, class_id, 
-      course_code, start_date, end_date
+    insert into ms_schoolmaster (id, teacher_id, class_id, 
+      course_name, start_date, end_date
       )
-    values (#{id,jdbcType=BIGINT}, #{grade,jdbcType=VARCHAR}, #{classId,jdbcType=BIGINT}, 
-      #{courseCode,jdbcType=BIGINT}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=BIGINT}, #{teacherId,jdbcType=BIGINT}, #{classId,jdbcType=BIGINT}, 
+      #{courseName,jdbcType=VARCHAR}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.middleschool.score.common.dto.MsSchoolmaster" >
@@ -114,14 +114,14 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="grade != null" >
-        grade,
+      <if test="teacherId != null" >
+        teacher_id,
       </if>
       <if test="classId != null" >
         class_id,
       </if>
-      <if test="courseCode != null" >
-        course_code,
+      <if test="courseName != null" >
+        course_name,
       </if>
       <if test="startDate != null" >
         start_date,
@@ -134,14 +134,14 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="grade != null" >
-        #{grade,jdbcType=VARCHAR},
+      <if test="teacherId != null" >
+        #{teacherId,jdbcType=BIGINT},
       </if>
       <if test="classId != null" >
         #{classId,jdbcType=BIGINT},
       </if>
-      <if test="courseCode != null" >
-        #{courseCode,jdbcType=BIGINT},
+      <if test="courseName != null" >
+        #{courseName,jdbcType=VARCHAR},
       </if>
       <if test="startDate != null" >
         #{startDate,jdbcType=TIMESTAMP},
@@ -163,14 +163,14 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.grade != null" >
-        grade = #{record.grade,jdbcType=VARCHAR},
+      <if test="record.teacherId != null" >
+        teacher_id = #{record.teacherId,jdbcType=BIGINT},
       </if>
       <if test="record.classId != null" >
         class_id = #{record.classId,jdbcType=BIGINT},
       </if>
-      <if test="record.courseCode != null" >
-        course_code = #{record.courseCode,jdbcType=BIGINT},
+      <if test="record.courseName != null" >
+        course_name = #{record.courseName,jdbcType=VARCHAR},
       </if>
       <if test="record.startDate != null" >
         start_date = #{record.startDate,jdbcType=TIMESTAMP},
@@ -186,9 +186,9 @@
   <update id="updateByExample" parameterType="map" >
     update ms_schoolmaster
     set id = #{record.id,jdbcType=BIGINT},
-      grade = #{record.grade,jdbcType=VARCHAR},
+      teacher_id = #{record.teacherId,jdbcType=BIGINT},
       class_id = #{record.classId,jdbcType=BIGINT},
-      course_code = #{record.courseCode,jdbcType=BIGINT},
+      course_name = #{record.courseName,jdbcType=VARCHAR},
       start_date = #{record.startDate,jdbcType=TIMESTAMP},
       end_date = #{record.endDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -198,14 +198,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.middleschool.score.common.dto.MsSchoolmaster" >
     update ms_schoolmaster
     <set >
-      <if test="grade != null" >
-        grade = #{grade,jdbcType=VARCHAR},
+      <if test="teacherId != null" >
+        teacher_id = #{teacherId,jdbcType=BIGINT},
       </if>
       <if test="classId != null" >
         class_id = #{classId,jdbcType=BIGINT},
       </if>
-      <if test="courseCode != null" >
-        course_code = #{courseCode,jdbcType=BIGINT},
+      <if test="courseName != null" >
+        course_name = #{courseName,jdbcType=VARCHAR},
       </if>
       <if test="startDate != null" >
         start_date = #{startDate,jdbcType=TIMESTAMP},
@@ -218,9 +218,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.middleschool.score.common.dto.MsSchoolmaster" >
     update ms_schoolmaster
-    set grade = #{grade,jdbcType=VARCHAR},
+    set teacher_id = #{teacherId,jdbcType=BIGINT},
       class_id = #{classId,jdbcType=BIGINT},
-      course_code = #{courseCode,jdbcType=BIGINT},
+      course_name = #{courseName,jdbcType=VARCHAR},
       start_date = #{startDate,jdbcType=TIMESTAMP},
       end_date = #{endDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

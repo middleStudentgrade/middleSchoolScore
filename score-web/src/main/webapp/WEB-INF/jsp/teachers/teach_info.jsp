@@ -29,22 +29,25 @@
           <th>性别</th>
           <th>教育程度</th>
           <th>职务</th>
-          <th>年级</th>
-          <th>教授课程</th>
-          <th>邮箱</th>
+          <th>部门</th>
+          <th>政治面貌</th>
+          <th>籍贯</th>
+          <th>身份证号</th>
 
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td>100</td>
-          <td>100</td>
-          <td>100</td>
-          <td>100</td>
-          <td>100</td>
-          <td>100</td>
-          <td>100</td>
-          <td>1000000000</td>
+          <td>${msTeacher.id}</td>
+          <td>${msTeacher.name}</td>
+          <td>${msTeacher.sex}</td>
+          <td>${msTeacher.education}</td>
+          <td>${msTeacher.title}</td>
+          <td>${msTeacher.department}</td>
+          <td>${msTeacher.email}</td>
+          <td>${msTeacher.politicalLandscape}</td>
+          <td>${msTeacher.birthPlace}</td>
+          <td>${msTeacher.idCard}</td>
         </tr>
         </tbody>
 

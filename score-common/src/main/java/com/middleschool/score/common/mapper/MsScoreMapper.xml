@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.middleschool.score.common.dto.MsScore" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="student_id" property="studentId" jdbcType="BIGINT" />
-    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="BIGINT" />
     <result column="semester" property="semester" jdbcType="INTEGER" />
     <result column="chinese" property="chinese" jdbcType="DOUBLE" />
     <result column="english" property="english" jdbcType="DOUBLE" />
@@ -134,7 +134,7 @@
       political, history, physico, 
       geography, biology, chemical
       )
-    values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, #{classId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, #{classId,jdbcType=BIGINT}, 
       #{semester,jdbcType=INTEGER}, #{chinese,jdbcType=DOUBLE}, #{english,jdbcType=DOUBLE}, 
       #{math,jdbcType=DOUBLE}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
       #{political,jdbcType=DOUBLE}, #{history,jdbcType=DOUBLE}, #{physico,jdbcType=DOUBLE}, 
@@ -198,7 +198,7 @@
         #{studentId,jdbcType=BIGINT},
       </if>
       <if test="classId != null" >
-        #{classId,jdbcType=INTEGER},
+        #{classId,jdbcType=BIGINT},
       </if>
       <if test="semester != null" >
         #{semester,jdbcType=INTEGER},
@@ -238,14 +238,17 @@
       </if>
     </trim>
   </insert>
-
+  <select id="selectPassRateByClassId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select *
+    from ms_score  where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date
+  </select>
   <!-- 查询学生当前排名-->
   <select id="selectRanking"  parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer">
     SELECT count(*)
     FROM (
     SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
     FROM ms_score s
-    WHERE NOW() BETWEEN s.start_date AND s.end_date) as a
+    WHERE  s.class_id=#{classId,jdbcType=BIGINT} and  NOW() BETWEEN s.start_date AND s.end_date)  as a
     WHERE a.student_zong>(
     SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
     FROM ms_score s
@@ -267,7 +270,7 @@
         student_id = #{record.studentId,jdbcType=BIGINT},
       </if>
       <if test="record.classId != null" >
-        class_id = #{record.classId,jdbcType=INTEGER},
+        class_id = #{record.classId,jdbcType=BIGINT},
       </if>
       <if test="record.semester != null" >
         semester = #{record.semester,jdbcType=INTEGER},
@@ -314,7 +317,7 @@
     update ms_score
     set id = #{record.id,jdbcType=BIGINT},
       student_id = #{record.studentId,jdbcType=BIGINT},
-      class_id = #{record.classId,jdbcType=INTEGER},
+      class_id = #{record.classId,jdbcType=BIGINT},
       semester = #{record.semester,jdbcType=INTEGER},
       chinese = #{record.chinese,jdbcType=DOUBLE},
       english = #{record.english,jdbcType=DOUBLE},
@@ -338,7 +341,7 @@
         student_id = #{studentId,jdbcType=BIGINT},
       </if>
       <if test="classId != null" >
-        class_id = #{classId,jdbcType=INTEGER},
+        class_id = #{classId,jdbcType=BIGINT},
       </if>
       <if test="semester != null" >
         semester = #{semester,jdbcType=INTEGER},
@@ -382,7 +385,7 @@
   <update id="updateByPrimaryKey" parameterType="com.middleschool.score.common.dto.MsScore" >
     update ms_score
     set student_id = #{studentId,jdbcType=BIGINT},
-      class_id = #{classId,jdbcType=INTEGER},
+      class_id = #{classId,jdbcType=BIGINT},
       semester = #{semester,jdbcType=INTEGER},
       chinese = #{chinese,jdbcType=DOUBLE},
       english = #{english,jdbcType=DOUBLE},

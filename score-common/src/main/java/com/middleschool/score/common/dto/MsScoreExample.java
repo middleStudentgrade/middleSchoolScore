@@ -235,52 +235,52 @@ public class MsScoreExample {
             return (Criteria) this;
         }
 
-        public Criteria andClassIdEqualTo(Integer value) {
+        public Criteria andClassIdEqualTo(Long value) {
             addCriterion("class_id =", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdNotEqualTo(Integer value) {
+        public Criteria andClassIdNotEqualTo(Long value) {
             addCriterion("class_id <>", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdGreaterThan(Integer value) {
+        public Criteria andClassIdGreaterThan(Long value) {
             addCriterion("class_id >", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andClassIdGreaterThanOrEqualTo(Long value) {
             addCriterion("class_id >=", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdLessThan(Integer value) {
+        public Criteria andClassIdLessThan(Long value) {
             addCriterion("class_id <", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdLessThanOrEqualTo(Integer value) {
+        public Criteria andClassIdLessThanOrEqualTo(Long value) {
             addCriterion("class_id <=", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdIn(List<Integer> values) {
+        public Criteria andClassIdIn(List<Long> values) {
             addCriterion("class_id in", values, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdNotIn(List<Integer> values) {
+        public Criteria andClassIdNotIn(List<Long> values) {
             addCriterion("class_id not in", values, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdBetween(Integer value1, Integer value2) {
+        public Criteria andClassIdBetween(Long value1, Long value2) {
             addCriterion("class_id between", value1, value2, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andClassIdNotBetween(Long value1, Long value2) {
             addCriterion("class_id not between", value1, value2, "classId");
             return (Criteria) this;
         }

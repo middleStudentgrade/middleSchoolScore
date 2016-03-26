@@ -1,6 +1,5 @@
 package com.middleschool.score.web.controller;
 
-import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,15 +26,40 @@ public class IndexController {
 	public String showstu_ncj(){
 		return "students/stu_ncj";
 	}
+
 	@RequestMapping("/stuGmm")
-	public String showstustu_gmm(){
+	public String showstu_gmm(){
 		return "students/stu_gmm";
 	}
+
 	@RequestMapping("/stuInfo")
 	public String showstuInfo(){
 		return "students/stu_info";
 	}
-	
+
+	@RequestMapping("/teachTop")
+	public String showTeachTop(){
+		return "teachers/teach_top";
+	}
+
+	@RequestMapping("/teachInfo")
+	public String showTeachInfo(){
+		return "teachers/teach_info";
+	}
+
+	@RequestMapping("/teachLeft")
+	public String showTeachLeft(){
+		return "teachers/teach_left";
+	}
+
+	@RequestMapping("/teachGmm")
+	public String showteach_gmm(){
+		return "teachers/t_gmm";
+	}
+
+	@RequestMapping("/tJige")
+	public String showJige(){return "teachers/t_jige";}
+
 	@RequestMapping("menu/{module}/{page}")
 	public String showPage(@PathVariable String module, @PathVariable String page){
 		return module+"/"+page;

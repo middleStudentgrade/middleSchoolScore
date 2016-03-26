@@ -32,5 +32,7 @@ public interface MsScoreMapper {
 
     int updateByPrimaryKey(MsScore record);
 
-    int selectRanking(Long studentID);
+    int selectRanking(@Param("studentId")Long studentId,@Param("classId")Long classId);
+
+    List<MsScore> selectPassRateByClassId(@Param("classId")Long classId);
 }

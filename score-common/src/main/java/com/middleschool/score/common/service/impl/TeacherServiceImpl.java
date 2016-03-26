@@ -20,4 +20,9 @@ public class TeacherServiceImpl implements TeacherService {
             return null;
         }
     }
+
+    @Override
+    public void saveTeacher(MsTeacher msTeacher) {
+        msTeacherMapper.updateByPrimaryKeySelective(msTeacher);
+    }
 }

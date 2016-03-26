@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../javaScript/jquery.js"></script>
   <script src="../javaScript/bootstrap.min.js"></script>
-  <script src="../javaScript/student.js"></script>
+  <script src="../javaScript/teacher.js"></script>
 </head>
 <body>
 <div id="con" >
@@ -27,10 +27,10 @@
             <h3 class="panel-title">修改密码</h3>
           </div>
           <div class="panel-body">
-              <input id="studentId" type="text" value="${msTeacher.id}" >
+              <input id="teacherId" type="text" value="${msTeacher.id}" >
               <div class="form-group">
                 <label >原密码</label>
-                <input  id="password" onblur="valYhm()" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
+                <input  id="password"  type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
                   <span id="span1"></span>
                   <span id="error"></span>
               </div>
@@ -55,12 +55,7 @@
 </div>
 <script>
     // 登录验证
-    function valYhm(){
-        var pwd=$("#password").val();
-        if (pwd==""||pwd==null) {
-            $("#span1").text("原密码不能为空");
-        }
-    }
+
     function valPwd(){
         var rpwd=$("#rpwd").val();
         if (rpwd == "" || rpwd == null) {

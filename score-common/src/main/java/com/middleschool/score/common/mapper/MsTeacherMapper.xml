@@ -6,7 +6,7 @@
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="Department" property="department" jdbcType="VARCHAR" />
+    <result column="department" property="department" jdbcType="VARCHAR" />
     <result column="education" property="education" jdbcType="VARCHAR" />
     <result column="political_landscape" property="politicalLandscape" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, password, name, sex, Department, education, political_landscape, email, birth_place, 
+    id, password, name, sex, department, education, political_landscape, email, birth_place, 
     id_card, title
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsTeacherExample" >
@@ -108,7 +108,7 @@
   </delete>
   <insert id="insert" parameterType="com.middleschool.score.common.dto.MsTeacher" >
     insert into ms_teacher (id, password, name, 
-      sex, Department, education, 
+      sex, department, education, 
       political_landscape, email, birth_place, 
       id_card, title)
     values (#{id,jdbcType=BIGINT}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
@@ -132,7 +132,7 @@
         sex,
       </if>
       <if test="department != null" >
-        Department,
+        department,
       </if>
       <if test="education != null" >
         education,
@@ -211,7 +211,7 @@
         sex = #{record.sex,jdbcType=VARCHAR},
       </if>
       <if test="record.department != null" >
-        Department = #{record.department,jdbcType=VARCHAR},
+        department = #{record.department,jdbcType=VARCHAR},
       </if>
       <if test="record.education != null" >
         education = #{record.education,jdbcType=VARCHAR},
@@ -242,7 +242,7 @@
       password = #{record.password,jdbcType=VARCHAR},
       name = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
-      Department = #{record.department,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=VARCHAR},
       education = #{record.education,jdbcType=VARCHAR},
       political_landscape = #{record.politicalLandscape,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
@@ -266,7 +266,7 @@
         sex = #{sex,jdbcType=VARCHAR},
       </if>
       <if test="department != null" >
-        Department = #{department,jdbcType=VARCHAR},
+        department = #{department,jdbcType=VARCHAR},
       </if>
       <if test="education != null" >
         education = #{education,jdbcType=VARCHAR},
@@ -294,7 +294,7 @@
     set password = #{password,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
-      Department = #{department,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
       political_landscape = #{politicalLandscape,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},

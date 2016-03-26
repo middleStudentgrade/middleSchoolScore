@@ -43,7 +43,7 @@ public class LoginController {
             if (msTeacher != null) {
                 if (msTeacher.getPassword().equals(MD5Utils.md5(password))) {
                     session.setAttribute("msTeacher", msTeacher);
-                    return "students/stu_index";
+                    return "teachers/teach_index";
                 } else {
                //     errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
                     return "login/login";
