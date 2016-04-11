@@ -25,6 +25,10 @@
     <button class="btn btn4">60分以下 </button>
   </div>
   <canvas id="myChart" width="300" height="300"></canvas>
+  <p id="rate1">${passNum[0]}</p>
+  <p id="rate2">${passNum[1]}</p>
+  <p id="rate3">${passNum[2]}</p>
+  <p id="rate4">${passNum[3]}</p>
 </div>
 
 
@@ -33,26 +37,27 @@
     var ctx = document.getElementById("myChart").getContext("2d");
     window.myPie = new Chart(ctx).Pie(Data);
   };
-  /*var ctx = $("#myChart").get(0).getContext("2d");
-
-   var myNewChart = new Chart(ctx);
-   new Chart(ctx).Pie(data,options);*/
+  var rate1=$("#rate1").html();
+  var rate2=$("#rate2").html();
+  var rate3=$("#rate3").html();
+  var rate4=$("#rate4").html();
+console.log(rate4);
   var Data = [
     {
-      value : 60,
+      value : rate1,
       color : "#aec978"
     },
     {
-      value : 50,
+      value : rate2,
       color : "#E0E4CC"
     },
     {
-      value: 30,
+      value: rate3,
       color:"#e9c75c"
     },
 
     {
-      value:20,
+      value:rate4,
       color:"#A8B3C5"
     }
   ]

@@ -21,9 +21,9 @@
          <frame src="teach_main.html" name="main" scrolling="no"/>
       </frameset>
   </frameset><noframes></noframes>-->
-<iframe src="teach_top.html" width=100% height=280 name="top" frameborder=0 scrolling="no"></iframe>
-<iframe src="teach_left.html" width=35% align=left height=600 name="left" frameborder=0 scrolling="no"></iframe>
-<iframe src="teach_info.html" width=65% align=right height=600 name="main" frameborder=0 scrolling="no"></iframe>
+<iframe src="teachTop" width=100% height=280 name="top" frameborder=0 scrolling="no"></iframe>
+<iframe src="teachLeft" width=35% align=left height=600 name="left" frameborder=0 scrolling="no"></iframe>
+<iframe src="teachInfo" width=65% align=right height=600 name="main" frameborder=0 scrolling="no"></iframe>
 <body>
 
 </body>

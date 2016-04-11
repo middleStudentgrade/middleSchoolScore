@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.middleschool.score</groupId>
     <artifactId>score-common</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <dependencies>
         <!-- Spring -->
         <dependency>

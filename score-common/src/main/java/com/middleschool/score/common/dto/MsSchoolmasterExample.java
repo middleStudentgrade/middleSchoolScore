@@ -165,73 +165,63 @@ public class MsSchoolmasterExample {
             return (Criteria) this;
         }
 
-        public Criteria andGradeIsNull() {
-            addCriterion("grade is null");
+        public Criteria andTeacherIdIsNull() {
+            addCriterion("teacher_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andGradeIsNotNull() {
-            addCriterion("grade is not null");
+        public Criteria andTeacherIdIsNotNull() {
+            addCriterion("teacher_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGradeEqualTo(String value) {
-            addCriterion("grade =", value, "grade");
+        public Criteria andTeacherIdEqualTo(Long value) {
+            addCriterion("teacher_id =", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotEqualTo(String value) {
-            addCriterion("grade <>", value, "grade");
+        public Criteria andTeacherIdNotEqualTo(Long value) {
+            addCriterion("teacher_id <>", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeGreaterThan(String value) {
-            addCriterion("grade >", value, "grade");
+        public Criteria andTeacherIdGreaterThan(Long value) {
+            addCriterion("teacher_id >", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeGreaterThanOrEqualTo(String value) {
-            addCriterion("grade >=", value, "grade");
+        public Criteria andTeacherIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("teacher_id >=", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLessThan(String value) {
-            addCriterion("grade <", value, "grade");
+        public Criteria andTeacherIdLessThan(Long value) {
+            addCriterion("teacher_id <", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLessThanOrEqualTo(String value) {
-            addCriterion("grade <=", value, "grade");
+        public Criteria andTeacherIdLessThanOrEqualTo(Long value) {
+            addCriterion("teacher_id <=", value, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLike(String value) {
-            addCriterion("grade like", value, "grade");
+        public Criteria andTeacherIdIn(List<Long> values) {
+            addCriterion("teacher_id in", values, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotLike(String value) {
-            addCriterion("grade not like", value, "grade");
+        public Criteria andTeacherIdNotIn(List<Long> values) {
+            addCriterion("teacher_id not in", values, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeIn(List<String> values) {
-            addCriterion("grade in", values, "grade");
+        public Criteria andTeacherIdBetween(Long value1, Long value2) {
+            addCriterion("teacher_id between", value1, value2, "teacherId");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotIn(List<String> values) {
-            addCriterion("grade not in", values, "grade");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeBetween(String value1, String value2) {
-            addCriterion("grade between", value1, value2, "grade");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeNotBetween(String value1, String value2) {
-            addCriterion("grade not between", value1, value2, "grade");
+        public Criteria andTeacherIdNotBetween(Long value1, Long value2) {
+            addCriterion("teacher_id not between", value1, value2, "teacherId");
             return (Criteria) this;
         }
 
@@ -295,63 +285,73 @@ public class MsSchoolmasterExample {
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeIsNull() {
-            addCriterion("course_code is null");
+        public Criteria andCourseNameIsNull() {
+            addCriterion("course_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeIsNotNull() {
-            addCriterion("course_code is not null");
+        public Criteria andCourseNameIsNotNull() {
+            addCriterion("course_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeEqualTo(Long value) {
-            addCriterion("course_code =", value, "courseCode");
+        public Criteria andCourseNameEqualTo(String value) {
+            addCriterion("course_name =", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeNotEqualTo(Long value) {
-            addCriterion("course_code <>", value, "courseCode");
+        public Criteria andCourseNameNotEqualTo(String value) {
+            addCriterion("course_name <>", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeGreaterThan(Long value) {
-            addCriterion("course_code >", value, "courseCode");
+        public Criteria andCourseNameGreaterThan(String value) {
+            addCriterion("course_name >", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeGreaterThanOrEqualTo(Long value) {
-            addCriterion("course_code >=", value, "courseCode");
+        public Criteria andCourseNameGreaterThanOrEqualTo(String value) {
+            addCriterion("course_name >=", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeLessThan(Long value) {
-            addCriterion("course_code <", value, "courseCode");
+        public Criteria andCourseNameLessThan(String value) {
+            addCriterion("course_name <", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeLessThanOrEqualTo(Long value) {
-            addCriterion("course_code <=", value, "courseCode");
+        public Criteria andCourseNameLessThanOrEqualTo(String value) {
+            addCriterion("course_name <=", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeIn(List<Long> values) {
-            addCriterion("course_code in", values, "courseCode");
+        public Criteria andCourseNameLike(String value) {
+            addCriterion("course_name like", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeNotIn(List<Long> values) {
-            addCriterion("course_code not in", values, "courseCode");
+        public Criteria andCourseNameNotLike(String value) {
+            addCriterion("course_name not like", value, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeBetween(Long value1, Long value2) {
-            addCriterion("course_code between", value1, value2, "courseCode");
+        public Criteria andCourseNameIn(List<String> values) {
+            addCriterion("course_name in", values, "courseName");
             return (Criteria) this;
         }
 
-        public Criteria andCourseCodeNotBetween(Long value1, Long value2) {
-            addCriterion("course_code not between", value1, value2, "courseCode");
+        public Criteria andCourseNameNotIn(List<String> values) {
+            addCriterion("course_name not in", values, "courseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseNameBetween(String value1, String value2) {
+            addCriterion("course_name between", value1, value2, "courseName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseNameNotBetween(String value1, String value2) {
+            addCriterion("course_name not between", value1, value2, "courseName");
             return (Criteria) this;
         }
 

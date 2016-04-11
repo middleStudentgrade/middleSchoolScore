@@ -1,6 +1,9 @@
 package com.middleschool.score.common.service;
 
 import com.middleschool.score.common.dto.MsScore;
+import com.middleschool.score.common.pojo.Page;
+import com.middleschool.score.common.pojo.StudentScore;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +17,9 @@ public interface ScoreService {
 
     List<MsScore> selectNowScoreByStudentId(Long id);
 
-    int selectRanking(Long id);
+    int selectRanking(Long id,Long classId);
+
+   Page selectNowScoreByClassId(Long teacherId,int limit,int offset);
+
+    int[] selectPassRateByClassId(Long id);
 }

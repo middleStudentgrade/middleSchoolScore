@@ -5,11 +5,11 @@ import java.util.Date;
 public class MsSchoolmaster {
     private Long id;
 
-    private String grade;
+    private Long teacherId;
 
     private Long classId;
 
-    private Long courseCode;
+    private String courseName;
 
     private Date startDate;
 
@@ -23,12 +23,12 @@ public class MsSchoolmaster {
         this.id = id;
     }
 
-    public String getGrade() {
-        return grade;
+    public Long getTeacherId() {
+        return teacherId;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade == null ? null : grade.trim();
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
     }
 
     public Long getClassId() {
@@ -39,12 +39,12 @@ public class MsSchoolmaster {
         this.classId = classId;
     }
 
-    public Long getCourseCode() {
-        return courseCode;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourseCode(Long courseCode) {
-        this.courseCode = courseCode;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName == null ? null : courseName.trim();
     }
 
     public Date getStartDate() {
