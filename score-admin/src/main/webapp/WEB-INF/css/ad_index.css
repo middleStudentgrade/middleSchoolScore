@@ -58,3 +58,45 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 #sco_gl ul li{float:left;width:6%;text-align:center;padding-top:18px;}
 #alt_sco input{width:70px}
 #alt_sco span{display:inline-block;width:154px}
+
+/*排行榜 年级前100*/
+.rank_btn{margin:30px 30px 20px;}
+.rank_btn button{margin-right:40px;}
+.gradetwo,.gradethree{position:absolute;}
+.dropdown-menu{min-width:166px;text-align:center;}
+.dropdown-menu li a:hover{background:#5cb85c;color:#fff;}
+.explain{float:right;margin-right:82px;}
+.explain a{color:#fff;}
+
+#gra1,#gra2_art,#gra2_sci,#gra3_art,#gra3_sci{display:none;}
+#grade1:focus,#Pass1:focus{background:#5cb85c;color:#fff;}
+#gra1 ul li{float:left;width:6%;text-align:center;padding:10px 0;}
+#gra2_art,#gra2_sci,#gra3_art,#gra3_sci{width:88%;margin-left:27px;}
+#gra2_art ul li,#gra2_sci ul li,#gra3_art ul li,#gra3_sci ul li{float:left;width:8%;text-align:center;padding:10px 0;}
+
+/*各科最高成绩*/
+.crs_click{background:#5cb85c;color:#fff;}
+.crs_click a{color:#333;}
+#Adept2_art:focus,#Adept2_sci:focus,#Bdept2_art:focus,#Bdept2_sci:focus,#Adept3_art:focus,#Adept3_sci:focus,#Bdept3_art:focus,#Bdept3_sci:focus{background:#5cb85c;color:#fff;}
+
+.color{color:#5cb85c}
+#Course1:focus,#Course2:focus,#Course3:focus{background:#5cb85c;color:#fff;}
+#crs1 table th,#crs2 table th,#crs3 table th{font-size:16px;font-weight:bold;}
+table tr:hover{background:#DCF3D6}
+.crs_hlt{background:#dfdfdf;opacity:0.6;}
+.crs1_th{background:#dfdfdf;opacity:0.6;}
+#crs1,#crs2,#crs3{width:80%;margin-left:27px;}
+#crs2,#crs3{display:none;}
+table th,table td{text-align:center;width:20%;}
+
+/*各班及格率*/
+#rate2_art,#rate2_sci,#rate3_art,#rate3_sci{display:none;width:80%;margin:40px auto;}
+#rate1{width:80%;margin:40px auto;}
+.pass_btn button{margin-right:100px;}
+
+/*各级部前10名*/
+#adept1,#bdept1,#adept2,#bdept2,#adept3,#bdept3,#adept2_sci,#bdept2_sci,#adept3_sci,#bdept3_sci{display:none;}
+#adept1 ul li,#bdept1 ul li{float:left;width:6%;padding:10px 0;text-align:center;}
+#adept2 ul li,#bdept2 ul li,#adept3 ul li,#bdept3 ul li{float:left;width:8%;padding:10px 0;text-align:center;}
+.heading{background: #52cdfe;color:#fff;}
+
