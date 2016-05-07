@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 #cont{width:65%;margin:0 auto;}
-#con{width:66%;min-height:550px;margin:0 auto;background:url(../img/ng_tm.png);background-size:100% 100%;}
+#con{width:66%;min-height:550px;margin:0 auto;background:url(../../../../../../score-admin/src/main/webapp/WEB-INF/img/ng_tm.png);background-size:100% 100%;}
 #s_con{padding-top:40px;}
 #stu_info{margin-left:140px;}
 #stu_ncj,#stu_bcj{margin-left:120px}

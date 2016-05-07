@@ -11,13 +11,13 @@
     <title></title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/login.css">
-  <script src="../javaScript/jquery.js"></script>
+  <script src="../js/jquery.js"></script>
 </head>
 
 <body>
 <div class="container" style="background-color:#34495a">
 
-  <form class="form-signin con">
+  <form class="form-signin con" action="/login" method="post">
     <div class="logo">
       <h3 style="color:#415d98;font-weight:bold"><em>学生成绩管理系统</em></h3>
       <h4>Student achievement management system<em><span class="l_l"> 高中版</span></em></h4>
@@ -26,14 +26,14 @@
       <div class="denglu_top">管理员登录</div>
       <div class="form-group">
         <label>用户名</label>
-        <input type="text" name="username" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">                  <span id="span1"></span>
+        <input type="text" name="userName" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">                  <span id="span1"></span>
       </div>
       <div class="form-group">
         <label >密码</label>
         <input type="password" name="password" id="pwd" class="form-control" onblur="valPwd()" placeholder="请输入密码">
         <span id="span2"></span>
       </div>
-      <button class="btn" id="loginBtn" type="submit"></button>
+      <button class="btn" id="loginBtn" type="submit">登录</button>
 
   </form>
 </div>

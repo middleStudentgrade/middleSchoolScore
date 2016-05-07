@@ -68,8 +68,8 @@ public class ScoreServiceImpl implements ScoreService{
         }
         int count=studentScoreNameMapper.selectCountByClassId(msSchoolmaster.getClassId(), msSchoolmaster.getCourseName());
         Page page=new Page();
-        page.setCount(count);
-        page.setData(studentScores);
+        page.setNum(count);
+        page.setDatas(studentScores);
        return page;
     }
 
@@ -85,6 +85,16 @@ public class ScoreServiceImpl implements ScoreService{
             passRate[StudentScoreNameToStudentScore.getScore(s,msSchoolmaster.getCourseName())]++;
         }
         return passRate;
+    }
+
+    @Override
+    public int countStudents(Long id) {
+        MsSchoolmasterExample msSchoolmasterExample=new MsSchoolmasterExample();
+        MsSchoolmasterExample.Criteria criteria=msSchoolmasterExample.createCriteria();
+        criteria.andTeacherIdEqualTo(id);
+        MsSchoolmaster msSchoolmaster= msSchoolmasterMapper.selectByExample(msSchoolmasterExample).get(0);
+        int count=studentScoreNameMapper.selectCountByClassId(msSchoolmaster.getClassId(), msSchoolmaster.getCourseName());
+        return count;
     }
 
 }

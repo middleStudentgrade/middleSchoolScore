@@ -32,7 +32,7 @@ public class JsonUtils {
     
     /**
      * @param jsonData json数据
-     * @param clazz 对象中的object类型
+     * @param
      * @return
      */
     public static <T> T jsonToPojo(String jsonData, Class<T> beanType) {

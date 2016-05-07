@@ -22,4 +22,6 @@ public interface ScoreService {
    Page selectNowScoreByClassId(Long teacherId,int limit,int offset);
 
     int[] selectPassRateByClassId(Long id);
+
+    int countStudents(Long id);
 }

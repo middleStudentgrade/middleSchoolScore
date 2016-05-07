@@ -2,11 +2,13 @@ package com.middleschool.score.web.controller;
 
 import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.dto.MsTeacher;
+import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentService;
 import com.middleschool.score.common.service.TeacherService;
 import com.middleschool.score.common.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

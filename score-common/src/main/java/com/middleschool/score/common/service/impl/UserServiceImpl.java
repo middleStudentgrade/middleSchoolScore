@@ -16,14 +16,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public MsUser selectUser(String username) {
-        try {
             MsUserExample msUserExample=new MsUserExample();
             MsUserExample.Criteria criteria=msUserExample.createCriteria();
             criteria.andUsernameEqualTo(username);
             List<MsUser> msUser = msUserMapper.selectByExample(msUserExample);
             return msUser.get(0);
-        }catch (Exception ex){
-            return null;
-        }
     }
 }

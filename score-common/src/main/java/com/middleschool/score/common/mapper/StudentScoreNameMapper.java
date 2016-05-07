@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface StudentScoreNameMapper {
     List<StudentScoreName> selectScoreByClassId(@Param("classId")Long classId,@Param("courseName")String courseName,@Param("limit")int limit,@Param("offset")int offset);
+
     int selectCountByClassId(@Param("classId")Long classId,@Param("courseName")String courseName);
 }

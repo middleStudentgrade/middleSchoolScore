@@ -1,27 +1,19 @@
 package com.middleschool.score.web.controller;
 
-import com.middleschool.score.common.dto.MsSchoolmaster;
-import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsTeacher;
 import com.middleschool.score.common.pojo.Page;
 import com.middleschool.score.common.pojo.ResponseResult;
-import com.middleschool.score.common.pojo.StudentScore;
 import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.TeacherService;
+import com.middleschool.score.common.utils.JsonUtils;
 import com.middleschool.score.common.utils.MD5Utils;
-
-
+import com.middleschool.score.common.utils.WebConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Administrator on 2016/3/20.
@@ -67,11 +59,13 @@ public class TeacherController {
         }
     }
 
-    @RequestMapping("/scoreSort")
-    public String sort(@RequestParam Long id, @RequestParam(defaultValue = "10") int limit, @RequestParam(defaultValue = "0") int offset, Model model) {
+    @RequestMapping("scoreSort")
+    public String sort(@RequestParam Long id, Model model) {
         try {
-            Page msScores = scoreService.selectNowScoreByClassId(id, limit, offset);
-            model.addAttribute("allScores", msScores);
+            int count=scoreService.countStudents(id);
+            int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+            count=count%pageSize==0?count/pageSize:count/pageSize+1;
+            model.addAttribute("count", count);
             return "teachers/t_dkcj";
         } catch (Exception e) {
             LOG.error("查询成绩失败{}", e.getMessage());
@@ -79,7 +73,21 @@ public class TeacherController {
         }
     }
 
-    @RequestMapping("/passRate")
+    @RequestMapping("scoreSelect")
+    @ResponseBody
+    public ResponseResult sorts(@RequestParam Long id, @RequestParam(defaultValue = "0") int offset, Model model) {
+        try {
+            int limit= Integer.parseInt(WebConf.getValue("pageSize"));
+            offset=(limit-1)*offset;
+            Page msScores = scoreService.selectNowScoreByClassId(id, limit, offset);
+           return ResponseResult.ok(msScores);
+        } catch (Exception e) {
+            LOG.error("查询成绩失败{}", e.getMessage());
+            return ResponseResult.build(500,"查询失败");
+        }
+    }
+
+    @RequestMapping("passRate")
     public String passRate(@RequestParam Long id, Model model) {
         try {
             int []pass = scoreService.selectPassRateByClassId(id);

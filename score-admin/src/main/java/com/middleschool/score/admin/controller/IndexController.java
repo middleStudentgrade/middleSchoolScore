@@ -2,17 +2,24 @@ package com.middleschool.score.admin.controller;
 
 
 import com.middleschool.score.common.dto.MsStudent;
+import com.middleschool.score.common.pojo.Page;
+import com.middleschool.score.common.service.StudentService;
 import com.middleschool.score.common.service.TestService;
+import com.middleschool.score.common.utils.WebConf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 
 @Controller
 public class IndexController {
+
 	@Autowired
-	private TestService testService;
+	private StudentService studentService;
 	/**
 	 * @Title	showIndex
 	 * @Description show index
@@ -22,14 +29,24 @@ public class IndexController {
 	 */
 	@RequestMapping("/")
 	public String showIndex(){
-		return "login";
+		return "login/login";
 	}
-	
-	@RequestMapping("/menu/{module}/{page}")
-	public String showPage(@PathVariable String module, @PathVariable String page){
-		return module+"/"+page;
+	@RequestMapping("adTop")
+	public String adTop(){
+		return "admin/ad_top";
 	}
-
+	@RequestMapping("adLeft")
+	public String adLeft(){
+		return "admin/ad_left";
+	}
+	@RequestMapping("adSinfo")
+	public String adSinfo(Model model){
+		int count = studentService.countStudent();
+		int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+		count=count%pageSize==0?count/pageSize:count/pageSize+1;
+		model.addAttribute("count",count);
+			return "admin/ad_sinfo";
+	}
 
 	
 }

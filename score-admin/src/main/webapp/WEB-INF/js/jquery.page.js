@@ -97,5 +97,3 @@
 		ms.init(this,args);
 	}
 })(jQuery);
-
-nt

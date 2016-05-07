@@ -20,6 +20,8 @@ public interface MsStudentMapper {
 
     MsStudent selectByPrimaryKey(Long id);
 
+
+
     int updateByExampleSelective(@Param("record") MsStudent record, @Param("example") MsStudentExample example);
 
     int updateByExample(@Param("record") MsStudent record, @Param("example") MsStudentExample example);

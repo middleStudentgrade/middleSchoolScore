@@ -1,10 +1,9 @@
 package com.middleschool.score.admin.controller;
 
-import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.dto.MsUser;
-import com.middleschool.score.common.service.StudentService;
 import com.middleschool.score.common.service.TestService;
 import com.middleschool.score.common.service.UserService;
+import com.middleschool.score.common.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,23 +20,25 @@ public class LoginController {
     private TestService testService;
 
     @RequestMapping("/login")
-    public String login(/*@RequestParam String userName, @RequestParam String password,*/HttpSession session ) {
-        BindingResult errors=null;
-        String userName="123456";
-        String password="123456";
+    public String login(@RequestParam String userName, @RequestParam String password,HttpSession session ) {
+        try {
+            BindingResult errors = null;
             MsUser msUser = userService.selectUser(userName);
             if (msUser != null) {
-                if (msUser.getPassword().equals(password)) {
+                if (msUser.getPassword().equals(MD5Utils.md5(password))) {
                     session.setAttribute("msUser", msUser);
-                    return "success";
+                    return "admin/ad_index";
                 } else {
                     errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
-                    return "login";
+                    return "login/login";
                 }
             } else {
                 errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
-                return "login";
+                return "login/login";
             }
+        }catch (Exception e){
+            return "login/login";
+        }
     }
 
 }

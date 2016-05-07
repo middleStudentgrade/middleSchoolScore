@@ -22,6 +22,7 @@ $.ajax({
 })}
 
 function changepassword(){
+
     $.ajax({
         url: "http://localhost:8080/student/changePassword",
         data: {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.middleschool.score.common.mapper.StudentClassMapper" >
+<resultMap id="BaseResultMap" type="com.middleschool.score.common.dto.StudentClass" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="id_card" property="idCard" jdbcType="VARCHAR" />
+    <result column="birth_place" property="birthPlace" jdbcType="VARCHAR" />
+    <result column="political_landscape" property="politicalLandscape" jdbcType="VARCHAR" />
+    <result column="dates_attendance" property="datesAttendance" jdbcType="TIMESTAMP" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+</resultMap>
+
+<!--查询某个班级的所有成绩并且排名-->
+<select id="findAllStudents" resultMap="BaseResultMap" >
+       select
+       s.id,s.name,s.age,s.sex,s.id_card,s.birth_place,s.political_landscape,s.dates_attendance,c.grade grade,c.name className
+       from ms_student s left join ms_student_now sn on s.id=sn.student_id left join ms_class c on sn.class_id=c.id limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+   </select>
+    <select id="findOne" resultMap="BaseResultMap" >
+        select
+        s.id,s.name,s.age,s.sex,s.id_card,s.birth_place,s.political_landscape,s.dates_attendance,c.grade grade,c.name className
+        from ms_student s left join ms_student_now sn on s.id=sn.student_id left join ms_class c on sn.class_id=c.id where s.id=#{id,jdbcType=BIGINT}
+    </select>
+</mapper>

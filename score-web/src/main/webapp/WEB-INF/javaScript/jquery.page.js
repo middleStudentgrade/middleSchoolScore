@@ -82,6 +82,7 @@
 					var current = parseInt(obj.children("span.current").text());
 					ms.fillHtml(obj,{"current":current+1,"pageCount":args.pageCount});
 					if(typeof(args.backFn)=="function"){
+
 						args.backFn(current+1);
 					}
 				});
@@ -92,10 +93,9 @@
 		var args = $.extend({
 			pageCount : 10,
 			current : 1,
-			backFn : function(){}
+			backFn : function(curr){
+			}
 		},options);
 		ms.init(this,args);
 	}
 })(jQuery);
-
-nt
