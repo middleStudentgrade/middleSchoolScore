@@ -115,20 +115,28 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" style="color:#27AE60">修改学生信息</h4>
             </div>
-            <form class="form-inline">
+            <form class="form-inline update_form" action=" http://localhost:8080/admin/student/update">
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
                             <label class="size">学号：</label><input class="form-control id" type="text" name="id" />
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name"name="name" type="text"  />
-                            <label class="size">年龄：</label><input class="form-control id" type="number" name="age" />
+                            <label class="size">年龄：</label><input class="form-control age" type="number" name="age" />
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">性别：</label>
-                                <select name="sex">
+                                <select name="sex" class="sex">
                                     <option value="男">男</option>
                                     <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div style="width:274px;display:inline-block">
+                                <label class="size">级部：</label>
+                                <select name="rankDept" class="rankDept">
+                                    <option value="一级部">一级部</option>
+                                    <option value="二级部">二级部</option>
+                                    <option value="三级部">三级部</option>
                                 </select>
                             </div>
                             <label class="size">班级：</label>
@@ -155,8 +163,8 @@
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">政治面貌：</label>
-                                <select name="politicalLandscape">
-                                    <option value="共青团员">共青团员</option>
+                                <select name="politicalLandscape" class="politicalLandscape">
+                                    <option value="团员">团员</option>
                                     <option value="党员">党员</option>
                                     <option value="群众">群众</option>
                                 </select>
@@ -164,8 +172,8 @@
                             <label class="size">入学时间：</label>
 
                         </li>
-                        <li><label class="size">身份证号：</label><input class="form-control" type="text" name="idCard" /></li>
-                        <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control" type="text" name="birthPlace" /></li>
+                        <li><label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" /></li>
+                        <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control birthPlace" type="text" name="birthPlace" /></li>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -243,7 +251,7 @@
                             $("#list").append('<td>' + item.id + '</td>');
                             $("#list").append('<td>' + item.name + '</td>');
                             $("#list").append('<td>' + item.sex + '</td>');
-                            $("#list").append('<td>' + item.className + item.grade + '</td>');
+                            $("#list").append('<td>' + item.className + item.grade + '班</td>');
                             $("#list").append('<td>' + item.sex + '</td>');
                             $("#list").append('<td>' + item.datesAttendance + '</td>');
                             $("#list").append('<td>' + item.politicalLandscape + '</td>');
@@ -269,17 +277,50 @@
             },
             type: 'POST',
             success: function (data) {
+                console.log(data.data)
                 $(".id").val(data.data.id);
                 $(".name").val(data.data.name)
                 $(".sex").val(data.data.sex);
-                $(".name").val(data.data.name);
-                $(".name").val(data.data.name);
-                $(".name").val(data.data.name);
-                $(".name").val(data.data.name);;
+                $(".age").val(data.data.age);
+                $(".className").val(data.data.className);
+                $(".datesAttendance").val(data.data.datesAttendance);
+                $(".politicalLandscape").val(data.data.politicalLandscape);
+                $(".idCard").val(data.data.idCard);
+                $(".birthPlace").val(data.data.birthPlace);
+                $(".grade").val(data.data.grade);
+                $(".rankDept").val(data.data.rankDept);
             }
         })
     };
 
+    /*$(".btn_qd").click(function(){
+        var student={
+            id: $(".id").val(),
+            name:$(".name").val(),
+            sex:$(".sex").val(),
+            age:$(".age").val(),
+            className:$(".className").val(),
+            datesAttendance:'2016-03-04',
+            politicalLandscape:$(".politicalLandscape").val(),
+            idCard:$(".idCard").val(),
+            birthPlace:$(".birthPlace").val(),
+            grade:$(".grade").val(),
+            rankDept:$(".rankDept").val(),
+        }
+        $.ajax({
+            type : 'post',
+            dataType : 'json',
+            contentType: 'application/json',
+            data:JSON.stringify(student),
+            url: "http://localhost:8080/admin/student/update",
+            success : function(data){
+               alert("chengogng");
+            },
+            error : function(){
+                alert('网络异常');
+            }
+        });
+    })*/
 
 </script>
 </body>

@@ -25,6 +25,15 @@ public class StudentClass  {
     private Date datesAttendance;
     private String grade;
     private String className;
+    private String rankDept;
+
+    public String getRankDept() {
+        return rankDept;
+    }
+
+    public void setRankDept(String rankDept) {
+        this.rankDept = rankDept;
+    }
 
     public String getClassName() {
         return className;

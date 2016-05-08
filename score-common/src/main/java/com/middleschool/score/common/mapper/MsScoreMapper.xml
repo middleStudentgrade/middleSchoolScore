@@ -104,10 +104,7 @@
   <!-- 查询学生所有成绩-->
   <select id="selectAllScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
     select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
+    *
     from ms_score where student_id = #{studentId,jdbcType=BIGINT} order by start_date
   </select>
 
@@ -252,7 +249,7 @@
     WHERE a.student_zong>(
     SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
     FROM ms_score s
-    WHERE s.student_id = #{studentId,jdbcType=BIGINT})
+    WHERE s.student_id = #{studentId,jdbcType=BIGINT} AND NOW() BETWEEN s.start_date AND s.end_date)
   </select>
   <select id="countByExample" parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer" >
     select count(*) from ms_score

@@ -23,7 +23,7 @@
    </select>
     <select id="findOne" resultMap="BaseResultMap" >
         select
-        s.id,s.name,s.age,s.sex,s.id_card,s.birth_place,s.political_landscape,s.dates_attendance,c.grade grade,c.name className
+        s.id,s.name,s.age,s.sex,s.id_card,s.birth_place,s.political_landscape,s.dates_attendance,c.grade grade,c.name className,c.rank_dept rankDept
         from ms_student s left join ms_student_now sn on s.id=sn.student_id left join ms_class c on sn.class_id=c.id where s.id=#{id,jdbcType=BIGINT}
     </select>
 </mapper>

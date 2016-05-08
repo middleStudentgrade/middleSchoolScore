@@ -89,6 +89,13 @@
     from ms_class
     where id = #{id,jdbcType=BIGINT}
   </select>
+<!--  查询学生班级id-->
+  <select id="selectByNameAndDeptAndGrade" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from ms_class where name=#{name,jdbcType=VARCHAR} and rank_dept=#{rankDept,jdbcType=VARCHAR} and grade=#{grade,jdbcType=INTEGER}
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from ms_class
     where id = #{id,jdbcType=BIGINT}

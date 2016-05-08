@@ -40,13 +40,13 @@
               <th>政治</th>
               <th>地理</th>
               <th>历史</th>
-
+              <th>总成绩</th>
             </tr>
             </thead>
             <tbody>
 <c:forEach items="${requestScope.scores}" var="s">
             <tr>
-              <td>高一下学期</td>
+              <td>${s.grade}</td>
   <td>${s.math}</td>
   <td>${s.chinese}</td>
   <td>${s.english}</td>
@@ -56,6 +56,7 @@
   <td>${s.physico}</td>
   <td>${s.geography}</td>
   <td>${s.history}</td>
+              <td>${s.allScore}</td>
             </tr>
   </c:forEach>
             </tbody>

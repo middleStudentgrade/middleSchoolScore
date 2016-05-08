@@ -3,6 +3,7 @@ package com.middleschool.score.web.controller;
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.pojo.ResponseResult;
+import com.middleschool.score.common.pojo.ScoreClass;
 import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentService;
 import com.middleschool.score.common.utils.JsonUtils;
@@ -89,7 +90,7 @@ public class StudentController {
     @RequestMapping(value = "getAllScore")
     public String getAllScore(@RequestParam Long id, Model model){
         try{
-           List<MsScore> msScores =scoreService.selectNowScoreByStudentId(id);
+           List<ScoreClass> msScores =scoreService.selectAllScoreByStudentId(id);
             model.addAttribute("scores",msScores);
             return "students/stu_bcj";
         }
