@@ -3,7 +3,9 @@ package com.middleschool.score.admin.controller;
 
 import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.pojo.Page;
+import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentService;
+import com.middleschool.score.common.service.TeacherService;
 import com.middleschool.score.common.service.TestService;
 import com.middleschool.score.common.utils.WebConf;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,12 @@ public class IndexController {
 
 	@Autowired
 	private StudentService studentService;
+
+	@Autowired
+	private TeacherService teacherService;
+
+	@Autowired
+	private ScoreService scoreService;
 	/**
 	 * @Title	showIndex
 	 * @Description show index
@@ -47,6 +55,21 @@ public class IndexController {
 		model.addAttribute("count",count);
 			return "admin/ad_sinfo";
 	}
-
+	@RequestMapping("adTinfo")
+	public String adTinfo(Model model){
+		int count = teacherService.countTeacher();
+		int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+		count=count%pageSize==0?count/pageSize:count/pageSize+1;
+		model.addAttribute("count",count);
+		return "admin/ad_tinfo";
+	}
+	@RequestMapping("adScore")
+	public String adScore(Model model){
+		int count = scoreService.countScore();
+		int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+		count=count%pageSize==0?count/pageSize:count/pageSize+1;
+		model.addAttribute("count",count);
+		return "admin/ad_score";
+	}
 	
 }

@@ -25,4 +25,6 @@ public interface ScoreService {
     int[] selectPassRateByClassId(Long id);
 
     int countStudents(Long id);
+
+    int countScore();
 }

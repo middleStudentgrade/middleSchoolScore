@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void saveStudent(MsStudent msStudent) {
+    public void updateStudent(MsStudent msStudent) {
         msStudentMapper.updateByPrimaryKeySelective(msStudent);
     }
 
@@ -48,5 +48,15 @@ public class StudentServiceImpl implements StudentService {
         MsStudentExample msStudentExample=new MsStudentExample();
         MsStudentExample.Criteria criteria=msStudentExample.createCriteria();
         return msStudentMapper.countByExample(msStudentExample);
+    }
+
+    @Override
+    public int delete(Long id) {
+        return msStudentMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int saveStudent(MsStudent msStudent) {
+       return  msStudentMapper.insertSelective(msStudent);
     }
 }

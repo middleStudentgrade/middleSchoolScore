@@ -97,11 +97,11 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
 
- <!-- <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from ms_teacher limit #{limit,,jdbcType=INTEGER} offset #{offset,,jdbcType=INTEGER}
-  </select>-->
+    from ms_teacher limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from ms_teacher

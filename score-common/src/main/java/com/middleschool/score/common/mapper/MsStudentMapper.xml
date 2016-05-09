@@ -106,7 +106,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.middleschool.score.common.dto.MsStudent" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.middleschool.score.common.dto.MsStudent" >
     insert into ms_student (id, password, name, 
       age, sex, id_card, birth_place, 
       political_landscape, dates_attendance)
@@ -114,7 +114,7 @@
       #{age,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, #{birthPlace,jdbcType=VARCHAR}, 
       #{politicalLandscape,jdbcType=VARCHAR}, #{datesAttendance,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.middleschool.score.common.dto.MsStudent" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.middleschool.score.common.dto.MsStudent" >
     insert into ms_student
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

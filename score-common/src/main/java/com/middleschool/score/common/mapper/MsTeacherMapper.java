@@ -21,7 +21,7 @@ public interface MsTeacherMapper {
 
     MsTeacher selectByPrimaryKey(Long id);
 
-   // List<MsTeacher> selectAll(@Param("limit")int limit,@Param("offset")int offset);
+    List<MsTeacher> selectAll(@Param("limit")int limit,@Param("offset")int offset);
 
     int updateByExampleSelective(@Param("record") MsTeacher record, @Param("example") MsTeacherExample example);
 

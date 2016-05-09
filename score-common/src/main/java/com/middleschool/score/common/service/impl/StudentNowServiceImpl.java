@@ -29,7 +29,20 @@ public class StudentNowServiceImpl implements StudentNowService {
     }
 
     @Override
-    public int save(MsStudentNow msStudentNow) {
+    public int update(MsStudentNow msStudentNow) {
         return msStudentNowMapper.updateByPrimaryKeySelective(msStudentNow);
+    }
+
+    @Override
+    public int deleteByStudentId(Long id) {
+        MsStudentNowExample msStudentNowExample=new MsStudentNowExample();
+        MsStudentNowExample.Criteria criteria=msStudentNowExample.createCriteria();
+        criteria.andStudentIdEqualTo(id);
+        return msStudentNowMapper.deleteByExample(msStudentNowExample);
+    }
+
+    @Override
+    public int save(MsStudentNow msStudentNow) {
+        return msStudentNowMapper.insertSelective(msStudentNow);
     }
 }

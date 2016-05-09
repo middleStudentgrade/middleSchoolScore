@@ -11,5 +11,7 @@ import org.springframework.stereotype.Service;
 
 public interface StudentNowService {
     MsStudentNow getByStudentId(Long studentId);
+    int update(MsStudentNow msStudentNow);
+    int deleteByStudentId(Long id);
     int save(MsStudentNow msStudentNow);
 }

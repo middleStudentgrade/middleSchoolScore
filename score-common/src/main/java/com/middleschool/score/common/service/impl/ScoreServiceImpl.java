@@ -1,9 +1,6 @@
 package com.middleschool.score.common.service.impl;
 
-import com.middleschool.score.common.dto.MsSchoolmaster;
-import com.middleschool.score.common.dto.MsSchoolmasterExample;
-import com.middleschool.score.common.dto.MsScore;
-import com.middleschool.score.common.dto.StudentScoreName;
+import com.middleschool.score.common.dto.*;
 import com.middleschool.score.common.mapper.MsSchoolmasterMapper;
 import com.middleschool.score.common.mapper.MsScoreMapper;
 import com.middleschool.score.common.mapper.StudentScoreNameMapper;
@@ -126,6 +123,13 @@ public class ScoreServiceImpl implements ScoreService{
         MsSchoolmaster msSchoolmaster= msSchoolmasterMapper.selectByExample(msSchoolmasterExample).get(0);
         int count=studentScoreNameMapper.selectCountByClassId(msSchoolmaster.getClassId(), msSchoolmaster.getCourseName());
         return count;
+    }
+
+    @Override
+    public int countScore() {
+        MsScoreExample msScoreExample=new MsScoreExample();
+        MsScoreExample.Criteria criteria=msScoreExample.createCriteria();
+        return msScoreMapper.countByExample(msScoreExample);
     }
 
 }

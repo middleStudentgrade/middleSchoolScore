@@ -46,62 +46,69 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" style="color:#27AE60">添加学生信息</h4>
             </div>
-            <form class="form-inline">
-                <div class="modal-body add_stu">
+            <form class="form-inline save_form">
+                <div class="modal-body alt_stu">
                     <ul>
                         <li>
-                            <label class="size">学号：</label><input class="form-control" type="text" />
-                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control" type="text" />
+                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control sname" name="name" type="text"  />
+                            <label class="size">年龄：</label><input class="form-control sage" type="number" name="age" />
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">性别：</label>
-                                <select>
-                                    <option>男</option>
-                                    <option>女</option>
+                                <select name="sex" class="ssex">
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                            <div style="width:274px;display:inline-block">
+                                <label class="size">级部：</label>
+                                <select name="rankDept" class="srankDept">
+                                    <option value="一级部">一级部</option>
+                                    <option value="二级部">二级部</option>
+                                    <option value="三级部">三级部</option>
                                 </select>
                             </div>
                             <label class="size">班级：</label>
-                            <select>
+                            <select name="className" class="sclassName">
                                 <option>高一</option>
                                 <option>高二</option>
                                 <option>高三</option>
                             </select>
-                            <select>
-                                <option></option>
-                                <option></option>
+                            <select name="grade" class="sgrade">
+                                <option value="1">1</option>
+                                <option  value="2">2</option>
+                                <option value="3">3</option>
+                                <option  value="4">4</option>
+                                <option value="5">5</option>
+                                <option  value="6">6</option>
+                                <option value="7">7</option>
+                                <option  value="8">8</option>
+                                <option value="9">9</option>
+                                <option  value="10">10</option>
+                                <option value="11">11</option>
+                                <option  value="12">12</option>
                             </select>
-
-
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">政治面貌：</label>
-                                <select>
-                                    <option>共青团员</option>
-                                    <option>党员</option>
-                                    <option>群众</option>
+                                <select name="politicalLandscape" class="spoliticalLandscape">
+                                    <option value="团员">团员</option>
+                                    <option value="党员">党员</option>
+                                    <option value="群众">群众</option>
                                 </select>
                             </div>
                             <label class="size">入学时间：</label>
-                            <select>
-                                <option></option>
-                                <option></option>
-                                <option></option>
-                            </select>
-                            <select>
-                                <option></option>
-                                <option></option>
-                                <option></option>
-                            </select>
+
                         </li>
-                        <li><label class="size">身份证号：</label><input class="form-control" type="text" /></li>
-                        <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control" type="text" /></li>
+                        <li><label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" /></li>
+                        <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control sbirthPlace" type="text" name="birthPlace" /></li>
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default size">重置</button>
-                    <button type="submit" class="btn btn_qd" style="color:#fff">添加</button>
+                    <button type="submit" class="btn sbtn_qd" style="color:#fff" onclick="save()">确定</button>
                 </div>
             </form>
         </div>
@@ -115,12 +122,12 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" style="color:#27AE60">修改学生信息</h4>
             </div>
-            <form class="form-inline update_form" action=" http://localhost:8080/admin/student/update">
+            <form class="form-inline update_form">
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
                             <label class="size">学号：</label><input class="form-control id" type="text" name="id" />
-                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name"name="name" type="text"  />
+                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text"  />
                             <label class="size">年龄：</label><input class="form-control age" type="number" name="age" />
                         </li>
                         <li>
@@ -178,7 +185,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default size">重置</button>
-                    <button type="submit" class="btn btn_qd" style="color:#fff">确定</button>
+                    <button type="submit" class="btn btn_qd" style="color:#fff" onclick="update()">确定</button>
                 </div>
             </form>
         </div>
@@ -194,8 +201,9 @@
             </div>
             <div class="modal-footer">
                 <form>
+                    <input type="text" class="del_id">
                     <button class="btn btn-default size" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn_qd" style="color:#fff">确定</button>
+                    <button type="submit" class="btn btn_delqd" style="color:#fff">确定</button>
                 </form>
             </div>
 
@@ -223,8 +231,8 @@
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="update(' + item.id + ')">修改</button>');
-                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3">删除</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })
                 }
@@ -257,8 +265,8 @@
                             $("#list").append('<td>' + item.politicalLandscape + '</td>');
                             $("#list").append('<td>' + item.idCard + '</td>');
                             $("#list").append('<td>' + item.birthPlace + '</td>');
-                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="update(' + item.id + ')">修改</button>');
-                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3">删除</button>');
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
                             $("#list").append('</tr>');
                         })
                     }
@@ -268,16 +276,15 @@
     })
 
 
-    var update=function(id){
-        console.log(id);
+    var updateSelect=function(id){
         $.ajax({
             url: "http://localhost:8080/admin/student/getOne",
             data: {
                 id:id,
             },
+            dateType:"json",
             type: 'POST',
             success: function (data) {
-                console.log(data.data)
                 $(".id").val(data.data.id);
                 $(".name").val(data.data.name)
                 $(".sex").val(data.data.sex);
@@ -292,35 +299,69 @@
             }
         })
     };
-
-    /*$(".btn_qd").click(function(){
-        var student={
-            id: $(".id").val(),
-            name:$(".name").val(),
-            sex:$(".sex").val(),
-            age:$(".age").val(),
-            className:$(".className").val(),
-            datesAttendance:'2016-03-04',
-            politicalLandscape:$(".politicalLandscape").val(),
-            idCard:$(".idCard").val(),
-            birthPlace:$(".birthPlace").val(),
-            grade:$(".grade").val(),
-            rankDept:$(".rankDept").val(),
-        }
+    var save=function(){
         $.ajax({
             type : 'post',
-            dataType : 'json',
-            contentType: 'application/json',
-            data:JSON.stringify(student),
-            url: "http://localhost:8080/admin/student/update",
-            success : function(data){
-               alert("chengogng");
+            dateType:"json",
+            data:$(".save_form").serialize(),
+            url: "http://localhost:8080/admin/student/save",
+            async: false,
+            error : function(data){
+                console.log("保存失败");
             },
-            error : function(){
-                alert('网络异常');
-            }
+            success : function(data){
+                if(data.status==200){
+                    alert("保存成功");
+                }
+                else{
+                    alert("保存失败");
+                }
+            },
         });
-    })*/
+    }
+    var update=function(){
+        $.ajax({
+            type : 'post',
+            dateType:"json",
+            data:$(".update_form").serialize(),
+            url: "http://localhost:8080/admin/student/update",
+            async: false,
+            error : function(data){
+                console.log("保存失败");
+            },
+            success : function(data){
+              if(data.status==200){
+                  alert("保存成功");
+              }
+                else{
+                  alert("保存失败");
+              }
+            },
+        });
+    }
+    $(".btn_delqd").click(function(){
+        $.ajax({
+            type : 'post',
+            dateType:"json",
+            data:{"id": $(".del_id").val()},
+            url: "http://localhost:8080/admin/student/delete",
+            async: false,
+            error : function(){
+                console.log("删除失败");
+            },
+            success : function(data){
+                if(data.status==200){
+                    alert("删除成功");
+                }
+                else{
+                    alert("删除失败");
+                }
+            },
+        });
+    })
+    var getdelid=function(id){
+       $(".del_id").val(id);
+    }
 
 </script>
 </body>

@@ -72,24 +72,58 @@ public class StudentController {
             return ResponseResult.build(500,"获取学生信息失败");
         }
     }
-    @RequestMapping("update")
-    public String update(@RequestBody StudentClass studentClass){
+    @RequestMapping(value = "update")
+    @ResponseBody
+    public ResponseResult update(StudentClass studentClass){
         try {
-            MsStudent msStudent = new MsStudent();
             MsStudent msStudent1=studentService.getById(studentClass.getId());
-            MsStudentNow msStudentNow = studentNowService.getByStudentId(studentClass.getId());
+           MsStudent msStudent = new MsStudent();
             BeanUtils.copyProperties(studentClass, msStudent);
+            MsStudentNow msStudentNow = studentNowService.getByStudentId(studentClass.getId());
             msStudent.setPassword(msStudent1.getPassword());
             List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),studentClass.getRankDept(),studentClass.getGrade());
             if(classe!=null) {
                 msStudentNow.setClassId(classe.get(0).getId());
             }
-            studentNowService.save(msStudentNow);
-            studentService.saveStudent(msStudent);
-            return "admin/ad_index";
+            studentNowService.update(msStudentNow);
+            studentService.updateStudent(msStudent);
+            return ResponseResult.ok();
         }catch (Exception e){
             LOG.error("更新失败{}",e.getMessage());
-            return "error";
+            return ResponseResult.build(500, "更新失败");
+        }
+    }
+
+    @RequestMapping(value = "save")
+    @ResponseBody
+    public ResponseResult save(StudentClass studentClass){
+        try {
+            MsStudent msStudent = new MsStudent();
+            BeanUtils.copyProperties(studentClass, msStudent);
+            msStudent.setPassword(studentClass.getIdCard().substring(studentClass.getIdCard().length()-6,studentClass.getIdCard().length()));
+            List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),studentClass.getRankDept(),studentClass.getGrade());
+            MsStudentNow msStudentNow=new MsStudentNow();
+            msStudentNow.setClassId(classe.get(0).getId());
+            studentService.saveStudent(msStudent);
+            msStudentNow.setStudentId(msStudent.getId());
+            msStudentNow.setSemester(0);
+            studentNowService.save(msStudentNow);
+            return ResponseResult.ok();
+        }catch (Exception e){
+            LOG.error("添加失败{}",e.getMessage());
+            return ResponseResult.build(500, "添加失败");
+        }
+    }
+    @RequestMapping(value = "delete")
+    @ResponseBody
+    public ResponseResult delete(@RequestParam("id")Long id){
+        try {
+            studentService.delete(id);
+            studentNowService.deleteByStudentId(id);
+            return ResponseResult.ok();
+        }catch (Exception e){
+            LOG.error("更新失败{}",e.getMessage());
+            return ResponseResult.build(500, "更新失败");
         }
     }
 

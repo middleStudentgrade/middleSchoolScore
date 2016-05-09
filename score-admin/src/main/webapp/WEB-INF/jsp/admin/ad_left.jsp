@@ -32,12 +32,12 @@
 
     <div class="subNav currentDd currentDt"><p>学生信息管理</p></div>
     <ul class="navCon">
-        <li id="s_info"><a href="ad_sinfo.jsp" class="list-group-item" target="main" >查看学生信息</a></li>
+        <li id="s_info"><a href="adSinfo" class="list-group-item" target="main" >查看学生信息</a></li>
     </ul>
     <div style="height:30px;"></div>
     <div class="subNav currentDd currentDt"><p>教师信息管理</p></div>
     <ul class="navCon">
-        <li id="t_info"><a href="ad_tinfo.jsp" class="list-group-item" target="main">查看教师信息</a></li>
+        <li id="t_info"><a href="adTinfo" class="list-group-item" target="main">查看教师信息</a></li>
     </ul>
     <div style="height:30px;"></div>
     <div class="subNav currentDd currentDt"><p>成绩管理</p></div>
@@ -51,7 +51,7 @@
                 <li><a href="" target="main">查询各级部前十名</a></li>
             </ul>
         </li>
-        <li id="cj_info"><a href="ad_score.jsp" class="list-group-item" target="main">成绩管理</a></li>
+        <li id="cj_info"><a href="adScore" class="list-group-item" target="main">成绩管理</a></li>
     </ul>
 
 </div>

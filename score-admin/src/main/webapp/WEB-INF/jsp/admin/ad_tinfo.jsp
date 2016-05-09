@@ -27,37 +27,18 @@
         </form>
     </div>
 
-    <div class="panel panel-info s_xx">
-        <ul class="panel-heading size" style="padding:0px 16px 49px 10px;">
-            <li>编号</li>
-            <li style="width:8%;">姓名</li>
-            <li style="width:6%;">性别</li>
-
-            <li>职务</li>
-            <li style="width:9%;">年级</li>
-            <li>教授课程</li>
-            <li>教育程度</li>
-            <li style="width:22%;">邮箱</li>
-        </ul>
+    <table class="panel panel-info s_xx">
+        <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+        <td>教师编号</td>
+        <td style="width:8%;">姓名</td>
+        <td style="width:4%;">性别</td>
+        <td style="width:8%;">政治面貌</td>
+        <td style="width:16%;">身份证号</td>
+        <td style="width:18%;">籍贯</td>
+        </thead>
         <div class="clear"></div>
-        <foreach>
-            <ul style="padding-left:10px;">
-                <li>20082213232</li>
-                <li style="width:8%;">姓名姓</li>
-                <li style="width:6%;">男</li>
-
-                <li>高级教师</li>
-                <li style="width:8%;">高三</li>
-                <li >英语</li>
-                <li>硕士</li>
-                <li style="width:22%;">wenlilincheng@163.com</li>
-            </ul>
-            <button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 10px;">修改</button>
-            <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3">删除</button>
-            <div class="clear"></div>
-            <div style="border-top:1px solid #e5e3da"></div>
-        </foreach>
-    </div>
+        <tbody id="list"></tbody>
+    </table>
     <div class="tcdPageCode"></div>
 </div>
 <!--模态弹框  添加教师信息-->
@@ -68,61 +49,56 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" style="color:#27AE60">添加教师信息</h4>
             </div>
-            <form class="form-inline">
+            <form class="form-inline save_form">
                 <div class="modal-body add_stu">
                     <ul>
                         <li>
-                            <label class="size">编号：</label><input class="form-control" type="text" />
-                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control" type="text" />
+                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control sname" name="name" type="text" />
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">性别：</label>
-                                <select>
-                                    <option>男</option>
-                                    <option>女</option>
+                                <select class="ssex" name="sex">
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
                                 </select>
                             </div>
                             <label class="size">教育程度：</label>
-                            <select>
-                                <option>本科</option>
-                                <option>硕士</option>
-                                <option>博士</option>
+                            <select class="seducation" name="education">
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
                             </select>
 
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
-                                <label class="size">职务：</label>
-                                <select>
-                                    <option>讲师</option>
-                                    <option>高级教师</option>
-                                    <option>特级教师</option>
+                                <label class="size" >职务：</label>
+                                <select class="stitle" name="title">
+                                    <option value="讲师">讲师</option>
+                                    <option value="高级教师">高级教师</option>
+                                    <option value="特级教师">特级教师</option>
                                 </select>
                             </div>
-                            <label class="size">年级：</label>
-                            <select>
-                                <option>高一</option>
-                                <option>高二</option>
-                                <option>高三</option>
-                            </select>
-
                         </li>
-                        <li><label class="size">教授课程：</label>
-                            <select>
-                                <option>语文</option>  <option>数学</option>
-                                <option>英语</option>  <option>地理</option>
-                                <option>历史</option>  <option>政治</option>
-                                <option>生物</option>  <option>物理</option>
-                                <option>化学</option>  <option>基本能力</option>
-                            </select>
+                        <li>
+                            <div style="width:274px;display:inline-block">
+                                <label class="size" >职务：</label>
+                                <select class="spoliticalLandscape" name="politicalLandscape">
+                                    <option value="党员">党员</option>
+                                    <option value="群众">群众</option>
+                                </select>
+                            </div>
                         </li>
-                        <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control" type="text" /></li>
+                        <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control semail" name="email" type="text" /></li>
+                        <label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" />
+                        <label class="size">籍贯：</label><input class="form-control sbirthPlace" type="text" name="birthPlace" />
+                        <label class="size">部门：</label><input class="form-control sDepartment" type="text" name="Department" />
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default size">重置</button>
-                    <button type="submit" class="btn btn_qd" style="color:#fff">添加</button>
+                    <button type="submit" class="btn btn_qd" style="color:#fff" onclick="save()">添加</button>
                 </div>
             </form>
         </div>
@@ -136,58 +112,57 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" style="color:#27AE60">修改教师信息</h4>
             </div>
-            <form class="form-inline">
+            <form class="form-inline update_form" >
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
-                            <label class="size">编号：</label><input class="form-control" type="text" value="20082213232" style="width:128px"/>
-                            <label class="size" style="margin-left:65px">姓名：</label><input class="form-control" value="真实姓名" type="text" style="width:98px" />
+                            <label class="size">编号：</label><input class="form-control id" type="text" name="id" />
+                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text" />
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">性别：</label>
-                                <select>
-                                    <option>男</option>
-                                    <option>女</option>
+                                <select class="sex" name="sex">
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
                                 </select>
                             </div>
                             <label class="size">教育程度：</label>
-                            <select>
-                                <option>本科</option>
-                                <option selected="selected">硕士</option>
-                                <option>博士</option>
+                            <select class="education" name="education">
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
                             </select>
+
+                        </li>
+                        <li>
+                            <div style="width:274px;display:inline-block">
+                                <label class="size" >职务：</label>
+                                <select  class="size title" name="title">
+                                    <option value="讲师">讲师</option>
+                                    <option value="高级教师">高级教师</option>
+                                    <option value="特级教师">特级教师</option>
+                                </select>
+                            </div>
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">职务：</label>
-                                <select>
-                                    <option>讲师</option>
-                                    <option>高级教师</option>
-                                    <option>特级教师</option>
+                                <select class="politicalLandscape" name="politicalLandscape">
+                                    <option value="党员">党员</option>
+                                    <option value="群众">群众</option>
                                 </select>
                             </div>
-                            <label class="size">年级：</label>
-                            <select>
-                                <option>高一</option>
-                                <option>高二</option>
-                                <option>高三</option>
-                            </select>
                         </li>
-                        <li><label class="size">教授课程：</label>
-                            <select>
-                                <option>语文</option>  <option>数学</option>
-                                <option>英语</option>  <option>地理</option>
-                                <option>历史</option>  <option>政治</option>
-                                <option>生物</option>  <option>物理</option>
-                                <option>化学</option><option>基本能力</option>
-                            </select></li>
-                        <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control" type="text" value="wenlilincheng@163.com"/></li>
+                        <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control email" name="email" type="text" /></li>
+                        <label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" />
+                        <label class="size">籍贯：</label><input class="form-control birthPlace" type="text" name="birthPlace" />
+                        <label class="size">部门：</label><input class="form-control Department" type="text" name="Department" />
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default size">重置</button>
-                    <button type="submit" class="btn btn_qd" style="color:#fff">确定</button>
+                    <button type="submit" class="btn btn_qd" style="color:#fff" onclick="update()">确定</button>
                 </div>
             </form>
         </div>
@@ -203,22 +178,161 @@
             </div>
             <div class="modal-footer">
                 <form>
+                    <input type="text" class="del_id">
                     <button class="btn btn-default size" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn_qd" style="color:#fff">确定</button>
+                    <button type="submit" class="btn btn_delqd" style="color:#fff">确定</button>
                 </form>
             </div>
 
         </div>
     </div>
 </div>
+<input type="text" value="${count}" id="count">
 <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://localhost:8080/admin/teacher/getAll",
+            data: {},
+            type: 'POST',
+            success: function (data) {
+                if (data != null) {
+                    $("#list").empty();
+                    $.each(data.data.datas, function (index, item) {
+                        $("#list").append('<tr>');
+                        $("#list").append('<td>' + item.id + '</td>');
+                        $("#list").append('<td>' + item.name + '</td>');
+                        $("#list").append('<td>' + item.sex + '</td>');
+                        $("#list").append('<td>' + item.politicalLandscape + '</td>');
+                        $("#list").append('<td>' + item.idCard + '</td>');
+                        $("#list").append('<td>' + item.birthPlace + '</td>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                        $("#list").append('</tr>');
+                    })
+                }
+            }
+        })
+    })
+
+
     $(".tcdPageCode").createPage({
-        pageCount:6,
-        current:1,
-        backFn:function(p){
-            console.log(p);
+        pageCount: $("#count").val(),
+        current: 1,
+        backFn: function (p) {
+            $.ajax({
+                url: "http://localhost:8080/admin/teacher/getAll",
+                data: {
+                    offset: p
+                },
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $("#list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $("#list").append('<tr>');
+                            $("#list").append('<td>' + item.id + '</td>');
+                            $("#list").append('<td>' + item.name + '</td>');
+                            $("#list").append('<td>' + item.sex + '</td>');
+                            $("#list").append('<td>' + item.politicalLandscape + '</td>');
+                            $("#list").append('<td>' + item.idCard + '</td>');
+                            $("#list").append('<td>' + item.birthPlace + '</td>');
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $("#list").append('</tr>');
+                        })
+                    }
+                }
+            })
         }
-    });
+    })
+
+
+    var updateSelect=function(id){
+        $.ajax({
+            url: "http://localhost:8080/admin/teacher/getOne",
+            data: {
+                id:id,
+            },
+            dateType:"json",
+            type: 'POST',
+            success: function (data) {
+                $(".id").val(data.data.id);
+                $(".name").val(data.data.name)
+                $(".sex").val(data.data.sex);
+                $(".politicalLandscape").val(data.data.politicalLandscape);
+                $(".idCard").val(data.data.idCard);
+                $(".birthPlace").val(data.data.birthPlace);
+                $(".email").val(data.data.email);
+                $(".Department").val(data.data.Department);
+                $(".education").val(data.data.education);
+                $(".title").val(data.data.title);
+            }
+        })
+    };
+    var save=function(){
+        $.ajax({
+            type : 'post',
+            dateType:"json",
+            data:$(".save_form").serialize(),
+            url: "http://localhost:8080/admin/teacher/save",
+            async: false,
+            error : function(data){
+                console.log("保存失败");
+            },
+            success : function(data){
+                if(data.status==200){
+                    alert("保存成功");
+                }
+                else{
+                    alert("保存失败");
+                }
+            },
+        });
+    }
+    var update=function(){
+        $.ajax({
+            type : 'post',
+            dateType:"json",
+            data:$(".update_form").serialize(),
+            url: "http://localhost:8080/admin/teacher/update",
+            async: false,
+            error : function(data){
+                console.log("保存失败");
+            },
+            success : function(data){
+                if(data.status==200){
+                    alert("保存成功");
+                }
+                else{
+                    alert("保存失败");
+                }
+            },
+        });
+    }
+    $(".btn_delqd").click(function(){
+        $.ajax({
+            type : 'post',
+            dateType:"json",
+            data:{"id": $(".del_id").val()},
+            url: "http://localhost:8080/admin/teacher/delete",
+            async: false,
+            error : function(){
+                console.log("删除失败");
+            },
+            success : function(data){
+                if(data.status==200){
+                    alert("删除成功");
+                }
+                else{
+                    alert("删除失败");
+                }
+            },
+        });
+    })
+    var getdelid=function(id){
+        $(".del_id").val(id);
+    }
+
 
 </script>
 </body>

@@ -14,6 +14,11 @@ public class IndexController {
 		return "login/login";
 	}
 
+	@RequestMapping("/stuLef")
+	 public String showstuLef(){
+		return "students/stu_lef";
+	}
+
 	@RequestMapping("/stuTop")
 	public String showstuTop(){
 		return "students/stu_top";
