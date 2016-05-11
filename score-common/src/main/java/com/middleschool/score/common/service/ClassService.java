@@ -11,4 +11,5 @@ import java.util.List;
 
 public interface ClassService {
      List<MsClass> getByRankDeptAndGradeAndName(String name,String rankDept,String grade);
+     MsClass getById(Long id);
 }

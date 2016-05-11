@@ -20,4 +20,9 @@ public class ClassServiceImpl implements ClassService{
     public List<MsClass> getByRankDeptAndGradeAndName(String name, String rankDept, String grade) {
         return msClassMapper.selectByNameAndDeptAndGrade(grade,name,rankDept);
     }
+
+    @Override
+    public MsClass getById(Long id) {
+        return  msClassMapper.selectByPrimaryKey(id);
+    }
 }

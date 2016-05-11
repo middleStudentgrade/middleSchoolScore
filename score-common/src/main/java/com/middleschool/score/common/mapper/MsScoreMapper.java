@@ -22,6 +22,8 @@ public interface MsScoreMapper {
 
     List<MsScore> selectNowScoreByStudentId(Long id);
 
+    List<MsScore> selectAll(@Param("limit")int limit,@Param("offset")int offset);
+
     List<MsScore> selectAllScoreByStudentId(Long id);
 
     int updateByExampleSelective(@Param("record") MsScore record, @Param("example") MsScoreExample example);

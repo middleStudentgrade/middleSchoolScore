@@ -30,4 +30,6 @@ public interface MsTeacherMapper {
     int updateByPrimaryKeySelective(MsTeacher record);
 
     int updateByPrimaryKey(MsTeacher record);
+
+    List<MsTeacher> getTeacher(@Param("teacherContant")String teacherContant);
 }

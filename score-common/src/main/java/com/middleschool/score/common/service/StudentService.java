@@ -14,4 +14,5 @@ public interface StudentService {
     int countStudent();
     int delete(Long id);
     int saveStudent(MsStudent msStudent);
+    List<StudentClass> findStudent(String selectContant);
 }

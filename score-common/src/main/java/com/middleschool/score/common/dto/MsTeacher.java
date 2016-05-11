@@ -23,6 +23,8 @@ public class MsTeacher {
 
     private String title;
 
+    private Integer age;
+
     public Long getId() {
         return id;
     }
@@ -109,5 +111,13 @@ public class MsTeacher {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

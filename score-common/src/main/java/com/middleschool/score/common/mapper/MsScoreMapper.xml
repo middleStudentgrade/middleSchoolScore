@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.middleschool.score.common.dto.MsScore" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="student_id" property="studentId" jdbcType="BIGINT" />
-    <result column="class_id" property="classId" jdbcType="BIGINT" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
     <result column="semester" property="semester" jdbcType="INTEGER" />
     <result column="chinese" property="chinese" jdbcType="DOUBLE" />
     <result column="english" property="english" jdbcType="DOUBLE" />
@@ -17,6 +17,8 @@
     <result column="geography" property="geography" jdbcType="DOUBLE" />
     <result column="biology" property="biology" jdbcType="DOUBLE" />
     <result column="chemical" property="chemical" jdbcType="DOUBLE" />
+    <result column="basic_competencies" property="basicCompetencies" jdbcType="DOUBLE" />
+    <result column="type" property="type" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,8 +79,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, student_id, class_id, semester, chinese, english, math, start_date, end_date, 
-    political, history, physico, geography, biology, chemical
+    id, student_id, class_id, semester, chinese, english, math, start_date, end_date,
+    political, history, physico, geography, biology, chemical, basic_competencies, type
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample" >
     select
@@ -94,22 +96,8 @@
       order by ${orderByClause}
     </if>
   </select>
-<!-- 查询学生当前成绩-->
-  <select id="selectNowScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
-    select
-    <include refid="Base_Column_List" />
-    from ms_score where student_id = #{studentId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date
-  </select>
-
-  <!-- 查询学生所有成绩-->
-  <select id="selectAllScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
-    select
-    *
-    from ms_score where student_id = #{studentId,jdbcType=BIGINT} order by start_date
-  </select>
-
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from ms_score
     where id = #{id,jdbcType=BIGINT}
@@ -125,18 +113,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.middleschool.score.common.dto.MsScore" >
-    insert into ms_score (id, student_id, class_id, 
-      semester, chinese, english, 
-      math, start_date, end_date, 
-      political, history, physico, 
-      geography, biology, chemical
-      )
-    values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, #{classId,jdbcType=BIGINT}, 
-      #{semester,jdbcType=INTEGER}, #{chinese,jdbcType=DOUBLE}, #{english,jdbcType=DOUBLE}, 
-      #{math,jdbcType=DOUBLE}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
-      #{political,jdbcType=DOUBLE}, #{history,jdbcType=DOUBLE}, #{physico,jdbcType=DOUBLE}, 
-      #{geography,jdbcType=DOUBLE}, #{biology,jdbcType=DOUBLE}, #{chemical,jdbcType=DOUBLE}
-      )
+    insert into ms_score (id, student_id, class_id,
+    semester, chinese, english,
+    math, start_date, end_date,
+    political, history, physico,
+    geography, biology, chemical,
+    basic_competencies, type)
+    values (#{id,jdbcType=BIGINT}, #{studentId,jdbcType=BIGINT}, #{classId,jdbcType=INTEGER},
+    #{semester,jdbcType=INTEGER}, #{chinese,jdbcType=DOUBLE}, #{english,jdbcType=DOUBLE},
+    #{math,jdbcType=DOUBLE}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP},
+    #{political,jdbcType=DOUBLE}, #{history,jdbcType=DOUBLE}, #{physico,jdbcType=DOUBLE},
+    #{geography,jdbcType=DOUBLE}, #{biology,jdbcType=DOUBLE}, #{chemical,jdbcType=DOUBLE},
+    #{basicCompetencies,jdbcType=DOUBLE}, #{type,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.middleschool.score.common.dto.MsScore" >
     insert into ms_score
@@ -186,6 +174,12 @@
       <if test="chemical != null" >
         chemical,
       </if>
+      <if test="basicCompetencies != null" >
+        basic_competencies,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -195,7 +189,7 @@
         #{studentId,jdbcType=BIGINT},
       </if>
       <if test="classId != null" >
-        #{classId,jdbcType=BIGINT},
+        #{classId,jdbcType=INTEGER},
       </if>
       <if test="semester != null" >
         #{semester,jdbcType=INTEGER},
@@ -233,24 +227,14 @@
       <if test="chemical != null" >
         #{chemical,jdbcType=DOUBLE},
       </if>
+      <if test="basicCompetencies != null" >
+        #{basicCompetencies,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
-  <select id="selectPassRateByClassId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
-    select *
-    from ms_score  where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date
-  </select>
-  <!-- 查询学生当前排名-->
-  <select id="selectRanking"  parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer">
-    SELECT count(*)
-    FROM (
-    SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
-    FROM ms_score s
-    WHERE  s.class_id=#{classId,jdbcType=BIGINT} and  NOW() BETWEEN s.start_date AND s.end_date)  as a
-    WHERE a.student_zong>(
-    SELECT(s.math + s.english + s.chinese+s.chemical+s.biology+s.geography+s.physico+s.history+s.political) student_zong
-    FROM ms_score s
-    WHERE s.student_id = #{studentId,jdbcType=BIGINT} AND NOW() BETWEEN s.start_date AND s.end_date)
-  </select>
   <select id="countByExample" parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer" >
     select count(*) from ms_score
     <if test="_parameter != null" >
@@ -267,7 +251,7 @@
         student_id = #{record.studentId,jdbcType=BIGINT},
       </if>
       <if test="record.classId != null" >
-        class_id = #{record.classId,jdbcType=BIGINT},
+        class_id = #{record.classId,jdbcType=INTEGER},
       </if>
       <if test="record.semester != null" >
         semester = #{record.semester,jdbcType=INTEGER},
@@ -305,6 +289,12 @@
       <if test="record.chemical != null" >
         chemical = #{record.chemical,jdbcType=DOUBLE},
       </if>
+      <if test="record.basicCompetencies != null" >
+        basic_competencies = #{record.basicCompetencies,jdbcType=DOUBLE},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -313,20 +303,22 @@
   <update id="updateByExample" parameterType="map" >
     update ms_score
     set id = #{record.id,jdbcType=BIGINT},
-      student_id = #{record.studentId,jdbcType=BIGINT},
-      class_id = #{record.classId,jdbcType=BIGINT},
-      semester = #{record.semester,jdbcType=INTEGER},
-      chinese = #{record.chinese,jdbcType=DOUBLE},
-      english = #{record.english,jdbcType=DOUBLE},
-      math = #{record.math,jdbcType=DOUBLE},
-      start_date = #{record.startDate,jdbcType=TIMESTAMP},
-      end_date = #{record.endDate,jdbcType=TIMESTAMP},
-      political = #{record.political,jdbcType=DOUBLE},
-      history = #{record.history,jdbcType=DOUBLE},
-      physico = #{record.physico,jdbcType=DOUBLE},
-      geography = #{record.geography,jdbcType=DOUBLE},
-      biology = #{record.biology,jdbcType=DOUBLE},
-      chemical = #{record.chemical,jdbcType=DOUBLE}
+    student_id = #{record.studentId,jdbcType=BIGINT},
+    class_id = #{record.classId,jdbcType=INTEGER},
+    semester = #{record.semester,jdbcType=INTEGER},
+    chinese = #{record.chinese,jdbcType=DOUBLE},
+    english = #{record.english,jdbcType=DOUBLE},
+    math = #{record.math,jdbcType=DOUBLE},
+    start_date = #{record.startDate,jdbcType=TIMESTAMP},
+    end_date = #{record.endDate,jdbcType=TIMESTAMP},
+    political = #{record.political,jdbcType=DOUBLE},
+    history = #{record.history,jdbcType=DOUBLE},
+    physico = #{record.physico,jdbcType=DOUBLE},
+    geography = #{record.geography,jdbcType=DOUBLE},
+    biology = #{record.biology,jdbcType=DOUBLE},
+    chemical = #{record.chemical,jdbcType=DOUBLE},
+    basic_competencies = #{record.basicCompetencies,jdbcType=DOUBLE},
+    type = #{record.type,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -338,7 +330,7 @@
         student_id = #{studentId,jdbcType=BIGINT},
       </if>
       <if test="classId != null" >
-        class_id = #{classId,jdbcType=BIGINT},
+        class_id = #{classId,jdbcType=INTEGER},
       </if>
       <if test="semester != null" >
         semester = #{semester,jdbcType=INTEGER},
@@ -376,13 +368,19 @@
       <if test="chemical != null" >
         chemical = #{chemical,jdbcType=DOUBLE},
       </if>
+      <if test="basicCompetencies != null" >
+        basic_competencies = #{basicCompetencies,jdbcType=DOUBLE},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.middleschool.score.common.dto.MsScore" >
     update ms_score
     set student_id = #{studentId,jdbcType=BIGINT},
-      class_id = #{classId,jdbcType=BIGINT},
+      class_id = #{classId,jdbcType=INTEGER},
       semester = #{semester,jdbcType=INTEGER},
       chinese = #{chinese,jdbcType=DOUBLE},
       english = #{english,jdbcType=DOUBLE},
@@ -394,7 +392,46 @@
       physico = #{physico,jdbcType=DOUBLE},
       geography = #{geography,jdbcType=DOUBLE},
       biology = #{biology,jdbcType=DOUBLE},
-      chemical = #{chemical,jdbcType=DOUBLE}
+      chemical = #{chemical,jdbcType=DOUBLE},
+      basic_competencies = #{basicCompetencies,jdbcType=DOUBLE},
+      type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="selectPassRateByClassId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select *
+    from ms_score  where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date
+  </select>
+  <!-- 查询学生当前排名-->
+  <select id="selectRanking"  parameterType="com.middleschool.score.common.dto.MsScoreExample" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM (
+    SELECT(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biology+s.geography+s.physico+s.history+s.political) student_zong
+    FROM ms_score s
+    WHERE  s.class_id=#{classId,jdbcType=BIGINT} and  NOW() BETWEEN s.start_date AND s.end_date)  as a
+    WHERE a.student_zong>(
+    SELECT(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biology+s.geography+s.physico+s.history+s.political) student_zong
+    FROM ms_score s
+    WHERE s.student_id = #{studentId,jdbcType=BIGINT} AND NOW() BETWEEN s.start_date AND s.end_date)
+  </select>
+
+  <!-- 查询学生当前成绩-->
+  <select id="selectNowScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    <include refid="Base_Column_List" />
+    from ms_score where student_id = #{studentId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date
+  </select>
+
+  <!-- 查询学生所有成绩-->
+  <select id="selectAllScoreByStudentId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    *
+    from ms_score where student_id = #{studentId,jdbcType=BIGINT} order by start_date
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    *
+    from ms_score limit #{limit ,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+  </select>
 </mapper>

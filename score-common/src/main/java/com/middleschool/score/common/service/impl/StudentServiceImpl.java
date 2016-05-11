@@ -59,4 +59,9 @@ public class StudentServiceImpl implements StudentService {
     public int saveStudent(MsStudent msStudent) {
        return  msStudentMapper.insertSelective(msStudent);
     }
+
+    @Override
+    public List<StudentClass> findStudent(String selectContant) {
+        return studentClassMapper.selectStudent(selectContant);
+    }
 }

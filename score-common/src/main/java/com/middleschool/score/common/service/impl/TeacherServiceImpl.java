@@ -50,4 +50,9 @@ public class TeacherServiceImpl implements TeacherService {
     public List<MsTeacher> findAll(int limit, int offset) {
         return msTeacherMapper.selectAll(limit,offset);
     }
+
+    @Override
+    public List<MsTeacher> findTeacher(String name) {
+        return msTeacherMapper.getTeacher(name);
+    }
 }

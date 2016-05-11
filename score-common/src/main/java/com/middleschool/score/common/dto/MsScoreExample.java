@@ -235,52 +235,52 @@ public class MsScoreExample {
             return (Criteria) this;
         }
 
-        public Criteria andClassIdEqualTo(Long value) {
+        public Criteria andClassIdEqualTo(Integer value) {
             addCriterion("class_id =", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdNotEqualTo(Long value) {
+        public Criteria andClassIdNotEqualTo(Integer value) {
             addCriterion("class_id <>", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdGreaterThan(Long value) {
+        public Criteria andClassIdGreaterThan(Integer value) {
             addCriterion("class_id >", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andClassIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("class_id >=", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdLessThan(Long value) {
+        public Criteria andClassIdLessThan(Integer value) {
             addCriterion("class_id <", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdLessThanOrEqualTo(Long value) {
+        public Criteria andClassIdLessThanOrEqualTo(Integer value) {
             addCriterion("class_id <=", value, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdIn(List<Long> values) {
+        public Criteria andClassIdIn(List<Integer> values) {
             addCriterion("class_id in", values, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdNotIn(List<Long> values) {
+        public Criteria andClassIdNotIn(List<Integer> values) {
             addCriterion("class_id not in", values, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdBetween(Long value1, Long value2) {
+        public Criteria andClassIdBetween(Integer value1, Integer value2) {
             addCriterion("class_id between", value1, value2, "classId");
             return (Criteria) this;
         }
 
-        public Criteria andClassIdNotBetween(Long value1, Long value2) {
+        public Criteria andClassIdNotBetween(Integer value1, Integer value2) {
             addCriterion("class_id not between", value1, value2, "classId");
             return (Criteria) this;
         }
@@ -1002,6 +1002,126 @@ public class MsScoreExample {
 
         public Criteria andChemicalNotBetween(Double value1, Double value2) {
             addCriterion("chemical not between", value1, value2, "chemical");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesIsNull() {
+            addCriterion("basic_competencies is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesIsNotNull() {
+            addCriterion("basic_competencies is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesEqualTo(Double value) {
+            addCriterion("basic_competencies =", value, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesNotEqualTo(Double value) {
+            addCriterion("basic_competencies <>", value, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesGreaterThan(Double value) {
+            addCriterion("basic_competencies >", value, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesGreaterThanOrEqualTo(Double value) {
+            addCriterion("basic_competencies >=", value, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesLessThan(Double value) {
+            addCriterion("basic_competencies <", value, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesLessThanOrEqualTo(Double value) {
+            addCriterion("basic_competencies <=", value, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesIn(List<Double> values) {
+            addCriterion("basic_competencies in", values, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesNotIn(List<Double> values) {
+            addCriterion("basic_competencies not in", values, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesBetween(Double value1, Double value2) {
+            addCriterion("basic_competencies between", value1, value2, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andBasicCompetenciesNotBetween(Double value1, Double value2) {
+            addCriterion("basic_competencies not between", value1, value2, "basicCompetencies");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeEqualTo(Integer value) {
+            addCriterion("type =", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotEqualTo(Integer value) {
+            addCriterion("type <>", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThan(Integer value) {
+            addCriterion("type >", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("type >=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThan(Integer value) {
+            addCriterion("type <", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("type <=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<Integer> values) {
+            addCriterion("type in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotIn(List<Integer> values) {
+            addCriterion("type not in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
+            addCriterion("type between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
     }

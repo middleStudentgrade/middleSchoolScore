@@ -17,11 +17,11 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 
 /*折叠菜单*/
 .ad_lf{margin-top:50px;width:270px;height:458px;padding:20px 10px;border:2px solid #e5e3da;float:right;margin-right:30px;border-radius:5px;}
-.subNav{cursor:pointer;font-size:17px;line-height:40px;padding-left:8px;background:url(../images/jiantou1.jpg) no-repeat;background-position:95% 50%;}
+.subNav{cursor:pointer;font-size:17px;line-height:40px;padding-left:8px;background:url(../img/jiantou1.jpg) no-repeat;background-position:95% 50%;}
 .subNav p{background:#dfdfdf;width:230px;opacity:0.6;padding-left:10px;border-radius:5px;}
 .subNav:hover{color:#27AE60;}
 .currentDd{color:#555;}
-.currentDt{background-image:url(../images/jiantou.jpg);}
+.currentDt{background-image:url(../img/jiantou.jpg);}
 .navCon{display: none;}
 .navCon li{margin-top:10px;margin-left:40px;color:#333;font-size:16px;}
 .navCon li a{color:#555;font-size:15px;font-weight:bold;}

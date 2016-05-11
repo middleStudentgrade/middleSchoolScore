@@ -20,6 +20,8 @@
 <div class="ad_rt">
     <div style="margin:30px 30px 20px;">
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">添加学生信息</button>
+        <input type="text" class="studentContant" />
+        <button type="submit" class="btn selectStudent" style="color:#fff">查询</button>
     </div>
 
     <table class="panel panel-info s_xx">
@@ -275,7 +277,39 @@
         }
     })
 
-
+    $(".selectStudent").click(function(){
+        $.ajax({
+            url: "http://localhost:8080/admin/student/getStudent",
+            data: {
+                name:$(".studentContant").val(),
+            },
+            type: 'POST',
+            dateType:"json",
+            async: false,
+            success: function (data) {
+                if (data != null) {
+                    $("#list").empty();
+                    $(".tcdPageCode").empty();
+                    $("#count").val(data.data.num);
+                    $.each(data.data.datas, function (index, item) {
+                        $("#list").append('<tr>');
+                        $("#list").append('<td>' + item.id + '</td>');
+                        $("#list").append('<td>' + item.name + '</td>');
+                        $("#list").append('<td>' + item.sex + '</td>');
+                        $("#list").append('<td>' + item.className + item.grade + '班</td>');
+                        $("#list").append('<td>' + item.sex + '</td>');
+                        $("#list").append('<td>' + item.datesAttendance + '</td>');
+                        $("#list").append('<td>' + item.politicalLandscape + '</td>');
+                        $("#list").append('<td>' + item.idCard + '</td>');
+                        $("#list").append('<td>' + item.birthPlace + '</td>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
+                        $("#list").append('</tr>');
+                    })
+                }
+            }
+        })
+    })
     var updateSelect=function(id){
         $.ajax({
             url: "http://localhost:8080/admin/student/getOne",

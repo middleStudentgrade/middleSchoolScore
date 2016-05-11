@@ -35,7 +35,7 @@ public class ScoreServiceImpl implements ScoreService{
     private MsSchoolmasterMapper msSchoolmasterMapper;
     @Override
     public MsScore getScoreById(Long id) {
-        return null;
+        return msScoreMapper.selectByPrimaryKey(id);
     }
 
     private String getClass(int i){
@@ -130,6 +130,37 @@ public class ScoreServiceImpl implements ScoreService{
         MsScoreExample msScoreExample=new MsScoreExample();
         MsScoreExample.Criteria criteria=msScoreExample.createCriteria();
         return msScoreMapper.countByExample(msScoreExample);
+    }
+
+    @Override
+    public int delete(Long id) {
+        return msScoreMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateScore(MsScore msScore) {
+      msScoreMapper.updateByPrimaryKeySelective(msScore);
+    }
+    @Override
+    public List<MsScore> findAll(int limit, int offset) {
+        return msScoreMapper.selectAll(limit,offset);
+    }
+
+    @Override
+    public int deleteByStudentId(Long id) {
+        MsScoreExample msScoreExample=new MsScoreExample();
+        MsScoreExample.Criteria criteria=msScoreExample.createCriteria();
+        criteria.andStudentIdEqualTo(id);
+        return msScoreMapper.deleteByExample(msScoreExample);
+    }
+
+    @Override
+    public List<MsScore> findScore(String id) {
+        MsScoreExample msScoreExample=new MsScoreExample();
+        MsScoreExample.Criteria criteria=msScoreExample.createCriteria();
+        criteria.andStudentIdEqualTo(Long.parseLong(id));
+        return msScoreMapper.selectByExample(msScoreExample);
+
     }
 
 }

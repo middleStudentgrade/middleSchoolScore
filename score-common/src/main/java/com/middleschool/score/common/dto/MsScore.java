@@ -7,7 +7,7 @@ public class MsScore {
 
     private Long studentId;
 
-    private Long classId;
+    private Integer classId;
 
     private Integer semester;
 
@@ -33,6 +33,10 @@ public class MsScore {
 
     private Double chemical;
 
+    private Double basicCompetencies;
+
+    private Integer type;
+
     public Long getId() {
         return id;
     }
@@ -49,11 +53,11 @@ public class MsScore {
         this.studentId = studentId;
     }
 
-    public Long getClassId() {
+    public Integer getClassId() {
         return classId;
     }
 
-    public void setClassId(Long classId) {
+    public void setClassId(Integer classId) {
         this.classId = classId;
     }
 
@@ -151,5 +155,21 @@ public class MsScore {
 
     public void setChemical(Double chemical) {
         this.chemical = chemical;
+    }
+
+    public Double getBasicCompetencies() {
+        return basicCompetencies;
+    }
+
+    public void setBasicCompetencies(Double basicCompetencies) {
+        this.basicCompetencies = basicCompetencies;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

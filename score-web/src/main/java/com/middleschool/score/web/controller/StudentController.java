@@ -76,7 +76,7 @@ public class StudentController {
     public String getNowScore(@RequestParam Long id, Model model){
         try{
             MsScore msScore =scoreService.selectNowScoreByStudentId(id).get(0);
-            int ranking=scoreService.selectRanking(id,msScore.getClassId())+1;
+            int ranking=scoreService.selectRanking(id,(long)msScore.getClassId())+1;
             model.addAttribute("nowScore",msScore);
             model.addAttribute("ranking",ranking);
             return "students/stu_ncj";

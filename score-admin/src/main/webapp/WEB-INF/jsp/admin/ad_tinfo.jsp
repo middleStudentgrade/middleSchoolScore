@@ -19,12 +19,9 @@
 
 <div class="ad_rt">
     <div style="margin:30px 30px 20px;">
-
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">添加教师信息</button>
-        <form style="display:inline-block">
-            <input type="text" class="form-control cz_js" placeholder="请输入教师编号"/>
-            <button type="submit" class="btn btn_qd" style="color:#fff">查找</button>
-        </form>
+            <input type="text" class="form-control teaId" placeholder="请输入教师编号或者教师名"/>
+            <button type="submit" class="btn selectTeacher" style="color:#fff">查询</button>
     </div>
 
     <table class="panel panel-info s_xx">
@@ -36,7 +33,6 @@
         <td style="width:16%;">身份证号</td>
         <td style="width:18%;">籍贯</td>
         </thead>
-        <div class="clear"></div>
         <tbody id="list"></tbody>
     </table>
     <div class="tcdPageCode"></div>
@@ -269,6 +265,8 @@
             }
         })
     };
+
+
     var save=function(){
         $.ajax({
             type : 'post',
@@ -289,6 +287,38 @@
             },
         });
     }
+
+
+    $(".selectTeacher").click(function(){
+        $.ajax({
+            url: "http://localhost:8080/admin/teacher/getTeacher",
+            data: {
+                name:$(".teaId").val(),
+            },
+            type: 'POST',
+            dateType:"json",
+            async: false,
+            success: function (data) {
+
+               if (data != null) {
+                $("#list").empty();
+                $(".tcdPageCode").empty();
+                    $.each(data.data.datas, function (index, item) {
+                        $("#list").append('<tr>');
+                        $("#list").append('<td>' + item.id + '</td>');
+                        $("#list").append('<td>' + item.name + '</td>');
+                        $("#list").append('<td>' + item.sex + '</td>');
+                        $("#list").append('<td>' + item.politicalLandscape + '</td>');
+                        $("#list").append('<td>' + item.idCard + '</td>');
+                        $("#list").append('<td>' + item.birthPlace + '</td>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                        $("#list").append('</tr>');
+                    })
+                }
+            }
+        })
+    })
     var update=function(){
         $.ajax({
             type : 'post',

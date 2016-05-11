@@ -68,7 +68,23 @@ public class TeacherController {
             return ResponseResult.build(500, "更新失败");
         }
     }
-
+    @RequestMapping("getTeacher")
+    @ResponseBody
+    public ResponseResult getStudent(@RequestParam(value = "name")String name){
+        try {
+            Page page = new Page();
+            List<MsTeacher> teacher = teacherService.findTeacher(name);
+            page.setDatas(teacher);
+            int count=teacher.size();
+            int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+            count=count%pageSize==0?count/pageSize:count/pageSize+1;
+            page.setNum(count);
+            return ResponseResult.ok(page);
+        }catch (Exception e){
+            LOG.error("获取学生信息失败{}",e.getMessage());
+            return ResponseResult.build(500,"获取学生信息失败");
+        }
+    }
     @RequestMapping(value = "save")
     @ResponseBody
     public ResponseResult save(MsTeacher msTeacher){

@@ -7,6 +7,7 @@ import com.middleschool.score.common.dto.StudentClass;
 import com.middleschool.score.common.pojo.Page;
 import com.middleschool.score.common.pojo.ResponseResult;
 import com.middleschool.score.common.service.ClassService;
+import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentNowService;
 import com.middleschool.score.common.service.StudentService;
 import com.middleschool.score.common.utils.JsonUtils;
@@ -40,6 +41,9 @@ public class StudentController {
     @Autowired
     private StudentNowService studentNowService;
 
+    @Autowired
+    private ScoreService scoreService;
+
     @RequestMapping("getAll")
     @ResponseBody
     public ResponseResult getAll(@RequestParam(value = "offset",defaultValue = "1")int offset){
@@ -48,8 +52,6 @@ public class StudentController {
             Page page = new Page();
             List<StudentClass> msStudents = studentService.findAll(limit, (offset-1)*limit);
             page.setDatas(msStudents);
-            int count = studentService.countStudent();
-            page.setNum(count);
             return ResponseResult.ok(page);
         }catch (Exception e){
             LOG.error("获取学生信息失败{}",e.getMessage());
@@ -59,11 +61,10 @@ public class StudentController {
 
     @RequestMapping("getOne")
     @ResponseBody
-    public ResponseResult getOne(@RequestParam(value = "id")Long id,Model model){
+    public ResponseResult getOne(@RequestParam(value = "id")Long id){
         try {
             List<StudentClass> msStudents = studentService.findOne(id);
             if(msStudents.size()!=0) {
-                model.addAttribute("student",msStudents.get(0));
                 return ResponseResult.ok(msStudents.get(0));
             }
             return ResponseResult.build(500,"获取学生信息失败");
@@ -72,6 +73,25 @@ public class StudentController {
             return ResponseResult.build(500,"获取学生信息失败");
         }
     }
+
+    @RequestMapping("getStudent")
+    @ResponseBody
+    public ResponseResult getStudent(@RequestParam(value = "name")String name,Model model){
+        try {
+            Page page = new Page();
+            List<StudentClass> msStudents = studentService.findStudent(name);
+            page.setDatas(msStudents);
+            int count=msStudents.size();
+            int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+            count=count%pageSize==0?count/pageSize:count/pageSize+1;
+            page.setNum(count);
+                return ResponseResult.ok(page);
+        }catch (Exception e){
+            LOG.error("获取学生信息失败{}",e.getMessage());
+            return ResponseResult.build(500,"获取学生信息失败");
+        }
+    }
+
     @RequestMapping(value = "update")
     @ResponseBody
     public ResponseResult update(StudentClass studentClass){
@@ -120,6 +140,7 @@ public class StudentController {
         try {
             studentService.delete(id);
             studentNowService.deleteByStudentId(id);
+            scoreService.deleteByStudentId(id);
             return ResponseResult.ok();
         }catch (Exception e){
             LOG.error("更新失败{}",e.getMessage());
