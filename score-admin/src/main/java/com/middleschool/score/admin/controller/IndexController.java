@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -64,12 +65,17 @@ public class IndexController {
 		return "admin/ad_tinfo";
 	}
 	@RequestMapping("adScore")
-	public String adScore(Model model){
-		int count = scoreService.countScore();
+	public String adScore(Model model,@RequestParam(value = "grade",defaultValue = "1")int grade,@RequestParam(value = "className",defaultValue = "高一")String className){
+		int count = scoreService.countScore(grade,className);
 		int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
 		count=count%pageSize==0?count/pageSize:count/pageSize+1;
 		model.addAttribute("count",count);
+		model.addAttribute("grade",grade);
+		model.addAttribute("className",className);
 		return "admin/ad_score";
 	}
+
+
+
 	
 }

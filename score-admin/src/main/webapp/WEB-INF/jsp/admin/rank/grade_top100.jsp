@@ -37,211 +37,136 @@
     </div>
     <!--高一总成绩前100-->
     <div id="gra1" >
-        <div class="panel panel-info s_xx">
-            <ul class="panel-heading size" style="padding:10px 16px 42px 5px;">
-                <li>名次</li>
-                <li style="width:10%;">学号</li>
-                <li style="width:7%;">姓名</li>
-                <li style="width:8%;">班级</li>
-                <li>语文</li>
-                <li>数学</li>
-                <li>英语</li>
-                <li>物理</li>
-                <li style="width: 7%">生物</li>
-                <li>化学</li>
-                <li>历史</li>
-                <li>地理</li>
-                <li>政治</li>
-                <li style="width:8%;">基本能力</li>
-                <li>总分</li>
-            </ul>
+        <table class="panel panel-info s_xx">
+            <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+            <td>学号</td>
+            <td >姓名</td>
+            <td>班级</td>
+            <td>学期</td>
+            <td>数学</td>
+            <td >语文</td>
+            <td >英语</td>
+            <td >历史</td>
+            <td >地理</td>
+            <td >政治</td>
+            <td >物理</td>
+            <td >化学</td>
+            <td >生物</td>
+            <td >基本能力</td>
+            </thead>
             <div class="clear"></div>
-            <foreach>
-                <ul>
-                    <li>1</li>
-                    <li style="width:10%;">20082213232</li>
-                    <li style="width:7%;">姓名姓</li>
-                    <li style="width:8%;">十一班</li>
-
-                    <li>90</li>
-                    <li>100</li>
-                    <li>100</li>
-                    <li style="width:5%;">90</li>
-                    <li style="width:7%;">99</li>
-                    <li>100</li>
-                    <li>80</li>
-                    <li>88</li>
-                    <li>90</li>
-                    <li>50</li>
-                    <li style="width:9%;">887</li>
-                </ul>
-                <div class="clear"></div>
-                <div style="border-top:1px solid #e5e3da"></div>
-            </foreach>
+            <tbody class="list"></tbody>
+        </table>
+        <div class="tcdPageCode">
 
         </div>
-        <div class="tcdPageCode"></div>
     </div>
     <!--高二文科总成绩前100-->
     <div id="gra2_art" class="panel panel-info s_xx">
-        <div>
-            <ul class="panel-heading size" style="padding:10px 16px 42px 5px;">
-                <li>名次</li>
-                <li style="width:10%;">学号</li>
-                <li>姓名</li>
-                <li >班级</li>
-                <li>语文</li>
-                <li>数学</li>
-                <li>英语</li>
-                <li>历史</li>
-                <li>地理</li>
-                <li>政治</li>
-                <li >基本能力</li>
-                <li>总分</li>
-            </ul>
+        <table class="panel panel-info s_xx">
+            <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+            <td>学号</td>
+            <td >姓名</td>
+            <td>班级</td>
+            <td>学期</td>
+            <td>数学</td>
+            <td >语文</td>
+            <td >英语</td>
+            <td >历史</td>
+            <td >地理</td>
+            <td >政治</td>
+            <td >物理</td>
+            <td >化学</td>
+            <td >生物</td>
+            <td >基本能力</td>
+            </thead>
             <div class="clear"></div>
-            <foreach>
-                <ul>
-                    <li>1</li>
-                    <li style="width:10%;">20082213232</li>
-                    <li >姓名姓</li>
-                    <li >五班</li>
-                    <li>90</li>
-                    <li style="width:7%;">100</li>
-                    <li>100</li>
-                    <li>80</li>
-                    <li>88</li>
-                    <li>90</li>
-                    <li>50</li>
-                    <li >887</li>
-                </ul>
-                <div class="clear"></div>
-                <div style="border-top:1px solid #e5e3da"></div>
-            </foreach>
+            <tbody class="list"></tbody>
+        </table>
+        <div class="tcdPageCode">
+
+
         </div>
-        <div class="tcdPageCode"></div>
     </div>
     <!--高二理科总成绩前100-->
     <div id="gra2_sci" class="panel panel-info s_xx">
-        <div>
-            <ul class="panel-heading size" style="padding:10px 16px 42px 5px;">
-                <li>名次</li>
-                <li style="width:10%;">学号</li>
-                <li>姓名</li>
-                <li >班级</li>
-                <li>语文</li>
-                <li>数学</li>
-                <li>英语</li>
-                <li>物理</li>
-                <li>化学</li>
-                <li>生物</li>
-                <li >基本能力</li>
-                <li>总分</li>
-            </ul>
+        <table class="panel panel-info s_xx">
+            <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+            <td>学号</td>
+            <td >姓名</td>
+            <td>班级</td>
+            <td>学期</td>
+            <td>数学</td>
+            <td >语文</td>
+            <td >英语</td>
+            <td >历史</td>
+            <td >地理</td>
+            <td >政治</td>
+            <td >物理</td>
+            <td >化学</td>
+            <td >生物</td>
+            <td >基本能力</td>
+            </thead>
             <div class="clear"></div>
-            <foreach>
-                <ul>
-                    <li>1</li>
-                    <li style="width:10%;">20082213232</li>
-                    <li >姓名姓</li>
-                    <li >五班</li>
-                    <li>90</li>
-                    <li style="width:7%;">100</li>
-                    <li>100</li>
-                    <li>80</li>
-                    <li>88</li>
-                    <li>90</li>
-                    <li>50</li>
-                    <li >887</li>
-                </ul>
-                <div class="clear"></div>
-                <div style="border-top:1px solid #e5e3da"></div>
-            </foreach>
+            <tbody class="list"></tbody>
+        </table>
+        <div class="tcdPageCode">
+
         </div>
-        <div class="tcdPageCode"></div>
     </div>
     <!--高三文科总成绩前100-->
     <div id="gra3_art" class="panel panel-info s_xx">
-        <div>
-            <ul class="panel-heading size" style="padding:10px 16px 42px 5px;">
-                <li>名次</li>
-                <li style="width:10%;">学号</li>
-                <li>姓名</li>
-                <li >班级</li>
-                <li>语文</li>
-                <li>数学</li>
-                <li>英语</li>
-                <li>历史</li>
-                <li>地理</li>
-                <li>政治</li>
-                <li >基本能力</li>
-                <li>总分</li>
-            </ul>
+        <table class="panel panel-info s_xx">
+            <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+            <td>学号</td>
+            <td >姓名</td>
+            <td>班级</td>
+            <td>学期</td>
+            <td>数学</td>
+            <td >语文</td>
+            <td >英语</td>
+            <td >历史</td>
+            <td >地理</td>
+            <td >政治</td>
+            <td >物理</td>
+            <td >化学</td>
+            <td >生物</td>
+            <td >基本能力</td>
+            </thead>
             <div class="clear"></div>
-            <foreach>
-                <ul>
-                    <li>1</li>
-                    <li style="width:10%;">20082213232</li>
-                    <li >姓名姓</li>
-                    <li >五班</li>
-                    <li>90</li>
-                    <li style="width:7%;">100</li>
-                    <li>100</li>
-                    <li>80</li>
-                    <li>88</li>
-                    <li>90</li>
-                    <li>50</li>
-                    <li >887</li>
-                </ul>
-                <div class="clear"></div>
-                <div style="border-top:1px solid #e5e3da"></div>
-            </foreach>
+            <tbody class="list"></tbody>
+        </table>
+        <div class="tcdPageCode">
+
         </div>
-        <div class="tcdPageCode"></div>
-    </div>
     <!--高三理科总成绩前100-->
     <div id="gra3_sci" class="panel panel-info s_xx">
-        <div>
-            <ul class="panel-heading size" style="padding:10px 16px 42px 5px;">
-                <li>名次</li>
-                <li style="width:10%;">学号</li>
-                <li>姓名</li>
-                <li >班级</li>
-                <li>语文</li>
-                <li>数学</li>
-                <li>英语</li>
-                <li>物理</li>
-                <li>化学</li>
-                <li>生物</li>
-                <li >基本能力</li>
-                <li>总分</li>
-            </ul>
+        <table class="panel panel-info s_xx">
+            <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+            <td>学号</td>
+            <td >姓名</td>
+            <td>班级</td>
+            <td>学期</td>
+            <td>数学</td>
+            <td >语文</td>
+            <td >英语</td>
+            <td >历史</td>
+            <td >地理</td>
+            <td >政治</td>
+            <td >物理</td>
+            <td >化学</td>
+            <td >生物</td>
+            <td >基本能力</td>
+            </thead>
             <div class="clear"></div>
-            <foreach>
-                <ul>
-                    <li>1</li>
-                    <li style="width:10%;">20082213232</li>
-                    <li >姓名姓</li>
-                    <li >五班</li>
-                    <li>90</li>
-                    <li style="width:7%;">100</li>
-                    <li>100</li>
-                    <li>80</li>
-                    <li>88</li>
-                    <li>90</li>
-                    <li>50</li>
-                    <li >887</li>
-                </ul>
-                <div class="clear"></div>
-                <div style="border-top:1px solid #e5e3da"></div>
-            </foreach>
+            <tbody class="list"></tbody>
+        </table>
+        <div class="tcdPageCode">
         </div>
-        <div class="tcdPageCode"></div>
-    </div>
 </div>
 
-
-
+</div>
+</div>
 <script>
     $(function(){
         $("#grade1").click(function(){
@@ -254,6 +179,38 @@
             $("#gra2_sci").hide();
             $("#gra3_art").hide();
             $("#gra3_sci").hide();
+            $.ajax({
+                url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
+                data: {id:1},
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $(".list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $(".list").append('<tr>');
+                            $(".list").append('<td>' + item.studentId + '</td>');
+                            $(".list").append('<td>' + item.name + '</td>');
+                            $(".list").append('<td>' + item.className + '</td>');
+                            $(".list").append('<td>' + item.term + '</td>');
+                            $(".list").append('<td>' + item.chinese + '</td>');
+                            $(".list").append('<td>' + item.math + '</td>');
+                            $(".list").append('<td>' + item.english + '</td>');
+                            $(".list").append('<td>' + item.physico + '</td>');
+                            $(".list").append('<td>' + item.chemical + '</td>');
+                            $(".list").append('<td>' + item.biology + '</td>');
+                            $(".list").append('<td>' + item.history + '</td>');
+                            $(".list").append('<td>' + item.geography + '</td>');
+                            $(".list").append('<td>' + item.political + '</td>');
+                            $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $(".list").append('</tr>');
+                        })
+                    }
+                }
+            })
+
+
         });
         $("#grade2_art").click(function(){
             $("#grade1").removeClass("crs_click");
@@ -266,6 +223,36 @@
             $("#gra2_sci").hide();
             $("#gra3_art").hide();
             $("#gra3_sci").hide();
+            $.ajax({
+                url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
+                data: {id:2},
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $(".list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $(".list").append('<tr>');
+                            $(".list").append('<td>' + item.studentId + '</td>');
+                            $(".list").append('<td>' + item.name + '</td>');
+                            $(".list").append('<td>' + item.className + '</td>');
+                            $(".list").append('<td>' + item.term + '</td>');
+                            $(".list").append('<td>' + item.chinese + '</td>');
+                            $(".list").append('<td>' + item.math + '</td>');
+                            $(".list").append('<td>' + item.english + '</td>');
+                            $(".list").append('<td>' + item.physico + '</td>');
+                            $(".list").append('<td>' + item.chemical + '</td>');
+                            $(".list").append('<td>' + item.biology + '</td>');
+                            $(".list").append('<td>' + item.history + '</td>');
+                            $(".list").append('<td>' + item.geography + '</td>');
+                            $(".list").append('<td>' + item.political + '</td>');
+                            $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $(".list").append('</tr>');
+                        })
+                    }
+                }
+            })
         });
         $("#grade2_sci").click(function(){
             $("#grade1").removeClass("crs_click");
@@ -278,6 +265,36 @@
             $("#gra2_sci").show();
             $("#gra3_art").hide();
             $("#gra3_sci").hide();
+            $.ajax({
+                url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
+                data: {id:3},
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $(".list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $(".list").append('<tr>');
+                            $(".list").append('<td>' + item.studentId + '</td>');
+                            $(".list").append('<td>' + item.name + '</td>');
+                            $(".list").append('<td>' + item.className + '</td>');
+                            $(".list").append('<td>' + item.term + '</td>');
+                            $(".list").append('<td>' + item.chinese + '</td>');
+                            $(".list").append('<td>' + item.math + '</td>');
+                            $(".list").append('<td>' + item.english + '</td>');
+                            $(".list").append('<td>' + item.physico + '</td>');
+                            $(".list").append('<td>' + item.chemical + '</td>');
+                            $(".list").append('<td>' + item.biology + '</td>');
+                            $(".list").append('<td>' + item.history + '</td>');
+                            $(".list").append('<td>' + item.geography + '</td>');
+                            $(".list").append('<td>' + item.political + '</td>');
+                            $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $(".list").append('</tr>');
+                        })
+                    }
+                }
+            })
         });
         $("#grade3_art").click(function(){
             $("#grade2").removeClass("crs_click");
@@ -290,6 +307,36 @@
             $("#gra2_sci").hide();
             $("#gra3_art").show();
             $("#gra3_sci").hide();
+            $.ajax({
+                url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
+                data: {id:4},
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $(".list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $(".list").append('<tr>');
+                            $(".list").append('<td>' + item.studentId + '</td>');
+                            $(".list").append('<td>' + item.name + '</td>');
+                            $(".list").append('<td>' + item.className + '</td>');
+                            $(".list").append('<td>' + item.term + '</td>');
+                            $(".list").append('<td>' + item.chinese + '</td>');
+                            $(".list").append('<td>' + item.math + '</td>');
+                            $(".list").append('<td>' + item.english + '</td>');
+                            $(".list").append('<td>' + item.physico + '</td>');
+                            $(".list").append('<td>' + item.chemical + '</td>');
+                            $(".list").append('<td>' + item.biology + '</td>');
+                            $(".list").append('<td>' + item.history + '</td>');
+                            $(".list").append('<td>' + item.geography + '</td>');
+                            $(".list").append('<td>' + item.political + '</td>');
+                            $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $(".list").append('</tr>');
+                        })
+                    }
+                }
+            })
         });
         $("#grade3_sci").click(function(){
             $("#grade2").removeClass("crs_click");
@@ -302,8 +349,76 @@
             $("#gra2_sci").hide();
             $("#gra3_art").hide();
             $("#gra3_sci").show();
+            $.ajax({
+                url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
+                data: {id:5},
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $(".list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $(".list").append('<tr>');
+                            $(".list").append('<td>' + item.studentId + '</td>');
+                            $(".list").append('<td>' + item.name + '</td>');
+                            $(".list").append('<td>' + item.className + '</td>');
+                            $(".list").append('<td>' + item.term + '</td>');
+                            $(".list").append('<td>' + item.chinese + '</td>');
+                            $(".list").append('<td>' + item.math + '</td>');
+                            $(".list").append('<td>' + item.english + '</td>');
+                            $(".list").append('<td>' + item.physico + '</td>');
+                            $(".list").append('<td>' + item.chemical + '</td>');
+                            $(".list").append('<td>' + item.biology + '</td>');
+                            $(".list").append('<td>' + item.history + '</td>');
+                            $(".list").append('<td>' + item.geography + '</td>');
+                            $(".list").append('<td>' + item.political + '</td>');
+                            $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $(".list").append('</tr>');
+                        })
+                    }
+                }
+            })
         });
 
+    })
+
+
+    $(".tcdPageCode").createPage({
+        pageCount: $("#count").val(),
+        current: 1,
+        backFn: function (p) {
+            $.ajax({
+                url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
+                data: {id:p,},
+                type: 'POST',
+                success: function (data) {
+                    if (data != null) {
+                        $(".list").empty();
+                        $.each(data.data.datas, function (index, item) {
+                            $(".list").append('<tr>');
+                            $(".list").append('<td>' + item.studentId + '</td>');
+                            $(".list").append('<td>' + item.name + '</td>');
+                            $(".list").append('<td>' + item.className + '</td>');
+                            $(".list").append('<td>' + item.term + '</td>');
+                            $(".list").append('<td>' + item.chinese + '</td>');
+                            $(".list").append('<td>' + item.math + '</td>');
+                            $(".list").append('<td>' + item.english + '</td>');
+                            $(".list").append('<td>' + item.physico + '</td>');
+                            $(".list").append('<td>' + item.chemical + '</td>');
+                            $(".list").append('<td>' + item.biology + '</td>');
+                            $(".list").append('<td>' + item.history + '</td>');
+                            $(".list").append('<td>' + item.geography + '</td>');
+                            $(".list").append('<td>' + item.political + '</td>');
+                            $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            $(".list").append('</tr>');
+                        })
+                    }
+                }
+            })
+        }
     })
 </script>
 </body>

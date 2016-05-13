@@ -3,12 +3,15 @@ package com.middleschool.score.admin.controller;
 import com.middleschool.score.common.dto.MsClass;
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsStudent;
+import com.middleschool.score.common.pojo.SophomoreScore;
 import com.middleschool.score.common.pojo.Page;
 import com.middleschool.score.common.pojo.ResponseResult;
 import com.middleschool.score.common.pojo.ScoreAdmin;
 import com.middleschool.score.common.service.ClassService;
 import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentService;
+import com.middleschool.score.common.utils.DateUtil;
+import com.middleschool.score.common.utils.ExcelUtil;
 import com.middleschool.score.common.utils.WebConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +20,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
+import java.io.PushbackInputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -36,52 +45,85 @@ public class ScoreController {
 
     @Autowired
     private ClassService classService;
+
+
     /**
      * 导入excel文件
      */
-    @RequestMapping(value = "/import")
-    public void importArchives(/*@RequestParam(value = "file") MultipartFile file*/) {
-       /* Long courseId=1L;
-        String grade="2";
-        String jibu="ajib";
-        List<MsScorePojo> msScoreList = new ArrayList<MsScorePojo>();
-        List<MsScore> scoreList = new ArrayList<MsScore>();
-        MsScore msScore=new MsScore();
-        InputStream is = null;
-        try {
-            is = FileInputStreamToInputStream.getInputStream(new FileInputStream("/home/mentongwu/bb.xls"));
-            String[] fileNames = new String[] { "courseId", "studentId", "score" };
-            if (!is.markSupported()) {
-                is = new PushbackInputStream(is, 8);
-            }
-            if (POIFSFileSystem.hasPOIFSHeader(is)) {
-                ExcelHelper hssf = HssfExcelHelper.getInstance(is);
-                msScoreList = hssf.readExcel(MsScorePojo.class, fileNames, true);
-            }
-            if (POIXMLDocument.hasOOXMLHeader(is)) {
-                ExcelHelper xssf = XssfExcelHelper.getInstance(is);
-                msScoreList = xssf.readExcel(MsScorePojo.class, fileNames, true);
-            }
-            for(MsScorePojo msScorePojo: msScoreList){
-                msScore.setCourseCode(Long.valueOf(msScorePojo.getCourseId()));
-                msScore.setGrade(grade);
-                msScore.setStudentId(Long.valueOf(msScorePojo.getStudentId()));
-                msScore.setJibu(jibu);
-                msScore.setScore(Double.valueOf(msScorePojo.getScore()));
-                scoreList.add(msScore);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    @RequestMapping(value = "import",method = RequestMethod.POST)
+    public String importArchives(@RequestParam(value = "file") MultipartFile file,@RequestParam(value = "grade")Integer grade,@RequestParam(value = "className") String className) throws Exception {
+
+        InputStream is;
+        is = file.getInputStream();
+        if (!is.markSupported()) {
+            is = new PushbackInputStream(is, 8);
         }
-        scoreService.saveScores(scoreList);*/
+        List<MsScore> msScores=new ArrayList<>();
+        List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(className, grade);
+        try {
+            ExcelUtil excelUtil = ExcelUtil.create(is);
+            List<SophomoreScore> list = excelUtil.readExcel(SophomoreScore.class);
+            int semester=0;
+            String start="";
+            String end="";
+            Date startDate=null;
+            Date endDate=null;
+            Date date=new Date();
+            int type=1;
+            Calendar now = Calendar.getInstance();
+            if("高一".equals(className)){
+                type=1;
+            }else if("高二".equals(className)){
+                if(grade<7){
+                    type=2;
+                }else {
+                    type=3;
+                }
+            }else{
+                if(grade<7){
+                    type=4;
+                }else {
+                    type=5;
+                }
+            }
+            if(now.get(Calendar.MONTH)>6){
+                semester=1;
+                start=now.get(Calendar.YEAR)+"-01-01";
+                end=now.get(Calendar.YEAR)+"-07-01";
+                startDate= DateUtil.formatDate(start);
+                endDate=DateUtil.formatDate(end);
+            }else{
+                start=now.get(Calendar.YEAR)+"-07-02";
+                end=now.get(Calendar.YEAR)+"-12-31";
+                startDate= DateUtil.formatDate(start);
+                endDate=DateUtil.formatDate(end);
+            }
+            for(SophomoreScore e:list){
+                MsScore msScore=new MsScore();
+                BeanUtils.copyProperties(e,msScore);
+                msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
+                msScore.setSemester(semester);
+                msScore.setStartDate(startDate);
+                msScore.setEndDate(endDate);
+                msScore.setType(type);
+                msScores.add(msScore);
+            }
+            scoreService.saves(msScores);
+            System.out.println(212);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+           return "error";
+        }
+        return "success";
     }
     @RequestMapping("getAll")
     @ResponseBody
-    public ResponseResult getAll(@RequestParam(value = "offset",defaultValue = "1")int offset){
+    public ResponseResult getAll(@RequestParam(value = "offset",defaultValue = "1")int offset,@RequestParam(value = "grade",defaultValue = "1")int grade,@RequestParam(value = "name",defaultValue = "高一")String name){
         try {
             int limit=Integer.parseInt(WebConf.getValue("pageSize"));
             Page page = new Page();
-            List<MsScore> msScores = scoreService.findAll(limit, (offset-1)*limit);
+            List<MsScore> msScores = scoreService.findAll(limit, (offset-1)*limit,grade,name);
             List<ScoreAdmin> scoreAdmins=new ArrayList<>();
             for(MsScore m:msScores){
                 ScoreAdmin scoreAdmin=new ScoreAdmin();
@@ -95,11 +137,11 @@ public class ScoreController {
                 }else {
                     scoreAdmin.setTerm("上学期");
                 }
+                scoreAdmin.setAllGrade(getAllScore(m));
                 scoreAdmins.add(scoreAdmin);
             }
+            page.setNum(scoreAdmins.size());
             page.setDatas(scoreAdmins);
-            int count = scoreService.countScore();
-            page.setNum(count);
             return ResponseResult.ok(page);
         }catch (Exception e){
             LOG.error("获取成绩信息失败{}",e.getMessage());
@@ -107,7 +149,10 @@ public class ScoreController {
         }
     }
 
-
+    private double getAllScore(MsScore msScore){
+        return msScore.getBiology()+msScore.getChemical()+msScore.getChinese()+msScore.getEnglish()+
+                msScore.getGeography()+msScore.getHistory()+msScore.getMath()+msScore.getPhysico()+msScore.getPolitical();
+    }
 
     @RequestMapping("getScore")
     @ResponseBody
@@ -131,8 +176,6 @@ public class ScoreController {
                 scoreAdmins.add(scoreAdmin);
             }
             page.setDatas(scoreAdmins);
-            int count = scoreService.countScore();
-            page.setNum(count);
             return ResponseResult.ok(page);
         }catch (Exception e){
             LOG.error("获取成绩信息失败{}",e.getMessage());
@@ -198,6 +241,40 @@ public class ScoreController {
             return "admin/rank/grade_top100";
         }
     }
+
+
+    @RequestMapping(value = "gradeTopHundredthHighOne")
+    @ResponseBody
+    public ResponseResult gradeTopHundredthHighOne(@RequestParam("id")Integer id,@RequestParam(value = "offset",defaultValue = "1")int offset){
+        try {
+            int limit=Integer.parseInt(WebConf.getValue("pageSize"));
+            Page page = new Page();
+            List<MsScore> msScores = scoreService.findTopHundredth(id,limit,(offset-1)*limit);
+            List<ScoreAdmin> scoreAdmins=new ArrayList<>();
+            for(MsScore m:msScores){
+                ScoreAdmin scoreAdmin=new ScoreAdmin();
+                MsStudent msStudent=studentService.getById(m.getStudentId());
+                BeanUtils.copyProperties(m,scoreAdmin);
+                scoreAdmin.setName(msStudent.getName());
+                MsClass msClass=classService.getById((long)m.getClassId());
+                scoreAdmin.setClassName(msClass.getName()+msClass.getGrade()+"班");
+                if(m.getSemester()==1) {
+                    scoreAdmin.setTerm("下学期");
+                }else {
+                    scoreAdmin.setTerm("上学期");
+                }
+                scoreAdmins.add(scoreAdmin);
+            }
+            page.setDatas(scoreAdmins);
+            return ResponseResult.ok(page);
+        }catch (Exception e){
+            LOG.error("查询失败{}",e.getMessage());
+            return ResponseResult.build(500,"查询失败");
+        }
+    }
+
+
+
     @RequestMapping(value = "courseTopOne")
     public String CourseTopOne(){
         try {

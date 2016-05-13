@@ -101,7 +101,7 @@ public class StudentController {
             BeanUtils.copyProperties(studentClass, msStudent);
             MsStudentNow msStudentNow = studentNowService.getByStudentId(studentClass.getId());
             msStudent.setPassword(msStudent1.getPassword());
-            List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),studentClass.getRankDept(),studentClass.getGrade());
+            List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),Integer.parseInt(studentClass.getGrade().toString()));
             if(classe!=null) {
                 msStudentNow.setClassId(classe.get(0).getId());
             }
@@ -121,7 +121,7 @@ public class StudentController {
             MsStudent msStudent = new MsStudent();
             BeanUtils.copyProperties(studentClass, msStudent);
             msStudent.setPassword(studentClass.getIdCard().substring(studentClass.getIdCard().length()-6,studentClass.getIdCard().length()));
-            List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),studentClass.getRankDept(),studentClass.getGrade());
+            List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),Integer.parseInt(studentClass.getGrade().toString()));
             MsStudentNow msStudentNow=new MsStudentNow();
             msStudentNow.setClassId(classe.get(0).getId());
             studentService.saveStudent(msStudent);

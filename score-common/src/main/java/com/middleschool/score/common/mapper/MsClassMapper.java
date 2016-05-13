@@ -18,7 +18,7 @@ public interface MsClassMapper {
 
     List<MsClass> selectByExample(MsClassExample example);
 
-    List<MsClass> selectByNameAndDeptAndGrade(@Param("grade")String grade,@Param("name")String name,@Param("rankDept")String rankDept);
+    List<MsClass> selectByNameAndDeptAndGrade(@Param("grade")int grade,@Param("name")String name);
 
     MsClass selectByPrimaryKey(Long id);
 

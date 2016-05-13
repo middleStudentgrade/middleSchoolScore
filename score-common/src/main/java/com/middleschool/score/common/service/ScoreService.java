@@ -27,13 +27,19 @@ public interface ScoreService {
 
     int countStudents(Long id);
 
-    int countScore();
+    int countScore(int grade,String name);
 
     int delete(Long id);
 
     void updateScore(MsScore msScore);
 
-    List<MsScore> findAll(int limit,int offset);
+    List<MsScore> findAll(int limit,int offset,int grade,String name);
+
     int deleteByStudentId(Long id);
+
     List<MsScore> findScore(String id);
+
+    List<MsScore> findTopHundredth(int id,int limit,int offset);
+
+    int saves(List<MsScore> msScores);
 }

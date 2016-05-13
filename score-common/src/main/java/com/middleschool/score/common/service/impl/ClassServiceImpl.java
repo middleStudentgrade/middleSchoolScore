@@ -17,8 +17,8 @@ public class ClassServiceImpl implements ClassService{
     @Autowired
     private MsClassMapper msClassMapper;
     @Override
-    public List<MsClass> getByRankDeptAndGradeAndName(String name, String rankDept, String grade) {
-        return msClassMapper.selectByNameAndDeptAndGrade(grade,name,rankDept);
+    public List<MsClass> getByRankDeptAndGradeAndName(String name, int grade) {
+        return msClassMapper.selectByNameAndDeptAndGrade(grade,name);
     }
 
     @Override

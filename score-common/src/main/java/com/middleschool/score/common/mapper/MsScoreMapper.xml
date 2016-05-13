@@ -431,7 +431,46 @@
   </select>
   <select id="selectAll" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
     select
-    *
-    from ms_score limit #{limit ,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+    s.*
+    from ms_score s left join ms_class c  on c.id=s.class_id where c.name=#{className,jdbcType=VARCHAR} and c.grade=#{grade,jdbcType=BIGINT} and now() BETWEEN s.start_date and s.end_date ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biology+s.geography+s.physico+s.history+s.political)  limit #{limit ,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
   </select>
+
+
+  <select id="countScore" resultType="java.lang.Integer" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select COUNT(*)
+    from ms_score s left join ms_class c  on c.id=s.class_id where c.name=#{className,jdbcType=VARCHAR} and c.grade=#{grade,jdbcType=BIGINT} and now() BETWEEN s.start_date and s.end_date
+  </select>
+  <select id="selectTopHundrth" resultMap="BaseResultMap">
+    SELECT * FROM
+	ms_score s
+WHERE
+	s.class_id IN   <foreach item="classid" index="index" collection="ids"
+                             open="(" separator="," close=")" >
+    #{classid}
+  </foreach>
+    AND NOW() BETWEEN s.start_date
+AND s.end_date
+ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biology+s.geography+s.physico+s.history+s.political) limit #{limit ,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+  </select>
+  <insert id="saves" useGeneratedKeys="true" >
+    <selectKey resultType="long" keyProperty="id" order="AFTER">
+      SELECT
+      LAST_INSERT_ID()
+    </selectKey>
+    insert into ms_score (id, student_id, class_id,
+    semester, chinese, english,
+    math, start_date, end_date,
+    political, history, physico,
+    geography, biology, chemical,
+    basic_competencies, type)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.id,jdbcType=BIGINT}, #{item.studentId,jdbcType=BIGINT}, #{item.classId,jdbcType=INTEGER},
+      #{item.semester,jdbcType=INTEGER}, #{item.chinese,jdbcType=DOUBLE}, #{item.english,jdbcType=DOUBLE},
+      #{item.math,jdbcType=DOUBLE}, #{item.startDate,jdbcType=TIMESTAMP}, #{item.endDate,jdbcType=TIMESTAMP},
+      #{item.political,jdbcType=DOUBLE}, #{item.history,jdbcType=DOUBLE}, #{item.physico,jdbcType=DOUBLE},
+      #{item.geography,jdbcType=DOUBLE}, #{item.biology,jdbcType=DOUBLE}, #{item.chemical,jdbcType=DOUBLE},
+      #{item.basicCompetencies,jdbcType=DOUBLE}, #{item.type,jdbcType=INTEGER})
+   </foreach>
+  </insert>
 </mapper>

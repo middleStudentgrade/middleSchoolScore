@@ -3,6 +3,9 @@ package com.middleschool.score.common.mapper;
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsScoreExample;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface MsScoreMapper {
@@ -22,7 +25,7 @@ public interface MsScoreMapper {
 
     List<MsScore> selectNowScoreByStudentId(Long id);
 
-    List<MsScore> selectAll(@Param("limit")int limit,@Param("offset")int offset);
+    List<MsScore> selectAll(@Param("limit")int limit,@Param("offset")int offset,@Param("grade")int grade,@Param("className")String className);
 
     List<MsScore> selectAllScoreByStudentId(Long id);
 
@@ -37,4 +40,10 @@ public interface MsScoreMapper {
     int selectRanking(@Param("studentId")Long studentId,@Param("classId")Long classId);
 
     List<MsScore> selectPassRateByClassId(@Param("classId")Long classId);
+
+    List<MsScore> selectTopHundrth(Map<String,Object> map);
+
+    int countScore(@Param("grade")int grade,@Param("className")String className);
+
+    int saves(@Param("list")List<MsScore> list);
 }

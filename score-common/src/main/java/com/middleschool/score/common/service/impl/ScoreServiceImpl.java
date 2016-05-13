@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/3/1.
@@ -126,10 +128,8 @@ public class ScoreServiceImpl implements ScoreService{
     }
 
     @Override
-    public int countScore() {
-        MsScoreExample msScoreExample=new MsScoreExample();
-        MsScoreExample.Criteria criteria=msScoreExample.createCriteria();
-        return msScoreMapper.countByExample(msScoreExample);
+    public int countScore(int grade,String name) {
+        return msScoreMapper.countScore(grade,name);
     }
 
     @Override
@@ -142,8 +142,8 @@ public class ScoreServiceImpl implements ScoreService{
       msScoreMapper.updateByPrimaryKeySelective(msScore);
     }
     @Override
-    public List<MsScore> findAll(int limit, int offset) {
-        return msScoreMapper.selectAll(limit,offset);
+    public List<MsScore> findAll(int limit, int offset,int grade,String name) {
+        return msScoreMapper.selectAll(limit,offset,grade,name);
     }
 
     @Override
@@ -161,6 +161,54 @@ public class ScoreServiceImpl implements ScoreService{
         criteria.andStudentIdEqualTo(Long.parseLong(id));
         return msScoreMapper.selectByExample(msScoreExample);
 
+    }
+
+    @Override
+    public List<MsScore> findTopHundredth(int id,int limit,int offset) {
+        int [] classIds=new int[12];
+        if(id==1){
+            for(int i=0;i<12;i++){
+                classIds[i]=i+1;
+            }
+        }else if(id==2){
+            for(int i=0;i<3;i++){
+                classIds[i]=i+13;
+            }
+            for(int i=3;i<6;i++){
+                classIds[i]=i+19;
+            }
+        }else if(id==3){
+            for(int i=0;i<3;i++){
+                classIds[i]=i+16;
+            }
+            for(int i=4;i<7;i++){
+                classIds[i]=i+22;
+            }
+        } else if(id==4){
+            for(int i=0;i<3;i++){
+                classIds[i]=i+25;
+            }
+            for(int i=4;i<7;i++){
+                classIds[i]=i+31;
+            }
+        }else{
+            for(int i=0;i<3;i++){
+                classIds[i]=i+28;
+            }
+            for(int i=4;i<7;i++){
+                classIds[i]=i+34;
+            }
+        }
+        Map<String,Object> map=new HashMap<>();
+        map.put("ids",classIds);
+        map.put("limit",limit);
+        map.put("offset",offset);
+        return msScoreMapper.selectTopHundrth(map);
+    }
+
+    @Override
+    public int saves(List<MsScore> msScores) {
+        return msScoreMapper.saves(msScores);
     }
 
 }

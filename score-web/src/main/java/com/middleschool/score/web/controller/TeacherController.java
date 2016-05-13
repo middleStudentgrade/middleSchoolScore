@@ -78,8 +78,7 @@ public class TeacherController {
     public ResponseResult sorts(@RequestParam Long id, @RequestParam(defaultValue = "0") int offset, Model model) {
         try {
             int limit= Integer.parseInt(WebConf.getValue("pageSize"));
-            offset=(limit-1)*offset;
-            Page msScores = scoreService.selectNowScoreByClassId(id, limit, offset);
+            Page msScores = scoreService.selectNowScoreByClassId(id, limit, (offset-1)*limit);
            return ResponseResult.ok(msScores);
         } catch (Exception e) {
             LOG.error("查询成绩失败{}", e.getMessage());

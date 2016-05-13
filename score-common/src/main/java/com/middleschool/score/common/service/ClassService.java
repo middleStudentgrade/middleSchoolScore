@@ -10,6 +10,6 @@ import java.util.List;
  */
 
 public interface ClassService {
-     List<MsClass> getByRankDeptAndGradeAndName(String name,String rankDept,String grade);
+     List<MsClass> getByRankDeptAndGradeAndName(String name,int grade);
      MsClass getById(Long id);
 }

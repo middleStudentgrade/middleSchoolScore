@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
@@ -19,9 +20,38 @@
 <div class="ad_rt">
     <div style="margin:30px 30px 20px;">
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">上传成绩单</button>
-        <a href="admin/downloadFile/download" ><button class="btn btn-info size">学生成绩录入模板下载</button></a>
+        <form action="admin/downloadFile/download" method="post">
+            <input type="text" name="grade" id="stuGrade">
+            <input type="text" name="className" id="stuClassName">
+        <button class="btn btn-info size download">学生成绩录入模板下载</button>
+        </form>
         <input type="text" class="ScoreId" />
-        <button type="submit" class="btn selectScore" style="color:#fff">查询</button>
+
+        <button type="submit" class="btn selectScore" style="color:#fff">单个学生成绩查询</button>
+
+        <label class="size">班级：</label>
+        <form action="/adScore" method="post">
+        <select name="className"  id="className" value ="${className}" onchange="updateClass()">
+            <option value="高一" <c:if test="${className=='高一'}">selected</c:if>>高一</option>
+            <option value="高二" <c:if test="${className=='高二'}">selected</c:if>>高二</option>
+            <option value="高三" <c:if test="${className=='高三'}">selected</c:if>>高三</option>
+        </select>
+        <select name="grade" id="grade" value ="${grade}" onchange="updateClass()">
+            <option value="1" <c:if test="${className=='1'}">selected</c:if>>1</option>
+            <option  value="2" <c:if test="${className=='2'}">selected</c:if>>2</option>
+            <option value="3" <c:if test="${className=='3'}">selected</c:if>>3</option>
+            <option  value="4" <c:if test="${className=='4'}">selected</c:if>>4</option>
+            <option value="5" <c:if test="${className=='5'}">selected</c:if>>5</option>
+            <option  value="6" <c:if test="${className=='6'}">selected</c:if>>6</option>
+            <option value="7" <c:if test="${className=='7'}">selected</c:if>>7</option>
+            <option  value="8" <c:if test="${className=='8'}">selected</c:if>>8</option>
+            <option value="9" <c:if test="${className=='9'}">selected</c:if>>9</option>
+            <option  value="10" <c:if test="${className=='10'}">selected</c:if>>10</option>
+            <option value="11" <c:if test="${className=='11'}">selected</c:if>>11</option>
+            <option  value="12" <c:if test="${className=='12'}">selected</c:if>>12</option>
+        </select>
+       <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
+        </form>
     </div>
 
     <table class="panel panel-info s_xx">
@@ -46,7 +76,45 @@
     </table>
     <div class="tcdPageCode"></div>
 </div>
+<div class="modal" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" style="color:#27AE60">上传学生成绩</h4>
+            </div>
+            <form class="form-inline" action="admin/score/import" encType="multipart/form-data" method="post">
+                <div class="modal-body add_stu" >
+                           <select name="className"  value ="${className}">
+                                <option value="高一" >高一</option>
+                                <option value="高二" >高二</option>
+                                <option value="高三" >高三</option>
+                            </select>
+                            <select name="grade" value ="${grade}">
+                                <option value="1" >1</option>
+                                <option  value="2">2</option>
+                                <option value="3" >3</option>
+                                <option  value="4" >4</option>
+                                <option value="5" >5</option>
+                                <option  value="6" >6</option>
+                                <option value="7" >7</option>
+                                <option  value="8" >8</option>
+                                <option value="9" >9</option>
+                                <option  value="10">10</option>
+                                <option value="11" >11</option>
+                                <option  value="12">12</option>
+                            </select>
+                    <label class="size" style="margin-left:20px">上传文件：</label><input type="file" name="file" />
 
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-default size">重置</button>
+                    <button type="submit" class="btn btn_qd" style="color:#fff">确定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!--模态弹框  修改成绩-->
 <div class="modal" id="mymoda2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -60,8 +128,8 @@
                     <ul>
                         <li>
                             <input class="form-control id" type="text" name="id" />
-                            <label class="size" style="margin-left:20px">学号： <input class="form-control studentId" type="text" name="studentId" />
-                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" />
+                            <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" />
+                                <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" />
                             <label class="size" style="margin-left:20px">班级：</label><input class="form-control className" type="text" name="className" />
                             <label class="size" style="margin-left:20px">学期：</label><input class="form-control term" type="text" name="term" />
                         </li>
@@ -116,11 +184,15 @@
     $(document).ready(function() {
         $.ajax({
             url: "http://localhost:8080/admin/score/getAll",
-            data: {},
+            data: {
+                grade:$("#grade").val(),
+                name:$("#className").val(),
+            },
             type: 'POST',
+            async: false,
             success: function (data) {
-                if (data != null) {
-                    $("#list").empty();
+                $("#list").empty();
+                if (data.data.num !=0) {
                     $.each(data.data.datas, function (index, item) {
                         $("#list").append('<tr>');
                         $("#list").append('<td>' + item.studentId + '</td>');
@@ -156,9 +228,9 @@
             dateType:"json",
             async: false,
             success: function (data) {
-                if (data != null) {
-                    $("#list").empty();
-                    $(".tcdPageCode").empty();
+                $("#list").empty();
+                $(".tcdPageCode").empty();
+                if (data.data.datas != null) {
                     $.each(data.data.datas, function (index, item) {
                         $("#list").append('<tr>');
                         $("#list").append('<td>' + item.studentId + '</td>');
@@ -192,12 +264,15 @@
             $.ajax({
                 url: "http://localhost:8080/admin/score/getAll",
                 data: {
-                    offset: p
+                    offset: p,
+                    grade:$("#grade").val(),
+                    name:$("#className").val(),
                 },
+                async: false,
                 type: 'POST',
                 success: function (data) {
-                    if (data != null) {
-                        $("#list").empty();
+                    $("#list").empty();
+                    if (data.data.datas != null) {
                         $.each(data.data.datas, function (index, item) {
                             $("#list").append('<tr>');
                             $("#list").append('<td>' + item.studentId + '</td>');
@@ -313,6 +388,11 @@
     })
     var getdelid=function(id){
         $(".del_id").val(id);
+    }
+
+    var updateClass=function(){
+        $("#stuGrade").val($("#grade").val());
+        $("#stuClassName").val($("#className").val());
     }
 
 </script>
