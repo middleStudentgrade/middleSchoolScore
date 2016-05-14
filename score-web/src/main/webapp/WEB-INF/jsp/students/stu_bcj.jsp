@@ -22,6 +22,7 @@
 
     <div id="stu_bcj" class="container">
       <div class="col-sm-8" style="margin-bottom:20px">
+        <a href="/student/getNowScore?id=${msStudent.id}"> <button class="btn btn-warning" style="border-radius:20px;width:100px">本学期成绩</button></a>
         <button class="btn btn-warning" style="border-radius:20px;width:100px">所有成绩</button>
       </div>
       <div class="col-sm-9">

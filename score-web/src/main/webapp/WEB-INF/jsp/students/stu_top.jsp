@@ -15,12 +15,11 @@
   <script src="../javaScript/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="cont" >
-  <div id="s_head">
-    <button class="btn btn-default" style="margin-left:300px"><a href="" >网站首页</a></button>
-    <button class="btn btn-default"><a href="stuInfo" target="main">个人信息</a></button>
-    <button class="btn btn-default"> <a href="student/getNowScore?id=${msStudent.id}" target="main">考试成绩</a></button>
-    <button class="btn btn-default"><a href="stuGmm" target="main">修改密码</a></button>
+<div id="cont">
+    <p>学生信息查询系统<br/>
+        <em style="font-size:24px;">Student Information Query System</em><br/></p>
+</div>
+
 
     <!--<form action="" class="navbar-form navbar-right" id="s_lf" style="" rol="search">
           <div class="form-group">
@@ -28,8 +27,5 @@
           </div>
        <button type="submit" class="btn btn-default">搜索</button>
     </form>-->
-  </div>
-
-</div>
 </body>
 </html>

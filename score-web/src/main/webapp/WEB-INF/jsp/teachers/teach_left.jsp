@@ -26,7 +26,7 @@
     <li class="list-group-item t_lc" style="border-radius:4px;">学生成绩</li>
     <li><a href="teacher/scoreSort?id=${msTeacher.id}" class="list-group-item ejcd" target="main" id="t_cj">成绩及排名</a></li>
     <li><a href="teacher/passRate?id=${msTeacher.id}" class="list-group-item ejcd" target="main" id="t_cjfb">成绩分布</a></li>
-    <a href="../login/login.jsp" target="_blank" style="font-size:16px"><li>退出登录</li></a>
+    <a href="retLogin" target="_blank" style="font-size:16px"><li>退出登录</li></a>
   </ul>
 
 </div>

@@ -15,12 +15,9 @@
   <script src="javaScript/bootstrap.min.js"></script>
 
 </head>
-<frameset rows="230,*" frameborder="0">
-  <frame src="stuTop" name="top" scrolling="no"/>
-  <frame src="stuInfo" name="main" scrolling="no"/>
-
-</frameset>
-<body>
-
+<body style="margin:0;padding:0;">
+<iframe src="stuTop" name="top" width=100% height=180 frameborder=0 scrolling="no"></iframe>
+<iframe src="stuLef" name="left" width=24% height=600 align=left  frameborder=0 scrolling="no"></iframe>
+<iframe src="stuInfo" name="main" width=76% height=900 align=right frameborder=0 scrolling="no"></iframe>
 </body>
 </html>
