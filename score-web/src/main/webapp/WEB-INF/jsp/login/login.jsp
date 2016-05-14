@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/login.css">
   <script src="../javaScript/jquery.js"></script>
   <script src="../javaScript/bootstrap.min.js"></script>
@@ -18,7 +18,6 @@
 
   <form class="form-signin" action="/login" method="post">
     <div class="denglu_top">用户登录</div>
-3432423
     <div class="form-group">
       <label >用户名</label>
       <input type="text" name="userName" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">

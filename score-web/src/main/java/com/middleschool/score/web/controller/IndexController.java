@@ -18,6 +18,10 @@ public class IndexController {
 	 public String showstuLef(){
 		return "students/stu_lef";
 	}
+	@RequestMapping("/retLogin")
+	public String retLogin(){
+		return "login/login";
+	}
 
 	@RequestMapping("/stuTop")
 	public String showstuTop(){

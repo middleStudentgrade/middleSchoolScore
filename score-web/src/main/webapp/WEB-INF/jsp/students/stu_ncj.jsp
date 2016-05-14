@@ -22,7 +22,7 @@
     <div id="stu_ncj" class="container">
       <div class="col-sm-8" style="margin-bottom:20px">
         <button class="btn btn-info" style="border-radius:20px">本学期成绩</button>
-        <a href="getAllScore?id=${msStudent.id}" target="main"><button class="btn btn-warning">所有成绩</button></a>
+        <a href="/student/getAllScore?id=${msStudent.id}" target="main"><button class="btn btn-warning">所有成绩</button></a>
       </div>
       <div class="col-sm-8">
         <div class="panel panel-success" style="border-color: #d6e9c6;">

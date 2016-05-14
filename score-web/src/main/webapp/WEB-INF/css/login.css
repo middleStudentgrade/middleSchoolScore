@@ -1,16 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
-.container{width:100%;min-height:600px;background-color:#ecf0fc;}
+.container{width:100%;min-height:600px;}
 
-.form-signin{width:360px;padding:40px;margin:0 auto;margin-top:140px;background:url(../../../../../../score-admin/src/main/webapp/WEB-INF/img/ng_tm.png);background-size:100% 100%}
-.denglu_top{font-size:20px;text-align:center;color:#fff;padding-bottom:0;text-shadow: 3px 2px 6px #000;height:30px;}
+.form-signin{width:360px;padding:40px;margin:0 auto;margin-top:140px;background:url(../img/ng_tm.png);background-size:100% 100%}
+.denglu_top{font-size:22px;text-align:center;color:#fff;padding-bottom:0;text-shadow: 3px 2px 6px #000;height:30px;}
 #span1,#span2{font-size:13px;color:#c3493c;float:right;}
 .denglu_sel{width:98px;display:inline-block;}
+.denglu_sel option{height:30px;padding:5px 0;}
+.form-control{height:40px;}
 
-/*管理员登录*/
-.con{width:580px;height:280px;background:url(../../../../../../score-admin/src/main/webapp/WEB-INF/img/login2.jpg) no-repeat;background-size:100% 100%;}
-.logo{width:57%;float:left;padding-top:30px;margin-left:-20px;}
-.l_l{color:#415d98;font-size:18px;font-weight:bold;margin-left:60px;}
-
-#loginBtn{width:98px;height:34px;margin-left:0px;border:0;background:url(../../../../../../score-admin/src/main/webapp/WEB-INF/img/login_btn.png) no-repeat;background-size:100% 100%;}
 

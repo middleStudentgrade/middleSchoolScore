@@ -1,11 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
-#cont{width:65%;margin:0 auto;}
-#con{width:66%;min-height:550px;margin:0 auto;background:url(../../../../../../score-admin/src/main/webapp/WEB-INF/img/ng_tm.png);background-size:100% 100%;}
+ul li{list-style: none;}
+#cont{width:100%;font-size:28px;background:#27AE60;color:#fff;height:240px;font-weight:200;}
+#cont p{text-align:center;padding-top:40px;}
+#cont .form-group{width:1000px;position:relative;margin:40px auto;}
+#cont .search{padding:13px 30px;height:auto;text-align:center;color:#000;border:2px solid #27AE60;}
+#cont .fa{position:absolute;right:25px;top:10px;width:29px;height:29px;font-size:24px;background:url(../images/search.png) no-repeat;border:none;}
 #s_con{padding-top:40px;}
-#stu_info{margin-left:140px;}
 #stu_ncj,#stu_bcj{margin-left:120px}
 #stu_mm{margin-left:260px}
 #s_head{padding-top:200px;font-size:16px;border-radius:7px;background:url(../img/stu_head.jpg) no-repeat;background-size:100% 100%;}
 
-#s_lf{margin-right:40px;margin-top:0}
+#stu_menu{margin-left:40px;width:200px;}
