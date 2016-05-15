@@ -46,4 +46,6 @@ public interface MsScoreMapper {
     int countScore(@Param("grade")int grade,@Param("className")String className);
 
     int saves(@Param("list")List<MsScore> list);
+
+    List<MsScore> seletTopScore(@Param("courseName")String courseName,@Param("type")int type);
 }

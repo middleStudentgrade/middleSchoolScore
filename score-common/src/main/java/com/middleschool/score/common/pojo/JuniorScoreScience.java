@@ -1,10 +1,9 @@
 package com.middleschool.score.common.pojo;
 
 /**
- * Created by Administrator on 2016/5/13.
+ * Created by Administrator on 2016/5/14.
  */
-public class SophomoreScore{
-
+public class JuniorScoreScience {
     private Long studentId;
 
     private String name;
@@ -15,19 +14,11 @@ public class SophomoreScore{
 
     private Double math;
 
-    private Double political;
-
-    private Double history;
-
     private Double physico;
-
-    private Double geography;
-
-    private Double biology;
 
     private Double chemical;
 
-
+    private Double biology;
 
     public Long getStudentId() {
         return studentId;
@@ -69,22 +60,6 @@ public class SophomoreScore{
         this.math = math;
     }
 
-    public Double getPolitical() {
-        return political;
-    }
-
-    public void setPolitical(Double political) {
-        this.political = political;
-    }
-
-    public Double getHistory() {
-        return history;
-    }
-
-    public void setHistory(Double history) {
-        this.history = history;
-    }
-
     public Double getPhysico() {
         return physico;
     }
@@ -93,12 +68,12 @@ public class SophomoreScore{
         this.physico = physico;
     }
 
-    public Double getGeography() {
-        return geography;
+    public Double getChemical() {
+        return chemical;
     }
 
-    public void setGeography(Double geography) {
-        this.geography = geography;
+    public void setChemical(Double chemical) {
+        this.chemical = chemical;
     }
 
     public Double getBiology() {
@@ -107,13 +82,5 @@ public class SophomoreScore{
 
     public void setBiology(Double biology) {
         this.biology = biology;
-    }
-
-    public Double getChemical() {
-        return chemical;
-    }
-
-    public void setChemical(Double chemical) {
-        this.chemical = chemical;
     }
 }

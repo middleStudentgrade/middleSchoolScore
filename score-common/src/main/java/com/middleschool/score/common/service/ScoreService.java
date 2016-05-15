@@ -1,10 +1,7 @@
 package com.middleschool.score.common.service;
 
 import com.middleschool.score.common.dto.MsScore;
-import com.middleschool.score.common.pojo.Page;
-import com.middleschool.score.common.pojo.ScoreAdmin;
-import com.middleschool.score.common.pojo.ScoreClass;
-import com.middleschool.score.common.pojo.StudentScore;
+import com.middleschool.score.common.pojo.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -42,4 +39,9 @@ public interface ScoreService {
     List<MsScore> findTopHundredth(int id,int limit,int offset);
 
     int saves(List<MsScore> msScores);
+    List<TopScore> getSophomoreScore();
+    List<TopScore> getJuniorScoreArt();
+    List<TopScore> juniorScoreScience();
+    List<TopScore> getSeniorScoreArt();
+    List<TopScore> getSeniorScoreScience();
 }

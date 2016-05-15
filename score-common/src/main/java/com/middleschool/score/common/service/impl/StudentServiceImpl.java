@@ -45,9 +45,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int countStudent() {
-        MsStudentExample msStudentExample=new MsStudentExample();
-        MsStudentExample.Criteria criteria=msStudentExample.createCriteria();
-        return msStudentMapper.countByExample(msStudentExample);
+        return studentClassMapper.countStudent();
     }
 
     @Override

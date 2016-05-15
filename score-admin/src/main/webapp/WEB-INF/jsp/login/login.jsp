@@ -34,7 +34,7 @@
         <span id="span2"></span>
       </div>
       <button class="btn" id="loginBtn" type="submit">登录</button>
-
+</div>
   </form>
 </div>
 

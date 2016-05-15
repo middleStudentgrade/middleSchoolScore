@@ -12,4 +12,5 @@ public interface StudentClassMapper {
     List<StudentClass> findAllStudents(@Param("limit")int limit,@Param("offset")int offset);
     List<StudentClass> findOne(@Param("id")Long id);
     List<StudentClass>  selectStudent(@Param("studentContant")String studentContant);
+    int countStudent();
 }

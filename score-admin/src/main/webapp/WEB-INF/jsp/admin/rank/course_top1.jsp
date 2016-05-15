@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
@@ -27,116 +28,27 @@
     <div id="crs1">
         <table class="table table-bordered">
             <tr class="crs1_th">
-                <th>科目</th>
-                <th>成绩</th>
-                <th>学号</th>
-                <th>姓名</th>
-                <th>班级</th>
+                <td>科目</td>
+                <td>成绩</td>
+                <td>学号</td>
+                <td>姓名</td>
+                <td>班级</td>
             </tr>
-            <tr>
-                <th>语文</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr class="crs_hlt">
-                <th>数学</th>
-                <td>140</td>
-                <td>20159928743</td>
-                <td>李平</td>
-                <td>三班</td>
-            </tr>
-            <tr>
-                <th>英语</th>
-                <td>140</td>
-                <td>20159928720</td>
-                <td>张丹</td>
-                <td>一班</td>
-            </tr>
-            <tr class="crs_hlt">
-                <th>物理</th>
-                <td>80</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>政治</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr class="crs_hlt">
-                <th>生物</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>历史</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr class="crs_hlt">
-                <th>化学</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>地理</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>基本能力</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
+
+            <c:forEach var="item" items="${sophomoreScore}" varStatus="status">
+                <tr <c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if> align="left">
+                    <td>${item.scoreName}</td>
+                    <td>${item.score}</td>
+                    <td>${item.stuNum}</td>
+                    <td>${item.name}</td>
+                    <td>${item.clasName}</td>
+                </tr>
+            </c:forEach>
+
         </table>
     </div>
     <!--高二各科最高成绩-->
     <div id="crs2">
-        <table class="table table-bordered">
-            <tr class="crs1_th">
-                <th>科目</th>
-                <th>成绩</th>
-                <th>学号</th>
-                <th>姓名</th>
-                <th>班级</th>
-            </tr>
-            <tr>
-                <th>语文</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>英语</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>基本能力</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-        </table>
         <button class="btn btn-success size" style="margin-bottom:20px;">文科班</button>
         <table class="table table-bordered">
             <tr class="crs1_th">
@@ -146,34 +58,15 @@
                 <th>姓名</th>
                 <th>班级</th>
             </tr>
-            <tr>
-                <th>历史</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>地理</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>政治</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>数学</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
+            <c:forEach var="item" items="${juniorScoreArt}" varStatus="status">
+                <tr <c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if> align="left">
+                    <td>${item.scoreName}</td>
+                    <td>${item.score}</td>
+                    <td>${item.stuNum}</td>
+                    <td>${item.name}</td>
+                    <td>${item.clasName}</td>
+                </tr>
+            </c:forEach>
         </table>
         <button class="btn btn-success size" style="margin-bottom:20px;">理科班</button>
         <table class="table table-bordered">
@@ -184,68 +77,19 @@
                 <th>姓名</th>
                 <th>班级</th>
             </tr>
-            <tr>
-                <th>物理</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>化学</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>生物</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>数学</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
+            <c:forEach var="item" items="${juniorScoreScience}" varStatus="status">
+                <tr <c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if> align="left">
+                    <td>${item.scoreName}</td>
+                    <td>${item.score}</td>
+                    <td>${item.stuNum}</td>
+                    <td>${item.name}</td>
+                    <td>${item.clasName}</td>
+                </tr>
+            </c:forEach>
         </table>
     </div>
     <!--高三各科最高成绩-->
     <div id="crs3">
-        <table class="table table-bordered">
-            <tr class="crs1_th">
-                <th>科目</th>
-                <th>成绩</th>
-                <th>学号</th>
-                <th>姓名</th>
-                <th>班级</th>
-            </tr>
-            <tr>
-                <th>语文</th>
-                <td>135</td>
-                <td>20159928734</td>
-                <td>李丽</td>
-                <td>一班</td>
-            </tr>
-            <tr>
-                <th>英语</th>
-                <td>142</td>
-                <td>20159928724</td>
-                <td>李平</td>
-                <td>三班</td>
-            </tr>
-            <tr>
-                <th>基本能力</th>
-                <td>56</td>
-                <td>20159928710</td>
-                <td>张丹</td>
-                <td>一班</td>
-            </tr>
-        </table>
         <button class="btn btn-success size" style="margin-bottom:20px;">文科班</button>
         <table class="table table-bordered">
             <tr class="crs1_th">
@@ -255,20 +99,15 @@
                 <th>姓名</th>
                 <th>班级</th>
             </tr>
-            <tr>
-                <th>文综</th>
-                <td>200</td>
-                <td>20159928700</td>
-                <td>黄辉</td>
-                <td>二班</td>
-            </tr>
-            <tr>
-                <th>数学</th>
-                <td>130</td>
-                <td>20159928751</td>
-                <td>陈欢</td>
-                <td>三班</td>
-            </tr>
+            <c:forEach var="item" items="${seniorScoreArt}" varStatus="status">
+                <tr <c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if> align="left">
+                    <td>${item.scoreName}</td>
+                    <td>${item.score}</td>
+                    <td>${item.stuNum}</td>
+                    <td>${item.name}</td>
+                    <td>${item.clasName}</td>
+                </tr>
+            </c:forEach>
         </table>
         <button class="btn btn-success size" style="margin-bottom:20px;">理科班</button>
         <table class="table table-bordered">
@@ -279,20 +118,15 @@
                 <th>姓名</th>
                 <th>班级</th>
             </tr>
-            <tr>
-                <th>理综</th>
-                <td>220</td>
-                <td>20159928728</td>
-                <td>李明</td>
-                <td>五班</td>
-            </tr>
-            <tr>
-                <th>数学</th>
-                <td>145</td>
-                <td>20159928704</td>
-                <td>李磊</td>
-                <td>五班</td>
-            </tr>
+            <c:forEach var="item" items="${seniorScoreScience}" varStatus="status">
+                <tr <c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if> align="left">
+                    <td>${item.scoreName}</td>
+                    <td>${item.score}</td>
+                    <td>${item.stuNum}</td>
+                    <td>${item.name}</td>
+                    <td>${item.clasName}</td>
+                </tr>
+            </c:forEach>
         </table>
     </div>
 

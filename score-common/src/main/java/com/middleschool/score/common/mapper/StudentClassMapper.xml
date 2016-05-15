@@ -19,8 +19,14 @@
 <select id="findAllStudents" resultMap="BaseResultMap" >
        select
        s.id,s.name,s.age,s.sex,s.id_card,s.birth_place,s.political_landscape,s.dates_attendance,c.grade grade,c.name className
-       from ms_student s left join ms_student_now sn on s.id=sn.student_id left join ms_class c on sn.class_id=c.id limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+      from  ms_student_now sn join ms_student s on s.id=sn.student_id join ms_class c on sn.class_id=c.id limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
    </select>
+
+    <select id="countStudent" resultType="java.lang.Integer" >
+        select
+       count(*)
+        from  ms_student_now sn join ms_student s on s.id=sn.student_id join ms_class c on sn.class_id=c.id
+    </select>
     <select id="findOne" resultMap="BaseResultMap" >
         select
         s.id,s.name,s.age,s.sex,s.id_card,s.birth_place,s.political_landscape,s.dates_attendance,c.grade grade,c.name className,c.rank_dept rankDept
