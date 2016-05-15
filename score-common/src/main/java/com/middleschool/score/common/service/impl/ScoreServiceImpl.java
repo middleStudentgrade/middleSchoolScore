@@ -220,15 +220,18 @@ public class ScoreServiceImpl implements ScoreService{
     private TopScore getTopScore(String courseName,int type){
         List<MsScore> msScores=msScoreMapper.seletTopScore(courseName,type);
         TopScore topScore=new TopScore();
-        for(MsScore m:msScores){
-            topScore.setClasName(topScore.getClasName()+"/"+m.getClassId()%12);
-            topScore.setScore(getFieldValueByName(courseName,m).toString());
-            topScore.setScoreName(getCourseName(courseName));
-            topScore.setStuNum(topScore.getStuNum() + "/" + m.getStudentId());
-            MsStudent msStudent = msStudentMapper.selectByPrimaryKey(m.getStudentId());
-            topScore.setName(topScore.getName()+"/"+msStudent.getName());
+        if(msScores.size()!=0) {
+            for (MsScore m : msScores) {
+                topScore.setClasName(topScore.getClasName() + "/" + m.getClassId() % 12);
+                topScore.setScore(getFieldValueByName(courseName, m).toString());
+                topScore.setScoreName(getCourseName(courseName));
+                topScore.setStuNum(topScore.getStuNum() + "/" + m.getStudentId());
+                MsStudent msStudent = msStudentMapper.selectByPrimaryKey(m.getStudentId());
+                topScore.setName(topScore.getName() + "/" + msStudent.getName());
+            }
         }
-        return topScore;
+            return topScore;
+
     }
     private Object getFieldValueByName(String fieldName, Object o) {
         try {
@@ -311,7 +314,7 @@ public class ScoreServiceImpl implements ScoreService{
         topScores.add(getTopScore(("political"),4));
         topScores.add(getTopScore(("history"),4));
         topScores.add(getTopScore(("geography"),4));
-        topScores.add(getTopScore("basic_competencies",4));
+        topScores.add(getTopScore("basicCompetencies",4));
         return topScores;
     }
 
@@ -324,7 +327,7 @@ public class ScoreServiceImpl implements ScoreService{
         topScores.add(getTopScore(("physico"),5));
         topScores.add(getTopScore(("chemical"),5));
         topScores.add(getTopScore(("biology"),5));
-        topScores.add(getTopScore("basic_competencies",5));
+        topScores.add(getTopScore("basicCompetencies",5));
         return topScores;
     }
 
