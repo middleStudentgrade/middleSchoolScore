@@ -473,4 +473,75 @@ ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biolog
       #{item.basicCompetencies,jdbcType=DOUBLE}, #{item.type,jdbcType=INTEGER})
    </foreach>
   </insert>
+  <select id="seletTopScore" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    *
+     from ms_score where
+     <trim>
+       <if test="courseName=='chinese'">
+         chinese
+       </if>
+       <if test="courseName=='english'">
+         english
+       </if>
+       <if test="courseName=='math'">
+         math
+       </if>
+       <if test="courseName=='political'">
+         political
+       </if>
+       <if test="courseName=='geography'">
+         geography
+       </if>
+       <if test="courseName=='basicCompetencies'">
+         basicCompetencies
+       </if>
+       <if test="courseName=='biology'">
+         biology
+       </if>
+       <if test="courseName=='history'">
+         history
+       </if>
+       <if test="courseName=='physico'">
+         physico
+       </if>
+       <if test="courseName=='chemical'">
+         chemical
+       </if>
+     </trim>
+    =(select max(
+    <trim>
+    <if test="courseName=='chinese'">
+      chinese
+    </if>
+    <if test="courseName=='english'">
+      english
+    </if>
+    <if test="courseName=='math'">
+      math
+    </if>
+    <if test="courseName=='political'">
+      political
+    </if>
+    <if test="courseName=='geography'">
+      geography
+    </if>
+    <if test="courseName=='basicCompetencies'">
+      basicCompetencies
+    </if>
+    <if test="courseName=='biology'">
+      biology
+    </if>
+    <if test="courseName=='history'">
+      history
+    </if>
+    <if test="courseName=='physico'">
+      physico
+    </if>
+    <if test="courseName=='chemical'">
+      chemical
+    </if>
+  </trim>)from ms_score  where now() BETWEEN start_date and end_date and type= #{type,jdbcType=INTEGER}) and now() BETWEEN start_date and end_date and type= #{type,jdbcType=INTEGER}
+  </select>
+
 </mapper>

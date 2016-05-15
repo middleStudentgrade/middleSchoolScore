@@ -3,8 +3,7 @@ package com.middleschool.score.common.pojo;
 /**
  * Created by Administrator on 2016/5/13.
  */
-public class SophomoreScore{
-
+public class JuniorScoreArt {
     private Long studentId;
 
     private String name;
@@ -19,15 +18,7 @@ public class SophomoreScore{
 
     private Double history;
 
-    private Double physico;
-
     private Double geography;
-
-    private Double biology;
-
-    private Double chemical;
-
-
 
     public Long getStudentId() {
         return studentId;
@@ -35,14 +26,6 @@ public class SophomoreScore{
 
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Double getChinese() {
@@ -85,14 +68,6 @@ public class SophomoreScore{
         this.history = history;
     }
 
-    public Double getPhysico() {
-        return physico;
-    }
-
-    public void setPhysico(Double physico) {
-        this.physico = physico;
-    }
-
     public Double getGeography() {
         return geography;
     }
@@ -101,19 +76,11 @@ public class SophomoreScore{
         this.geography = geography;
     }
 
-    public Double getBiology() {
-        return biology;
+    public String getName() {
+        return name;
     }
 
-    public void setBiology(Double biology) {
-        this.biology = biology;
-    }
-
-    public Double getChemical() {
-        return chemical;
-    }
-
-    public void setChemical(Double chemical) {
-        this.chemical = chemical;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -11,29 +11,29 @@ public class MsScore {
 
     private Integer semester;
 
-    private Double chinese;
+    private Double chinese=new Double(0);
 
-    private Double english;
+    private Double english=new Double(0);
 
-    private Double math;
+    private Double math=new Double(0);
 
     private Date startDate;
 
     private Date endDate;
 
-    private Double political;
+    private Double political=new Double(0);
 
-    private Double history;
+    private Double history=new Double(0);
 
-    private Double physico;
+    private Double physico=new Double(0);
 
-    private Double geography;
+    private Double geography=new Double(0);
 
-    private Double biology;
+    private Double biology=new Double(0);
 
-    private Double chemical;
+    private Double chemical=new Double(0);
 
-    private Double basicCompetencies;
+    private Double basicCompetencies=new Double(0);
 
     private Integer type;
 

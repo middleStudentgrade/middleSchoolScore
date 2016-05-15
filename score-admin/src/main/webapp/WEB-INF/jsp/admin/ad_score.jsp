@@ -21,8 +21,8 @@
     <div style="margin:30px 30px 20px;">
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">上传成绩单</button>
         <form action="admin/downloadFile/download" method="post">
-            <input type="text" name="grade" id="stuGrade">
-            <input type="text" name="className" id="stuClassName">
+            <input type="text" name="grade" id="stuGrade" value="${grade}">
+            <input type="text" name="className" id="stuClassName" value="${className}">
         <button class="btn btn-info size download">学生成绩录入模板下载</button>
         </form>
         <input type="text" class="ScoreId" />
@@ -37,18 +37,18 @@
             <option value="高三" <c:if test="${className=='高三'}">selected</c:if>>高三</option>
         </select>
         <select name="grade" id="grade" value ="${grade}" onchange="updateClass()">
-            <option value="1" <c:if test="${className=='1'}">selected</c:if>>1</option>
-            <option  value="2" <c:if test="${className=='2'}">selected</c:if>>2</option>
-            <option value="3" <c:if test="${className=='3'}">selected</c:if>>3</option>
-            <option  value="4" <c:if test="${className=='4'}">selected</c:if>>4</option>
-            <option value="5" <c:if test="${className=='5'}">selected</c:if>>5</option>
-            <option  value="6" <c:if test="${className=='6'}">selected</c:if>>6</option>
-            <option value="7" <c:if test="${className=='7'}">selected</c:if>>7</option>
-            <option  value="8" <c:if test="${className=='8'}">selected</c:if>>8</option>
-            <option value="9" <c:if test="${className=='9'}">selected</c:if>>9</option>
-            <option  value="10" <c:if test="${className=='10'}">selected</c:if>>10</option>
-            <option value="11" <c:if test="${className=='11'}">selected</c:if>>11</option>
-            <option  value="12" <c:if test="${className=='12'}">selected</c:if>>12</option>
+            <option value="1" <c:if test="${grade=='1'}">selected</c:if>>1</option>
+            <option  value="2" <c:if test="${grade=='2'}">selected</c:if>>2</option>
+            <option value="3" <c:if test="${grade=='3'}">selected</c:if>>3</option>
+            <option  value="4" <c:if test="${grade=='4'}">selected</c:if>>4</option>
+            <option value="5" <c:if test="${grade=='5'}">selected</c:if>>5</option>
+            <option  value="6" <c:if test="${grade=='6'}">selected</c:if>>6</option>
+            <option value="7" <c:if test="${grade=='7'}">selected</c:if>>7</option>
+            <option  value="8" <c:if test="${grade=='8'}">selected</c:if>>8</option>
+            <option value="9" <c:if test="${grade=='9'}">selected</c:if>>9</option>
+            <option  value="10" <c:if test="${grade=='10'}">selected</c:if>>10</option>
+            <option value="11" <c:if test="${grade=='11'}">selected</c:if>>11</option>
+            <option  value="12" <c:if test="${grade=='12'}">selected</c:if>>12</option>
         </select>
        <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
         </form>
@@ -63,13 +63,20 @@
         <td>数学</td>
         <td >语文</td>
         <td >英语</td>
+        ${grade}
+        <c:if test="${grade<7 ||className=='高一'}">
         <td >历史</td>
         <td >地理</td>
         <td >政治</td>
+        </c:if>
+        <c:if test="${grade>6 ||className=='高一'}">
         <td >物理</td>
         <td >化学</td>
         <td >生物</td>
+        </c:if>
+        <c:if test="${className=='高三'}">
         <td >基本能力</td>
+        </c:if>
         </thead>
         <div class="clear"></div>
         <tbody id="list"></tbody>
@@ -202,12 +209,17 @@
                         $("#list").append('<td>' + item.chinese + '</td>');
                         $("#list").append('<td>' + item.math + '</td>');
                         $("#list").append('<td>' + item.english + '</td>');
-                        $("#list").append('<td>' + item.physico + '</td>');
-                        $("#list").append('<td>' + item.chemical + '</td>');
-                        $("#list").append('<td>' + item.biology + '</td>');
-                        $("#list").append('<td>' + item.history + '</td>');
-                        $("#list").append('<td>' + item.geography + '</td>');
-                        $("#list").append('<td>' + item.political + '</td>');
+                        if(item.type==1||item.type==3) {
+                            $("#list").append('<td>' + item.physico + '</td>');
+                            $("#list").append('<td>' + item.chemical + '</td>');
+                            $("#list").append('<td>' + item.biology + '</td>');
+                        }
+                        if(item.type==1||item.type==2) {
+                            $("#list").append('<td>' + item.history + '</td>');
+                            $("#list").append('<td>' + item.geography + '</td>');
+                            $("#list").append('<td>' + item.political + '</td>');
+                        }
+                        if(item.type==4||item.type==5)
                         $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
@@ -240,13 +252,18 @@
                         $("#list").append('<td>' + item.chinese + '</td>');
                         $("#list").append('<td>' + item.math + '</td>');
                         $("#list").append('<td>' + item.english + '</td>');
-                        $("#list").append('<td>' + item.physico + '</td>');
-                        $("#list").append('<td>' + item.chemical + '</td>');
-                        $("#list").append('<td>' + item.biology + '</td>');
-                        $("#list").append('<td>' + item.history + '</td>');
-                        $("#list").append('<td>' + item.geography + '</td>');
-                        $("#list").append('<td>' + item.political + '</td>');
-                        $("#list").append('<td>' + item.basicCompetencies + '</td>');
+                        if(item.type==1||item.type==3) {
+                            $("#list").append('<td>' + item.physico + '</td>');
+                            $("#list").append('<td>' + item.chemical + '</td>');
+                            $("#list").append('<td>' + item.biology + '</td>');
+                        }
+                        if(item.type==1||item.type==2) {
+                            $("#list").append('<td>' + item.history + '</td>');
+                            $("#list").append('<td>' + item.geography + '</td>');
+                            $("#list").append('<td>' + item.political + '</td>');
+                        }
+                        if(item.type==4||item.type==5)
+                            $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
@@ -282,15 +299,20 @@
                             $("#list").append('<td>' + item.chinese + '</td>');
                             $("#list").append('<td>' + item.math + '</td>');
                             $("#list").append('<td>' + item.english + '</td>');
-                            $("#list").append('<td>' + item.physico + '</td>');
-                            $("#list").append('<td>' + item.chemical + '</td>');
-                            $("#list").append('<td>' + item.biology + '</td>');
-                            $("#list").append('<td>' + item.history + '</td>');
-                            $("#list").append('<td>' + item.geography + '</td>');
-                            $("#list").append('<td>' + item.political + '</td>');
-                            $("#list").append('<td>' + item.basicCompetencies + '</td>');
+                            if(item.type==1||item.type==3) {
+                                $("#list").append('<td>' + item.physico + '</td>');
+                                $("#list").append('<td>' + item.chemical + '</td>');
+                                $("#list").append('<td>' + item.biology + '</td>');
+                            }
+                            if(item.type==1||item.type==2) {
+                                $("#list").append('<td>' + item.history + '</td>');
+                                $("#list").append('<td>' + item.geography + '</td>');
+                                $("#list").append('<td>' + item.political + '</td>');
+                            }
+                            if(item.type==4||item.type==5)
+                                $("#list").append('<td>' + item.basicCompetencies + '</td>');
                             $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
-                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
+                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $("#list").append('</tr>');
                         })
                     }
@@ -315,14 +337,20 @@
                 $(".chinese").val(data.data.chinese);
                 $(".term").val(data.data.term);
                 $(".math").val(data.data.math);
-                $(".physico").val(data.data.physico);
                 $(".english").val(data.data.english);
-                $(".chemical").val(data.data.chemical);
-                $(".biology").val(data.data.biology);
-                $(".history").val(data.data.history);
-                $(".geography").val(data.data.geography);
-                $(".political").val(data.data.political);
-                $(".basicCompetencies").val(data.data.basicCompetencies);
+                if(data.data.type==1||data.data.type==3) {
+                    $(".physico").val(data.data.physico);
+                    $(".chemical").val(data.data.chemical);
+                    $(".biology").val(data.data.biology);
+                }
+                if(data.data.type==1||data.data.type==2) {
+                    $(".history").val(data.data.history);
+                    $(".geography").val(data.data.geography);
+                    $(".political").val(data.data.political);
+                }
+                if(data.data.type==4||data.data.type==5) {
+                    $(".basicCompetencies").val(data.data.basicCompetencies);
+                }
             }
         })
     };

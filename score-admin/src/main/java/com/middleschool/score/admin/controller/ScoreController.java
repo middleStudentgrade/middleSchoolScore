@@ -3,10 +3,7 @@ package com.middleschool.score.admin.controller;
 import com.middleschool.score.common.dto.MsClass;
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsStudent;
-import com.middleschool.score.common.pojo.SophomoreScore;
-import com.middleschool.score.common.pojo.Page;
-import com.middleschool.score.common.pojo.ResponseResult;
-import com.middleschool.score.common.pojo.ScoreAdmin;
+import com.middleschool.score.common.pojo.*;
 import com.middleschool.score.common.service.ClassService;
 import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentService;
@@ -62,54 +59,97 @@ public class ScoreController {
         List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(className, grade);
         try {
             ExcelUtil excelUtil = ExcelUtil.create(is);
-            List<SophomoreScore> list = excelUtil.readExcel(SophomoreScore.class);
             int semester=0;
             String start="";
             String end="";
             Date startDate=null;
             Date endDate=null;
-            Date date=new Date();
             int type=1;
             Calendar now = Calendar.getInstance();
+
+            if(now.get(Calendar.MONTH)>3&&now.get(Calendar.MONTH)<9){
+                semester=1;
+                start=now.get(Calendar.YEAR)+"-03-01";
+                end=now.get(Calendar.YEAR)+"-09-01";
+                startDate= DateUtil.formatDate(start);
+                endDate=DateUtil.formatDate(end);
+            }else{
+                start=now.get(Calendar.YEAR)+"-09-02";
+                end=(now.get(Calendar.YEAR)+1)+"-02-28";
+                startDate= DateUtil.formatDate(start);
+                endDate=DateUtil.formatDate(end);
+            }
             if("高一".equals(className)){
                 type=1;
+                List<SophomoreScore> list = excelUtil.readExcel(SophomoreScore.class);
+                for(SophomoreScore e:list){
+                    MsScore msScore=new MsScore();
+                    BeanUtils.copyProperties(e,msScore);
+                    msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
+                    msScore.setSemester(semester);
+                    msScore.setStartDate(startDate);
+                    msScore.setEndDate(endDate);
+                    msScore.setType(type);
+                    msScores.add(msScore);
+                }
             }else if("高二".equals(className)){
                 if(grade<7){
                     type=2;
+                    List<JuniorScoreArt> list = excelUtil.readExcel(JuniorScoreArt.class);
+                    for(JuniorScoreArt e:list){
+                        MsScore msScore=new MsScore();
+                        BeanUtils.copyProperties(e,msScore);
+                        msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
+                        msScore.setSemester(semester);
+                        msScore.setStartDate(startDate);
+                        msScore.setEndDate(endDate);
+                        msScore.setType(type);
+                        msScores.add(msScore);
+                    }
                 }else {
                     type=3;
+                    List<JuniorScoreScience> list = excelUtil.readExcel(JuniorScoreScience.class);
+                    for(JuniorScoreScience e:list){
+                        MsScore msScore=new MsScore();
+                        BeanUtils.copyProperties(e,msScore);
+                        msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
+                        msScore.setSemester(semester);
+                        msScore.setStartDate(startDate);
+                        msScore.setEndDate(endDate);
+                        msScore.setType(type);
+                        msScores.add(msScore);
+                    }
                 }
             }else{
                 if(grade<7){
                     type=4;
+                    List<SeniorScoreArt> list = excelUtil.readExcel(SeniorScoreArt.class);
+                    for(SeniorScoreArt e:list){
+                        MsScore msScore=new MsScore();
+                        BeanUtils.copyProperties(e,msScore);
+                        msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
+                        msScore.setSemester(semester);
+                        msScore.setStartDate(startDate);
+                        msScore.setEndDate(endDate);
+                        msScore.setType(type);
+                        msScores.add(msScore);
+                    }
                 }else {
                     type=5;
+                    List<SeniorScoreScience> list = excelUtil.readExcel(SeniorScoreScience.class);
+                    for(SeniorScoreScience e:list){
+                        MsScore msScore=new MsScore();
+                        BeanUtils.copyProperties(e,msScore);
+                        msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
+                        msScore.setSemester(semester);
+                        msScore.setStartDate(startDate);
+                        msScore.setEndDate(endDate);
+                        msScore.setType(type);
+                        msScores.add(msScore);
+                    }
                 }
             }
-            if(now.get(Calendar.MONTH)>6){
-                semester=1;
-                start=now.get(Calendar.YEAR)+"-01-01";
-                end=now.get(Calendar.YEAR)+"-07-01";
-                startDate= DateUtil.formatDate(start);
-                endDate=DateUtil.formatDate(end);
-            }else{
-                start=now.get(Calendar.YEAR)+"-07-02";
-                end=now.get(Calendar.YEAR)+"-12-31";
-                startDate= DateUtil.formatDate(start);
-                endDate=DateUtil.formatDate(end);
-            }
-            for(SophomoreScore e:list){
-                MsScore msScore=new MsScore();
-                BeanUtils.copyProperties(e,msScore);
-                msScore.setClassId(Integer.parseInt(msClass.get(0).getId().toString()));
-                msScore.setSemester(semester);
-                msScore.setStartDate(startDate);
-                msScore.setEndDate(endDate);
-                msScore.setType(type);
-                msScores.add(msScore);
-            }
             scoreService.saves(msScores);
-            System.out.println(212);
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -276,11 +316,21 @@ public class ScoreController {
 
 
     @RequestMapping(value = "courseTopOne")
-    public String CourseTopOne(){
+    public String CourseTopOne(Model model){
         try {
+            List<TopScore> sophomoreScore=scoreService.getSophomoreScore();
+            List<TopScore> juniorScoreArt=scoreService.getJuniorScoreArt();
+            List<TopScore> juniorScoreScience=scoreService.juniorScoreScience();
+            List<TopScore> seniorScoreArt=scoreService.getSeniorScoreArt();
+            List<TopScore> seniorScoreScience=scoreService.getSeniorScoreScience();
+            model.addAttribute("sophomoreScore",sophomoreScore);
+            model.addAttribute("juniorScoreArt",juniorScoreArt);
+            model.addAttribute("juniorScoreScience",juniorScoreScience);
+            model.addAttribute("seniorScoreScience",seniorScoreScience);
+            model.addAttribute("seniorScoreArt",seniorScoreArt);
             return "admin/rank/course_top1";
         }catch (Exception e){
-            LOG.error("更新失败{}",e.getMessage());
+            LOG.error("查询失败{}",e.getMessage());
             return "admin/rank/course_top1";
         }
     }
