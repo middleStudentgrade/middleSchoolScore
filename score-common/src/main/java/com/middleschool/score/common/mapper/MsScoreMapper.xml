@@ -494,7 +494,7 @@ ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biolog
          geography
        </if>
        <if test="courseName=='basicCompetencies'">
-         basicCompetencies
+         basic_competencies
        </if>
        <if test="courseName=='biology'">
          biology
@@ -527,7 +527,7 @@ ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biolog
       geography
     </if>
     <if test="courseName=='basicCompetencies'">
-      basicCompetencies
+      basic_competencies
     </if>
     <if test="courseName=='biology'">
       biology
