@@ -28,4 +28,6 @@ public interface MsSchoolmasterMapper {
     int updateByPrimaryKeySelective(MsSchoolmaster record);
 
     int updateByPrimaryKey(MsSchoolmaster record);
+
+    List<MsSchoolmaster> selectByTeacherId(@Param("teacherId")long teacherId);
 }

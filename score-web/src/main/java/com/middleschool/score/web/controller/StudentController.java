@@ -31,7 +31,10 @@ public class StudentController {
 
     @Autowired
     private ScoreService scoreService;
-
+    private double getAllScore(MsScore msScore){
+        return msScore.getBiology()+msScore.getChemical()+msScore.getChinese()+msScore.getEnglish()+
+                msScore.getGeography()+msScore.getHistory()+msScore.getMath()+msScore.getPhysico()+msScore.getPolitical();
+    }
     @RequestMapping("select")
     public MsStudent getInfo(@RequestParam Long  id){
         try{
@@ -78,6 +81,7 @@ public class StudentController {
             MsScore msScore =scoreService.selectNowScoreByStudentId(id).get(0);
             int ranking=scoreService.selectRanking(id,(long)msScore.getClassId())+1;
             model.addAttribute("nowScore",msScore);
+            model.addAttribute("allScore",getAllScore(msScore));
             model.addAttribute("ranking",ranking);
             return "students/stu_ncj";
         }

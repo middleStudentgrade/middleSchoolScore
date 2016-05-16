@@ -29,7 +29,19 @@
         <input id="teacherId" type="text" value="${msTeacher.id}" >
         <input id="count" type="text" value="${count}">
         <thead>
-        <tr class="btn-info" style="height:46px">
+        <input  type="text" value="${courseName}" name="courseName" id="courseName" >
+        <form:form action="/teacher/scoreSort" method="post">
+          <input  type="text" value="${msTeacher.id}" name="id" >
+
+            <select name="name" id="name">
+                 <c:forEach var="item" items="${classNames}" varStatus="status">
+                      <option value="${item.value}" <c:if test="${name==item.value}">selected</c:if>>${item.value}</option>
+               </c:forEach>
+            </select>
+          <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
+        </form:form>
+        平均成绩<input type="text" id="avg">
+<tr class="btn-info" style="height:46px">
           <th>学号</th>
           <th>姓名</th>
           <th>成绩</th>
@@ -48,11 +60,13 @@
     $.ajax({
       url: "http://localhost:8080/teacher/scoreSelect",
       data: {
-        id: $("#teacherId").val(),
+        name:$("#name").val(),
+        course:$("#courseName").val(),
       },
       type: 'POST',
       success: function (data) {
         if (data != null) {
+          $("#avg").val(data.data.avg);
           $("#list").empty();
           $.each(data.data.datas, function (index, item) {
             $("#list").append('<tr>');
@@ -71,12 +85,14 @@
       $.ajax({
         url: "http://localhost:8080/teacher/scoreSelect",
         data: {
-          id: $("#teacherId").val(),
+          name:$("#name").val(),
+          course:$("#courseName").val(),
           offset:p
         },
         type: 'POST',
         success: function (data) {
           if (data != null) {
+            $("#avg").val(data.data.avg);
             $("#list").empty();
             $.each(data.data.datas, function (index, item) {
               $("#list").append('<tr>');

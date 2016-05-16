@@ -22,13 +22,13 @@
       <label >用户名</label>
       <input type="text" name="userName" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">
       <span id="span1"></span>
-    <%--<form:errors path="userName" style="color:red"></form:errors><br/>--%>
+    ${username}
     </div>
     <div class="form-group">
       <label >密码</label>
       <input type="password" name="password" id="pwd" class="form-control" onblur="valPwd()" placeholder="请输入密码">
       <span id="span2"></span>
-    <%--  <form:errors path="password" style="color:red"></form:errors><br/>--%>
+
     </div>
         <span  class="form-group denglu_sel" >
            <select name="type" class="form-control">

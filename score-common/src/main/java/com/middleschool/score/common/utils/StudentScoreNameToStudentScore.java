@@ -22,6 +22,7 @@ public class StudentScoreNameToStudentScore {
             case "geography":studentScore.setScore(student.getGeography());break;
             case "biology":studentScore.setScore(student.getBiology());break;
             case "chemical":studentScore.setScore(student.getChemical());break;
+            case "basic_competencies":studentScore.setScore(student.getBasicCompetencies());break;
         }
         return studentScore;
     }

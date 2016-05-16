@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -18,11 +20,28 @@
 
 <body>
 <div class="tea_con" style="padding-left:100px">
+  <form:form action="/teacher/passRate" method="post">
+    <input  type="text" value="${courseName}" name="courseName" >
+    <select name="className" id="className">
+      <c:forEach var="item" items="${classNames}" varStatus="status">
+        <option value="${item.value}" <c:if test="${name==item.value}">selected</c:if>>${item.value}</option>
+      </c:forEach>
+    </select>
+    <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
+  </form:form>
   <div class="tea_sm">
+    <c:if test="${courseName=='语文'||courseName=='数学'||courseName=='英语'}">
+      <button class="btn btn1">135分以上</button><span></span>
+      <button class="btn btn2"> 112.5~135</button>
+      <button class="btn btn3"> 90~112.5</button>
+      <button class="btn btn4">90分以下 </button>
+    </c:if>
+<c:if test="${courseName=='政治'||courseName=='历史'||courseName=='物理'||courseName=='地理'||courseName=='生物'||courseName=='化学'||courseName=='基本能力'}">
     <button class="btn btn1">90分以上</button><span></span>
     <button class="btn btn2"> 75~90</button>
     <button class="btn btn3"> 60~75</button>
     <button class="btn btn4">60分以下 </button>
+  </c:if>
   </div>
   <canvas id="myChart" width="300" height="300"></canvas>
   <p id="rate1">${passNum[0]}</p>

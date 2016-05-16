@@ -25,7 +25,7 @@ public class LoginController {
     private StudentService studentService;
 
     @RequestMapping("/login")
-    public String login(@RequestParam String  userName, @RequestParam String password, @RequestParam String type,/* BindingResult errors,*/ HttpSession session) {
+    public String login(@RequestParam String  userName, @RequestParam String password, @RequestParam String type,Model model, HttpSession session) {
         if ("1".equals(type)) {
             MsStudent msStudent = studentService.getById(Long.valueOf(userName));
             if (msStudent != null) {
@@ -33,11 +33,11 @@ public class LoginController {
                     session.setAttribute("msStudent", msStudent);
                     return "students/stu_index";
                 } else {
-                //    errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                   model.addAttribute("username", "用户名或密码错误");
                     return "login/login";
                 }
             } else {
-              //  errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                model.addAttribute("username", "用户名或密码错误");
                 return "login/login";
             }
         } else if ("2".equals(type)) {
@@ -47,11 +47,11 @@ public class LoginController {
                     session.setAttribute("msTeacher", msTeacher);
                     return "teachers/teach_index";
                 } else {
-               //     errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                    model.addAttribute("username", "用户名或密码错误");
                     return "login/login";
                 }
             } else {
-              //  errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                model.addAttribute("username", "用户名或密码错误");
                 return "login/login";
             }
         }

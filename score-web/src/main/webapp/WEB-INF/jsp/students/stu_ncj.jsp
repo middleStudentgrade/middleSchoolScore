@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -34,12 +35,20 @@
               <th>数学</th>
               <th>语文</th>
               <th>英语</th>
+              <c:if test="${nowScore.type=='1'||nowScore.type=='3'}">
               <th>物理</th>
               <th>化学</th>
               <th>生物</th>
+              </c:if>
+<c:if test="${nowScore.type=='1'||nowScore.type=='2'}">
               <th>政治</th>
               <th>地理</th>
               <th>历史</th>
+  </c:if>
+<c:if test="${nowScore.type=='5'}">
+              <th>基本能力</th>
+  </c:if>
+              <th>总成绩</th>
               <th style="color:#C66">班级排名</th>
             </tr>
             </thead>
@@ -48,12 +57,20 @@
               <td>${nowScore.math}</td>
               <td>${nowScore.chinese}</td>
               <td>${nowScore.english}</td>
+<c:if test="${nowScore.type=='1'||nowScore.type=='3'}">
               <td>${nowScore.physico}</td>
               <td>${nowScore.chemical}</td>
               <td>${nowScore.biology}</td>
-              <td>${nowScore.physico}</td>
+  </c:if>
+<c:if test="${nowScore.type=='1'||nowScore.type=='2'}">
+              <td>${nowScore.political}</td>
               <td>${nowScore.geography}</td>
               <td>${nowScore.history}</td>
+  </c:if>
+              <c:if test="${nowScore.type=='5'}">
+                <th>basicCompetencies</th>
+              </c:if>
+              <td>${allScore}</td>
               <td>${ranking}</td>
             </tr>
             </tbody>

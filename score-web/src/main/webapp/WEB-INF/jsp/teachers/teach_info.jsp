@@ -27,6 +27,7 @@
           <th>编号</th>
           <th>姓名</th>
           <th>性别</th>
+          <th>年龄</th>
           <th>教育程度</th>
           <th>职务</th>
           <th>部门</th>
@@ -41,6 +42,7 @@
           <td>${msTeacher.id}</td>
           <td>${msTeacher.name}</td>
           <td>${msTeacher.sex}</td>
+          <td>${msTeacher.age}</td>
           <td>${msTeacher.education}</td>
           <td>${msTeacher.title}</td>
           <td>${msTeacher.department}</td>

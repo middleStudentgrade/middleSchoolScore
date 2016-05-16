@@ -23,8 +23,77 @@
 <!--查询某个班级的所有成绩并且排名-->
 <select id="selectScoreByClassId" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
     select *
-    from ms_score s join ms_student st on s.student_id=st.id where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date order by #{courseName,jdbcType=VARCHAR} limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+    from ms_score s join ms_student st on s.student_id=st.id where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date order by
+    <trim>
+        <if test="courseName=='chinese'">
+            chinese
+        </if>
+        <if test="courseName=='english'">
+            english
+        </if>
+        <if test="courseName=='math'">
+            math
+        </if>
+        <if test="courseName=='political'">
+            political
+        </if>
+        <if test="courseName=='geography'">
+            geography
+        </if>
+        <if test="courseName=='basicCompetencies'">
+            basic_competencies
+        </if>
+        <if test="courseName=='biology'">
+            biology
+        </if>
+        <if test="courseName=='history'">
+            history
+        </if>
+        <if test="courseName=='physico'">
+            physico
+        </if>
+        <if test="courseName=='chemical'">
+            chemical
+        </if>
+    </trim> limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
 </select>
+
+    <select id="selectScoreByClassIdNoPage" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+        select *
+        from ms_score s join ms_student st on s.student_id=st.id where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date order by
+        <trim>
+            <if test="courseName=='chinese'">
+                chinese
+            </if>
+            <if test="courseName=='english'">
+                english
+            </if>
+            <if test="courseName=='math'">
+                math
+            </if>
+            <if test="courseName=='political'">
+                political
+            </if>
+            <if test="courseName=='geography'">
+                geography
+            </if>
+            <if test="courseName=='basicCompetencies'">
+                basic_competencies
+            </if>
+            <if test="courseName=='biology'">
+                biology
+            </if>
+            <if test="courseName=='history'">
+                history
+            </if>
+            <if test="courseName=='physico'">
+                physico
+            </if>
+            <if test="courseName=='chemical'">
+                chemical
+            </if>
+        </trim>
+    </select>
     <select id="selectCountByClassId" resultType="java.lang.Integer" parameterType="com.middleschool.score.common.dto.MsScoreExample">
         select COUNT(*)
         from ms_score  where class_id = #{classId,jdbcType=BIGINT} and now() BETWEEN start_date AND end_date

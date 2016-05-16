@@ -18,11 +18,11 @@ public interface ScoreService {
 
     int selectRanking(Long id,Long classId);
 
-    Page selectNowScoreByClassId(Long teacherId,int limit,int offset);
+    Page selectNowScoreByClassId(String courseName,int limit,int offset,long classId);
 
-    int[] selectPassRateByClassId(Long id);
+    int[]  selectPassRateByClassId(Long id);
 
-    int countStudents(Long id);
+    int countStudents(Long id ,String courseName);
 
     int countScore(int grade,String name);
 
@@ -31,7 +31,7 @@ public interface ScoreService {
     void updateScore(MsScore msScore);
 
     List<MsScore> findAll(int limit,int offset,int grade,String name);
-
+     double selectScoreByClassIdNoPage(String courseName,long  classId);
     int deleteByStudentId(Long id);
 
     List<MsScore> findScore(String id);

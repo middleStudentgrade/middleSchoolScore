@@ -41,8 +41,6 @@
                 <tr>
                   <td>性别：</td>
                   <td>>${msStudent.sex}</td>
-                  <td>入学时间：</td>
-                  <td>${msStudent.datesAttendance}</td>
                 </tr>
                 <tr>
                   <td>身份证号：</td>

@@ -13,6 +13,7 @@ import com.middleschool.score.common.service.ScoreService;
 
 import com.middleschool.score.common.utils.JsonUtils;
 import com.middleschool.score.common.utils.StudentScoreNameToStudentScore;
+import com.middleschool.score.common.utils.Util;
 import com.middleschool.score.common.utils.WebConf;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,25 +90,35 @@ public class ScoreServiceImpl implements ScoreService{
     }
 
     @Override
-    public Page selectNowScoreByClassId(Long teacherId,int limit,int offset) {
-        MsSchoolmasterExample msSchoolmasterExample=new MsSchoolmasterExample();
-        MsSchoolmasterExample.Criteria criteria=msSchoolmasterExample.createCriteria();
-        criteria.andTeacherIdEqualTo(teacherId);
-        MsSchoolmaster msSchoolmaster= msSchoolmasterMapper.selectByExample(msSchoolmasterExample).get(0);
-        List<StudentScoreName>msScores=studentScoreNameMapper.selectScoreByClassId(msSchoolmaster.getClassId(), msSchoolmaster.getCourseName(),limit,offset);
+    public Page selectNowScoreByClassId(String courseName,int limit,int offset,long  classId) {
+        List<StudentScoreName>msScores=studentScoreNameMapper.selectScoreByClassId(classId,courseName,limit,offset);
         List<StudentScore> studentScores=new ArrayList<>();
         int i=1;
         for(StudentScoreName s:msScores) {
-            StudentScore studentScore = StudentScoreNameToStudentScore.changeScoreName(s, msSchoolmaster.getCourseName());
-            studentScore.setRanking(limit*offset+i++);
+            StudentScore studentScore = StudentScoreNameToStudentScore.changeScoreName(s, courseName);
+            studentScore.setRanking(offset+i++);
             studentScores.add(studentScore);
         }
-        int count=studentScoreNameMapper.selectCountByClassId(msSchoolmaster.getClassId(), msSchoolmaster.getCourseName());
+        List<StudentScoreName>msScoresAll=studentScoreNameMapper.selectScoreByClassIdNoPage(classId, courseName);
+        double allScore=0;
+        for(StudentScoreName s:msScoresAll) {
+            allScore+=(double)Util.getFieldValueByName(courseName,s);
+        }
         Page page=new Page();
-        page.setNum(count);
+        page.setAvg(allScore / msScoresAll.size());
         page.setDatas(studentScores);
        return page;
     }
+    @Override
+    public double selectScoreByClassIdNoPage(String courseName,long  classId) {
+        List<StudentScoreName>msScores=studentScoreNameMapper.selectScoreByClassIdNoPage(classId, courseName);
+        double allScore=0;
+        for(StudentScoreName s:msScores) {
+            allScore+=(double)Util.getFieldValueByName(courseName,s);
+        }
+        return allScore;
+    }
+
 
     @Override
     public  int[] selectPassRateByClassId(Long id) {
@@ -124,12 +135,8 @@ public class ScoreServiceImpl implements ScoreService{
     }
 
     @Override
-    public int countStudents(Long id) {
-        MsSchoolmasterExample msSchoolmasterExample=new MsSchoolmasterExample();
-        MsSchoolmasterExample.Criteria criteria=msSchoolmasterExample.createCriteria();
-        criteria.andTeacherIdEqualTo(id);
-        MsSchoolmaster msSchoolmaster= msSchoolmasterMapper.selectByExample(msSchoolmasterExample).get(0);
-        int count=studentScoreNameMapper.selectCountByClassId(msSchoolmaster.getClassId(), msSchoolmaster.getCourseName());
+    public int countStudents(Long id,String courseName) {
+        int count=studentScoreNameMapper.selectCountByClassId(id, courseName);
         return count;
     }
 

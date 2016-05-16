@@ -6,6 +6,15 @@ package com.middleschool.score.common.pojo;
 public class Page {
     private int num;
     private Object datas;
+    private double avg;
+
+    public double getAvg() {
+        return avg;
+    }
+
+    public void setAvg(double avg) {
+        this.avg = avg;
+    }
 
     public int getNum() {
         return num;
