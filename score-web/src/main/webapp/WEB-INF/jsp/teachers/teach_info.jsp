@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>教师信息</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/teach_index.css" />
   <script src="../javaScript/jquery.js"></script>
@@ -16,46 +16,56 @@
 </head>
 
 <body>
+<div id="tea_info">
+    <div class="panel panel-success" style="width:650px;">
+      <div class="panel-heading">
+        <h3 class="panel-title">教师信息</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <table class="table ">
+            <tr >
+              <td> 编号：</td>
+              <td>${msTeacher.id}</td>
+              <td>姓名：</td>
+              <td>${msTeacher.name}</td>
+            </tr>
+            <tr>
+              <td>性别：</td>
+              <td>${msTeacher.sex}</td>
+              <td>学历：</td>
+              <td>${msTeacher.education}</td>
+            </tr>
+            <tr>
+              <td>年龄：</td>
+              <td>${msTeacher.age}</td>
+              <td>政治面貌：</td>
+              <td>${msTeacher.politicalLandscape}</td>
+            </tr>
+            <tr>
+              <td>职务：</td>
+              <td>${msTeacher.title}</td>
+              <td>身份证号：</td>
+              <td>${msTeacher.idCard}</td>
+            </tr>
+            <tr>
+              <td>部门：</td>
+              <td>${msTeacher.department}</td>
+              <td>邮箱：</td>
+              <td>${msTeacher.email}</td>
+            </tr>
+            <tr>
+              <td>籍贯：</td>
+              <td>${msTeacher.birthPlace}</td>
+            </tr>
+          </table>
+        </div>
 
-<div class="tea_con">
-  <div class="col-md-8">
-    <div class="panel panel-success">
-      <table class="table table-bordered">
-        <thead>
-        <tr class="btn-info" style="height:46px">
-
-          <th>编号</th>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>年龄</th>
-          <th>教育程度</th>
-          <th>职务</th>
-          <th>部门</th>
-          <th>政治面貌</th>
-          <th>籍贯</th>
-          <th>身份证号</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>${msTeacher.id}</td>
-          <td>${msTeacher.name}</td>
-          <td>${msTeacher.sex}</td>
-          <td>${msTeacher.age}</td>
-          <td>${msTeacher.education}</td>
-          <td>${msTeacher.title}</td>
-          <td>${msTeacher.department}</td>
-          <td>${msTeacher.email}</td>
-          <td>${msTeacher.politicalLandscape}</td>
-          <td>${msTeacher.birthPlace}</td>
-          <td>${msTeacher.idCard}</td>
-        </tr>
-        </tbody>
-
-      </table>
+      </div>
     </div>
   </div>
-</div>
+
+<!--个人信息-->
+
 </body>
 </html>

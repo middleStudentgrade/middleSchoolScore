@@ -16,8 +16,9 @@
 </head>
 
 <body>
-<div class="tea_bg">
-  <div class="tea_top"><label>学生成绩管理系统</label></div>
+<div id="cont">
+  <p>教师信息查询系统<br/>
+    <em style="font-size:24px;">Teacher Information Query System</em><br/></p>
 </div>
 </body>
 </html>

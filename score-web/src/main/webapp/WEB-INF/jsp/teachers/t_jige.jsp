@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+  <title>成绩分布</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/teach_index.css" />
   <script src="../javaScript/jquery.js"></script>
@@ -19,15 +19,17 @@
 </head>
 
 <body>
-<div class="tea_con" style="padding-left:100px">
+<div id="tea_pie" style="width:534px;">
   <form:form action="/teacher/passRate" method="post">
-    <input  type="text" value="${courseName}" name="courseName" >
-    <select name="className" id="className">
-      <c:forEach var="item" items="${classNames}" varStatus="status">
-        <option value="${item.value}" <c:if test="${name==item.value}">selected</c:if>>${item.value}</option>
-      </c:forEach>
-    </select>
-    <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
+    <input  type="text" value="${courseName}" name="courseName" class="courseName">成绩段分布情况
+    <div style="float:right;margin-right:30px;">
+        <select name="className" id="className">
+        <c:forEach var="item" items="${classNames}" varStatus="status">
+           <option value="${item.value}" <c:if test="${name==item.value}">selected</c:if>>${item.value}</option>
+         </c:forEach>
+        </select>
+        <button type="submit" class="btn btn-warning selectScore">本班成绩查询</button>
+    </div>
   </form:form>
   <div class="tea_sm">
     <c:if test="${courseName=='语文'||courseName=='数学'||courseName=='英语'}">
@@ -43,7 +45,7 @@
     <button class="btn btn4">60分以下 </button>
   </c:if>
   </div>
-  <canvas id="myChart" width="300" height="300"></canvas>
+  <canvas id="myChart" width="240" height="240"></canvas>
   <p id="rate1">${passNum[0]}</p>
   <p id="rate2">${passNum[1]}</p>
   <p id="rate3">${passNum[2]}</p>

@@ -9,47 +9,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>本学期成绩</title>
   <link rel="stylesheet" href="../css/stu_index.css">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <script src="../javaScript/jquery.js"></script>
   <script src="../javaScript/bootstrap.min.js"></script>
 </head>
 <body>
-<div id="con">
-  <div id="s_con">
+<div style="height:60px;"></div>
     <!--成绩-->
-
-    <div id="stu_ncj" class="container">
-      <div class="col-sm-8" style="margin-bottom:20px">
-        <button class="btn btn-info" style="border-radius:20px">本学期成绩</button>
+    <div id="score_now">
+      <div style="width:580px;margin-bottom:30px">
+        <button class="btn btn-default">本学期成绩</button>
         <a href="/student/getAllScore?id=${msStudent.id}" target="main"><button class="btn btn-warning">所有成绩</button></a>
       </div>
-      <div class="col-sm-8">
-        <div class="panel panel-success" style="border-color: #d6e9c6;">
-
-          <table class="table table-bordered" style="height:90px">
+        <div class="score_info">
+          <table class="table table-bordered">
             <thead>
-            <tr class="success" style="height:46px">
-
+            <tr class="btn-info" style="height:46px">
               <th>数学</th>
               <th>语文</th>
               <th>英语</th>
-              <c:if test="${nowScore.type=='1'||nowScore.type=='3'}">
+ <c:if test="${nowScore.type=='1'||nowScore.type=='3'}">
               <th>物理</th>
               <th>化学</th>
               <th>生物</th>
               </c:if>
-<c:if test="${nowScore.type=='1'||nowScore.type=='2'}">
+ <c:if test="${nowScore.type=='1'||nowScore.type=='2'}">
               <th>政治</th>
               <th>地理</th>
               <th>历史</th>
   </c:if>
-<c:if test="${nowScore.type=='5'}">
+ <c:if test="${nowScore.type=='5'}">
               <th>基本能力</th>
   </c:if>
               <th>总成绩</th>
-              <th style="color:#C66">班级排名</th>
+              <th>班级排名</th>
             </tr>
             </thead>
             <tbody>
@@ -78,9 +73,6 @@
 
         </div>
       </div>
-    </div>
     <!--成绩-->
-  </div>
-</div>
 </body>
 </html>

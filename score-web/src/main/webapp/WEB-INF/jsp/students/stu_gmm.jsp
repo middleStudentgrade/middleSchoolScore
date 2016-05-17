@@ -16,43 +16,39 @@
   <script src="../javaScript/student.js"></script>
 </head>
 <body>
-<div id="con" >
-  <div id="s_con">
+<div style="height:60px"></div>
 
     <!--修改密码-->
     <div id="stu_mm"  class="container">
-      <div class="col-sm-5">
-        <div class="panel panel-info">
+        <div class="panel panel-info" style="width:392px;">
           <div class="panel-heading">
             <h3 class="panel-title">修改密码</h3>
           </div>
           <div class="panel-body">
-              <input id="studentId" type="text" value="${msTeacher.id}" >
+              <%--<input id="studentId" type="text" value="${msTeacher.id}" >--%>
               <div class="form-group">
-                <label >原密码</label>
-                <input  id="password" onblur="valYhm()" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
-                  <span id="span1"></span>
+                <label >原密码:</label>
+                <input  id="password" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
+                 <br/> <span id="span1"></span>
                   <span id="error"></span>
               </div>
               <div class="form-group">
-                <label >新密码</label>
+                <label >新密码:</label>
                 <input id="rpwd" onblur="valPwd()" type="password" name="password" class="form-control" placeholder="请输入新密码" >
-                  <span id="span2"></span>
+                  <br/><span id="span2"></span>
               </div>
               <div class="form-group">
-                <label >确认密码</label>
+                <label >确认密码:</label>
                 <input id="newPassword" onblur="valRPwd()" type="password" name="password" class="form-control" placeholder="确认输入密码" >
-                  <span id="span3"></span>
+                  <br/><span id="span3"></span>
               </div>
-              <button id ="commit" class="btn btn-info" type="button" onclick="changepassword()">确认</button>
-              <button class="btn" type="reset" style="float:right">取消</button>
-
+              <div style="width:296px;margin:0 auto;">
+                <button id ="commit" class="btn btn-success" type="button" onclick="changepassword()">确认</button>
+                <button class="btn btn-warning" type="reset" style="float:right">取消</button>
+             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 <script>
     // 登录验证
     function valYhm(){

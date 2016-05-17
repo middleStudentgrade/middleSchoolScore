@@ -17,10 +17,10 @@
 <body>
 <div style="height:60px;"></div>
 <ul class="list-group" id="stu_menu">
-  <li><a href="stuInfo" class="list-group-item" target="main" id="xinxi">个人信息</a></li>
-  <li><a href="stuGmm" class="list-group-item" target="main" id="changePassword">修改密码</a></li>
-  <li><a href="student/getNowScore?id=${msStudent.id}" class="list-group-item" target="main" id="myScore">我的成绩</a></li>
-  <a href="retLogin" target="_blank" style="font-size:16px"><li>退出登录</li></a>
+  <li ><a href="stuInfo" class="list-group-item" target="main" id="xinxi">个人信息</a></li>
+  <li ><a href="stuGmm" class="list-group-item" target="main" id="changePassword">修改密码</a></li>
+  <li ><a href="student/getNowScore?id=${msStudent.id}" class="list-group-item" target="main" id="myScore">我的成绩</a></li>
+  <li ><a href="retLogin" target="_blank" class="list-group-item">退出登录</a></li>
 
 </ul>
 </body>

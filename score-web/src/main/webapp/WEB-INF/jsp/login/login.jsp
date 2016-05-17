@@ -5,8 +5,8 @@
 %>
 <html>
 <head>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/login.css">
   <script src="../javaScript/jquery.js"></script>
   <script src="../javaScript/bootstrap.min.js"></script>
   <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
@@ -38,7 +38,7 @@
        </span>
 
     <div style="clear:both"></div>
-    <button class="btn  btn-success btn-lg btn-block" type="submit">登录</button>
+    <button class="btn  btn-danger btn-lg btn-block" type="submit">登录</button>
   </form>
 </div>
 <script>
