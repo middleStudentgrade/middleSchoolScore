@@ -42,6 +42,13 @@
                   <td>身份证号：</td>
                   <td>${msStudent.idCard}</td>
                 </tr>
+
+                <tr>
+                  <td>年级：</td>
+                  <td>${msClass.name}</td>
+                  <td>班级：</td>
+                  <td>${msClass.grade}班</td>
+                </tr>
                 <tr>
                   <td>籍贯：</td>
                   <td>${msStudent.birthPlace}</td>

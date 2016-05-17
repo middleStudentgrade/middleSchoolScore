@@ -1,10 +1,10 @@
 package com.middleschool.score.web.controller;
 
+import com.middleschool.score.common.dto.MsClass;
 import com.middleschool.score.common.dto.MsStudent;
+import com.middleschool.score.common.dto.MsStudentNow;
 import com.middleschool.score.common.dto.MsTeacher;
-import com.middleschool.score.common.service.ScoreService;
-import com.middleschool.score.common.service.StudentService;
-import com.middleschool.score.common.service.TeacherService;
+import com.middleschool.score.common.service.*;
 import com.middleschool.score.common.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +24,12 @@ public class LoginController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private StudentNowService studentNowService;
+
+    @Autowired
+    private ClassService classService;
+
     @RequestMapping("/login")
     public String login(@RequestParam String  userName, @RequestParam String password, @RequestParam String type,Model model, HttpSession session) {
         try {
@@ -32,6 +38,9 @@ public class LoginController {
                 if (msStudent != null) {
                     if (msStudent.getPassword().equals(MD5Utils.md5(password))) {
                         session.setAttribute("msStudent", msStudent);
+                        MsStudentNow msStudentNow = studentNowService.getByStudentId(Long.valueOf(userName));
+                        MsClass msClass = classService.getById(msStudentNow.getClassId());
+                        session.setAttribute("msClass",msClass);
                         return "students/stu_index";
                     } else {
                         model.addAttribute("username", "用户名或密码错误");
