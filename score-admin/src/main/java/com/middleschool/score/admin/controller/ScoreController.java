@@ -24,10 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.io.PushbackInputStream;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin/score/")
@@ -275,10 +272,10 @@ public class ScoreController {
     @RequestMapping(value = "gradeTopHundredth")
     public String gradeTopHundredth(){
         try {
-            return "admin/rank/grade_top100";
+            return "admin/rank/grade_top10";
         }catch (Exception e){
             LOG.error("更新失败{}",e.getMessage());
-            return "admin/rank/grade_top100";
+            return "admin/rank/grade_top10";
         }
     }
 
@@ -291,6 +288,7 @@ public class ScoreController {
             Page page = new Page();
             List<MsScore> msScores = scoreService.findTopHundredth(id,limit,(offset-1)*limit);
             List<ScoreAdmin> scoreAdmins=new ArrayList<>();
+            int i=1;
             for(MsScore m:msScores){
                 ScoreAdmin scoreAdmin=new ScoreAdmin();
                 MsStudent msStudent=studentService.getById(m.getStudentId());
@@ -303,6 +301,8 @@ public class ScoreController {
                 }else {
                     scoreAdmin.setTerm("上学期");
                 }
+                scoreAdmin.setAllGrade(getAllScore(m));
+                scoreAdmin.setRanking(i++);
                 scoreAdmins.add(scoreAdmin);
             }
             page.setDatas(scoreAdmins);
@@ -343,13 +343,24 @@ public class ScoreController {
             return "admin/rank/pass_rate";
         }
     }
-    @RequestMapping(value = "deptTopTen")
-    public String deptTopTen(){
+    @RequestMapping(value = "passRateInfo")
+    @ResponseBody
+    public ResponseResult passRateGetInfo(){
         try {
-            return "admin/rank/dept_top10";
+            double[] sophomoreScore = scoreService.getSophomoreAvgScore();
+            double[] juniorScoreArt = scoreService.getJuniorScoreAvgArt();
+            double[] juniorScoreScience = scoreService.juniorScoreAvgScience();
+            double[] seniorScoreArt = scoreService.getSeniorScoreAvgArt();
+            double[] seniorScoreScience = scoreService.getSeniorScoreAvgScience();
+            Map<String, double[]> map = new HashMap<>();
+            map.put("sophomoreScore", sophomoreScore);
+            map.put("juniorScoreArt", juniorScoreArt);
+            map.put("juniorScoreScience", juniorScoreScience);
+            map.put("seniorScoreArt", seniorScoreArt);
+            map.put("seniorScoreScience", seniorScoreScience);
+            return ResponseResult.ok(map);
         }catch (Exception e){
-            LOG.error("更新失败{}",e.getMessage());
-            return "admin/rank/dept_top10";
+            return ResponseResult.build(500,"获取平均成绩失败");
         }
     }
 }

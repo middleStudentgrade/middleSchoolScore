@@ -6,6 +6,7 @@ import com.middleschool.score.common.service.UserService;
 import com.middleschool.score.common.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,25 +21,24 @@ public class LoginController {
     private TestService testService;
 
     @RequestMapping("/login")
-    public String login(@RequestParam String userName, @RequestParam String password,HttpSession session ) {
+    public String login(@RequestParam String userName, @RequestParam String password,HttpSession session ,Model model) {
         try {
-            BindingResult errors = null;
             MsUser msUser = userService.selectUser(userName);
             if (msUser != null) {
                 if (msUser.getPassword().equals(MD5Utils.md5(password))) {
                     session.setAttribute("msUser", msUser);
                     return "admin/ad_index";
                 } else {
-                    errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                    model.addAttribute("username", "用户名或密码错误");
                     return "login/login";
                 }
             } else {
-                errors.rejectValue("username", "用户名或密码错误", "用户名或密码错误");
+                model.addAttribute("username", "用户名或密码错误");
                 return "login/login";
             }
         }catch (Exception e){
+            model.addAttribute("username","用户名或密码错误");
             return "login/login";
         }
     }
-
 }

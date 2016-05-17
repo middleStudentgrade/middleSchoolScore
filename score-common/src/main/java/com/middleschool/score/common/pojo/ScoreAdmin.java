@@ -10,6 +10,15 @@ public class ScoreAdmin extends MsScore{
     private String name;
     private double allGrade;
     private String term;
+    private int ranking;
+
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
 
     public String getTerm() {
         return term;
