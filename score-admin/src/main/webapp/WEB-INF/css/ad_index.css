@@ -52,7 +52,7 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 .tcdPageCode span.disabled{color:#bfbfbf;background:#f2f2f2;border:1px solid #bfbfbf;}
 /*添加学生*/
 .add_stu ul li,.alt_stu ul li{line-height:46px;}
-.add_stu label,.alt_stu label{width:80px;margin-left:20px;}
+.add_stu label,.alt_stu label{width:80px;margin-left:24px;}
 .add_stu select,.alt_stu select{width:80px;height:30px;}
 .btn_qd{background: linear-gradient(#fe8a18,#eb4e00);font-size:16px;color:#fff;}
 /*修改学生信息*/

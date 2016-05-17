@@ -17,13 +17,13 @@
 <body>
 <div class="container" style="background-color:#34495a">
 
-  <form class="form-signin con" action="/login" method="post">
+  <form class="con" action="/login" method="post">
     <div class="logo">
-      <h3 style="color:#415d98;font-weight:bold"><em>学生成绩管理系统</em></h3>
-      <h4 style="line-height: 30px;">Student achievement management system<em><span class="l_l"> 高中版</span></em></h4>
+      <h3>中学生成绩管理系统</h3>
+      <h4 style="line-height: 30px;">Middle School Students achievement management system<em class="l_l">高中版</em></h4>
     </div>
     <div class="ad_login">
-      <div class="denglu_top">管理员登录</div>
+      <div class="login_top">管理员登录</div>
       <div class="form-group">
         <label>用户名</label>
         <input type="text" name="userName" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">                  <span id="span1"></span>
@@ -37,6 +37,7 @@
 </div>
   </form>
 </div>
+
 
 <script>
   // 登录验证

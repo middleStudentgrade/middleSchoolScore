@@ -6,12 +6,17 @@
 <html>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>学生信息</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.css"/>
     <link rel="stylesheet" href="../css/ad_index.css" />
-
+    <link rel="stylesheet" href="../css/font-awesome.css" />
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/jquery.page.js"></script>
+     <script src="../js/bootstrap-datetimepicker.js"></script>
+     <script src="../js/bootstrap-datetimepicker.fr.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -54,7 +59,7 @@
                     <ul>
                         <li>
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control sname" name="name" type="text"  />
-                            <label class="size">年龄：</label><input class="form-control sage" type="number" name="age" />
+                            <label class="size">年龄：</label><input class="form-control sage" type="number" name="age" style="width:180px;"/>
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
@@ -72,6 +77,8 @@
                                     <option value="三级部">三级部</option>
                                 </select>
                             </div>
+                        </li>
+                        <li>
                             <label class="size">班级：</label>
                             <select name="className" class="sclassName">
                                 <option>高一</option>
@@ -92,8 +99,6 @@
                                 <option value="11">11</option>
                                 <option  value="12">12</option>
                             </select>
-                        </li>
-                        <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">政治面貌：</label>
                                 <select name="politicalLandscape" class="spoliticalLandscape">
@@ -102,7 +107,16 @@
                                     <option value="群众">群众</option>
                                 </select>
                             </div>
+                        </li>
+                        <li>
+
                             <label class="size">入学时间：</label>
+                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <input type="hidden" id="dtp_input2" value="" /><br/>
 
                         </li>
                         <li><label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" /></li>
@@ -149,6 +163,8 @@
                                     <option value="三级部">三级部</option>
                                 </select>
                             </div>
+                        </li>
+                        <li>
                             <label class="size">班级：</label>
                             <select name="className" class="className">
                                 <option>高一</option>
@@ -169,8 +185,6 @@
                                 <option value="11">11</option>
                                 <option  value="12">12</option>
                             </select>
-                        </li>
-                        <li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">政治面貌：</label>
                                 <select name="politicalLandscape" class="politicalLandscape">
@@ -179,8 +193,15 @@
                                     <option value="群众">群众</option>
                                 </select>
                             </div>
-                            <label class="size">入学时间：</label>
+                        </li>
+                        <li>
 
+                            <label class="size">入学时间：</label>
+                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                <input class="form-control" size="16" type="text" value="" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
                         </li>
                         <li><label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" /></li>
                         <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control birthPlace" type="text" name="birthPlace" /></li>
@@ -395,6 +416,39 @@
        $(".del_id").val(id);
     }
 
+</script>
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
 </script>
 </body>
 </html>
