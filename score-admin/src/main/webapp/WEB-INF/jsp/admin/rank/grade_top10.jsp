@@ -53,6 +53,8 @@
             <td >化学</td>
             <td >生物</td>
             <td >基本能力</td>
+            <td>总成绩</td>
+            <td>排名</td>
             </thead>
             <div class="clear"></div>
             <tbody class="list"></tbody>
@@ -72,10 +74,9 @@
             <td >历史</td>
             <td >地理</td>
             <td >政治</td>
-            <td >物理</td>
-            <td >化学</td>
-            <td >生物</td>
             <td >基本能力</td>
+            <td>总成绩</td>
+            <td>排名</td>
             </thead>
             <div class="clear"></div>
             <tbody class="list"></tbody>
@@ -92,13 +93,12 @@
             <td>数学</td>
             <td >语文</td>
             <td >英语</td>
-            <td >历史</td>
-            <td >地理</td>
-            <td >政治</td>
             <td >物理</td>
             <td >化学</td>
             <td >生物</td>
             <td >基本能力</td>
+            <td>总成绩</td>
+            <td>排名</td>
             </thead>
             <div class="clear"></div>
             <tbody class="list"></tbody>
@@ -118,10 +118,9 @@
             <td >历史</td>
             <td >地理</td>
             <td >政治</td>
-            <td >物理</td>
-            <td >化学</td>
-            <td >生物</td>
             <td >基本能力</td>
+            <td>总成绩</td>
+            <td>排名</td>
             </thead>
             <div class="clear"></div>
             <tbody class="list"></tbody>
@@ -138,13 +137,12 @@
             <td>数学</td>
             <td >语文</td>
             <td >英语</td>
-            <td >历史</td>
-            <td >地理</td>
-            <td >政治</td>
             <td >物理</td>
             <td >化学</td>
             <td >生物</td>
             <td >基本能力</td>
+            <td>总成绩</td>
+            <td>排名</td>
             </thead>
             <div class="clear"></div>
             <tbody class="list"></tbody>
@@ -188,6 +186,8 @@
                             $(".list").append('<td>' + item.geography + '</td>');
                             $(".list").append('<td>' + item.political + '</td>');
                             $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<td>' + item.allGrade + '</td>');
+                            $(".list").append('<td>' + item.ranking + '</td>');
                             $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $(".list").append('</tr>');
@@ -225,13 +225,12 @@
                             $(".list").append('<td>' + item.chinese + '</td>');
                             $(".list").append('<td>' + item.math + '</td>');
                             $(".list").append('<td>' + item.english + '</td>');
-                            $(".list").append('<td>' + item.physico + '</td>');
-                            $(".list").append('<td>' + item.chemical + '</td>');
-                            $(".list").append('<td>' + item.biology + '</td>');
                             $(".list").append('<td>' + item.history + '</td>');
                             $(".list").append('<td>' + item.geography + '</td>');
                             $(".list").append('<td>' + item.political + '</td>');
                             $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<td>' + item.allGrade + '</td>');
+                            $(".list").append('<td>' + item.ranking + '</td>');
                             $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $(".list").append('</tr>');
@@ -270,10 +269,9 @@
                             $(".list").append('<td>' + item.physico + '</td>');
                             $(".list").append('<td>' + item.chemical + '</td>');
                             $(".list").append('<td>' + item.biology + '</td>');
-                            $(".list").append('<td>' + item.history + '</td>');
-                            $(".list").append('<td>' + item.geography + '</td>');
-                            $(".list").append('<td>' + item.political + '</td>');
                             $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<td>' + item.allGrade + '</td>');
+                            $(".list").append('<td>' + item.ranking + '</td>');
                             $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $(".list").append('</tr>');
@@ -309,13 +307,12 @@
                             $(".list").append('<td>' + item.chinese + '</td>');
                             $(".list").append('<td>' + item.math + '</td>');
                             $(".list").append('<td>' + item.english + '</td>');
-                            $(".list").append('<td>' + item.physico + '</td>');
-                            $(".list").append('<td>' + item.chemical + '</td>');
-                            $(".list").append('<td>' + item.biology + '</td>');
                             $(".list").append('<td>' + item.history + '</td>');
                             $(".list").append('<td>' + item.geography + '</td>');
                             $(".list").append('<td>' + item.political + '</td>');
                             $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<td>' + item.allGrade + '</td>');
+                            $(".list").append('<td>' + item.ranking + '</td>');
                             $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $(".list").append('</tr>');
@@ -354,10 +351,9 @@
                             $(".list").append('<td>' + item.physico + '</td>');
                             $(".list").append('<td>' + item.chemical + '</td>');
                             $(".list").append('<td>' + item.biology + '</td>');
-                            $(".list").append('<td>' + item.history + '</td>');
-                            $(".list").append('<td>' + item.geography + '</td>');
-                            $(".list").append('<td>' + item.political + '</td>');
                             $(".list").append('<td>' + item.basicCompetencies + '</td>');
+                            $(".list").append('<td>' + item.allGrade + '</td>');
+                            $(".list").append('<td>' + item.ranking + '</td>');
                             $(".list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $(".list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $(".list").append('</tr>');

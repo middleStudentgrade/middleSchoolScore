@@ -272,10 +272,10 @@ public class ScoreController {
     @RequestMapping(value = "gradeTopHundredth")
     public String gradeTopHundredth(){
         try {
-            return "admin/rank/grade_top100";
+            return "admin/rank/grade_top10";
         }catch (Exception e){
             LOG.error("更新失败{}",e.getMessage());
-            return "admin/rank/grade_top100";
+            return "admin/rank/grade_top10";
         }
     }
 
@@ -288,6 +288,7 @@ public class ScoreController {
             Page page = new Page();
             List<MsScore> msScores = scoreService.findTopHundredth(id,limit,(offset-1)*limit);
             List<ScoreAdmin> scoreAdmins=new ArrayList<>();
+            int i=1;
             for(MsScore m:msScores){
                 ScoreAdmin scoreAdmin=new ScoreAdmin();
                 MsStudent msStudent=studentService.getById(m.getStudentId());
@@ -300,6 +301,8 @@ public class ScoreController {
                 }else {
                     scoreAdmin.setTerm("上学期");
                 }
+                scoreAdmin.setAllGrade(getAllScore(m));
+                scoreAdmin.setRanking(i++);
                 scoreAdmins.add(scoreAdmin);
             }
             page.setDatas(scoreAdmins);
