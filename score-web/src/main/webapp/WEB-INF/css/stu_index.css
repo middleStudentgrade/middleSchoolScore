@@ -1,14 +1,26 @@
 @charset "utf-8";
 /* CSS Document */
 ul li{list-style: none;}
+/* stu_top */
 #cont{width:100%;font-size:28px;background:#27AE60;color:#fff;height:240px;font-weight:200;}
 #cont p{text-align:center;padding-top:40px;}
-#cont .form-group{width:1000px;position:relative;margin:40px auto;}
-#cont .search{padding:13px 30px;height:auto;text-align:center;color:#000;border:2px solid #27AE60;}
-#cont .fa{position:absolute;right:25px;top:10px;width:29px;height:29px;font-size:24px;background:url(../images/search.png) no-repeat;border:none;}
-#s_con{padding-top:40px;}
-#stu_ncj,#stu_bcj{margin-left:120px}
-#stu_mm{margin-left:260px}
-#s_head{padding-top:200px;font-size:16px;border-radius:7px;background:url(../img/stu_head.jpg) no-repeat;background-size:100% 100%;}
 
-#stu_menu{margin-left:40px;width:200px;}
+/* 左边导航 */
+#stu_menu{float:right;width:200px;}
+#stu_menu a{font-size:16px;background:linear-gradient(#d3d3d3,#fff);}
+#stu_menu a:focus{border-left:2px solid #27ae60;outline:none;}
+/* 学生信息 */
+#stu_info table td{border:none;}
+
+/* 修改密码 */
+#stu_mm,#stu_info,#score_now,#score_before{margin-left:150px;}
+#stu_mm label{width:70px;font-weight:200;margin-left:20px;display:inline-block;}
+#stu_mm .form-control{width:235px;height:50px;display:inline-block;}
+#stu_mm button{width:110px;}
+#stu_mm #commit{margin-left:60px;}
+#stu_mm #span1,#stu_mm #span2,#stu_mm #span3,#stu_mm #error{margin-left:90px;color:#c3493c;}
+
+/* 我的成绩 */
+#score_now button,#score_before button{width:100px;margin-right:20px;}
+.score_info{width:650px;border: 1px solid transparent;border-radius:6px;}
+.score_info th,.score_info td{text-align:center;}

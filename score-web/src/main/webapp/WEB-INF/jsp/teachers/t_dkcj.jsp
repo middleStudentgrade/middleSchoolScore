@@ -10,7 +10,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title></title>
+    <title>成绩排名和最高成绩</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/teach_index.css">
   <script src="../javaScript/jquery.js"></script>
@@ -18,44 +18,44 @@
   <script src="../javaScript/jquery.page.js"></script>
   <script src="../javaScript/bootstrap-paginator.js"></script>
 </head>
-
+<style>
+  #courseName{border:none;background:#fff;}
+</style>
 <body>
-<div class="tea_con">
 
-  <div class="col-md-8">
+  <div id="tea_score" style="width:600px;">
     <!-- <p class="rate">成绩及格率:</p>-->
-    <div class="panel panel-success">
-      <table class="table table-bordered">
-        <input id="teacherId" type="text" value="${msTeacher.id}" >
-        <input id="count" type="text" value="${count}">
-        <thead>
-        <input  type="text" value="${courseName}" name="courseName" id="courseName" >
+       <%-- <input id="teacherId" type="text" value="${msTeacher.id}" >--%>
+        <input id="count" type="text" value="${count}"><br/>
+        课程：
+        <input  type="text" value="${courseName}" name="courseName" id="courseName">
+        <div style="float:right">年级最高成绩：<input type="text" id="top" class="form-control"></div>
         <form:form action="/teacher/scoreSort" method="post">
-          <input  type="text" value="${msTeacher.id}" name="id" >
-
-            <select name="name" id="name">
+            <input type="text" value="${msTeacher.id}" name="id" class="tea_id">
+    <br/>   <select name="name" id="name">
                  <c:forEach var="item" items="${classNames}" varStatus="status">
                       <option value="${item.value}" <c:if test="${name==item.value}">selected</c:if>>${item.value}</option>
-               </c:forEach>
-            </select>
-          <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
+                </c:forEach>
+             </select>
+             <button type="submit" class="btn btn-warning selectScore">本班成绩查询</button>
+             <div style="float: right">平均成绩：<input type="text" id="avg" class="form-control"></div>
         </form:form>
-        平均成绩<input type="text" id="avg">
-        年级最高成绩<input type="text" id="top">
-<tr class="btn-info" style="height:46px">
+      <div style="margin:20px 0">
+      </div>
+ <div>
+   <table class="table table-bordered">
+       <tr class="btn-info" style="height:46px">
           <th>学号</th>
           <th>姓名</th>
           <th>成绩</th>
           <th>班级排名</th>
         </tr>
-        </thead>
         <tbody id="list">
         </tbody>
-  </table>
-      <div class="tcdPageCode"></div>
-</div>
-    </div>
-  </div>
+    </table>
+   </div>
+  <div class="tcdPageCode"></div>
+ </div>
 <script>
   $(document).ready(function(){
     $.ajax({

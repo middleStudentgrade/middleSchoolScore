@@ -16,52 +16,19 @@
 </head>
 
 <body>
-<div class="tea_con" style="padding-top:0;padding-left:0;">
-  <p id="mbx">现在的位置：<a href="teach_info.jsp" target="main">首页</a>><span id="m_menu"></span></p>
+<div style="height:60px"></div>
 
   <ul class="list-group" id="tea_menu">
     <li class="list-group-item t_lc">教师信息</li>
-    <li><a href="teachInfo" class="list-group-item ejcd" target="main" id="xinxi">个人信息</a></li>
-    <li><a href="teachGmm" class="list-group-item ejcd" target="main" id="gmm">修改密码</a></li>
+    <li><a href="teachInfo" class="list-group-item ejcd" target="main">个人信息</a></li>
+    <li><a href="teachGmm" class="list-group-item ejcd" target="main">修改密码</a></li>
     <li class="list-group-item t_lc" style="border-radius:4px;">学生成绩</li>
-    <li><a href="teacher/scoreSort?id=${msTeacher.id}" class="list-group-item ejcd" target="main" id="t_cj">成绩及排名</a></li>
-    <li><a href="teacher/passRate?id=${msTeacher.id}" class="list-group-item ejcd" target="main" id="t_cjfb">成绩分布</a></li>
-    <a href="retLogin" target="_blank" style="font-size:16px"><li>退出登录</li></a>
+    <li><a href="teacher/scoreSort?id=${msTeacher.id}" class="list-group-item ejcd" target="main">成绩及排名</a></li>
+    <li><a href="teacher/passRate?id=${msTeacher.id}" class="list-group-item ejcd" target="main">成绩分布</a></li>
+    <li><a href="retLogin" target="_blank" class="list-group-item ejcd">退出登录</a></li>
   </ul>
 
-</div>
 <script>
-  $("#xinxi").click(function(){
-    $("#m_menu").html($(this).html());
-    $("#xinxi").addClass("djxg");
-    $("#gmm").removeClass("djxg");$("#t_cj").removeClass("djxg");
-    $("#t_cjfb").removeClass("djxg");$("#t_lcj").removeClass("djxg");
-  });
-  $("#gmm").click(function(){
-    $("#m_menu").html($(this).html());
-    $("#gmm").addClass("djxg");
-    $("#xinxi").removeClass("djxg");$("#t_cj").removeClass("djxg");
-    $("#t_cjfb").removeClass("djxg");$("#t_lcj").removeClass("djxg");
-  });
-  $("#t_cj").click(function(){
-    $("#m_menu").html($(this).html());
-    $("#t_cj").addClass("djxg");
-    $("#xinxi").removeClass("djxg");$("#gmm").removeClass("djxg");
-    $("#t_cjfb").removeClass("djxg");$("#t_lcj").removeClass("djxg");
-  });
-  $("#t_cjfb").click(function(){
-    $("#m_menu").html($(this).html());
-    $("#t_cjfb").addClass("djxg");
-    $("#xinxi").removeClass("djxg");$("#t_cj").removeClass("djxg");
-    $("#gmm").removeClass("djxg");$("#t_lcj").removeClass("djxg");
-  });
-  $("#t_lcj").click(function(){
-    $("#m_menu").html($(this).html());
-    $("#t_lcj").addClass("djxg");
-    $("#xinxi").removeClass("djxg");$("#t_cj").removeClass("djxg");
-    $("#t_cjfb").removeClass("djxg");$("#gmm").removeClass("djxg");
-  });
-
 </script>
 </body>
 </html>
