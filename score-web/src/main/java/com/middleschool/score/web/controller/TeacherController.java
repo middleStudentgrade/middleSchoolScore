@@ -4,6 +4,7 @@ import com.middleschool.score.common.dto.MsSchoolmaster;
 import com.middleschool.score.common.dto.MsTeacher;
 import com.middleschool.score.common.pojo.Page;
 import com.middleschool.score.common.pojo.ResponseResult;
+import com.middleschool.score.common.pojo.TopScore;
 import com.middleschool.score.common.service.SchoolMasterService;
 import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.TeacherService;
@@ -151,20 +152,31 @@ public class TeacherController {
 
     @RequestMapping("scoreSelect")
     @ResponseBody
-    public ResponseResult sorts( @RequestParam(defaultValue = "1") int offset,@RequestParam(value = "name",defaultValue = "")String name,@RequestParam(value = "course",defaultValue = "")String course) {
+    public ResponseResult sorts( @RequestParam(defaultValue = "1") int offset,@RequestParam(value = "name",defaultValue = "")String name,@RequestParam(value = "course",defaultValue = "")String course,Model model) {
         try {
             int limit= Integer.parseInt(WebConf.getValue("pageSize"));
             String className=name.substring(0,2);
             long classId=0L;
+            int type=1;
             int grade=Integer.parseInt(name.substring(2,name.length()-1));
             if("高一".equals(className)){
                 classId=grade;
             }else if("高二".equals(className)){
                 classId=grade+12;
+                if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)){
+                  type=2;
+                }else{
+                   type=3;
+                }
             }else{
                 classId=grade+24;
+                if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)){
+                   type=4;
+                }else{
+                  type=5;
+                }
             }
-            Page msScores = scoreService.selectNowScoreByClassId(getEngCourseName(course), limit, (offset-1)*limit,classId);
+            Page msScores = scoreService.selectNowScoreByClassId(getEngCourseName(course), limit, (offset-1)*limit,classId,type);
            return ResponseResult.ok(msScores);
         } catch (Exception e) {
             LOG.error("查询成绩失败{}", e.getMessage());

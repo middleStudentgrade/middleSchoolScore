@@ -41,6 +41,7 @@
           <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
         </form:form>
         平均成绩<input type="text" id="avg">
+        年级最高成绩<input type="text" id="top">
 <tr class="btn-info" style="height:46px">
           <th>学号</th>
           <th>姓名</th>
@@ -67,6 +68,7 @@
       success: function (data) {
         if (data != null) {
           $("#avg").val(data.data.avg);
+          $("#top").val(data.data.top);
           $("#list").empty();
           $.each(data.data.datas, function (index, item) {
             $("#list").append('<tr>');
@@ -93,6 +95,7 @@
         success: function (data) {
           if (data != null) {
             $("#avg").val(data.data.avg);
+            $("#top").val(data.data.top);
             $("#list").empty();
             $.each(data.data.datas, function (index, item) {
               $("#list").append('<tr>');

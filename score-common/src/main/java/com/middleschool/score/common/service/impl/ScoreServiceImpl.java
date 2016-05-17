@@ -90,7 +90,7 @@ public class ScoreServiceImpl implements ScoreService{
     }
 
     @Override
-    public Page selectNowScoreByClassId(String courseName,int limit,int offset,long  classId) {
+    public Page selectNowScoreByClassId(String courseName,int limit,int offset,long  classId,int type) {
         List<StudentScoreName>msScores=studentScoreNameMapper.selectScoreByClassId(classId,courseName,limit,offset);
         List<StudentScore> studentScores=new ArrayList<>();
         int i=1;
@@ -105,7 +105,9 @@ public class ScoreServiceImpl implements ScoreService{
             allScore+=(double)Util.getFieldValueByName(courseName,s);
         }
         Page page=new Page();
-        page.setAvg(allScore / msScoresAll.size());
+        java.text.DecimalFormat   df=new   java.text.DecimalFormat("#.##");
+        page.setAvg(df.format(allScore / msScoresAll.size()));
+        page.setTop(getTopScore(courseName,type).getScore());
         page.setDatas(studentScores);
        return page;
     }
@@ -288,6 +290,10 @@ public class ScoreServiceImpl implements ScoreService{
         return topScores;
     }
 
+    @Override
+    public TopScore getOneTopScore(String courseName,int type) {
+        return getTopScore(courseName,type);
+    }
     @Override
     public List<TopScore> getJuniorScoreArt() {
         List<TopScore> topScores=new ArrayList<>();

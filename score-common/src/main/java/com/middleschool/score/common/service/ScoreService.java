@@ -18,7 +18,7 @@ public interface ScoreService {
 
     int selectRanking(Long id,Long classId);
 
-    Page selectNowScoreByClassId(String courseName,int limit,int offset,long classId);
+    Page selectNowScoreByClassId(String courseName,int limit,int offset,long classId,int type);
 
     int[]  selectPassRateByClassId(Long id);
 
@@ -44,4 +44,5 @@ public interface ScoreService {
     List<TopScore> juniorScoreScience();
     List<TopScore> getSeniorScoreArt();
     List<TopScore> getSeniorScoreScience();
+    TopScore getOneTopScore(String courseName,int type);
 }

@@ -6,13 +6,22 @@ package com.middleschool.score.common.pojo;
 public class Page {
     private int num;
     private Object datas;
-    private double avg;
+    private String  avg;
+    private String top;
 
-    public double getAvg() {
+    public String getTop() {
+        return top;
+    }
+
+    public void setTop(String top) {
+        this.top = top;
+    }
+
+    public String getAvg() {
         return avg;
     }
 
-    public void setAvg(double avg) {
+    public void setAvg(String avg) {
         this.avg = avg;
     }
 
