@@ -47,7 +47,7 @@
             <ul class="navCon phb" style="line-height:30px;">
                 <li><a href="admin/score/gradeTopHundredth" target="main">查询年级前10名</a></li>
                 <li><a href="admin/score/courseTopOne" target="main">查询年级各科最高成绩</a></li>
-                <li><a href="admin/score/passRate" target="main">查询各班及格率</a></li>
+                <li><a href="admin/score/passRate" target="main">查询各班平均分</a></li>
             </ul>
         </li>
         <li id="cj_info"><a href="adScore" class="list-group-item" target="main">成绩管理</a></li>

@@ -77,6 +77,7 @@
         <c:if test="${className=='高三'}">
         <td >基本能力</td>
         </c:if>
+        <td >总成绩</td>
         </thead>
         <div class="clear"></div>
         <tbody id="list"></tbody>
@@ -132,7 +133,7 @@
             </div>
             <form class="form-inline update_form" >
                 <div class="modal-body add_stu" id="alt_sco">
-                    <ul>
+                    <>
                         <li>
                             <input class="form-control id" type="text" name="id" />
                             <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" />
@@ -157,6 +158,7 @@
                             <label class="size">政治：</label><input class="form-control political" name="political" type="text" />
                         </li>
                         <li><label class="size">基本能力：</label><input class="form-control basicCompetencies" name="basicCompetencies" type="text" /></li>
+
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -219,8 +221,10 @@
                             $("#list").append('<td>' + item.geography + '</td>');
                             $("#list").append('<td>' + item.political + '</td>');
                         }
-                        if(item.type==4||item.type==5)
-                        $("#list").append('<td>' + item.basicCompetencies + '</td>');
+                        if(item.type==4||item.type==5) {
+                            $("#list").append('<td>' + item.basicCompetencies + '</td>');
+                        }
+                        $("#list").append('<td>' + item.allGrade + '</td>');
                         $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
@@ -262,8 +266,10 @@
                             $("#list").append('<td>' + item.geography + '</td>');
                             $("#list").append('<td>' + item.political + '</td>');
                         }
-                        if(item.type==4||item.type==5)
+                        if(item.type==4||item.type==5) {
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
+                        }
+                        $("#list").append('<td>' + item.allGrade + '</td>');
                         $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
@@ -309,8 +315,10 @@
                                 $("#list").append('<td>' + item.geography + '</td>');
                                 $("#list").append('<td>' + item.political + '</td>');
                             }
-                            if(item.type==4||item.type==5)
+                            if(item.type==4||item.type==5) {
                                 $("#list").append('<td>' + item.basicCompetencies + '</td>');
+                            }
+                            $("#list").append('<td>' + item.allGrade + '</td>');
                             $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $("#list").append('</tr>');

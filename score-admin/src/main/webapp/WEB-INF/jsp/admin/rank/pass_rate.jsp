@@ -13,21 +13,22 @@
     <script src="../../js/jquery.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/Chart.js"></script>
+
 </head>
 
 <body>
 <div class="rank_rt">
     <div class="rank_btn size pass_btn" style="position:relative;">
-        <button class="btn btn-default size" id="Pass1">高一年级及格率</button>
+        <button class="btn btn-default size" id="Pass1">高一年级平均分</button>
         <div id="dropdown1" style="display:inline-block;position:relative;">
-            <button class="btn btn-default dropdown-toggle size" data-toggle="dropdown" data-target="#dropdown1" id="Pass2">高二年级及格率</button>
+            <button class="btn btn-default dropdown-toggle size" data-toggle="dropdown" data-target="#dropdown1" id="Pass2">高二年级平均分</button>
             <ul class="dropdown-menu gradetwo" style="min-width:140px;">
                 <li id="Pass2_art"><a href="#">文科班</a></li>
                 <li id="Pass2_sci"><a href="#">理科班</a></li>
             </ul>
         </div>
         <div style="position:relative;display:inline-block;">
-            <button class="btn btn-default dropdown-toggle size" data-toggle="dropdown" id="Pass3">高三年级及格率</button>
+            <button class="btn btn-default dropdown-toggle size" data-toggle="dropdown" id="Pass3">高三年级平均分</button>
             <ul class="dropdown-menu gradethree" style="min-width:140px;">
                 <li id="Pass3_art"><a href="#">文科班</a></li>
                 <li id="Pass3_sci"><a href="#">理科班</a></li>
@@ -54,155 +55,86 @@
     <div id="rate3_sci">
         <canvas id="myChart5" width="600" height="500"></canvas>
     </div>
-
 </div>
 <script>
-    window.onload = function(){
-        var ctx = document.getElementById("myChart1").getContext("2d");
-        window.myPie = new Chart(ctx).Bar(data);
-    };
-    var data = {
-        labels : ["A级部","B级部","C级部"],
-        datasets : [
-            {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                data : [100,59,90]
-            },
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(181,187,205,1)",
-                data : [28,48,40]
+    window.onload = function() {
+        $.ajax({
+            url: "http://localhost:8080/admin/score/passRateInfo",
+            data: {},
+            type: 'POST',
+            success: function (data) {
+                var ctx1 = document.getElementById("myChart1").getContext("2d");
+                var data1 = {
+                    labels: ["一班", "二班", "三班", "四班", "五班", "六班", "七班", "八班", "九班", "十班", "十一班", "十二班"],
+                    datasets: [
+                        {
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: data.data.sophomoreScore,
+                        },
+                    ]
+                }
+                window.myPie = new Chart(ctx1).Bar(data1);
+
+
+                var ctx2 = document.getElementById("myChart2").getContext("2d");
+                var data2 = {
+                    labels: ["一班", "二班", "三班", "七班", "八班", "九班"],
+                    datasets: [
+                        {
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: data.data.juniorScoreArt,
+                        },
+                    ]
+                }
+                window.myPie = new Chart(ctx2).Bar(data2);
+
+
+                var ctx3 = document.getElementById("myChart3").getContext("2d");
+                var data3 = {
+                    labels: ["四班", "五班", "六班", "十班", "十一班", "十二班"],
+                    datasets: [
+                        {
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: data.data.juniorScoreScience,
+                        },
+                    ]
+                }
+                window.myPie = new Chart(ctx3).Bar(data3);
+
+
+                var ctx4 = document.getElementById("myChart4").getContext("2d");
+                var data4 = {
+                    labels: ["一班", "二班", "三班", "七班", "八班", "九班", "十班", "十一班", "十二班"],
+                    datasets: [
+                        {
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: data.data.seniorScoreArt,
+                        },
+                    ]
+                }
+                window.myPie = new Chart(ctx4).Bar(data4);
+
+
+                var ctx5 = document.getElementById("myChart5").getContext("2d");
+                var data5 = {
+                    labels: ["四班", "五班", "六班", "十班", "十一班", "十二班"],
+                    datasets: [
+                        {
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            data: data.data.seniorScoreScience,
+                        },
+                    ]
+                }
+                window.myPie = new Chart(ctx5).Bar(data5);
             }
-        ]
+        })
     }
 
-
-    var ctx = document.getElementById("myChart2").getContext("2d");
-    window.myPie = new Chart(ctx).Bar(data);
-
-    var data = {
-        labels : ["A级部","B级部","C级部"],
-        datasets : [
-            {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                data : [90,59,90]
-            },
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(181,187,205,1)",
-                data : [28,48,40]
-            }
-        ]
-    }
-
-    var ctx = document.getElementById("myChart3").getContext("2d");
-    window.myPie = new Chart(ctx).Bar(data);
-
-    var data = {
-        labels : ["A级部","B级部","C级部"],
-        datasets : [
-            {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                data : [80,59,90]
-            },
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(181,187,205,1)",
-                data : [28,48,40]
-            }
-        ]
-    }
-
-    var ctx = document.getElementById("myChart4").getContext("2d");
-    window.myPie = new Chart(ctx).Bar(data);
-
-    var data = {
-        labels : ["A级部","B级部","C级部"],
-        datasets : [
-            {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                data : [60,59,90]
-            },
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(181,187,205,1)",
-                data : [28,48,40]
-            }
-        ]
-    }
-
-    var ctx = document.getElementById("myChart5").getContext("2d");
-    window.myPie = new Chart(ctx).Bar(data);
-
-    var data = {
-        labels : ["A级部","B级部","C级部"],
-        datasets : [
-            {
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                data : [40,59,90]
-            },
-            {
-                fillColor : "rgba(151,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(151,187,205,1)",
-                data : [28,48,40]
-            },
-            {
-                fillColor : "rgba(214,187,205,0.5)",
-                strokeColor : "rgba(181,187,205,1)",
-                data : [28,48,40]
-            }
-        ]
-    }
 
 </script>
 

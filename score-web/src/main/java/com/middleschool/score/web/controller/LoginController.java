@@ -26,35 +26,40 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String login(@RequestParam String  userName, @RequestParam String password, @RequestParam String type,Model model, HttpSession session) {
-        if ("1".equals(type)) {
-            MsStudent msStudent = studentService.getById(Long.valueOf(userName));
-            if (msStudent != null) {
-                if (msStudent.getPassword().equals(MD5Utils.md5(password))) {
-                    session.setAttribute("msStudent", msStudent);
-                    return "students/stu_index";
-                } else {
-                   model.addAttribute("username", "用户名或密码错误");
-                    return "login/login";
-                }
-            } else {
-                model.addAttribute("username", "用户名或密码错误");
-                return "login/login";
-            }
-        } else if ("2".equals(type)) {
-            MsTeacher msTeacher = teacherService.selectById(Long.valueOf(userName));
-            if (msTeacher != null) {
-                if (msTeacher.getPassword().equals(MD5Utils.md5(password))) {
-                    session.setAttribute("msTeacher", msTeacher);
-                    return "teachers/teach_index";
+        try {
+            if ("1".equals(type)) {
+                MsStudent msStudent = studentService.getById(Long.valueOf(userName));
+                if (msStudent != null) {
+                    if (msStudent.getPassword().equals(MD5Utils.md5(password))) {
+                        session.setAttribute("msStudent", msStudent);
+                        return "students/stu_index";
+                    } else {
+                        model.addAttribute("username", "用户名或密码错误");
+                        return "login/login";
+                    }
                 } else {
                     model.addAttribute("username", "用户名或密码错误");
                     return "login/login";
                 }
-            } else {
-                model.addAttribute("username", "用户名或密码错误");
-                return "login/login";
+            } else if ("2".equals(type)) {
+                MsTeacher msTeacher = teacherService.selectById(Long.valueOf(userName));
+                if (msTeacher != null) {
+                    if (msTeacher.getPassword().equals(MD5Utils.md5(password))) {
+                        session.setAttribute("msTeacher", msTeacher);
+                        return "teachers/teach_index";
+                    } else {
+                        model.addAttribute("username", "用户名或密码错误");
+                        return "login/login";
+                    }
+                } else {
+                    model.addAttribute("username", "用户名或密码错误");
+                    return "login/login";
+                }
             }
+            return "login/login";
+        }catch (Exception e){
+            model.addAttribute("username", "用户名或密码错误");
+            return "login/login";
         }
-        return "login/login";
     }
 }

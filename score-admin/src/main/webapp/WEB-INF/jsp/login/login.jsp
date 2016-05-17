@@ -10,7 +10,7 @@
 <head>
     <title></title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/ad_login.css">
   <script src="../js/jquery.js"></script>
 </head>
 
@@ -27,13 +27,14 @@
       <div class="form-group">
         <label>用户名</label>
         <input type="text" name="userName" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">                  <span id="span1"></span>
+        ${username}
       </div>
       <div class="form-group">
         <label >密码</label>
         <input type="password" name="password" id="pwd" class="form-control" onblur="valPwd()" placeholder="请输入密码">
         <span id="span2"></span>
       </div>
-      <button class="btn" id="loginBtn" type="submit"></button>
+      <button class="btn" id="loginBtn" type="submit">登录</button>
 </div>
   </form>
 </div>

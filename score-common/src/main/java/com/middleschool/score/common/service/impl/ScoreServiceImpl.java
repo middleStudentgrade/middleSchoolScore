@@ -294,6 +294,140 @@ public class ScoreServiceImpl implements ScoreService{
     public TopScore getOneTopScore(String courseName,int type) {
         return getTopScore(courseName,type);
     }
+
+    private double format(double d){
+        java.text.DecimalFormat   df=new   java.text.DecimalFormat("#.##");
+       return Double.parseDouble(df.format(d));
+    }
+    @Override
+    public double[] getSophomoreAvgScore() {
+        double []avgs=new double[12];
+        for(int i=1;i<13;i++) {
+            avgs[i-1]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            if(msScores.size()!=0) {
+                double allScore = 0;
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 1] = format(allScore / msScores.size());
+            }
+        }
+        return avgs;
+    }
+
+    @Override
+    public double[] getJuniorScoreAvgArt() {
+        double []avgs=new double[6];
+        for(int i=13;i<16;i++) {
+            avgs[i-13]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            if(msScores.size()!=0) {
+                double allScore = 0;
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 13] = format(allScore / msScores.size());
+            }
+        }
+        for(int i=19;i<22;i++) {
+            avgs[i-16]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            double allScore=0;
+            if(msScores.size()!=0) {
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 16] = format(allScore / msScores.size());
+            }
+        }
+        return avgs;
+    }
+
+    @Override
+    public double[] juniorScoreAvgScience() {
+        double []avgs=new double[6];
+        for(int i=16;i<19;i++) {
+            avgs[i-16]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            if(msScores.size()!=0) {
+                double allScore = 0;
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 16] = format(allScore / msScores.size());
+            }
+        }
+        for(int i=22;i<25;i++) {
+            avgs[i-19]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            double allScore=0;
+            if(msScores.size()!=0) {
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 19] =format( allScore / msScores.size());
+            }
+        }
+        return avgs;
+    }
+
+    @Override
+    public double[] getSeniorScoreAvgArt() {
+        double []avgs=new double[6];
+        for(int i=25;i<28;i++) {
+            avgs[i-25]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            if(msScores.size()!=0) {
+                double allScore = 0;
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 25] = format(allScore / msScores.size());
+            }
+        }
+        for(int i=31;i<34;i++) {
+            avgs[i-28]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            double allScore=0;
+            if(msScores.size()!=0) {
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 28] = format(allScore / msScores.size());
+            }
+        }
+        return avgs;
+    }
+
+    @Override
+    public double[] getSeniorScoreAvgScience() {
+        double []avgs=new double[6];
+        for(int i=28;i<31;i++) {
+            avgs[i-28]=0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long)(i));
+            double allScore=0;
+            if(msScores.size()!=0) {
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 28] = format(allScore / msScores.size());
+            }
+        }
+        for(int i=34;i<37;i++) {
+            avgs[i - 31] = 0;
+            List<MsScore> msScores = msScoreMapper.selectPassRateByClassId((long) (i));
+            double allScore = 0;
+            if (msScores.size() != 0) {
+                for (MsScore m : msScores) {
+                    allScore += getAllScore(m);
+                }
+                avgs[i - 31] =format( allScore / msScores.size());
+            }
+        }
+        return avgs;
+    }
+
     @Override
     public List<TopScore> getJuniorScoreArt() {
         List<TopScore> topScores=new ArrayList<>();

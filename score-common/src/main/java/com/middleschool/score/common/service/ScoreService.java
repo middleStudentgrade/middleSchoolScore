@@ -45,4 +45,14 @@ public interface ScoreService {
     List<TopScore> getSeniorScoreArt();
     List<TopScore> getSeniorScoreScience();
     TopScore getOneTopScore(String courseName,int type);
+
+    double[] getSophomoreAvgScore();
+
+    double[] getJuniorScoreAvgArt();
+
+    double[] juniorScoreAvgScience();
+
+    double[] getSeniorScoreAvgArt();
+
+    double[] getSeniorScoreAvgScience();
 }
