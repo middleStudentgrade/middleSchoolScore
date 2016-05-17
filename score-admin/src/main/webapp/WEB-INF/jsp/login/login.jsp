@@ -20,9 +20,9 @@
   <form class="form-signin con" action="/login" method="post">
     <div class="logo">
       <h3 style="color:#415d98;font-weight:bold"><em>学生成绩管理系统</em></h3>
-      <h4>Student achievement management system<em><span class="l_l"> 高中版</span></em></h4>
+      <h4 style="line-height: 30px;">Student achievement management system<em><span class="l_l"> 高中版</span></em></h4>
     </div>
-    <div style="float:left;width:43%;padding-left:10px;">
+    <div class="ad_login">
       <div class="denglu_top">管理员登录</div>
       <div class="form-group">
         <label>用户名</label>
@@ -33,7 +33,7 @@
         <input type="password" name="password" id="pwd" class="form-control" onblur="valPwd()" placeholder="请输入密码">
         <span id="span2"></span>
       </div>
-      <button class="btn" id="loginBtn" type="submit">登录</button>
+      <button class="btn" id="loginBtn" type="submit"></button>
 </div>
   </form>
 </div>

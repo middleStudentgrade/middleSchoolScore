@@ -4,9 +4,11 @@ body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
 ul li{list-style:none;}
 .ad_top{width:100%;font-size:28px;background:#27AE60;color:#fff;height:240px;font-weight:200;}
 .ad_top p{text-align:center;padding-top:40px;}
+/*
 .ad_top .form-group{width:1000px;position:relative;margin:40px auto;}
 .ad_top .search{padding:13px 30px;height:auto;text-align:center;color:#000;border:2px solid #27AE60;}
 .ad_top .fa{position:absolute;right:25px;top:10px;color:#c6c6c6;font-size:24px;background:transparent;border:none;}
+*/
 
 /*ad_left,html*/
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td { margin: 0; padding: 0; font-family:"微软雅黑"}
@@ -30,15 +32,18 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 .phb li a{padding:5px 0 5px 10px;}
 .phb li a:focus{border-left:3px solid #27AE60;color:#27AE60;outline:none;text-decoration:none;}
 /*ad_sinfo.html*/
-.ad_rt{margin-top:50px;width:95%;height:auto;}
+.ad_rt{margin:50px 30px 30px 60px;width:95%;height:auto;border-radius:6px;}
+.studentContant{display:inline-block;width:220px;height:38px;margin-left:30px;vertical-align: middle;}
 .size{font-size:16px;}
 .fl{float:left;}
 .fr{float:right;}
 .clear{clear:both;}
 .ad_rt ul li{float:left;width:10%;text-align:center;padding-top:18px;}
-.s_xx{width:95%;height:400px;overflow:auto;margin:0 auto;padding:0;border:2px solid #e5e3da;background:#f5f5f5;}
-.s_xx .panel-heading{background:#52cdfe;color:#fff;}
+.s_info,.t_info{width:95%;height:auto;overflow:auto;padding:0;border:2px solid #e5e3da;background:#f5f5f5;}
+.s_info .panel-heading,.t_info .panel-heading{background:#52cdfe;color:#fff;height:40px;}
+.s_info td,.t_info td{width:8%;text-align:center;}
 /*分页*/
+#count{background:#fff;color:#fff;border:none;}
 .tcdPageCode{padding:15px 20px;text-align:center;color:#ccc;}
 .tcdPageCode a:hover{text-decoration:none;border:1px solid #428bca;}
 .tcdPageCode a,.tcdPageCode span.current,.tcdPageCode span.disabled{display:inline-block;height:30px;line-height:30px;padding: 0 10px;margin: 0 2px;border-radius: 4px;vertical-align: middle;}
@@ -49,10 +54,12 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 .add_stu ul li,.alt_stu ul li{line-height:46px;}
 .add_stu label,.alt_stu label{width:80px;margin-left:20px;}
 .add_stu select,.alt_stu select{width:80px;height:30px;}
-.btn_qd{background: linear-gradient(#fe8a18,#eb4e00);font-size:16px;}
+.btn_qd{background: linear-gradient(#fe8a18,#eb4e00);font-size:16px;color:#fff;}
 /*修改学生信息*/
 .alt_stu input{border:none;box-shadow:none;border-bottom:1px solid #a5a5a5}
 /*教师*/
+.teaId{display:inline-block;width:220px;height:38px;margin-left:30px;vertical-align: middle;}
+.t_info{width:90%}
 .cz_js{color:#000;width:160px;display:inline-block;margin:0 15px;}
 /*修改成绩*/
 #sco_gl ul li{float:left;width:6%;text-align:center;padding-top:18px;}
@@ -82,12 +89,12 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 .color{color:#5cb85c}
 #Course1:focus,#Course2:focus,#Course3:focus{background:#5cb85c;color:#fff;}
 #crs1 table th,#crs2 table th,#crs3 table th{font-size:16px;font-weight:bold;}
-table tr:hover{background:#DCF3D6}
+/*table tr:hover{background:#DCF3D6}*/
 .crs_hlt{background:#dfdfdf;opacity:0.6;}
 .crs1_th{background:#dfdfdf;opacity:0.6;}
 #crs1,#crs2,#crs3{width:80%;margin-left:27px;}
 #crs2,#crs3{display:none;}
-table th,table td{text-align:center;width:20%;}
+/*table th,table td{text-align:center;width:20%;}*/
 
 /*各班及格率*/
 #rate2_art,#rate2_sci,#rate3_art,#rate3_sci{display:none;width:80%;margin:40px auto;}
