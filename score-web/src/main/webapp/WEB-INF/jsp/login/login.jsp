@@ -21,8 +21,8 @@
     <div class="form-group">
       <label >用户名</label>
       <input type="text" name="userName" id="userName" class="form-control" onblur="valYhm()"  placeholder="请输入用户名">
-      <span id="span1"></span>
-    ${username}
+      <span id="span1">${username}</span>
+
     </div>
     <div class="form-group">
       <label >密码</label>

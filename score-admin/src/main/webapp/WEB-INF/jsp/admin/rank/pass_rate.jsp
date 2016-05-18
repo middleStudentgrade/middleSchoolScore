@@ -35,25 +35,25 @@
             </ul>
         </div>
     </div>
-    <!--高一及格率-->
+    <!--高一平均分-->
     <div id="rate1">
-        <canvas id="myChart1" width="600" height="500"></canvas>
+        <canvas id="myChart1" width="600" height="400"></canvas>
     </div>
-    <!--高二及格率-->
+    <!--高二平均分-->
     <div id="rate2_art">
-        <canvas id="myChart2" width="600" height="500"></canvas>
+        <canvas id="myChart2" width="600" height="400"></canvas>
     </div>
 
     <div id="rate2_sci">
-        <canvas id="myChart3" width="600" height="500"></canvas>
+        <canvas id="myChart3" width="600" height="400"></canvas>
     </div>
-    <!--高三及格率-->
+    <!--高三平均分-->
     <div id="rate3_art">
-        <canvas id="myChart4" width="600" height="500"></canvas>
+        <canvas id="myChart4" width="600" height="400"></canvas>
     </div>
 
     <div id="rate3_sci">
-        <canvas id="myChart5" width="600" height="500"></canvas>
+        <canvas id="myChart5" width="600" height="400"></canvas>
     </div>
 </div>
 <script>
@@ -68,8 +68,8 @@
                     labels: ["一班", "二班", "三班", "四班", "五班", "六班", "七班", "八班", "九班", "十班", "十一班", "十二班"],
                     datasets: [
                         {
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,1)",
                             data: data.data.sophomoreScore,
                         },
                     ]
@@ -82,8 +82,8 @@
                     labels: ["一班", "二班", "三班", "七班", "八班", "九班"],
                     datasets: [
                         {
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,1)",
                             data: data.data.juniorScoreArt,
                         },
                     ]
@@ -96,8 +96,8 @@
                     labels: ["四班", "五班", "六班", "十班", "十一班", "十二班"],
                     datasets: [
                         {
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,1)",
                             data: data.data.juniorScoreScience,
                         },
                     ]
@@ -107,11 +107,11 @@
 
                 var ctx4 = document.getElementById("myChart4").getContext("2d");
                 var data4 = {
-                    labels: ["一班", "二班", "三班", "七班", "八班", "九班", "十班", "十一班", "十二班"],
+                    labels: ["一班", "二班", "三班", "七班", "八班", "九班"],
                     datasets: [
                         {
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,1)",
                             data: data.data.seniorScoreArt,
                         },
                     ]
@@ -124,8 +124,8 @@
                     labels: ["四班", "五班", "六班", "十班", "十一班", "十二班"],
                     datasets: [
                         {
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,1)",
+                            fillColor: "rgba(151,187,205,0.5)",
+                            strokeColor: "rgba(151,187,205,1)",
                             data: data.data.seniorScoreScience,
                         },
                     ]
@@ -144,8 +144,8 @@
         $("#Pass1").click(function(){
             $("#Pass2").removeClass("crs_click");
             $("#Pass3").removeClass("crs_click");
-            $("#Pass2").html("高二年级及格率");
-            $("#Pass3").html("高三年级及格率");
+            $("#Pass2").html("高二年级平均分");
+            $("#Pass3").html("高三年级平均分");
             $("#rate1").show();
             $("#rate2_art").hide();
             $("#rate2_sci").hide();
@@ -156,8 +156,8 @@
             $("#Pass1").removeClass("crs_click");
             $("#Pass3").removeClass("crs_click");
             $("#Pass2").addClass("crs_click");
-            $("#Pass2").html("高二"+$(this).html()+"及格率");
-            $("#Pass3").html("高三年级及格率");
+            $("#Pass2").html("高二"+$(this).html()+"平均分");
+            $("#Pass3").html("高三年级平均分");
             $("#rate1").hide();
             $("#rate2_art").show();
             $("#rate2_sci").hide();
@@ -168,8 +168,8 @@
             $("#Pass1").removeClass("crs_click");
             $("#Pass3").removeClass("crs_click");
             $("#Pass2").addClass("crs_click");
-            $("#Pass2").html("高二"+$(this).html()+"及格率");
-            $("#Pass3").html("高三年级及格率");
+            $("#Pass2").html("高二"+$(this).html()+"平均分");
+            $("#Pass3").html("高三年级平均分");
             $("#rate1").hide();
             $("#rate2_art").hide();
             $("#rate2_sci").show();
@@ -180,8 +180,8 @@
             $("#Pass1").removeClass("crs_click");
             $("#Pass2").removeClass("crs_click");
             $("#Pass3").addClass("crs_click");
-            $("#Pass3").html("高三"+$(this).html()+"及格率");
-            $("#Pass2").html("高二年级及格率");
+            $("#Pass3").html("高三"+$(this).html()+"平均分");
+            $("#Pass2").html("高二年级平均分");
             $("#rate1").hide();
             $("#rate2_art").hide();
             $("#rate2_sci").hide();
@@ -192,8 +192,8 @@
             $("#Pass1").removeClass("crs_click");
             $("#Pass2").removeClass("crs_click");
             $("#Pass3").addClass("crs_click");
-            $("#Pass3").html("高三"+$(this).html()+"及格率");
-            $("#Pass2").html("高二年级及格率");
+            $("#Pass3").html("高三"+$(this).html()+"平均分");
+            $("#Pass2").html("高二年级平均分");
             $("#rate1").hide();
             $("#rate2_art").hide();
             $("#rate2_sci").hide();
