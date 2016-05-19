@@ -1,5 +1,6 @@
 
 function password(){
+
     $.ajax({
         url: "http://localhost:8080/teacher/getPassword",
         data: {

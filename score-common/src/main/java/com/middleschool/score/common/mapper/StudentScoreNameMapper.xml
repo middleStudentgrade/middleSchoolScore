@@ -55,7 +55,7 @@
         <if test="courseName=='chemical'">
             chemical
         </if>
-    </trim> limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
+    </trim> desc limit #{limit,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
 </select>
 
     <select id="selectScoreByClassIdNoPage" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
