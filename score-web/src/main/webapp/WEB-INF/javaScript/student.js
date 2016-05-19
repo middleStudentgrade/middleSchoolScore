@@ -1,6 +1,6 @@
 function password(){
 $.ajax({
-    url: "http://localhost:8080/student/getPassword",
+    url: "http://localhost:8081/student/getPassword",
     data: {
         id: $("#studentId").val(),
         password: $("#password").val()
@@ -24,7 +24,7 @@ $.ajax({
 function changepassword(){
 
     $.ajax({
-        url: "http://localhost:8080/student/changePassword",
+        url: "http://localhost:8081/student/changePassword",
         data: {
             id: $("#studentId").val(),
             password: $("#newPassword").val()

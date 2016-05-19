@@ -59,7 +59,7 @@
 <script>
   $(document).ready(function(){
     $.ajax({
-      url: "http://localhost:8080/teacher/scoreSelect",
+      url: "http://localhost:8081/teacher/scoreSelect",
       data: {
         name:$("#name").val(),
         course:$("#courseName").val(),
@@ -85,7 +85,7 @@
     current:1,
     backFn:function(p){
       $.ajax({
-        url: "http://localhost:8080/teacher/scoreSelect",
+        url: "http://localhost:8081/teacher/scoreSelect",
         data: {
           name:$("#name").val(),
           course:$("#courseName").val(),
