@@ -314,7 +314,7 @@ public class ScoreController {
     }
 
 
-
+//各科最高成绩
     @RequestMapping(value = "courseTopOne")
     public String CourseTopOne(Model model){
         try {
@@ -344,7 +344,7 @@ public class ScoreController {
         }
     }
     @RequestMapping(value = "passRateInfo")
-    @ResponseBody
+    @ResponseBody//各班平均分
     public ResponseResult passRateGetInfo(){
         try {
             double[] sophomoreScore = scoreService.getSophomoreAvgScore();

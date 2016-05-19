@@ -14,23 +14,21 @@
     <script src="../js/jquery.page.js"></script>
 
 </head>
-
+<style>
+    .s_info td{width:0%;}
+</style>
 <body>
 
 <div class="ad_rt">
-    <div style="margin:30px 30px 20px;">
-        <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">上传成绩单</button>
-        <form action="admin/downloadFile/download" method="post">
-            <input type="text" name="grade" id="stuGrade" value="${grade}">
-            <input type="text" name="className" id="stuClassName" value="${className}">
-        <button class="btn btn-info size download">学生成绩录入模板下载</button>
+    <div>
+        <form action="admin/downloadFile/download" method="post" style="display:inline-block;margin:0 30px 20px 0;">
+           <%-- <input type="text" name="grade" id="stuGrade" value="${grade}">
+            <input type="text" name="className" id="stuClassName" value="${className}">--%>
+            <button class="btn btn-info size download">学生成绩录入模板下载</button>
         </form>
-        <input type="text" class="ScoreId" />
-
-        <button type="submit" class="btn selectScore" style="color:#fff">单个学生成绩查询</button>
-
-        <label class="size">班级：</label>
-        <form action="/adScore" method="post">
+        <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">上传成绩单</button>
+    <br/>
+     <form action="/adScore" method="post" class="class_score">
         <select name="className"  id="className" value ="${className}" onchange="updateClass()">
             <option value="高一" <c:if test="${className=='高一'}">selected</c:if>>高一</option>
             <option value="高二" <c:if test="${className=='高二'}">selected</c:if>>高二</option>
@@ -49,13 +47,14 @@
             <option  value="10" <c:if test="${grade=='10'}">selected</c:if>>10</option>
             <option value="11" <c:if test="${grade=='11'}">selected</c:if>>11</option>
             <option  value="12" <c:if test="${grade=='12'}">selected</c:if>>12</option>
-        </select>
-       <button type="submit" class="btn selectScore" style="color:#fff">班级成绩查询</button>
-        </form>
+         </select>
+         <button type="submit" class="btn btn-warning selectScore">班级成绩查询</button>
+     </form>
+        <input type="text" class="ScoreId form-control" placeholder="请输入学生学号"/>
+        <button type="submit" class="btn btn-warning selectScore">单个学生成绩查询</button>
     </div>
-
-    <table class="panel panel-info s_xx">
-        <thead class="panel-heading size" style="padding:0 16px 49px 5px;">
+    <table class="panel s_info">
+        <thead class="panel-heading size">
         <td>学号</td>
         <td >姓名</td>
         <td>班级</td>
@@ -78,6 +77,7 @@
         <td >基本能力</td>
         </c:if>
         <td >总成绩</td>
+        <td style="width:130px;">操作</td>
         </thead>
         <div class="clear"></div>
         <tbody id="list"></tbody>
@@ -190,7 +190,7 @@
 </div>
 <input type="text" value="${count}" id="count">
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() {//班级成绩查询
         $.ajax({
             url: "http://localhost:8080/admin/score/getAll",
             data: {
@@ -225,7 +225,7 @@
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         }
                         $("#list").append('<td>' + item.allGrade + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })
@@ -233,7 +233,7 @@
             }
         })
     })
-
+//单个学生成绩查询
     $(".selectScore").click(function(){
         $.ajax({
             url: "http://localhost:8080/admin/score/getScore",
@@ -270,7 +270,7 @@
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         }
                         $("#list").append('<td>' + item.allGrade + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })
@@ -319,7 +319,7 @@
                                 $("#list").append('<td>' + item.basicCompetencies + '</td>');
                             }
                             $("#list").append('<td>' + item.allGrade + '</td>');
-                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 16px;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $("#list").append('</tr>');
                         })

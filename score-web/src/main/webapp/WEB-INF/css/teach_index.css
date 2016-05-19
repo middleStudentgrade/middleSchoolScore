@@ -1,6 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
-body{font-size:16px;}
+body{font-size:16px;font-family:微软雅黑;}
 /*teach_top*/
 #cont{width:100%;font-size:28px;background:#27AE60;color:#fff;height:240px;font-weight:200;}
 #cont p{text-align:center;padding-top:40px;}
