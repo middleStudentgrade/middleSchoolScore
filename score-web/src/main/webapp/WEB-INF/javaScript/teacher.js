@@ -13,10 +13,10 @@ function password(){
         success: function (data) {
             if(data.status==500) {
                 $("#error").text("密码不正确");
+                $("#rpwd").attr("readonly","readonly");
+                $("#newPassword").attr("readonly","readonly");
+                $("#commit").attr("readonly","readonly");
                 $("#commit").unbind("click");
-                $("#rpwd").attr("disabled","disabled");
-                $("#newPassword").attr("disabled","disabled");
-                $("#commit").attr("disabled","disabled");
             }
             else
                 $("#error").text("");
