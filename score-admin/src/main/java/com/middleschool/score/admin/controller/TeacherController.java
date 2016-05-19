@@ -90,7 +90,7 @@ public class TeacherController {
     public ResponseResult save(MsTeacher msTeacher){
         try {
             msTeacher.setPassword(msTeacher.getIdCard().substring(msTeacher.getIdCard().length()-6,msTeacher.getIdCard().length()));
-            teacherService.updateTeacher(msTeacher);
+            teacherService.insertTeacher(msTeacher);
             return ResponseResult.ok();
         }catch (Exception e){
             LOG.error("添加失败{}",e.getMessage());

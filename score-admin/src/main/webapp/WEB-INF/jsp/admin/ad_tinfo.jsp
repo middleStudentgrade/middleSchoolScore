@@ -55,6 +55,8 @@
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control sname" name="name" type="text" />
                         </li>
                         <li>
+                            <label class="size" style="margin-left:20px">年龄：</label><input class="form-control sage" name="age" type="number" />
+                        </li><li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">性别：</label>
                                 <select class="ssex" name="sex">
@@ -92,7 +94,7 @@
                         <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control semail" name="email" type="text" /></li>
                         <label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" />
                         <label class="size">籍贯：</label><input class="form-control sbirthPlace" type="text" name="birthPlace" />
-                        <label class="size">部门：</label><input class="form-control sDepartment" type="text" name="Department" />
+                        <label class="size">部门：</label><input class="form-control sdepartment" type="text" name="department" />
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -115,8 +117,11 @@
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
-                            <label class="size">编号：</label><input class="form-control id" type="text" name="id" disabled="true"/>
+                            <label class="size">编号：</label><input class="form-control id" type="text" name="id" readonly/>
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text" />
+                        </li>
+                        <li>
+                            <label class="size" style="margin-left:20px">年龄：</label><input class="form-control age" name="age" type="number" />
                         </li>
                         <li>
                             <div style="width:274px;display:inline-block">
@@ -156,7 +161,7 @@
                         <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control email" name="email" type="text" /></li>
                         <label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" />
                         <label class="size">籍贯：</label><input class="form-control birthPlace" type="text" name="birthPlace" />
-                        <label class="size">部门：</label><input class="form-control Department" type="text" name="Department" />
+                        <label class="size">部门：</label><input class="form-control department" type="text" name="department" />
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -258,11 +263,12 @@
                 $(".id").val(data.data.id);
                 $(".name").val(data.data.name)
                 $(".sex").val(data.data.sex);
+                $(".age").val(data.data.age);
                 $(".politicalLandscape").val(data.data.politicalLandscape);
                 $(".idCard").val(data.data.idCard);
                 $(".birthPlace").val(data.data.birthPlace);
                 $(".email").val(data.data.email);
-                $(".Department").val(data.data.Department);
+                $(".department").val(data.data.department);
                 $(".education").val(data.data.education);
                 $(".title").val(data.data.title);
             }

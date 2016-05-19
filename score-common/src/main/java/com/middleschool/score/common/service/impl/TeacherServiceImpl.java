@@ -45,6 +45,10 @@ public class TeacherServiceImpl implements TeacherService {
     public void updateTeacher(MsTeacher msTeacher) {
         msTeacherMapper.updateByPrimaryKeySelective(msTeacher);
     }
+    @Override
+    public void insertTeacher(MsTeacher msTeacher) {
+        msTeacherMapper.insertSelective(msTeacher);
+    }
 
     @Override
     public List<MsTeacher> findAll(int limit, int offset) {

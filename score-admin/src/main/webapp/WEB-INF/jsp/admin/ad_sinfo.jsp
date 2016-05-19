@@ -237,6 +237,32 @@
 </div>
 <input type="text" value="${count}" id="count">
 <script>
+    var format = function(time, format){
+        var t = new Date(time);
+        var tf = function(i){return (i < 10 ? '0' : '') + i};
+        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
+            switch(a){
+                case 'yyyy':
+                    return tf(t.getFullYear());
+                    break;
+                case 'MM':
+                    return tf(t.getMonth() + 1);
+                    break;
+                case 'mm':
+                    return tf(t.getMinutes());
+                    break;
+                case 'dd':
+                    return tf(t.getDate());
+                    break;
+                case 'HH':
+                    return tf(t.getHours());
+                    break;
+                case 'ss':
+                    return tf(t.getSeconds());
+                    break;
+            };
+        });
+    };
     $(document).ready(function() {
         $.ajax({
             url: "http://localhost:8080/admin/student/getAll",
@@ -251,7 +277,7 @@
                         $("#list").append('<td>' + item.name + '</td>');
                         $("#list").append('<td>' + item.sex + '</td>');
                         $("#list").append('<td>' + item.className + item.grade + '</td>');
-                        $("#list").append('<td>' + item.datesAttendance + '</td>');
+                        $("#list").append('<td>' +format(item.datesAttendance,'yyyy-MM-dd') + '</td>');
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
@@ -284,7 +310,7 @@
                             $("#list").append('<td>' + item.name + '</td>');
                             $("#list").append('<td>' + item.sex + '</td>');
                             $("#list").append('<td>' + item.className + item.grade + '班</td>');
-                            $("#list").append('<td>' + item.datesAttendance + '</td>');
+                            $("#list").append('<td>' + format(item.datesAttendance,'yyyy-MM-dd') + '</td>');
                             $("#list").append('<td>' + item.politicalLandscape + '</td>');
                             $("#list").append('<td>' + item.idCard + '</td>');
                             $("#list").append('<td>' + item.birthPlace + '</td>');
@@ -318,7 +344,7 @@
                         $("#list").append('<td>' + item.name + '</td>');
                         $("#list").append('<td>' + item.sex + '</td>');
                         $("#list").append('<td>' + item.className + item.grade + '班</td>');
-                        $("#list").append('<td>' + item.datesAttendance + '</td>');
+                        $("#list").append('<td>' +  format(item.datesAttendance,'yyyy-MM-dd') + '</td>');
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
@@ -344,7 +370,7 @@
                 $(".sex").val(data.data.sex);
                 $(".age").val(data.data.age);
                 $(".className").val(data.data.className);
-                $(".datesAttendance").val(data.data.datesAttendance);
+              /*  $(".datesAttendance").val(format(item.datesAttendance,'yyyy-MM-dd'));*/
                 $(".politicalLandscape").val(data.data.politicalLandscape);
                 $(".idCard").val(data.data.idCard);
                 $(".birthPlace").val(data.data.birthPlace);

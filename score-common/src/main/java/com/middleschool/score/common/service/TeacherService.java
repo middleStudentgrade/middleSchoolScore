@@ -13,4 +13,5 @@ public interface TeacherService {
     void updateTeacher(MsTeacher msTeacher);
     List<MsTeacher> findAll(int limit,int offset);
     List<MsTeacher> findTeacher(String name);
+    void insertTeacher(MsTeacher msTeacher);
 }
