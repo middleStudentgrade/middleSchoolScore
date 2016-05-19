@@ -14,7 +14,9 @@
     <script src="../js/jquery.page.js"></script>
 
 </head>
-
+    <style>
+        .del_id{border:none;background:#fff;color:#fff;}
+    </style>
 <body>
 
 <div class="ad_rt">
@@ -113,7 +115,7 @@
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
-                            <label class="size">编号：</label><input class="form-control id" type="text" name="id" />
+                            <label class="size">编号：</label><input class="form-control id" type="text" name="id" disabled="true"/>
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text" />
                         </li>
                         <li>
@@ -175,7 +177,7 @@
             </div>
             <div class="modal-footer">
                 <form>
-                    <%--<input type="text" class="del_id">--%>
+                    <input type="text" class="del_id">
                     <button class="btn btn-default size" data-dismiss="modal">取消</button>
                     <button type="submit" class="btn btn_qd btn_delqd">确定</button>
                 </form>

@@ -19,7 +19,9 @@
 
 
 </head>
-
+    <style>
+        .del_id{border:none;background:#fff;color:#fff;}
+    </style>
 <body>
 
 <div class="ad_rt">
@@ -38,7 +40,7 @@
             <td>入学时间</td>
             <td >政治面貌</td>
             <td >身份证号</td>
-            <td style="width:16%">籍贯</td>
+            <td style="width:18%">籍贯</td>
             <td style="color:#fbc400;font-weight:bold;width:13%;">操作</td>
         </thead>
         <div class="clear"></div>
@@ -143,7 +145,7 @@
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
-                            <label class="size">学号：</label><input class="form-control id" type="text" name="id" />
+                            <label class="size">学号：</label><input class="form-control id" type="text" name="id" disabled="true"/>
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text"  />
                             <label class="size">年龄：</label><input class="form-control age" type="number" name="age" />
                         </li>
@@ -160,7 +162,6 @@
                                 <select name="rankDept" class="rankDept">
                                     <option value="一级部">一级部</option>
                                     <option value="二级部">二级部</option>
-                                    <option value="三级部">三级部</option>
                                 </select>
                             </div>
                         </li>
@@ -225,7 +226,7 @@
             </div>
             <div class="modal-footer">
                 <form>
-                    <%--<input type="text" class="del_id">--%>
+                    <input type="text" class="del_id">
                     <button class="btn btn-default size" data-dismiss="modal">取消</button>
                     <button type="submit" class="btn btn_qd btn_delqd">确定</button>
                 </form>

@@ -20,7 +20,7 @@
   <form class="con" action="/login" method="post">
     <div class="logo">
       <h3>中学生成绩管理系统</h3>
-      <h4 style="line-height: 30px;">Middle School Students achievement management system<em class="l_l">高中版</em></h4>
+      <h4 style="line-height: 30px;color:#415d98;">Middle School Students achievement management system<em class="l_l">高中版</em></h4>
     </div>
     <div class="ad_login">
       <div class="login_top">管理员登录</div>

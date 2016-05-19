@@ -12,6 +12,9 @@ $.ajax({
         if(data.status==500) {
             $("#error").text("密码不正确");
             $("#commit").unbind("click");
+            $("#rpwd").attr("disabled","true");
+            $("#newPassword").attr("disabled","true");
+            $("#commit").attr("disabled","disabled");
         }
         else
             $("#error").text("");

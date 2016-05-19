@@ -30,7 +30,7 @@
                 <label >原密码:</label>
                 <input  id="password" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
                  <br/> <span id="span1"></span>
-                  <span id="error"></span>
+                  <span id="error" style="margin-left:0;"></span>
               </div>
               <div class="form-group">
                 <label >新密码:</label>
@@ -49,14 +49,14 @@
           </div>
         </div>
       </div>
-<script>
+<script>3
     // 登录验证
-    function valYhm(){
+   /* function valYhm(){
         var pwd=$("#password").val();
         if (pwd==""||pwd==null) {
             $("#span1").text("原密码不能为空");
         }
-    }
+    }*/
     function valPwd(){
         var rpwd=$("#rpwd").val();
         if (rpwd == "" || rpwd == null) {

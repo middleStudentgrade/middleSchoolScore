@@ -36,16 +36,16 @@
       <button class="btn btn1">135分以上</button><span></span>
       <button class="btn btn2"> 112.5~135</button>
       <button class="btn btn3"> 90~112.5</button>
-      <button class="btn btn4">90分以下 </button>
+      <button class="btn btn4" style="margin-right:0;">90分以下 </button>
     </c:if>
 <c:if test="${courseName=='政治'||courseName=='历史'||courseName=='物理'||courseName=='地理'||courseName=='生物'||courseName=='化学'||courseName=='基本能力'}">
     <button class="btn btn1">90分以上</button><span></span>
     <button class="btn btn2"> 75~90</button>
     <button class="btn btn3"> 60~75</button>
-    <button class="btn btn4">60分以下 </button>
+    <button class="btn btn4" style="margin-right:0;">60分以下 </button>
   </c:if>
   </div>
-  <canvas id="myChart" width="240" height="240"></canvas>
+  <canvas id="myChart" width="500" height="240"></canvas>
   <p id="rate1">${passNum[0]}</p>
   <p id="rate2">${passNum[1]}</p>
   <p id="rate3">${passNum[2]}</p>
@@ -55,15 +55,33 @@
 
 <script>
   window.onload = function(){
-    var ctx = document.getElementById("myChart").getContext("2d");
-    window.myPie = new Chart(ctx).Pie(Data);
+    var ctx1 = document.getElementById("myChart").getContext("2d");
+//    window.myPie = new Chart(ctx).Pie(Data);
+    var data1 = {
+      labels: [<c:if test="${courseName=='语文'||courseName=='数学'||courseName=='英语'}">
+             "135分以上","112.5~135","90~112.5","90分以下"
+              </c:if>
+              <c:if test="${courseName=='政治'||courseName=='历史'||courseName=='物理'||courseName=='地理'||courseName=='生物'||courseName=='化学'||courseName=='基本能力'}">
+              "90分以上","75~90","60~75","60分以下"
+              </c:if>],
+      datasets: [
+        {
+          fillColor: ["#aec978","#E0E4CC","#e9c75c","#A8B3C5",],
+          strokeColor: "#bfbfbf",
+          data: [rate1,rate2,rate3],
+        },
+      ]
+    }
+    window.myPie = new Chart(ctx1).Bar(data1);
+
   };
   var rate1=$("#rate1").html();
   var rate2=$("#rate2").html();
   var rate3=$("#rate3").html();
   var rate4=$("#rate4").html();
 console.log(rate4);
-  var Data = [
+
+  /*var Data = [
     {
       value : rate1,
       color : "#aec978"
@@ -81,7 +99,7 @@ console.log(rate4);
       value:rate4,
       color:"#A8B3C5"
     }
-  ]
+  ]*/
 </script>
 </body>
 </html>

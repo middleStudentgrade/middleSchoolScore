@@ -29,7 +29,7 @@
                 <label >原密码</label>
                 <input  id="password"  type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >
                   <span id="span1"></span>
-                  <span id="error"></span>
+                  <span id="error" style="margin-left:0;"></span>
               </div>
               <div class="form-group">
                 <label >新密码</label>

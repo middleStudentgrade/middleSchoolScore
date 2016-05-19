@@ -14,6 +14,9 @@ function password(){
             if(data.status==500) {
                 $("#error").text("密码不正确");
                 $("#commit").unbind("click");
+                $("#rpwd").attr("disabled","disabled");
+                $("#newPassword").attr("disabled","disabled");
+                $("#commit").attr("disabled","disabled");
             }
             else
                 $("#error").text("");

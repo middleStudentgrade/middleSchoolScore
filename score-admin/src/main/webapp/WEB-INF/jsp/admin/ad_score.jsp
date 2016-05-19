@@ -16,14 +16,16 @@
 </head>
 <style>
     .s_info td{width:0%;}
+    #stuClassName,#stuGrade,.del_id{border:none;background:#fff;color:#fff;}
 </style>
 <body>
 
 <div class="ad_rt">
     <div>
-        <form action="admin/downloadFile/download" method="post" style="display:inline-block;margin:0 30px 20px 0;">
-           <%-- <input type="text" name="grade" id="stuGrade" value="${grade}">
-            <input type="text" name="className" id="stuClassName" value="${className}">--%>
+        <form action="admin/downloadFile/download" method="post" style="display:inline-block;margin:-20px -90px 20px 0;">
+            <input type="text" name="grade" id="stuGrade" value="${grade}">
+            <input type="text" name="className" id="stuClassName" value="${className}">
+            <br/>
             <button class="btn btn-info size download">学生成绩录入模板下载</button>
         </form>
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">上传成绩单</button>
@@ -53,25 +55,25 @@
         <input type="text" class="ScoreId form-control" placeholder="请输入学生学号"/>
         <button type="submit" class="btn btn-warning selectScore">单个学生成绩查询</button>
     </div>
-    <table class="panel s_info">
+    <table class="panel s_info" style="margin-top:20px;">
         <thead class="panel-heading size">
         <td>学号</td>
         <td >姓名</td>
         <td>班级</td>
         <td>学期</td>
-        <td>数学</td>
         <td >语文</td>
+        <td>数学</td>
         <td >英语</td>
-        ${grade}
+
+        <c:if test="${grade>6 ||className=='高一'}">
+            <td >物理</td>
+            <td >化学</td>
+            <td >生物</td>
         <c:if test="${grade<7 ||className=='高一'}">
         <td >历史</td>
         <td >地理</td>
         <td >政治</td>
         </c:if>
-        <c:if test="${grade>6 ||className=='高一'}">
-        <td >物理</td>
-        <td >化学</td>
-        <td >生物</td>
         </c:if>
         <c:if test="${className=='高三'}">
         <td >基本能力</td>
@@ -133,13 +135,13 @@
             </div>
             <form class="form-inline update_form" >
                 <div class="modal-body add_stu" id="alt_sco">
-                    <>
+                   <ul>
                         <li>
-                            <input class="form-control id" type="text" name="id" />
-                            <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" />
-                                <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" />
-                            <label class="size" style="margin-left:20px">班级：</label><input class="form-control className" type="text" name="className" />
-                            <label class="size" style="margin-left:20px">学期：</label><input class="form-control term" type="text" name="term" />
+                            <input class="form-control id" type="text" name="id" style="border:none;color:#fff;" /><br/>
+                            <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" disabled="true"/>
+                                <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" disabled="true"/>
+                            <label class="size" style="margin-left:20px">班级：</label><input class="form-control className" type="text" name="className" style="width:90px;" disabled="true"/>
+                            <label class="size" style="margin-left:20px">学期：</label><input class="form-control term" type="text" name="term" disabled="true"/>
                         </li>
                         <li>
                             <label class="size">语文：</label><input class="form-control chinese" type="text" />
@@ -181,7 +183,7 @@
                 <form>
                     <input type="text" class="del_id">
                     <button class="btn btn-default size" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn_delqd" style="color:#fff">确定</button>
+                    <button type="submit" class="btn btn-danger btn_delqd">确定</button>
                 </form>
             </div>
 

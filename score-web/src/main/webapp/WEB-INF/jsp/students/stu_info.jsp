@@ -21,7 +21,7 @@
       <div class="col-sm-8">
         <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="panel-title">学生信息</h3>
+            <h3 class="panel-title" style="font-size:18px;">学生信息</h3>
           </div>
           <div class="panel-body">
             <div class="col-md-12">
@@ -29,27 +29,25 @@
                 <tr >
                   <td> 学号：</td>
                   <td>${msStudent.id }</td>
-                </tr>
-                <tr>
                   <td>姓名：</td>
                   <td>${msStudent.name}</td>
-                  <td>政治面貌：</td>
-                  <td>${msStudent.politicalLandscape}</td>
                 </tr>
                 <tr>
                   <td>性别：</td>
                   <td>${msStudent.sex}</td>
+                  <td>政治面貌：</td>
+                  <td>${msStudent.politicalLandscape}</td>
+                </tr>
+                <tr>
+                  <td>年级：</td>
+                  <td>${msClass.name}</td>
                   <td>身份证号：</td>
                   <td>${msStudent.idCard}</td>
                 </tr>
 
                 <tr>
-                  <td>年级：</td>
-                  <td>${msClass.name}</td>
                   <td>班级：</td>
                   <td>${msClass.grade}班</td>
-                </tr>
-                <tr>
                   <td>籍贯：</td>
                   <td>${msStudent.birthPlace}</td>
                 </tr>

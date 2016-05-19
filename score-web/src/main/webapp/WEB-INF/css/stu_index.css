@@ -13,6 +13,7 @@ ul li{list-style: none;}
 #stu_info table td{border:none;}
 
 /* 修改密码 */
+#stu_mm #studentId,#stu_mm #teacherId{border:none;background:#fff;color:#fff;}
 #stu_mm,#stu_info,#score_now,#score_before{margin-left:150px;}
 #stu_mm label{width:70px;font-weight:200;margin-left:20px;display:inline-block;}
 #stu_mm .form-control{width:235px;height:50px;display:inline-block;}
