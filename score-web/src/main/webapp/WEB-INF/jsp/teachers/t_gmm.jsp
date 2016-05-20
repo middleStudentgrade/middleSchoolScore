@@ -50,7 +50,6 @@
       </div>
 <script>
     // 登录验证
-
     function valPwd(){
         var rpwd=$("#rpwd").val();
         if (rpwd == "" || rpwd == null) {

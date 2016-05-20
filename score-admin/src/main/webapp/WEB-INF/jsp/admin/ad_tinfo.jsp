@@ -53,10 +53,9 @@
                     <ul>
                         <li>
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control sname" name="name" type="text" />
+                            <label class="size" style="margin-left:20px">年龄：</label><input style="width:100px;" class="form-control sage" name="age" type="number" />
                         </li>
                         <li>
-                            <label class="size" style="margin-left:20px">年龄：</label><input class="form-control sage" name="age" type="number" />
-                        </li><li>
                             <div style="width:274px;display:inline-block">
                                 <label class="size">性别：</label>
                                 <select class="ssex" name="sex">
@@ -64,7 +63,7 @@
                                     <option value="女">女</option>
                                 </select>
                             </div>
-                            <label class="size">教育程度：</label>
+                            <label class="size">学历：</label>
                             <select class="seducation" name="education">
                                 <option value="本科">本科</option>
                                 <option value="硕士">硕士</option>
@@ -81,21 +80,21 @@
                                     <option value="特级教师">特级教师</option>
                                 </select>
                             </div>
-                        </li>
-                        <li>
                             <div style="width:274px;display:inline-block">
-                                <label class="size" >职务：</label>
+                                <label class="size" >政治面貌：</label>
                                 <select class="spoliticalLandscape" name="politicalLandscape">
                                     <option value="党员">党员</option>
                                     <option value="群众">群众</option>
                                 </select>
                             </div>
                         </li>
+                        <li>
+                            <label class="size">部门：</label><input class="form-control sdepartment" type="text" name="department" />
+                            <label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" />
+                        </li>
                         <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control semail" name="email" type="text" /></li>
-                        <label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" />
-                        <label class="size">籍贯：</label><input class="form-control sbirthPlace" type="text" name="birthPlace" />
-                        <label class="size">部门：</label><input class="form-control sdepartment" type="text" name="department" />
-                    </ul>
+                            <label class="size">籍贯：</label><input style="width:240px;" class="form-control sbirthPlace" type="text" name="birthPlace" />
+                        </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default size">重置</button>
@@ -118,9 +117,8 @@
                     <ul>
                         <li>
                             <label class="size">编号：</label><input class="form-control id" type="text" name="id" readonly/>
-                            <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text" />
-                        </li>
-                        <li>
+                            </li>
+                        <li><label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text" />
                             <label class="size" style="margin-left:20px">年龄：</label><input class="form-control age" name="age" type="number" />
                         </li>
                         <li>
@@ -131,7 +129,7 @@
                                     <option value="女">女</option>
                                 </select>
                             </div>
-                            <label class="size">教育程度：</label>
+                            <label class="size">学历：</label>
                             <select class="education" name="education">
                                 <option value="本科">本科</option>
                                 <option value="硕士">硕士</option>
@@ -148,21 +146,23 @@
                                     <option value="特级教师">特级教师</option>
                                 </select>
                             </div>
-                        </li>
-                        <li>
                             <div style="width:274px;display:inline-block">
-                                <label class="size">职务：</label>
+                                <label class="size">政治面貌：</label>
                                 <select class="politicalLandscape" name="politicalLandscape">
                                     <option value="党员">党员</option>
                                     <option value="群众">群众</option>
                                 </select>
                             </div>
                         </li>
+                           <label class="size">部门：</label><input class="form-control department" type="text" name="department" />
+                           <label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" />
+
+                        <li>
+
+                        </li>
                         <li><label class="size">邮箱：</label><input style="width:240px;" class="form-control email" name="email" type="text" /></li>
-                        <label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" />
-                        <label class="size">籍贯：</label><input class="form-control birthPlace" type="text" name="birthPlace" />
-                        <label class="size">部门：</label><input class="form-control department" type="text" name="department" />
-                    </ul>
+                            <label class="size">籍贯：</label><input style="width:240px;" class="form-control birthPlace" type="text" name="birthPlace" />
+                        </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-default size">重置</button>
