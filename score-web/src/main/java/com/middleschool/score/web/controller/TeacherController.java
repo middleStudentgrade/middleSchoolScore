@@ -133,13 +133,27 @@ public class TeacherController {
                 classNames.put(className, className);
             }
                 model.addAttribute("courseName",getCourseName(msSchoolmasters.get(0).getCourseName()));
-            int count=scoreService.countStudents(id,msSchoolmasters.get(0).getCourseName());
-            int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
-            count=count%pageSize==0?count/pageSize:count/pageSize+1;
-                model.addAttribute("count", count);
+                if(!"".equals(name)) {
+                    String className = name.substring(0, 2);
+                    long classId = 0L;
+                    int type = 1;
+                    int grade = Integer.parseInt(name.substring(2, name.length() - 1));
+                    if ("高一".equals(className)) {
+                        classId = grade;
+                    } else if ("高二".equals(className)) {
+                        classId = grade + 12;
+
+                    } else {
+                        classId = grade + 24;
+                    }
+                    int count = scoreService.countStudents(classId, msSchoolmasters.get(0).getCourseName());
+                    int pageSize = Integer.parseInt(WebConf.getValue("pageSize"));
+                    count = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+                    model.addAttribute("count", count);
+                }
             }else{
                 model.addAttribute("courseName","");
-                model.addAttribute("count", "");
+                model.addAttribute("count", 1);
             }
             model.addAttribute("name",name);
             model.addAttribute("classNames",classNames);
