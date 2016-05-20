@@ -25,7 +25,7 @@
             <h3 class="panel-title">修改密码</h3>
           </div>
           <div class="panel-body">
-              <input id="studentId" type="text" value="${msTeacher.id}" >
+              <input id="studentId" type="text" value="${msStudent.id}" >
               <div class="form-group">
                 <label >原密码:</label>
                 <input  id="password" type="text" name="username" class="form-control"  placeholder="请输入原密码" onblur="password()" >

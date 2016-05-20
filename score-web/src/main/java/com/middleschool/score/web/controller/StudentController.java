@@ -52,7 +52,7 @@ public class StudentController {
         try{
             MsStudent msStudent=studentService.getById(id);
             msStudent.setPassword(MD5Utils.md5(password));
-            studentService.saveStudent(msStudent);
+            studentService.updateStudent(msStudent);
             return ResponseResult.ok();
         }catch (Exception e){
             LOG.error("密码错误{}",e.getMessage());
