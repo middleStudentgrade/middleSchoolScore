@@ -90,7 +90,7 @@ public class ScoreController {
                     msScores.add(msScore);
                 }
             }else if("高二".equals(className)){
-                if(grade<7){
+                if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)){
                     type=2;
                     List<JuniorScoreArt> list = excelUtil.readExcel(JuniorScoreArt.class);
                     for(JuniorScoreArt e:list){
@@ -118,7 +118,7 @@ public class ScoreController {
                     }
                 }
             }else{
-                if(grade<7){
+                if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)){
                     type=4;
                     List<SeniorScoreArt> list = excelUtil.readExcel(SeniorScoreArt.class);
                     for(SeniorScoreArt e:list){

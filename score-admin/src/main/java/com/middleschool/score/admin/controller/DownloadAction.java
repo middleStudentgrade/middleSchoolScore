@@ -31,7 +31,7 @@ public class DownloadAction {
             file=new File(path);
             fileName=new String("高一成绩录入模板.xlsx".getBytes("UTF-8"),"iso-8859-1");//为了解决中文名称乱码问题
         }else if("高二".equals(className)){
-            if(grade<7) {
+            if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)) {
                 String path = basePath+"gaoerwen.xlsx";
                 file = new File(path);
                 fileName = new String("高二文科成绩录入模板.xlsx".getBytes("UTF-8"), "iso-8859-1");//为了解决中文名称乱码问题
@@ -41,7 +41,7 @@ public class DownloadAction {
                 fileName = new String("高二理科成绩录入模板.xlsx".getBytes("UTF-8"), "iso-8859-1");//为了解决中文名称乱码问题
             }
         }else{
-            if(grade<7) {
+            if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)) {
                 String path = basePath+"gaosanwen.xlsx";
                 file = new File(path);
                 fileName = new String("高三文科成绩录入模板.xlsx".getBytes("UTF-8"), "iso-8859-1");//为了解决中文名称乱码问题

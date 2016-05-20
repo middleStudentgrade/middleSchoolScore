@@ -72,11 +72,11 @@
                                 </select>
                             </div>
                             <div style="width:274px;display:inline-block">
-                                <label class="size">级部：</label>
-                                <select name="rankDept" class="srankDept">
-                                    <option value="一级部">一级部</option>
-                                    <option value="二级部">二级部</option>
-                                    <option value="三级部">三级部</option>
+                                <label class="size">政治面貌：</label>
+                                <select name="politicalLandscape" class="spoliticalLandscape">
+                                    <option value="团员">团员</option>
+                                    <option value="党员">党员</option>
+                                    <option value="群众">群众</option>
                                 </select>
                             </div>
                         </li>
@@ -101,14 +101,7 @@
                                 <option value="11">11</option>
                                 <option  value="12">12</option>
                             </select>
-                            <div style="width:274px;display:inline-block">
-                                <label class="size">政治面貌：</label>
-                                <select name="politicalLandscape" class="spoliticalLandscape">
-                                    <option value="团员">团员</option>
-                                    <option value="党员">党员</option>
-                                    <option value="群众">群众</option>
-                                </select>
-                            </div>
+
                         </li>
                         <li>
 
