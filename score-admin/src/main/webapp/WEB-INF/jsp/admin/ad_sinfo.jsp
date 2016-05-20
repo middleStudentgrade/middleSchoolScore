@@ -21,9 +21,22 @@
 </head>
     <style>
         .del_id{border:none;background:#fff;color:#fff;}
+        .datetimepicker-hours{display:none;}
     </style>
 <body>
-
+<script type="text/javascript">
+    //$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd'});
+    $(".form_datetime").
+            datetimepicker({
+                language: 'zh-CN',
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: true,
+                startView: 'year',
+                minView:'year',
+                maxView:'decade'
+            });
+</script>
 <div class="ad_rt">
     <div style="margin-bottom:20px;">
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">添加学生信息</button>
@@ -111,14 +124,8 @@
                             </div>
                         </li>
                         <li>
-
                             <label class="size">入学时间：</label>
-                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="" readonly>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                            </div>
-                            <input type="hidden" id="dtp_input2" value="" /><br/>
+                            <input size="16" type="text" value="" id="month_time" class="form_datetime form-control">
 
                         </li>
                         <li><label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" /></li>
@@ -196,13 +203,8 @@
                             </div>
                         </li>
                         <li>
-
                             <label class="size">入学时间：</label>
-                            <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                                <input class="form-control" size="16" type="text" value="" readonly>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                            </div>
+                            <input size="16" type="text" value="" class="form_datetime form-control ">
                         </li>
                         <li><label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" /></li>
                         <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control birthPlace" type="text" name="birthPlace" /></li>
@@ -240,7 +242,7 @@
     var format = function(time, format){
         var t = new Date(time);
         var tf = function(i){return (i < 10 ? '0' : '') + i};
-        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
+        return format.replace(/yyyy|MM|dd|HH/g, function(a){
             switch(a){
                 case 'yyyy':
                     return tf(t.getFullYear());
@@ -248,17 +250,8 @@
                 case 'MM':
                     return tf(t.getMonth() + 1);
                     break;
-                case 'mm':
-                    return tf(t.getMinutes());
-                    break;
                 case 'dd':
                     return tf(t.getDate());
-                    break;
-                case 'HH':
-                    return tf(t.getHours());
-                    break;
-                case 'ss':
-                    return tf(t.getSeconds());
                     break;
             };
         });
