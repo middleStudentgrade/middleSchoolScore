@@ -35,6 +35,8 @@ function changepassword(){
         success: function (data) {
             if(data.status==500) {
                 $("#error").text("密码不正确");
+            }else{
+                $("#error").text("修改密码成功");
             }
         },
         error: function(){
