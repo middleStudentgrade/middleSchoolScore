@@ -126,13 +126,13 @@
                             <label class="size">英语：</label><input class="form-control english" name="english" type="text" />
                         </li>
                         <li>
-<c:if test="${grade>6 ||className=='高一'}">
+<c:if test="${grade>3&&grade<7||grade>9&&grade<13 ||className=='高一'}">
                             <label class="size">物理：</label><input class="form-control physico" name="physico" type="text" />
                             <label class="size">化学：</label><input class="form-control chemical" name="chemical" type="text" />
                             <label class="size">生物：</label><input class="form-control biology" name="biology" type="text" />
                         </li>
     </c:if>
-<c:if test="${grade<7 ||className=='高一'}">
+<c:if test="${grade>0&&grade<4||grade>6&&grade<10 ||className=='高一'}">
                         <li>
                             <label class="size">历史：</label><input class="form-control history" name="history" type="text" />
                             <label class="size">地理：</label><input class="form-control geography" name="geography" type="text" />
