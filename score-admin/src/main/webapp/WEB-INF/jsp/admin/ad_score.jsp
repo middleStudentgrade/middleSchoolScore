@@ -115,10 +115,12 @@
                    <ul>
                         <li>
                             <input class="form-control id" type="text" name="id" style="display:none"/><br/>
-                            <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" readonly/>
-                                <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" readonly/>
-                            <label class="size" style="margin-left:20px">班级：</label><input class="form-control className" type="text" name="className" style="width:90px;" readonly/>
-                            <label class="size" style="margin-left:20px">学期：</label><input class="form-control term" type="text" name="term" readonly/>
+                            <label class="size" >学号：</label> <input class="form-control studentId" style="width:100px;" type="text" name="studentId" readonly/>
+                                <label class="size">姓名：</label><input class="form-control name" style="width:100px;" type="text" name="name" readonly/>
+                           </li>
+
+                        <li>  <label class="size">班级：</label><input class="form-control className" style="width:100px;" type="text" name="className" style="width:90px;" readonly/>
+                            <label class="size">学期：</label><input class="form-control term" style="width:100px;" type="text" name="term" readonly/>
                         </li>
                         <li>
                             <label class="size">语文：</label><input class="form-control chinese" type="text" />
@@ -221,7 +223,7 @@
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         }
                         $("#list").append('<td>' + item.allGrade + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })
@@ -277,7 +279,7 @@
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         }
                         $("#list").append('<td>' + item.allGrade + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })
@@ -338,7 +340,7 @@
                                 $("#list").append('<td>' + item.basicCompetencies + '</td>');
                             }
                             $("#list").append('<td>' + item.allGrade + '</td>');
-                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                             $("#list").append('</tr>');
                         })

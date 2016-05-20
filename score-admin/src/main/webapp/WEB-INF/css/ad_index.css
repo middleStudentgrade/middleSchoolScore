@@ -42,7 +42,7 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 .ad_rt ul li{float:left;width:10%;text-align:center;padding-top:18px;}
 .s_info,.t_info{width:95%;height:auto;overflow:auto;padding:0;border:2px solid #e5e3da;background:#f5f5f5;}
 .s_info .panel-heading,.t_info .panel-heading{background:#52cdfe;color:#fff;height:40px;}
-.s_info td,.t_info td{width:8%;text-align:center;}
+.s_info td,.t_info td{font-size:18px;padding:15px 0;text-align:center;}
 /*分页*/
 #count{background:#fff;color:#fff;border:none;}
 .tcdPageCode{padding:15px 20px;text-align:center;color:#ccc;}
@@ -97,6 +97,7 @@ a.list-group-item:focus{border-left:3px solid #27AE60;color:#27AE60;border-radiu
 #crs1 table th,#crs2 table th,#crs3 table th{font-size:16px;font-weight:bold;}
 .crs_hlt{background:#dfdfdf;opacity:0.6;}
 .crs1_th{background:#dfdfdf;opacity:0.6;}
+
 #crs1,#crs2,#crs3{width:80%;}
 #crs2,#crs3{display:none;}
 

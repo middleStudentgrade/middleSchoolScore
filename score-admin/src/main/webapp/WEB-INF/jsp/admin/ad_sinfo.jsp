@@ -273,7 +273,7 @@
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })
@@ -306,7 +306,7 @@
                             $("#list").append('<td>' + item.politicalLandscape + '</td>');
                             $("#list").append('<td>' + item.idCard + '</td>');
                             $("#list").append('<td>' + item.birthPlace + '</td>');
-                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                             $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
                             $("#list").append('</tr>');
                         })
@@ -340,7 +340,7 @@
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
                         $("#list").append('</tr>');
                     })

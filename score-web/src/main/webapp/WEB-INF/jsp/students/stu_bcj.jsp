@@ -25,7 +25,7 @@
         <button class="btn btn-default">所有成绩</button>
       </div>
       <div class="col-sm-9">
-        <div class="score_info">
+        <div class="score_info" style="width:720px;">
           <table class="table table-bordered">
             <thead>
             <tr class="btn-info" style="height:46px">
