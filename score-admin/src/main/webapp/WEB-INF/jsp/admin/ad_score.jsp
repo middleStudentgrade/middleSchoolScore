@@ -56,30 +56,7 @@
         <button type="submit" class="btn btn-warning selectScore">单个学生成绩查询</button>
     </div>
     <table class="panel s_info" style="margin-top:20px;">
-        <thead class="panel-heading size">
-        <td>学号</td>
-        <td >姓名</td>
-        <td>班级</td>
-        <td>学期</td>
-        <td >语文</td>
-        <td>数学</td>
-        <td >英语</td>
-
-        <c:if test="${grade>6 ||className=='高一'}">
-            <td >物理</td>
-            <td >化学</td>
-            <td >生物</td>
-        <c:if test="${grade<7 ||className=='高一'}">
-        <td >历史</td>
-        <td >地理</td>
-        <td >政治</td>
-        </c:if>
-        </c:if>
-        <c:if test="${className=='高三'}">
-        <td >基本能力</td>
-        </c:if>
-        <td >总成绩</td>
-        <td style="width:130px;">操作</td>
+        <thead class="panel-heading size headscore">
         </thead>
         <div class="clear"></div>
         <tbody id="list"></tbody>
@@ -137,11 +114,11 @@
                 <div class="modal-body add_stu" id="alt_sco">
                    <ul>
                         <li>
-                            <input class="form-control id" type="text" name="id" style="border:none;color:#fff;" /><br/>
-                            <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" disabled="true"/>
-                                <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" disabled="true"/>
-                            <label class="size" style="margin-left:20px">班级：</label><input class="form-control className" type="text" name="className" style="width:90px;" disabled="true"/>
-                            <label class="size" style="margin-left:20px">学期：</label><input class="form-control term" type="text" name="term" disabled="true"/>
+                            <input class="form-control id" type="text" name="id" style="display:none"/><br/>
+                            <label class="size" style="margin-left:20px">学号：</label> <input class="form-control studentId" type="text" name="studentId" readonly/>
+                                <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" type="text" name="name" readonly/>
+                            <label class="size" style="margin-left:20px">班级：</label><input class="form-control className" type="text" name="className" style="width:90px;" readonly/>
+                            <label class="size" style="margin-left:20px">学期：</label><input class="form-control term" type="text" name="term" readonly/>
                         </li>
                         <li>
                             <label class="size">语文：</label><input class="form-control chinese" type="text" />
@@ -149,18 +126,22 @@
                             <label class="size">英语：</label><input class="form-control english" name="english" type="text" />
                         </li>
                         <li>
-
+<c:if test="${grade>6 ||className=='高一'}">
                             <label class="size">物理：</label><input class="form-control physico" name="physico" type="text" />
                             <label class="size">化学：</label><input class="form-control chemical" name="chemical" type="text" />
                             <label class="size">生物：</label><input class="form-control biology" name="biology" type="text" />
                         </li>
+    </c:if>
+<c:if test="${grade<7 ||className=='高一'}">
                         <li>
                             <label class="size">历史：</label><input class="form-control history" name="history" type="text" />
                             <label class="size">地理：</label><input class="form-control geography" name="geography" type="text" />
                             <label class="size">政治：</label><input class="form-control political" name="political" type="text" />
                         </li>
+    </c:if>
+<c:if test="${className=='高三'}">
                         <li><label class="size">基本能力：</label><input class="form-control basicCompetencies" name="basicCompetencies" type="text" /></li>
-
+</c:if>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -203,6 +184,19 @@
             async: false,
             success: function (data) {
                 $("#list").empty();
+                $(".headscore").empty();
+
+                $(".headscore").append(' <td>学号</td> <td >姓名</td> <td>班级</td> <td>学期</td> <td >语文</td> <td>数学</td> <td >英语</td>');
+                if(data.data.num==1||data.data.num==3||data.data.num==5){
+                    $(".headscore").append('<td >物理</td> <td >化学</td> <td >生物</td>');
+                }
+                if(data.data.num==1||data.data.num==2||data.data.num==4){
+                    $(".headscore").append('<td >历史</td> <td >地理</td> <td >政治</td>');
+                }
+                if(data.data.num==5||data.data.num==4) {
+                    $(".headscore").append('<td >基本能力</td>');
+                }
+                $(".headscore").append(' <td >总成绩</td> <td style="width:130px;">操作</td>');
                 if (data.data.num !=0) {
                     $.each(data.data.datas, function (index, item) {
                         $("#list").append('<tr>');
@@ -213,12 +207,12 @@
                         $("#list").append('<td>' + item.chinese + '</td>');
                         $("#list").append('<td>' + item.math + '</td>');
                         $("#list").append('<td>' + item.english + '</td>');
-                        if(item.type==1||item.type==3) {
+                        if(item.type==1||item.type==3||item.type==5) {
                             $("#list").append('<td>' + item.physico + '</td>');
                             $("#list").append('<td>' + item.chemical + '</td>');
                             $("#list").append('<td>' + item.biology + '</td>');
                         }
-                        if(item.type==1||item.type==2) {
+                        if(item.type==1||item.type==2||item.type==4) {
                             $("#list").append('<td>' + item.history + '</td>');
                             $("#list").append('<td>' + item.geography + '</td>');
                             $("#list").append('<td>' + item.political + '</td>');
@@ -247,8 +241,19 @@
             async: false,
             success: function (data) {
                 $("#list").empty();
-                $(".tcdPageCode").empty();
-                if (data.data.datas != null) {
+                $(".headscore").empty();
+                $(".headscore").append(' <td>学号</td> <td >姓名</td> <td>班级</td> <td>学期</td> <td >语文</td> <td>数学</td> <td >英语</td>');
+                if(data.data.num==1||data.data.num==3||data.data.num==5){
+                    $(".headscore").append('<td >物理</td> <td >化学</td> <td >生物</td>');
+                }
+                if(data.data.num==1||data.data.num==2||data.data.num==4){
+                    $(".headscore").append('<td >历史</td> <td >地理</td> <td >政治</td>');
+                }
+                if(data.data.num==5||data.data.num==4) {
+                    $(".headscore").append('<td >基本能力</td>');
+                }
+                $(".headscore").append(' <td >总成绩</td> <td style="width:130px;">操作</td>');
+                if (data.data.num !=0) {
                     $.each(data.data.datas, function (index, item) {
                         $("#list").append('<tr>');
                         $("#list").append('<td>' + item.studentId + '</td>');
@@ -258,12 +263,12 @@
                         $("#list").append('<td>' + item.chinese + '</td>');
                         $("#list").append('<td>' + item.math + '</td>');
                         $("#list").append('<td>' + item.english + '</td>');
-                        if(item.type==1||item.type==3) {
+                        if(item.type==1||item.type==3||item.type==5) {
                             $("#list").append('<td>' + item.physico + '</td>');
                             $("#list").append('<td>' + item.chemical + '</td>');
                             $("#list").append('<td>' + item.biology + '</td>');
                         }
-                        if(item.type==1||item.type==2) {
+                        if(item.type==1||item.type==2||item.type==4) {
                             $("#list").append('<td>' + item.history + '</td>');
                             $("#list").append('<td>' + item.geography + '</td>');
                             $("#list").append('<td>' + item.political + '</td>');
@@ -297,7 +302,19 @@
                 type: 'POST',
                 success: function (data) {
                     $("#list").empty();
-                    if (data.data.datas != null) {
+                    $(".headscore").empty();
+                    $(".headscore").append(' <td>学号</td> <td >姓名</td> <td>班级</td> <td>学期</td> <td >语文</td> <td>数学</td> <td >英语</td>');
+                    if(data.data.num==1||data.data.num==3||data.data.num==5){
+                        $(".headscore").append('<td >物理</td> <td >化学</td> <td >生物</td>');
+                    }
+                    if(data.data.num==1||data.data.num==2||data.data.num==4){
+                        $(".headscore").append('<td >历史</td> <td >地理</td> <td >政治</td>');
+                    }
+                    if(data.data.num==5||data.data.num==4) {
+                        $(".headscore").append('<td >基本能力</td>');
+                    }
+                    $(".headscore").append(' <td >总成绩</td> <td style="width:130px;">操作</td>');
+                    if (data.data.num !=0) {
                         $.each(data.data.datas, function (index, item) {
                             $("#list").append('<tr>');
                             $("#list").append('<td>' + item.studentId + '</td>');
@@ -307,12 +324,12 @@
                             $("#list").append('<td>' + item.chinese + '</td>');
                             $("#list").append('<td>' + item.math + '</td>');
                             $("#list").append('<td>' + item.english + '</td>');
-                            if(item.type==1||item.type==3) {
+                            if(item.type==1||item.type==3||item.type==5) {
                                 $("#list").append('<td>' + item.physico + '</td>');
                                 $("#list").append('<td>' + item.chemical + '</td>');
                                 $("#list").append('<td>' + item.biology + '</td>');
                             }
-                            if(item.type==1||item.type==2) {
+                            if(item.type==1||item.type==2||item.type==4) {
                                 $("#list").append('<td>' + item.history + '</td>');
                                 $("#list").append('<td>' + item.geography + '</td>');
                                 $("#list").append('<td>' + item.political + '</td>');
@@ -341,6 +358,7 @@
             dateType:"json",
             type: 'POST',
             success: function (data) {
+                $(".id").val(data.data.id);
                 $(".studentId").val(data.data.studentId);
                 $(".name").val(data.data.name)
                 $(".className").val(data.data.className);
@@ -348,12 +366,12 @@
                 $(".term").val(data.data.term);
                 $(".math").val(data.data.math);
                 $(".english").val(data.data.english);
-                if(data.data.type==1||data.data.type==3) {
+                if(data.data.type==1||data.data.type==3||data.data.type==5) {
                     $(".physico").val(data.data.physico);
                     $(".chemical").val(data.data.chemical);
                     $(".biology").val(data.data.biology);
                 }
-                if(data.data.type==1||data.data.type==2) {
+                if(data.data.type==1||data.data.type==2||data.data.type==4) {
                     $(".history").val(data.data.history);
                     $(".geography").val(data.data.geography);
                     $(".political").val(data.data.political);

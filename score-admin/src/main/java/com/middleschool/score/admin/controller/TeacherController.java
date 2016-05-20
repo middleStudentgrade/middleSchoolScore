@@ -4,6 +4,7 @@ import com.middleschool.score.common.dto.MsTeacher;
 import com.middleschool.score.common.pojo.Page;
 import com.middleschool.score.common.pojo.ResponseResult;
 import com.middleschool.score.common.service.TeacherService;
+import com.middleschool.score.common.utils.MD5Utils;
 import com.middleschool.score.common.utils.WebConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,7 +90,7 @@ public class TeacherController {
     @ResponseBody
     public ResponseResult save(MsTeacher msTeacher){
         try {
-            msTeacher.setPassword(msTeacher.getIdCard().substring(msTeacher.getIdCard().length()-6,msTeacher.getIdCard().length()));
+            msTeacher.setPassword(MD5Utils.md5(msTeacher.getIdCard().substring(msTeacher.getIdCard().length()-6,msTeacher.getIdCard().length())));
             teacherService.insertTeacher(msTeacher);
             return ResponseResult.ok();
         }catch (Exception e){
