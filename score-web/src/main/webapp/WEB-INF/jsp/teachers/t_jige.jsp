@@ -21,6 +21,7 @@
 <body>
 <div id="tea_pie" style="width:534px;">
   <form:form action="/teacher/passRate" method="post">
+      <input type="text" name="id" value="${msTeacher.id}" style="display:none" >
     <input  type="text" value="${courseName}" name="courseName" class="courseName">成绩段分布情况
     <div style="float:right;margin-right:30px;">
         <select name="className" id="className">
