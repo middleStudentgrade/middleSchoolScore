@@ -152,7 +152,7 @@
                 <div class="modal-body alt_stu">
                     <ul>
                         <li>
-                            <label class="size">学号：</label><input class="form-control id" type="text" name="id" disabled="true"/>
+                            <label class="size">学号：</label><input class="form-control id" type="text" name="id" readonly/>
                             <label class="size" style="margin-left:20px">姓名：</label><input class="form-control name" name="name" type="text"  />
                             <label class="size">年龄：</label><input class="form-control age" type="number" name="age" />
                         </li>

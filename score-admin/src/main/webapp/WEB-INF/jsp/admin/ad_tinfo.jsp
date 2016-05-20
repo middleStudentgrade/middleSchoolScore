@@ -150,6 +150,7 @@
                                 <label class="size">政治面貌：</label>
                                 <select class="politicalLandscape" name="politicalLandscape">
                                     <option value="党员">党员</option>
+                                    <option value="团员">团员</option>
                                     <option value="群众">群众</option>
                                 </select>
                             </div>
