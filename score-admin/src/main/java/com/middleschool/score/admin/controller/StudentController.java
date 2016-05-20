@@ -10,7 +10,9 @@ import com.middleschool.score.common.service.ClassService;
 import com.middleschool.score.common.service.ScoreService;
 import com.middleschool.score.common.service.StudentNowService;
 import com.middleschool.score.common.service.StudentService;
+import com.middleschool.score.common.utils.DateUtil;
 import com.middleschool.score.common.utils.JsonUtils;
+import com.middleschool.score.common.utils.MD5Utils;
 import com.middleschool.score.common.utils.WebConf;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -97,7 +100,7 @@ public class StudentController {
     public ResponseResult update(StudentClass studentClass){
         try {
             MsStudent msStudent1=studentService.getById(studentClass.getId());
-           MsStudent msStudent = new MsStudent();
+            MsStudent msStudent = new MsStudent();
             BeanUtils.copyProperties(studentClass, msStudent);
             MsStudentNow msStudentNow = studentNowService.getByStudentId(studentClass.getId());
             msStudent.setPassword(msStudent1.getPassword());
@@ -120,13 +123,18 @@ public class StudentController {
         try {
             MsStudent msStudent = new MsStudent();
             BeanUtils.copyProperties(studentClass, msStudent);
-            msStudent.setPassword(studentClass.getIdCard().substring(studentClass.getIdCard().length()-6,studentClass.getIdCard().length()));
+            msStudent.setPassword(MD5Utils.md5(studentClass.getIdCard().substring(studentClass.getIdCard().length()-6,studentClass.getIdCard().length())));
             List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),Integer.parseInt(studentClass.getGrade().toString()));
             MsStudentNow msStudentNow=new MsStudentNow();
             msStudentNow.setClassId(classe.get(0).getId());
             studentService.saveStudent(msStudent);
             msStudentNow.setStudentId(msStudent.getId());
-            msStudentNow.setSemester(0);
+            Calendar now = Calendar.getInstance();
+            int semester=0;
+            if(now.get(Calendar.MONTH)>3&&now.get(Calendar.MONTH)<9){
+                semester=1;
+            }
+            msStudentNow.setSemester(semester);
             studentNowService.save(msStudentNow);
             return ResponseResult.ok();
         }catch (Exception e){

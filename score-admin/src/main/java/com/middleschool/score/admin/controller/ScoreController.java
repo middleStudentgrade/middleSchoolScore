@@ -177,7 +177,11 @@ public class ScoreController {
                 scoreAdmin.setAllGrade(getAllScore(m));
                 scoreAdmins.add(scoreAdmin);
             }
-            page.setNum(scoreAdmins.size());
+            int type=0;
+            if(scoreAdmins.size()!=0) {
+                type = scoreAdmins.get(0).getType();
+            }
+            page.setNum(type);
             page.setDatas(scoreAdmins);
             return ResponseResult.ok(page);
         }catch (Exception e){
@@ -203,6 +207,7 @@ public class ScoreController {
                 MsStudent msStudent=studentService.getById(m.getStudentId());
                 BeanUtils.copyProperties(m,scoreAdmin);
                 scoreAdmin.setName(msStudent.getName());
+                scoreAdmin.setAllGrade(getAllScore(m));
                 MsClass msClass=classService.getById((long)m.getClassId());
                 scoreAdmin.setClassName(msClass.getName()+msClass.getGrade()+"班");
                 if(m.getSemester()==1) {
@@ -212,6 +217,11 @@ public class ScoreController {
                 }
                 scoreAdmins.add(scoreAdmin);
             }
+            int type=0;
+            if(scoreAdmins.size()!=0) {
+                type=scoreAdmins.get(0).getType();
+            }
+            page.setNum(type);
             page.setDatas(scoreAdmins);
             return ResponseResult.ok(page);
         }catch (Exception e){
