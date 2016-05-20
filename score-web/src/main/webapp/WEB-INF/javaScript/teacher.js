@@ -13,14 +13,17 @@ function password(){
         success: function (data) {
             if(data.status==500) {
                 $("#error").text("密码不正确");
-                $("#rpwd").attr("readonly","readonly");
-                $("#newPassword").attr("readonly","readonly");
-                $("#commit").attr("readonly","readonly");
-                $("#commit").unbind("click");
+                $("#commit").unbind("click");/*
+                $("#rpwd").attr("readonly",true);
+                $("#newPassword").attr("readonly",true);
+                $("#commit").attr("readonly",true);*/
             }
             else
                 $("#error").text("");
-            $("#commit").bind("click");
+                $("#commit").bind("click");/*
+                $("#rpwd").removeAttr("readonly");
+                $("#newPassword").removeAttr("readonly");
+                $("#commit").removeAttr("readonly");*/
         },
         error: function(){
         }

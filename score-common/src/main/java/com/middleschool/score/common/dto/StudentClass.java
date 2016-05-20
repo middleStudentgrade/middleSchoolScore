@@ -22,7 +22,7 @@ public class StudentClass  {
 
     private String politicalLandscape;
 
-    private Date datesAttendance;
+    private String datesAttendance;
     private String grade;
     private String className;
     private String rankDept;
@@ -107,11 +107,11 @@ public class StudentClass  {
         this.politicalLandscape = politicalLandscape;
     }
 
-    public Date getDatesAttendance() {
+    public String getDatesAttendance() {
         return datesAttendance;
     }
 
-    public void setDatesAttendance(Date datesAttendance) {
+    public void setDatesAttendance(String datesAttendance) {
         this.datesAttendance = datesAttendance;
     }
 

@@ -108,6 +108,7 @@ public class StudentController {
             if(classe!=null) {
                 msStudentNow.setClassId(classe.get(0).getId());
             }
+            msStudent.setDatesAttendance(DateUtil.formatDate(studentClass.getDatesAttendance()));
             studentNowService.update(msStudentNow);
             studentService.updateStudent(msStudent);
             return ResponseResult.ok();
@@ -127,6 +128,7 @@ public class StudentController {
             List<MsClass> classe=classService.getByRankDeptAndGradeAndName(studentClass.getClassName(),Integer.parseInt(studentClass.getGrade().toString()));
             MsStudentNow msStudentNow=new MsStudentNow();
             msStudentNow.setClassId(classe.get(0).getId());
+            msStudent.setDatesAttendance(DateUtil.formatDate(studentClass.getDatesAttendance()));
             studentService.saveStudent(msStudent);
             msStudentNow.setStudentId(msStudent.getId());
             Calendar now = Calendar.getInstance();

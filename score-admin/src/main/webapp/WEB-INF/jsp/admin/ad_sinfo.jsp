@@ -118,7 +118,7 @@
                         </li>
                         <li>
                             <label class="size">入学时间：</label>
-                            <input size="16" type="text" value="" id="month_time" class="form_datetime form-control">
+                            <input size="16" type="text"  id="month_time" class="form_datetime form-control sdatesAttendance" name="datesAttendance">
 
                         </li>
                         <li><label class="size">身份证号：</label><input class="form-control sidCard" type="text" name="idCard" /></li>
@@ -197,7 +197,7 @@
                         </li>
                         <li>
                             <label class="size">入学时间：</label>
-                            <input size="16" type="text" value="" class="form_datetime form-control ">
+                            <input size="16" type="text"  class="form_datetime form-control datesAttendance" name="datesAttendance">
                         </li>
                         <li><label class="size">身份证号：</label><input class="form-control idCard" type="text" name="idCard" /></li>
                         <li><label class="size">籍贯：</label><input style="width:370px;" class="form-control birthPlace" type="text" name="birthPlace" /></li>
@@ -235,7 +235,7 @@
     var format = function(time, format){
         var t = new Date(time);
         var tf = function(i){return (i < 10 ? '0' : '') + i};
-        return format.replace(/yyyy|MM|dd|HH/g, function(a){
+        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
             switch(a){
                 case 'yyyy':
                     return tf(t.getFullYear());
@@ -245,6 +245,12 @@
                     break;
                 case 'dd':
                     return tf(t.getDate());
+                    break;
+                case 'HH':
+                    return tf(t.getHours());
+                    break;
+                case 'mm':
+                    return tf(t.getMinutes());
                     break;
             };
         });
@@ -356,7 +362,7 @@
                 $(".sex").val(data.data.sex);
                 $(".age").val(data.data.age);
                 $(".className").val(data.data.className);
-              /*  $(".datesAttendance").val(format(item.datesAttendance,'yyyy-MM-dd'));*/
+                $(".datesAttendance").val(format(data.data.datesAttendance,'yyyy-MM-dd HH:mm'));
                 $(".politicalLandscape").val(data.data.politicalLandscape);
                 $(".idCard").val(data.data.idCard);
                 $(".birthPlace").val(data.data.birthPlace);

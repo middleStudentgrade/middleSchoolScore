@@ -39,6 +39,7 @@
               <th>政治</th>
               <th>地理</th>
               <th>历史</th>
+              <th>基本能力</th>
               <th>总成绩</th>
             </tr>
             </thead>
@@ -52,9 +53,10 @@
               <td>${s.physico}</td>
               <td>${s.chemical}</td>
               <td>${s.biology}</td>
-              <td>${s.physico}</td>
+              <td>${s.political}</td>
               <td>${s.geography}</td>
               <td>${s.history}</td>
+              <td>${s.basicCompetencies}</td>
               <td>${s.allScore}</td>
             </tr>
   </c:forEach>
