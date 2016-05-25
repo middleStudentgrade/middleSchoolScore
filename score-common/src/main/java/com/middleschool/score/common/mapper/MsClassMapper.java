@@ -29,4 +29,5 @@ public interface MsClassMapper {
     int updateByPrimaryKeySelective(MsClass record);
 
     int updateByPrimaryKey(MsClass record);
+    List<MsClass> selectById(@Param("student_id") Long id);
 }

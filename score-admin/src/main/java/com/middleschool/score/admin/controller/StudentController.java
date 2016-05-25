@@ -46,7 +46,7 @@ public class StudentController {
 
     @Autowired
     private ScoreService scoreService;
-
+//获取全部学生的信息
     @RequestMapping("getAll")
     @ResponseBody
     public ResponseResult getAll(@RequestParam(value = "offset",defaultValue = "1")int offset){
@@ -61,7 +61,18 @@ public class StudentController {
             return ResponseResult.build(500,"获取学生信息失败");
         }
     }
+@RequestMapping("getstu")
+@ResponseBody
+public ResponseResult getstu(){
+    MsStudent msStudent=studentService.selectByPrimaryKey(1000059L);
+    List<MsClass> msClass=classService.selectById(1000059L);
+    StudentClass studentClass=new StudentClass();
+    BeanUtils.copyProperties(msStudent,studentClass);
+    studentClass.setGrade(msClass.get(0).getGrade().toString());
+    return ResponseResult.ok(studentClass);
 
+}
+//点击修改,获取的某个学生的信息
     @RequestMapping("getOne")
     @ResponseBody
     public ResponseResult getOne(@RequestParam(value = "id")Long id){
@@ -76,7 +87,7 @@ public class StudentController {
             return ResponseResult.build(500,"获取学生信息失败");
         }
     }
-
+//查询某个学生的信息
     @RequestMapping("getStudent")
     @ResponseBody
     public ResponseResult getStudent(@RequestParam(value = "name")String name,Model model){

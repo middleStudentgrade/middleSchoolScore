@@ -12,7 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl implements StudentService
+{
 
     @Autowired
     private MsStudentMapper msStudentMapper;
@@ -28,6 +29,10 @@ public class StudentServiceImpl implements StudentService {
          return  msStudentMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public MsStudent selectByPrimaryKey(Long id) {
+        return msStudentMapper.selectByPrimaryKey(id);
+    }
     @Override
     public void updateStudent(MsStudent msStudent) {
         msStudentMapper.updateByPrimaryKeySelective(msStudent);
@@ -62,4 +67,6 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentClass> findStudent(String selectContant) {
         return studentClassMapper.selectStudent(selectContant);
     }
+
+
 }

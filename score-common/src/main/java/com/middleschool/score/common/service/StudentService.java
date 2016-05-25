@@ -15,4 +15,5 @@ public interface StudentService {
     int delete(Long id);
     int saveStudent(MsStudent msStudent);
     List<StudentClass> findStudent(String selectContant);
+    MsStudent selectByPrimaryKey(Long id);
 }

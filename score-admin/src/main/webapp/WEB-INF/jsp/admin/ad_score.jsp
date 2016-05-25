@@ -8,7 +8,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>无标题文档</title><link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/ad_index.css" />
-
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/jquery.page.js"></script>
@@ -295,7 +294,7 @@
         backFn: function (p) {
             $.ajax({
                 url: "http://localhost:8080/admin/score/getAll",
-                data: {
+                    data: {
                     offset: p,
                     grade:$("#grade").val(),
                     name:$("#className").val(),

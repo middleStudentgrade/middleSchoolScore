@@ -195,7 +195,7 @@
             $("#gra2_sci").hide();
             $("#gra3_art").hide();
             $("#gra3_sci").hide();
-            /*$.ajax({
+            $.ajax({
                 url: "http://localhost:8080/admin/score/gradeTopHundredthHighOne",
                 data: {id:1},
                 type: 'POST',
@@ -224,7 +224,7 @@
                     }
                 }
             })
-*/
+
 
         });
         $("#grade2_art").click(function(){

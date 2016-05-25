@@ -121,17 +121,17 @@ public class TeacherController {
             List<MsSchoolmaster> msSchoolmasters= schoolMasterService.selectByTeacherId(id);
             Map<String,String> classNames=new HashMap<>();
             if(msSchoolmasters.size()!=0){
-                 for(MsSchoolmaster m:msSchoolmasters){
-                 String className="";
-                 if((m.getClassId()-1)/12==0){
-                    className+="高一"+m.getClassId()%12+"班";
+                for(MsSchoolmaster m:msSchoolmasters){
+                    String className="";
+                    if((m.getClassId()-1)/12==0){
+                        className+="高一"+m.getClassId()%12+"班";
                     }else if((m.getClassId()-1)/12==1){
-                    className+="高二"+m.getClassId()%12+"班";
-                     }else{
-                    className+="高三"+m.getClassId()%12+"班";
-                 }
-                classNames.put(className, className);
-            }
+                        className+="高二"+m.getClassId()%12+"班";
+                    }else{
+                        className+="高三"+m.getClassId()%12+"班";
+                    }
+                    classNames.put(className, className);
+                }
                 model.addAttribute("courseName",getCourseName(msSchoolmasters.get(0).getCourseName()));
                 if(!"".equals(name)) {
                     String className = name.substring(0, 2);
@@ -178,20 +178,20 @@ public class TeacherController {
             }else if("高二".equals(className)){
                 classId=grade+12;
                 if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)){
-                  type=2;
+                    type=2;
                 }else{
-                   type=3;
+                    type=3;
                 }
             }else{
                 classId=grade+24;
                 if((grade>=1&&grade<=3)||(grade>=7&&grade<=9)){
-                   type=4;
+                    type=4;
                 }else{
-                  type=5;
+                    type=5;
                 }
             }
             Page msScores = scoreService.selectNowScoreByClassId(getEngCourseName(course), limit, (offset-1)*limit,classId,type);
-           return ResponseResult.ok(msScores);
+            return ResponseResult.ok(msScores);
         } catch (Exception e) {
             LOG.error("查询成绩失败{}", e.getMessage());
             return ResponseResult.build(500,"查询失败");

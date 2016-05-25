@@ -75,7 +75,10 @@ public class IndexController {
 		return "admin/ad_score";
 	}
 
-
+@RequestMapping("tests")
+	public String tests(){
+	return "test";
+}
 
 	
 }

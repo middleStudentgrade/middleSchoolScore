@@ -46,13 +46,12 @@ public class ScoreController {
      */
     @RequestMapping(value = "import",method = RequestMethod.POST)
     public String importArchives(@RequestParam(value = "file") MultipartFile file,@RequestParam(value = "grade")Integer grade,@RequestParam(value = "className") String className) throws Exception {
-
         InputStream is;
         is = file.getInputStream();
         if (!is.markSupported()) {
             is = new PushbackInputStream(is, 8);
         }
-        List<MsScore> msScores=new ArrayList<>();
+        //查询班级id
         List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(className, grade);
         try {
             ExcelUtil excelUtil = ExcelUtil.create(is);
@@ -63,19 +62,19 @@ public class ScoreController {
             Date endDate=null;
             int type=1;
             Calendar now = Calendar.getInstance();
-
-            if(now.get(Calendar.MONTH)>3&&now.get(Calendar.MONTH)<9){
+            if(now.get(Calendar.MONTH)>=3&&now.get(Calendar.MONTH)<9){
                 semester=1;
                 start=now.get(Calendar.YEAR)+"-03-01";
                 end=now.get(Calendar.YEAR)+"-09-01";
                 startDate= DateUtil.formatDate(start);
                 endDate=DateUtil.formatDate(end);
             }else{
-                start=now.get(Calendar.YEAR)+"-09-02";
-                end=(now.get(Calendar.YEAR)+1)+"-02-28";
+                start=now.get(Calendar.YEAR-1)+"-09-02";
+                end=(now.get(Calendar.YEAR))+"-02-28";
                 startDate= DateUtil.formatDate(start);
                 endDate=DateUtil.formatDate(end);
             }
+            List<MsScore> msScores=new ArrayList<>();
             if("高一".equals(className)){
                 type=1;
                 List<SophomoreScore> list = excelUtil.readExcel(SophomoreScore.class);
@@ -161,6 +160,7 @@ public class ScoreController {
             int limit=Integer.parseInt(WebConf.getValue("pageSize"));
             Page page = new Page();
             List<MsScore> msScores = scoreService.findAll(limit, (offset-1)*limit,grade,name);
+            //把页码转换成该页从第几条数据开始
             List<ScoreAdmin> scoreAdmins=new ArrayList<>();
             for(MsScore m:msScores){
                 ScoreAdmin scoreAdmin=new ScoreAdmin();
@@ -185,7 +185,6 @@ public class ScoreController {
             page.setDatas(scoreAdmins);
             return ResponseResult.ok(page);
         }catch (Exception e){
-            LOG.error("获取成绩信息失败{}",e.getMessage());
             return ResponseResult.build(500,"获取成绩信息失败");
         }
     }

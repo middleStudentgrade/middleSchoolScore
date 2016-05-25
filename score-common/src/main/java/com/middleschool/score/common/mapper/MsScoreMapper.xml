@@ -453,10 +453,10 @@ AND s.end_date
 ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biology+s.geography+s.physico+s.history+s.political) DESC limit #{limit ,jdbcType=INTEGER} offset #{offset,jdbcType=INTEGER}
   </select>
   <insert id="saves" useGeneratedKeys="true" >
-    <selectKey resultType="long" keyProperty="id" order="AFTER">
+    <!--<selectKey resultType="long" keyProperty="id" order="AFTER">
       SELECT
       LAST_INSERT_ID()
-    </selectKey>
+    </selectKey>-->
     insert into ms_score (id, student_id, class_id,
     semester, chinese, english,
     math, start_date, end_date,

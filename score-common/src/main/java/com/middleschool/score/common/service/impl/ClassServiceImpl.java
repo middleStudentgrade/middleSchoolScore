@@ -25,4 +25,9 @@ public class ClassServiceImpl implements ClassService{
     public MsClass getById(Long id) {
         return  msClassMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List<MsClass> selectById(Long id) {
+        return msClassMapper.selectById(id);
+    }
 }

@@ -95,7 +95,12 @@
     <include refid="Base_Column_List" />
     from ms_class where name=#{name,jdbcType=VARCHAR}  and grade=#{grade,jdbcType=INTEGER}
   </select>
-
+<select id="selectById" resultMap="BaseResultMap">
+select mc.*
+ from ms_class mc join ms_student_now sn on sn.class_id=mc.id where sn.student_id=#{student_id,jdbcType=BIGINT}
+</select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from ms_class
     where id = #{id,jdbcType=BIGINT}
