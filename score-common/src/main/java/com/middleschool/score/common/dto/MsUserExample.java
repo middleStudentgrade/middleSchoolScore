@@ -303,6 +303,126 @@ public class MsUserExample {
             addCriterion("password not between", value1, value2, "password");
             return (Criteria) this;
         }
+
+        public Criteria andTeacherIdIsNull() {
+            addCriterion("teacher_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdIsNotNull() {
+            addCriterion("teacher_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdEqualTo(Long value) {
+            addCriterion("teacher_id =", value, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdNotEqualTo(Long value) {
+            addCriterion("teacher_id <>", value, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdGreaterThan(Long value) {
+            addCriterion("teacher_id >", value, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("teacher_id >=", value, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdLessThan(Long value) {
+            addCriterion("teacher_id <", value, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdLessThanOrEqualTo(Long value) {
+            addCriterion("teacher_id <=", value, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdIn(List<Long> values) {
+            addCriterion("teacher_id in", values, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdNotIn(List<Long> values) {
+            addCriterion("teacher_id not in", values, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdBetween(Long value1, Long value2) {
+            addCriterion("teacher_id between", value1, value2, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTeacherIdNotBetween(Long value1, Long value2) {
+            addCriterion("teacher_id not between", value1, value2, "teacherId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeEqualTo(Integer value) {
+            addCriterion("type =", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotEqualTo(Integer value) {
+            addCriterion("type <>", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThan(Integer value) {
+            addCriterion("type >", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("type >=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThan(Integer value) {
+            addCriterion("type <", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("type <=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<Integer> values) {
+            addCriterion("type in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotIn(List<Integer> values) {
+            addCriterion("type not in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
+            addCriterion("type between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("type not between", value1, value2, "type");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

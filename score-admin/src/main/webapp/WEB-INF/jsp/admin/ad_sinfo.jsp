@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
@@ -40,7 +41,7 @@
 </script>
 <div class="ad_rt">
     <div style="margin-bottom:20px;">
-        <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">添加学生信息</button>
+       <c:if test="${msUser.type==0}"> <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">添加学生信息</button></c:if>
         <input type="text" class="studentContant form-control" placeholder="请输入学生学号或者姓名"/>
         <button type="submit" class="btn btn-warning selectStudent">查询</button>
     </div>
@@ -232,6 +233,7 @@
     </div>
 </div>
 <input type="text" value="${count}" id="count">
+<input type="text" value="${msUser.type}" id="userType">
 <script>
     var format = function(time, format){
         var t = new Date(time);
@@ -274,8 +276,10 @@
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
-                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                      if($("#userType").val()==0) {
+                          $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                          $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                      }
                         $("#list").append('</tr>');
                     })
                 }
@@ -307,8 +311,10 @@
                             $("#list").append('<td>' + item.politicalLandscape + '</td>');
                             $("#list").append('<td>' + item.idCard + '</td>');
                             $("#list").append('<td>' + item.birthPlace + '</td>');
-                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
-                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
+                            if($("#userType").val()==0) {
+                                $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                                $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
+                            }
                             $("#list").append('</tr>');
                         })
                     }
@@ -341,8 +347,10 @@
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');
                         $("#list").append('<td>' + item.birthPlace + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
-                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
+                        if($("#userType").val()==0) {
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3"onclick="getdelid(' + item.id + ')">删除</button>');
+                        }
                         $("#list").append('</tr>');
                     })
                 }
