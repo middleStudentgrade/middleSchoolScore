@@ -124,7 +124,7 @@ public class ScoreServiceImpl implements ScoreService{
         int[] passRate=new int[4];
         MsSchoolmasterExample msSchoolmasterExample=new MsSchoolmasterExample();
         MsSchoolmasterExample.Criteria criteria=msSchoolmasterExample.createCriteria();
-        criteria.andTeacherIdEqualTo(id);
+        criteria.andClassIdEqualTo(id);
         MsSchoolmaster msSchoolmaster= msSchoolmasterMapper.selectByExample(msSchoolmasterExample).get(0);
         List<MsScore>msScores= msScoreMapper.selectPassRateByClassId(msSchoolmaster.getClassId());
         for(MsScore s:msScores) {
