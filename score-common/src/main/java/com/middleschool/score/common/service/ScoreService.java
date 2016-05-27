@@ -4,6 +4,7 @@ import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.pojo.*;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +40,7 @@ public interface ScoreService {
     List<MsScore> findTopHundredth(int id,int limit,int offset);
 
     int saves(List<MsScore> msScores);
+    int save(MsScore msScore);
     List<TopScore> getSophomoreScore();
     List<TopScore> getJuniorScoreArt();
     List<TopScore> juniorScoreScience();
@@ -55,4 +57,5 @@ public interface ScoreService {
     double[] getSeniorScoreAvgArt();
 
     double[] getSeniorScoreAvgScience();
+    List<MsScore> findBySutClassTime(Long studentId,Long classTd,Date time);
 }

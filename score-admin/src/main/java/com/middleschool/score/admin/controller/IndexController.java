@@ -1,12 +1,10 @@
 package com.middleschool.score.admin.controller;
 
 
+import com.middleschool.score.common.dto.MsClass;
 import com.middleschool.score.common.dto.MsStudent;
 import com.middleschool.score.common.pojo.Page;
-import com.middleschool.score.common.service.ScoreService;
-import com.middleschool.score.common.service.StudentService;
-import com.middleschool.score.common.service.TeacherService;
-import com.middleschool.score.common.service.TestService;
+import com.middleschool.score.common.service.*;
 import com.middleschool.score.common.utils.WebConf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +27,9 @@ public class IndexController {
 
 	@Autowired
 	private ScoreService scoreService;
+
+	@Autowired
+	private ClassService classService;
 	/**
 	 * @Title	showIndex
 	 * @Description show index
@@ -65,13 +66,17 @@ public class IndexController {
 		return "admin/ad_tinfo";
 	}
 	@RequestMapping("adScore")
-	public String adScore(Model model,@RequestParam(value = "grade",defaultValue = "1")int grade,@RequestParam(value = "className",defaultValue = "高一")String className){
-		int count = scoreService.countScore(grade,className);
+	public String adScore(Model model,@RequestParam(value = "grade",defaultValue = "1")int grade,@RequestParam(value = "stuclassName",defaultValue = "高一")String stuclassName){
+		int count = scoreService.countScore(grade,stuclassName);
 		int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
+		List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(stuclassName,grade);
+		if(msClass.size()!=0){
+			model.addAttribute("classTeacherId",msClass.get(0).getTeacherId());
+		}
 		count=count%pageSize==0?count/pageSize:count/pageSize+1;
 		model.addAttribute("count",count);
 		model.addAttribute("grade",grade);
-		model.addAttribute("className",className);
+		model.addAttribute("className",stuclassName);
 		return "admin/ad_score";
 	}
 
@@ -79,6 +84,4 @@ public class IndexController {
 	public String tests(){
 	return "test";
 }
-
-	
 }

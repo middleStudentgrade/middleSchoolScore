@@ -30,7 +30,7 @@
         <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">上传成绩单</button>
     <br/>
      <form action="/adScore" method="post" class="class_score">
-        <select name="className"  id="className" value ="${className}" onchange="updateClass()">
+        <select name="stuclassName"  id="className" value ="${className}" onchange="updateClass()">
             <option value="高一" <c:if test="${className=='高一'}">selected</c:if>>高一</option>
             <option value="高二" <c:if test="${className=='高二'}">selected</c:if>>高二</option>
             <option value="高三" <c:if test="${className=='高三'}">selected</c:if>>高三</option>
@@ -109,7 +109,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" style="color:#27AE60">修改学生成绩</h4>
             </div>
-            <form class="form-inline update_form" >
+            <form class="form-inline update_form" method="post">
                 <div class="modal-body add_stu" id="alt_sco">
                    <ul>
                         <li>
@@ -122,7 +122,7 @@
                             <label class="size">学期：</label><input class="form-control term" style="width:100px;" type="text" name="term" readonly/>
                         </li>
                         <li>
-                            <label class="size">语文：</label><input class="form-control chinese" type="text" />
+                            <label class="size">语文：</label><input class="form-control chinese" type="text" name="chinese" />
                             <label class="size" style="margin-left:20px">数学：</label><input class="form-control math" name="math" type="text" />
                             <label class="size">英语：</label><input class="form-control english" name="english" type="text" />
                         </li>
@@ -172,7 +172,10 @@
         </div>
     </div>
 </div>
-<input type="text" value="${count}" id="count">
+<input type="text" value="${count}" id="count" style="display:none;">
+<input type="text" value="${classTeacherId}" id="classTeacherId" style="display:none;">
+<input type="text" value="${msUser.type}" id="userType" style="display:none;">
+<input type="text" value="${msUser.teacherId}" id="userTeacherId" style="display:none;">
 <script>
     $(document).ready(function() {
         $.ajax({
@@ -186,7 +189,6 @@
             success: function (data) {
                 $("#list").empty();
                 $(".headscore").empty();
-
                 $(".headscore").append(' <td>学号</td> <td >姓名</td> <td>班级</td> <td>学期</td> <td >语文</td> <td>数学</td> <td >英语</td>');
                 if(data.data.num==1||data.data.num==3||data.data.num==5){
                     $(".headscore").append('<td >物理</td> <td >化学</td> <td >生物</td>');
@@ -208,22 +210,24 @@
                         $("#list").append('<td>' + item.chinese + '</td>');
                         $("#list").append('<td>' + item.math + '</td>');
                         $("#list").append('<td>' + item.english + '</td>');
-                        if(item.type==1||item.type==3||item.type==5) {
+                        if (item.type == 1 || item.type == 3 || item.type == 5) {
                             $("#list").append('<td>' + item.physico + '</td>');
                             $("#list").append('<td>' + item.chemical + '</td>');
                             $("#list").append('<td>' + item.biology + '</td>');
                         }
-                        if(item.type==1||item.type==2||item.type==4) {
+                        if (item.type == 1 || item.type == 2 || item.type == 4) {
                             $("#list").append('<td>' + item.history + '</td>');
                             $("#list").append('<td>' + item.geography + '</td>');
                             $("#list").append('<td>' + item.political + '</td>');
                         }
-                        if(item.type==4||item.type==5) {
+                        if (item.type == 4 || item.type == 5) {
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         }
                         $("#list").append('<td>' + item.allGrade + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                        if ($("#userType").val() == 0 || $("#classTeacherId").val() == $("#userTeacherId").val()){
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
                         $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                    }
                         $("#list").append('</tr>');
                     })
                 }
@@ -278,8 +282,10 @@
                             $("#list").append('<td>' + item.basicCompetencies + '</td>');
                         }
                         $("#list").append('<td>' + item.allGrade + '</td>');
-                        $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
-                        $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                        if($("#userType").val()==0||$("#classTeacherId").val()==$("#userTeacherId").val()) {
+                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                        }
                         $("#list").append('</tr>');
                     })
                 }
@@ -339,8 +345,10 @@
                                 $("#list").append('<td>' + item.basicCompetencies + '</td>');
                             }
                             $("#list").append('<td>' + item.allGrade + '</td>');
-                            $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
-                            $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            if($("#userType").val()==0||$("#classTeacherId").val()==$("#userTeacherId").val()) {
+                                $("#list").append('<button class="btn btn-info" data-toggle="modal" data-target="#mymoda2" style="margin:10px 10px 10px 0;" onclick="updateSelect(' + item.id + ')">修改</button>');
+                                $("#list").append(' <button class="btn btn-warning" data-toggle="modal" data-target="#mymoda3" onclick="getdelid(' + item.id + ')">删除</button>');
+                            }
                             $("#list").append('</tr>');
                         })
                     }

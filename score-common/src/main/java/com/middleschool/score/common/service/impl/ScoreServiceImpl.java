@@ -20,10 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2016/3/1.
@@ -226,6 +223,11 @@ public class ScoreServiceImpl implements ScoreService{
         return msScoreMapper.saves(msScores);
     }
 
+    @Override
+    public int save(MsScore msScore) {
+        return msScoreMapper.insertSelective(msScore);
+    }
+
     private TopScore getTopScore(String courseName,int type){
         List<MsScore> msScores=msScoreMapper.seletTopScore(courseName,type);
         TopScore topScore=new TopScore();
@@ -426,6 +428,11 @@ public class ScoreServiceImpl implements ScoreService{
             }
         }
         return avgs;
+    }
+
+    @Override
+    public List<MsScore> findBySutClassTime(Long studentId, Long classTd, Date time) {
+        return msScoreMapper.findBySutClassTime(studentId,classTd,time);
     }
 
     @Override

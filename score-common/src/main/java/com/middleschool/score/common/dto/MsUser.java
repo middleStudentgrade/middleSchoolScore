@@ -7,6 +7,10 @@ public class MsUser {
 
     private String password;
 
+    private Long teacherId;
+
+    private Integer type;
+
     public Long getId() {
         return id;
     }
@@ -29,5 +33,21 @@ public class MsUser {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Long getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

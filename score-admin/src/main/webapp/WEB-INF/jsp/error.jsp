@@ -11,6 +11,7 @@
     <title></title>
 </head>
 <body>
+<div style="margin:160px auto;text-align:center;font-size:30px;color:red;">${error}</div>
 <div style="margin:160px auto;text-align:center;font-size:30px;color:#27ae60;">failed</div>
 </body>
 </html>

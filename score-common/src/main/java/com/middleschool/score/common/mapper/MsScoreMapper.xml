@@ -544,4 +544,9 @@ ORDER BY(s.math + s.english + s.chinese+s.chemical+s.basic_competencies+s.biolog
   </trim>)from ms_score  where now() BETWEEN start_date and end_date and type= #{type,jdbcType=INTEGER}) and now() BETWEEN start_date and end_date and type= #{type,jdbcType=INTEGER}
   </select>
 
+  <select id="findBySutClassTime" resultMap="BaseResultMap" parameterType="com.middleschool.score.common.dto.MsScoreExample">
+    select
+    *
+    from ms_score where student_id = #{studentId,jdbcType=BIGINT} and class_id=#{classId,jdbcType=BIGINT} and #{time,jdbcType=TIMESTAMP} BETWEEN start_date and end_date
+  </select>
 </mapper>
