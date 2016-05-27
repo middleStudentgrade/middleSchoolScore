@@ -72,11 +72,6 @@
                             strokeColor: "rgba(151,187,205,1)",
                             data: data.data.sophomoreScore,
                         },
-                        {
-                            fillColor: "rgba(151,187,205,0.5)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            data: data.data.sophomoreScore,
-                        },
                     ]
                 }
                 window.myPie = new Chart(ctx1).Bar(data1);

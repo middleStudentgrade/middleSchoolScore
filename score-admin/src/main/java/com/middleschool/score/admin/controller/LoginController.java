@@ -32,8 +32,10 @@ public class LoginController {
                 if (msUser.getPassword().equals(MD5Utils.md5(password))) {
                     msUser.setPassword("");
                     session.setAttribute("msUser", msUser);
-                    MsClass msClass=classService.getTeacherId(msUser.getTeacherId());
-                    session.setAttribute("classMaster",msClass.getName()+msClass.getGrade()+"班");
+                    if(msUser.getTeacherId()!=null) {
+                        MsClass msClass = classService.getTeacherId(msUser.getTeacherId());
+                        session.setAttribute("classMaster", msClass.getName() + msClass.getGrade() + "班");
+                    }
                     return "admin/ad_index";
                 } else {
                     model.addAttribute("username", "用户名或密码错误");
