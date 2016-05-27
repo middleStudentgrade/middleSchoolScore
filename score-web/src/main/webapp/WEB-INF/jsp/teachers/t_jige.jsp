@@ -69,7 +69,7 @@
         {
           fillColor: ["#aec978","#E0E4CC","#e9c75c","#A8B3C5",],
           strokeColor: "#bfbfbf",
-          data: [rate1,rate2,rate3],
+          data: [rate1,rate2,rate3,rate4],
         },
       ]
     }

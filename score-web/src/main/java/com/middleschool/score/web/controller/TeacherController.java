@@ -169,10 +169,10 @@ public class TeacherController {
     public ResponseResult sorts( @RequestParam(defaultValue = "1") int offset,@RequestParam(value = "name",defaultValue = "")String name,@RequestParam(value = "course",defaultValue = "")String course,Model model) {
         try {
             int limit= Integer.parseInt(WebConf.getValue("pageSize"));
-            String className=name.substring(0,2);
+            String className=name.substring(0,2);//得到年级高一/二/三
             long classId=0L;
             int type=1;
-            int grade=Integer.parseInt(name.substring(2,name.length()-1));
+            int grade=Integer.parseInt(name.substring(2,name.length()-1));//得到班级
             if("高一".equals(className)){
                 classId=grade;
             }else if("高二".equals(className)){

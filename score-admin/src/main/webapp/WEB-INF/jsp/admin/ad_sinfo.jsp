@@ -24,7 +24,7 @@
         .datetimepicker-hours{display:none;}
     </style>
 <body>
-<a href="tests">ttest</a>
+<%--<a href="tests">ttest</a>--%>
 <script type="text/javascript">
     //$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd'});
     $(".form_datetime").

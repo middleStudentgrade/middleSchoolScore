@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -14,6 +15,7 @@
 </head>
 <body>
 <button id="getstu">gett</button>
+<c:if test=""></c:if>
 </body>
 <script type="application/javascript">
   $("#getstu").click(function(){

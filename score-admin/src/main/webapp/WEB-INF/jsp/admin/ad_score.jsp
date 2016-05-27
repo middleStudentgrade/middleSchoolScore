@@ -49,7 +49,7 @@
             <option value="11" <c:if test="${grade=='11'}">selected</c:if>>11</option>
             <option  value="12" <c:if test="${grade=='12'}">selected</c:if>>12</option>
          </select>
-         <button type="submit" class="btn btn-warning selectScore">班级成绩查询</button>
+         <button type="submit" class="btn btn-warning ">班级成绩查询</button>
      </form>
         <input type="text" class="ScoreId form-control" placeholder="请输入学生学号"/>
         <button type="submit" class="btn btn-warning selectScore">单个学生成绩查询</button>
@@ -174,7 +174,7 @@
 </div>
 <input type="text" value="${count}" id="count">
 <script>
-    $(document).ready(function() {//班级成绩查询
+    $(document).ready(function() {
         $.ajax({
             url: "http://localhost:8080/admin/score/getAll",
             data: {

@@ -159,8 +159,8 @@ public class ScoreController {
         try {
             int limit=Integer.parseInt(WebConf.getValue("pageSize"));
             Page page = new Page();
-            List<MsScore> msScores = scoreService.findAll(limit, (offset-1)*limit,grade,name);
-            //把页码转换成该页从第几条数据开始
+            List<MsScore> msScores = scoreService.findAll(limit, (offset-1)*limit,grade,name);//把页码转换成该页从第几条数据开始
+
             List<ScoreAdmin> scoreAdmins=new ArrayList<>();
             for(MsScore m:msScores){
                 ScoreAdmin scoreAdmin=new ScoreAdmin();
