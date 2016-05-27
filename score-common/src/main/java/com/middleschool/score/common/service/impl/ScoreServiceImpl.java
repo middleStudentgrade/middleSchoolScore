@@ -233,7 +233,7 @@ public class ScoreServiceImpl implements ScoreService{
         TopScore topScore=new TopScore();
         if(msScores.size()!=0) {
             for (MsScore m : msScores) {
-                topScore.setClasName(topScore.getClasName() + "/" + m.getClassId() % 12);
+                topScore.setClasName(topScore.getClasName() + "/" + (m.getClassId()-(m.getClassId()-1)/12*12));
                 topScore.setScore(getFieldValueByName(courseName, m).toString());
                 topScore.setScoreName(getCourseName(courseName));
                 topScore.setStuNum(topScore.getStuNum() + "/" + m.getStudentId());

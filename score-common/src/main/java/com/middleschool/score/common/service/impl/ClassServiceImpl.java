@@ -1,6 +1,7 @@
 package com.middleschool.score.common.service.impl;
 
 import com.middleschool.score.common.dto.MsClass;
+import com.middleschool.score.common.dto.MsClassExample;
 import com.middleschool.score.common.mapper.MsClassMapper;
 import com.middleschool.score.common.service.ClassService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,16 @@ public class ClassServiceImpl implements ClassService{
     }
 
     @Override
-    public List<MsClass> selectById(Long id) {
+    public  List<MsClass> selectById(Long id) {
         return msClassMapper.selectById(id);
     }
+
+    @Override
+    public MsClass getTeacherId(Long teacherId) {
+        MsClassExample msClassExample=new MsClassExample();
+        MsClassExample.Criteria criteria=msClassExample.createCriteria();
+        criteria.andTeacherIdEqualTo(teacherId);
+        return msClassMapper.selectByExample(msClassExample).get(0);
+    }
+
 }

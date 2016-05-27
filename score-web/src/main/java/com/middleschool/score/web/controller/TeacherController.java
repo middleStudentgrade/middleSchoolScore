@@ -124,11 +124,11 @@ public class TeacherController {
                 for(MsSchoolmaster m:msSchoolmasters){
                     String className="";
                     if((m.getClassId()-1)/12==0){
-                        className+="高一"+m.getClassId()%12+"班";
+                        className+="高一"+(m.getClassId()-(m.getClassId()-1)/12*12)+"班";
                     }else if((m.getClassId()-1)/12==1){
-                        className+="高二"+m.getClassId()%12+"班";
+                        className+="高二"+(m.getClassId()-(m.getClassId()-1)/12*12)+"班";
                     }else{
-                        className+="高三"+m.getClassId()%12+"班";
+                        className+="高三"+(m.getClassId()-(m.getClassId()-1)/12*12)+"班";
                     }
                     classNames.put(className, className);
                 }
@@ -207,11 +207,11 @@ public class TeacherController {
                 for(MsSchoolmaster m:msSchoolmasters){
                     String className="";
                     if((m.getClassId()-1)/12==0){
-                        className+="高一"+m.getClassId()%12+"班";
+                        className+="高一"+(m.getClassId()-(m.getClassId()-1)/12*12)+"班";
                     }else if((m.getClassId()-1)/12==1){
-                        className+="高二"+m.getClassId()%12+"班";
+                        className+="高二"+(m.getClassId()-(m.getClassId()-1)/12*12)+"班";
                     }else{
-                        className+="高三"+m.getClassId()%12+"班";
+                        className+="高三"+(m.getClassId()-(m.getClassId()-1)/12*12)+"班";
                     }
                     classNames.put(className, className);
                 }

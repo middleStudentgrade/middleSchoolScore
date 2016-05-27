@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
     String path = request.getContextPath();
@@ -20,7 +21,9 @@
             <input type="text" class="form-control search" placeholder="查询学生成绩，请输入学生学号：">
             <button type="submit" class="fa"><span class="glyphicon glyphicon-search"></span></button></div>
     </form>--%>
-
+<div style="float: right;margin-right:30px;"><c:if test="${msUser.type==0}">管理员</c:if>
+    <c:if test="${msUser.type==1}">${classMaster}&nbsp;&nbsp;班主任</c:if>
+    </div>
 </div>
 
 </body>

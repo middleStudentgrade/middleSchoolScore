@@ -20,14 +20,13 @@
     </style>
 <body>
 
-<c class="ad_rt">
-    < style="margin-bottom:20px;">
+<div class="ad_rt">
 <c:if test="${msUser.type==0}"> <button class="btn btn-success size" data-toggle="modal" data-target="#mymodal" style="margin-right:10px;">添加教师信息</button></c:if>
             <input type="text" class="form-control teaId" placeholder="请输入教师编号或者教师名"/>
             <button type="submit" class="btn btn-warning selectTeacher">查询</button>
-    </div>
 
-    <table class="t_info">
+
+    <table class="t_info" style="margin-top:20px;">
         <thead class="panel-heading size">
         <td style="width:8%;">教师编号</td>
         <td style="width:8%;">姓名</td>
@@ -35,7 +34,9 @@
         <td style="width:8%;">政治面貌</td>
         <td style="width:16%;">身份证号</td>
         <td style="width:18%;">籍贯</td>
-        <td style="color:#fbc400;font-weight:bold;width:13%;">操作</td>
+<c:if test="${msUser.type==0}">
+    <td style=";width:13%;">操作</td>
+    </c:if>
         </thead>
         <tbody id="list"></tbody>
     </table>
@@ -189,7 +190,7 @@
                     <button type="submit" class="btn btn_qd btn_delqd">确定</button>
                 </form>
             </div>
-
+        </div>
         </div>
     </div>
 </div>

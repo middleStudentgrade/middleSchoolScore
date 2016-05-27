@@ -43,7 +43,7 @@
     <div class="subNav currentDd currentDt"><p>成绩管理</p></div>
     <ul class="navCon">
 
-        <li><div class="subNav currentDd currentDt" style="font-size:16px;padding-left:10px;">排行榜</div>
+        <li><div class="subNav currentDd currentDt" style="padding-left:10px;">排行榜</div>
             <ul class="navCon phb" style="line-height:30px;">
                 <li><a href="admin/score/gradeTopHundredth" target="main">查询年级前10名</a></li>
                 <li><a href="admin/score/courseTopOne" target="main">查询年级各科最高成绩</a></li>
@@ -52,6 +52,10 @@
         </li>
         <li id="cj_info"><a href="adScore" class="list-group-item" target="main">成绩管理</a></li>
     </ul>
+    <div style="height:30px;"></div>
+    <div class="subNav currentDd currentDt" style="background:none;">
+       <a href="retLogin" target="_blank" style="text-decoration:none;"><p>退出登录</p></a>
+    </div>
 
 </div>
 

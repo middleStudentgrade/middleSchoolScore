@@ -1,6 +1,8 @@
 package com.middleschool.score.admin.controller;
 
+import com.middleschool.score.common.dto.MsClass;
 import com.middleschool.score.common.dto.MsUser;
+import com.middleschool.score.common.service.ClassService;
 import com.middleschool.score.common.service.TestService;
 import com.middleschool.score.common.service.UserService;
 import com.middleschool.score.common.utils.MD5Utils;
@@ -19,6 +21,8 @@ public class LoginController {
     private UserService userService;
     @Autowired
     private TestService testService;
+    @Autowired
+    private ClassService classService;
 
     @RequestMapping("/login")
     public String login(@RequestParam String userName, @RequestParam String password,HttpSession session ,Model model) {
@@ -26,7 +30,10 @@ public class LoginController {
             MsUser msUser = userService.selectUser(userName);
             if (msUser != null) {
                 if (msUser.getPassword().equals(MD5Utils.md5(password))) {
+                    msUser.setPassword("");
                     session.setAttribute("msUser", msUser);
+                    MsClass msClass=classService.getTeacherId(msUser.getTeacherId());
+                    session.setAttribute("classMaster",msClass.getName()+msClass.getGrade()+"班");
                     return "admin/ad_index";
                 } else {
                     model.addAttribute("username", "用户名或密码错误");

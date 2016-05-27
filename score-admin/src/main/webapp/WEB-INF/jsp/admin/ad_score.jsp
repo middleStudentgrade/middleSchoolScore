@@ -199,7 +199,10 @@
                 if(data.data.num==5||data.data.num==4) {
                     $(".headscore").append('<td >基本能力</td>');
                 }
-                $(".headscore").append(' <td >总成绩</td> <td style="width:130px;">操作</td>');
+                $(".headscore").append(' <td >总成绩</td> ');
+                if ($("#userType").val() == 0 || $("#classTeacherId").val() == $("#userTeacherId").val()){
+                    $(".headscore").append('<td style="width:130px;">操作</td>');
+                }
                 if (data.data.num !=0) {
                     $.each(data.data.datas, function (index, item) {
                         $("#list").append('<tr>');

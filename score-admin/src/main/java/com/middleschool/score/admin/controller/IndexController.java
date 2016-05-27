@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -49,6 +50,10 @@ public class IndexController {
 	public String adLeft(){
 		return "admin/ad_left";
 	}
+	@RequestMapping("retLogin")
+	public String retLogin(){
+		return "login/login";
+	}
 	@RequestMapping("adSinfo")
 	public String adSinfo(Model model){
 		int count = studentService.countStudent();
@@ -69,7 +74,7 @@ public class IndexController {
 	public String adScore(Model model,@RequestParam(value = "grade",defaultValue = "1")int grade,@RequestParam(value = "stuclassName",defaultValue = "高一")String stuclassName){
 		int count = scoreService.countScore(grade,stuclassName);
 		int pageSize=Integer.parseInt(WebConf.getValue("pageSize"));
-		List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(stuclassName,grade);
+		List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(stuclassName, grade);
 		if(msClass.size()!=0){
 			model.addAttribute("classTeacherId",msClass.get(0).getTeacherId());
 		}

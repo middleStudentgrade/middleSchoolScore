@@ -37,6 +37,7 @@ public class LoginController {
                 MsStudent msStudent = studentService.getById(Long.valueOf(userName));
                 if (msStudent != null) {
                     if (msStudent.getPassword().equals(MD5Utils.md5(password))) {
+                        msStudent.setPassword("");
                         session.setAttribute("msStudent", msStudent);
                         MsStudentNow msStudentNow = studentNowService.getByStudentId(Long.valueOf(userName));
                         MsClass msClass = classService.getById(msStudentNow.getClassId());
@@ -54,6 +55,7 @@ public class LoginController {
                 MsTeacher msTeacher = teacherService.selectById(Long.valueOf(userName));
                 if (msTeacher != null) {
                     if (msTeacher.getPassword().equals(MD5Utils.md5(password))) {
+                        msTeacher.setPassword("");
                         session.setAttribute("msTeacher", msTeacher);
                         return "teachers/teach_index";
                     } else {

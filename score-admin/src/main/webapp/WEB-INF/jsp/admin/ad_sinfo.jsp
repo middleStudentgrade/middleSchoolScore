@@ -56,7 +56,9 @@
             <td >政治面貌</td>
             <td >身份证号</td>
             <td style="width:18%">籍贯</td>
-            <td style="color:#fbc400;font-weight:bold;width:13%;">操作</td>
+<c:if test="${msUser.type==0}">
+            <td style="width:13%;">操作</td>
+    </c:if>
         </thead>
         <div class="clear"></div>
             <tbody id="list"></tbody>
@@ -271,7 +273,7 @@
                         $("#list").append('<td>' + item.id + '</td>');
                         $("#list").append('<td>' + item.name + '</td>');
                         $("#list").append('<td>' + item.sex + '</td>');
-                        $("#list").append('<td>' + item.className + item.grade + '</td>');
+                        $("#list").append('<td>' + item.className + item.grade + '班</td>');
                         $("#list").append('<td>' +format(item.datesAttendance,'yyyy-MM-dd') + '</td>');
                         $("#list").append('<td>' + item.politicalLandscape + '</td>');
                         $("#list").append('<td>' + item.idCard + '</td>');

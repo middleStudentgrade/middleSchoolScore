@@ -13,5 +13,6 @@ public interface ClassService {
      List<MsClass> getByRankDeptAndGradeAndName(String name,int grade);
      MsClass getById(Long id);
      List<MsClass> selectById(Long id);
+     MsClass getTeacherId(Long teacherId);
 }
 

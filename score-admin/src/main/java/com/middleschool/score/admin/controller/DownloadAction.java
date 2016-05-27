@@ -51,7 +51,7 @@ public class DownloadAction {
                 fileName = new String("高三理科成绩录入模板.xlsx".getBytes("UTF-8"), "iso-8859-1");//为了解决中文名称乱码问题
             }
         }
-       headers.setContentDispositionFormData("attachment", fileName);
+        headers.setContentDispositionFormData("attachment", fileName);
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file),
                 headers, HttpStatus.CREATED);
