@@ -250,6 +250,7 @@
             success: function (data) {
                 $("#list").empty();
                 $(".headscore").empty();
+                $(".tcdPageCode").empty();
                 $(".headscore").append(' <td>学号</td> <td >姓名</td> <td>班级</td> <td>学期</td> <td >语文</td> <td>数学</td> <td >英语</td>');
                 if(data.data.num==1||data.data.num==3||data.data.num==5){
                     $(".headscore").append('<td >物理</td> <td >化学</td> <td >生物</td>');

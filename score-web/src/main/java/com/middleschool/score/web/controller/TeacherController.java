@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -202,7 +203,7 @@ public class TeacherController {
     public String passRate(@RequestParam(value = "id",defaultValue = "-1") Long id, Model model,@RequestParam(value = "className",defaultValue = "")String retClassName,@RequestParam(value = "courseName",defaultValue = "")String courseName) {
         try {
             List<MsSchoolmaster> msSchoolmasters= schoolMasterService.selectByTeacherId(id);
-            Map<String,String> classNames=new HashMap<>();
+            Map<String,String> classNames=new LinkedHashMap<>();
             if(msSchoolmasters.size()!=0){
                 for(MsSchoolmaster m:msSchoolmasters){
                     String className="";
@@ -226,8 +227,8 @@ public class TeacherController {
             }
             model.addAttribute("name",retClassName);
             model.addAttribute("classNames",classNames);
-            if(id!=-1) {
-                int[] pass = scoreService.selectPassRateByClassId(id);
+            if("".equals(retClassName)) {
+                int[] pass = scoreService.selectPassRateByClassId(msSchoolmasters.get(0).getClassId());
                 model.addAttribute("passNum", pass);
             }else{
                 String className=retClassName.substring(0,2);
