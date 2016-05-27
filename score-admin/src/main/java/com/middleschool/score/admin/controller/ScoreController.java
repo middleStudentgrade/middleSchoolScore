@@ -48,14 +48,16 @@ public class ScoreController {
      * 导入excel文件
      */
     @RequestMapping(value = "import",method = RequestMethod.POST)
-    public String importArchives(@RequestParam(value = "file") MultipartFile file,@RequestParam(value = "grade")Integer grade,@RequestParam(value = "className") String className,HttpSession session) throws Exception {
+    public String importArchives(@RequestParam(value = "file") MultipartFile file,@RequestParam(value = "grade")Integer grade,@RequestParam(value = "className") String className,HttpSession session,Model model) throws Exception {
         try {
         MsUser msUser = (MsUser) session.getAttribute("msUser");
             if(msUser.getType()==1) {
                 List<MsClass> msClasses = classService.getByRankDeptAndGradeAndName(className, grade);
                 if (msClasses.size() != 0) {
-                    if (!msClasses.get(0).getTeacherId().equals(msUser.getTeacherId()))
+                    if (!msClasses.get(0).getTeacherId().equals(msUser.getTeacherId())) {
+                        model.addAttribute("error","没有权限");
                         return "error";
+                    }
                 }
             }
         InputStream is;
@@ -163,11 +165,13 @@ public class ScoreController {
                 if(sutClassTime.size()==0){
                     scoreService.save(m);
                 }else{
+                    model.addAttribute("error","成绩重复了");
                     return "error";
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
+            model.addAttribute("error","插入异常");
            return "error";
         }
         return "success";

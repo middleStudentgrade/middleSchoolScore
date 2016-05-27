@@ -232,8 +232,8 @@
         </div>
     </div>
 </div>
-<input type="text" value="${count}" id="count">
-<input type="text" value="${msUser.type}" id="userType">
+<input type="text" value="${count}" id="count" style="display:none;">
+<input type="text" value="${msUser.type}" id="userType" style="display:none;">
 <script>
     var format = function(time, format){
         var t = new Date(time);

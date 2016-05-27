@@ -172,10 +172,10 @@
         </div>
     </div>
 </div>
-<input type="text" value="${count}" id="count">
-<input type="text" value="${classTeacherId}" id="classTeacherId">
-<input type="text" value="${msUser.type}" id="userType">
-<input type="text" value="${msUser.teacherId}" id="userTeacherId">
+<input type="text" value="${count}" id="count" style="display:none;">
+<input type="text" value="${classTeacherId}" id="classTeacherId" style="display:none;">
+<input type="text" value="${msUser.type}" id="userType" style="display:none;">
+<input type="text" value="${msUser.teacherId}" id="userTeacherId" style="display:none;">
 <script>
     $(document).ready(function() {//班级成绩查询
         $.ajax({
