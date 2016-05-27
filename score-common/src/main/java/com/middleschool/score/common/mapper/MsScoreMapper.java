@@ -2,6 +2,8 @@ package com.middleschool.score.common.mapper;
 
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsScoreExample;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -48,4 +50,5 @@ public interface MsScoreMapper {
     int saves(@Param("list")List<MsScore> list);
 
     List<MsScore> seletTopScore(@Param("courseName")String courseName,@Param("type")int type);
+    List<MsScore> findBySutClassTime(@Param("studentId")Long studentId,@Param("classId")Long classId,@Param("time")Date time);
 }

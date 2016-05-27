@@ -3,6 +3,7 @@ package com.middleschool.score.admin.controller;
 import com.middleschool.score.common.dto.MsClass;
 import com.middleschool.score.common.dto.MsScore;
 import com.middleschool.score.common.dto.MsStudent;
+import com.middleschool.score.common.dto.MsUser;
 import com.middleschool.score.common.pojo.*;
 import com.middleschool.score.common.service.ClassService;
 import com.middleschool.score.common.service.ScoreService;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.io.PushbackInputStream;
 import java.util.*;
@@ -45,7 +48,16 @@ public class ScoreController {
      * 导入excel文件
      */
     @RequestMapping(value = "import",method = RequestMethod.POST)
-    public String importArchives(@RequestParam(value = "file") MultipartFile file,@RequestParam(value = "grade")Integer grade,@RequestParam(value = "className") String className) throws Exception {
+    public String importArchives(@RequestParam(value = "file") MultipartFile file,@RequestParam(value = "grade")Integer grade,@RequestParam(value = "className") String className,HttpSession session) throws Exception {
+        try {
+        MsUser msUser = (MsUser) session.getAttribute("msUser");
+            if(msUser.getType()==1) {
+                List<MsClass> msClasses = classService.getByRankDeptAndGradeAndName(className, grade);
+                if (msClasses.size() != 0) {
+                    if (!msClasses.get(0).getTeacherId().equals(msUser.getTeacherId()))
+                        return "error";
+                }
+            }
         InputStream is;
         is = file.getInputStream();
         if (!is.markSupported()) {
@@ -53,7 +65,7 @@ public class ScoreController {
         }
         //查询班级id
         List<MsClass> msClass=classService.getByRankDeptAndGradeAndName(className, grade);
-        try {
+
             ExcelUtil excelUtil = ExcelUtil.create(is);
             int semester=0;
             String start="";
@@ -145,9 +157,16 @@ public class ScoreController {
                     }
                 }
             }
-            scoreService.saves(msScores);
+           // scoreService.saves(msScores);
+            for(MsScore m:msScores){
+                List<MsScore> sutClassTime = scoreService.findBySutClassTime(m.getStudentId(), (long) m.getClassId(), new Date());
+                if(sutClassTime.size()==0){
+                    scoreService.save(m);
+                }else{
+                    return "error";
+                }
+            }
         } catch (Exception e) {
-
             e.printStackTrace();
            return "error";
         }
