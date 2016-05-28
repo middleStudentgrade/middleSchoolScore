@@ -44,18 +44,7 @@ public class ScoreServiceImpl implements ScoreService{
         return msScoreMapper.selectByPrimaryKey(id);
     }
 
-    private String getClass(int i){
-        String className="";
-        switch (i){
-            case 0: className= "高一上学期";break;
-            case 1:className= "高一下学期";break;
-            case 2:className= "高二上学期";break;
-            case 3:className= "高二下学期";break;
-            case 4:className= "高三上学期";break;
-            case 5:className= "高三下学期";break;
-        }
-        return className;
-    }
+
 
     private double getAllScore(MsScore msScore){
         return msScore.getBiology()+msScore.getChemical()+msScore.getChinese()+msScore.getEnglish()+
@@ -68,7 +57,7 @@ public class ScoreServiceImpl implements ScoreService{
         for(int i=0;i<msScores.size();i++){
             ScoreClass scoreClass=new ScoreClass();
             BeanUtils.copyProperties(msScores.get(i),scoreClass);
-            scoreClass.setGrade(getClass(i));
+
             scoreClass.setAllScore(getAllScore(msScores.get(i)));
             scoreClasses.add(scoreClass);
         }
@@ -82,8 +71,8 @@ public class ScoreServiceImpl implements ScoreService{
     }
 
     @Override
-    public int selectRanking( Long id,Long classId) {
-        return msScoreMapper.selectRanking(classId,id);
+    public int selectRanking( Long id,int classId) {
+        return msScoreMapper.selectRanking(id,classId);
     }
 
     @Override

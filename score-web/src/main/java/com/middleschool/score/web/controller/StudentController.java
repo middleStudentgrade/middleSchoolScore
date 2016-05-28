@@ -79,7 +79,7 @@ public class StudentController {
     public String getNowScore(@RequestParam Long id, Model model){
         try{
             MsScore msScore =scoreService.selectNowScoreByStudentId(id).get(0);
-            int ranking=scoreService.selectRanking(id,(long)msScore.getClassId())+1;
+            int ranking=scoreService.selectRanking(id,msScore.getClassId())+1;
             model.addAttribute("nowScore",msScore);
             model.addAttribute("allScore",getAllScore(msScore));
             model.addAttribute("ranking",ranking);
@@ -90,11 +90,25 @@ public class StudentController {
             return "error/error";
         }
     }
-
+    private String getClass(int i){
+        String className="";
+        switch (i){
+            case 0: className= "高一上学期";break;
+            case 1:className= "高一下学期";break;
+            case 2:className= "高二上学期";break;
+            case 3:className= "高二下学期";break;
+            case 4:className= "高三上学期";break;
+            case 5:className= "高三下学期";break;
+        }
+        return className;
+    }
     @RequestMapping(value = "getAllScore")
     public String getAllScore(@RequestParam Long id, Model model){
         try{
            List<ScoreClass> msScores =scoreService.selectAllScoreByStudentId(id);
+            for(int i=0;i< msScores.size();i++){
+                msScores.get(i).setGrade(getClass(i));
+            }
             model.addAttribute("scores",msScores);
             return "students/stu_bcj";
         }

@@ -164,7 +164,6 @@ public class TeacherController {
             return "error/error";
         }
     }
-
     @RequestMapping("scoreSelect")
     @ResponseBody
     public ResponseResult sorts( @RequestParam(defaultValue = "1") int offset,@RequestParam(value = "name",defaultValue = "")String name,@RequestParam(value = "course",defaultValue = "")String course,Model model) {

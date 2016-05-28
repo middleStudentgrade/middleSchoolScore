@@ -21,7 +21,6 @@ public class ClassServiceImpl implements ClassService{
     public List<MsClass> getByRankDeptAndGradeAndName(String name, int grade) {
         return msClassMapper.selectByNameAndDeptAndGrade(grade,name);
     }
-
     @Override
     public MsClass getById(Long id) {
         return  msClassMapper.selectByPrimaryKey(id);

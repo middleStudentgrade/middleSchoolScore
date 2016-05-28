@@ -17,7 +17,7 @@ public interface ScoreService {
 
     List<MsScore> selectNowScoreByStudentId(Long id);
 
-    int selectRanking(Long id,Long classId);
+    int selectRanking(Long id,int classId);
 
     Page selectNowScoreByClassId(String courseName,int limit,int offset,long classId,int type);
 
