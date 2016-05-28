@@ -57,8 +57,8 @@
             <td >身份证号</td>
             <td style="width:18%">籍贯</td>
 <c:if test="${msUser.type==0}">
-            <td style="width:13%;">操作</td>
-    </c:if>
+                <td style="width:13%;">操作</td>
+            </c:if>
         </thead>
         <div class="clear"></div>
             <tbody id="list"></tbody>
